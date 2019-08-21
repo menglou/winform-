@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--配件入库统计QCModel-->
+    <typeAlias alias="AutoPartsStockInReportQCModel" type="SkyCar.Coeus.UIModel.RPT.QCModel.AutoPartsStockInReportQCModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--配件入库统计汇总UIModel-->
+    <typeAlias alias="AutoPartsStockInTotalReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.AutoPartsStockInTotalReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--配件入库统计明细UIModel-->
+    <typeAlias alias="AutoPartsStockInDetailReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.AutoPartsStockInDetailReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+
+  </alias>
+  <statements>
+
+    <!--配件入库统计——汇总-->
+    <procedure id="RPT_StockInReport_SQL01" parameterMap="RPT_StockInReport_ParameteMap" resultClass="AutoPartsStockInTotalReportUIModel">
+      P_RPT_Get_StockInReport_Total
+    </procedure>
+
+    <!--配件入库统计——明细-->
+    <procedure id="RPT_StockInReport_SQL02" parameterMap="RPT_StockInReport_ParameteMap" resultClass="AutoPartsStockInDetailReportUIModel">
+      P_RPT_Get_StockInReport_Detail
+    </procedure>
+
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="RPT_StockInReport_ParameteMap" class="AutoPartsStockInReportQCModel">
+      <parameter property="CustomerID" />
+      <parameter property="InventoryTransType" />
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="OrgIdList"/>
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+    
+  </parameterMaps>
+
+</sqlMap>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+  </alias>
+  <statements>
+    <!--删除销售预测订单明细-->
+    <delete id="SalesForecastOrder_SQL01" parameterClass="MDLSD_SalesForecastOrderDetail" resultClass="int">
+      BEGIN TRY
+
+      IF EXISTS ( SELECT  SFOD_ID
+      FROM    SD_SalesForecastOrderDetail
+      WHERE   SFOD_ST_ID = #SFOD_ST_ID# )
+      BEGIN
+      DELETE  FROM SD_SalesForecastOrderDetail
+      WHERE   SFOD_ST_ID = #SFOD_ST_ID#;
+      END;
+      SELECT  1;
+
+      END TRY
+
+      BEGIN CATCH
+
+      SELECT  0;
+
+      END CATCH;
+    </delete>
+    <!--删除销售预测订单-->
+    <delete id="SalesForecastOrder_SQL02" parameterClass="MDLSD_SalesForecastOrder" resultClass="int">
+
+      BEGIN TRY
+
+      IF EXISTS ( SELECT  SFO_ID
+      FROM    SD_SalesForecastOrder
+      WHERE   SFO_ID = #SFO_ID# )
+      BEGIN
+      DELETE  FROM SD_SalesForecastOrder
+      WHERE   SFO_ID = #SFO_ID#;
+      END;
+      SELECT  1;
+
+      END TRY
+
+      BEGIN CATCH
+
+      SELECT  0;
+
+      END CATCH;
+    </delete>
+  </statements>
+</sqlMap>

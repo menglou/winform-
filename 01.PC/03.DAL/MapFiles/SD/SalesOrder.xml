@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <typeAlias alias="QueryAutoPartUnitPriceQCModel" type="SkyCar.Coeus.UIModel.SD.QCModel.QueryAutoPartUnitPriceQCModel,SkyCar.Coeus.UIModel.SD" />
+    <typeAlias alias="WarehouseAndBinUIModel" type="SkyCar.Coeus.UIModel.SD.UIModel.WarehouseAndBinUIModel,SkyCar.Coeus.UIModel.SD" />
+    <!--销售订单管理QCModel-->
+    <typeAlias alias="SalesOrderManagerQCModel" type="SkyCar.Coeus.UIModel.SD.SalesOrderManagerQCModel,SkyCar.Coeus.UIModel.SD" />
+    <!--销售订单管理明细UIModel-->
+    <typeAlias alias="SalesOrderDetailUIModel" type="SkyCar.Coeus.UIModel.SD.SalesOrderDetailUIModel,SkyCar.Coeus.UIModel.SD" />
+    <!--销售订单管理UIModel-->
+    <typeAlias alias="SalesOrderManagerUIModel" type="SkyCar.Coeus.UIModel.SD.SalesOrderManagerUIModel,SkyCar.Coeus.UIModel.SD" />
+  </alias>
+  <statements>
+
+    <!--根据销售订单单号 查询销售订单明细-->
+    <select id="SalesOrder_SQL01" parameterClass="SalesOrderManagerQCModel" resultClass="SalesOrderDetailUIModel">
+      SELECT  1 'PrintCount' ,
+      0 'IsChecked' ,
+      T1.SOD_ID ,
+      T1.SOD_SO_ID ,
+      T1.SOD_SalePriceRate ,
+      T1.SOD_SalePriceRateIsChangeable ,
+      T1.SOD_PriceIsIncludeTax ,
+      T1.SOD_TaxRate ,
+      T1.SOD_TotalTax ,
+      T1.SOD_Qty ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.SOD_SignQty, 0)) 'SOD_SignQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.SOD_RejectQty, 0)) 'SOD_RejectQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.SOD_LoseQty, 0)) 'SOD_LoseQty' ,
+      T1.SOD_UnitPrice ,
+      T1.SOD_TotalAmount ,
+      T1.SOD_Barcode ,
+      T1.SOD_BatchNo ,
+      T1.SOD_BatchNoNew ,
+      T1.SOD_Name ,
+      T1.SOD_Specification ,
+      T1.SOD_UOM ,
+      T1.SOD_StockInOrgID ,
+      T1.SOD_StockInOrgCode ,
+      T1.SOD_StockInOrgName ,
+      T1.SOD_StockInWarehouseID ,
+      T1.SOD_StockInWarehouseName ,
+      T1.SOD_StockInBinID ,
+      T1.SOD_StockInBinName ,
+      T1.SOD_StatusCode ,
+      T1.SOD_StatusName ,
+      T1.SOD_ApprovalStatusCode ,
+      T1.SOD_ApprovalStatusName ,
+      T1.SOD_Remark ,
+      T1.SOD_IsValid ,
+      T1.SOD_CreatedBy ,
+      T1.SOD_CreatedTime ,
+      T1.SOD_UpdatedBy ,
+      T1.SOD_UpdatedTime ,
+      T1.SOD_VersionNo ,
+      T2.APA_OEMNo 'INV_OEMNo' ,
+      T2.APA_ThirdNo 'INV_ThirdNo' ,
+      T2.APA_Brand ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxTypeCode ,
+      T2.APA_VehicleGearboxTypeName ,
+      T4.APT_Name ,
+      T6.SOD_SignQty 'OriginalSignQty' ,
+      CASE WHEN ISNULL(T7.APPT_Price, 0) != 0 THEN 0
+      ELSE 1
+      END 'UnitPriceIsAllowEdit'
+      FROM    SD_SalesOrderDetail T1
+      LEFT JOIN BS_AutoPartsArchive T2 ON T2.APA_Barcode = T1.SOD_Barcode
+      LEFT JOIN BS_AutoPartsName T3 ON T3.APN_Name = T1.SOD_Name
+      AND T3.APN_IsValid = 1
+      LEFT JOIN BS_AutoPartsType T4 ON T4.APT_ID = T3.APN_APT_ID
+      AND T4.APT_IsValid = 1
+      AND T2.APA_IsValid = 1
+      INNER JOIN SD_SalesOrder T5 ON T5.SO_ID = T1.SOD_SO_ID
+      AND T5.SO_IsValid = 1
+      LEFT JOIN ( SELECT  T61.SO_No ,
+      T62.SOD_Barcode ,
+      T62.SOD_SignQty
+      FROM    SD_SalesOrder T61
+      INNER JOIN SD_SalesOrderDetail T62 ON T62.SOD_SO_ID = T61.SO_ID
+      AND T62.SOD_IsValid = 1
+      WHERE   T61.SO_IsValid = 1
+      ) T6 ON T6.SO_No = T5.SO_SourceNo
+      AND T6.SOD_Barcode = T1.SOD_Barcode
+      LEFT JOIN BS_AutoPartsPriceType T7 ON T7.APPT_Barcode = T1.SOD_Barcode
+      AND T7.APPT_Name = T5.SO_AutoPartsPriceType
+      AND T7.APPT_IsValid = 1
+      WHERE   T1.SOD_IsValid = 1
+      AND T1.SOD_SO_ID = #WHERE_SOD_SO_ID#
+    </select>
+
+    <!--查询汽修商户订单中配件的最新销售价格-->
+    <select id="SalesOrder_SQL02" parameterClass="QueryAutoPartUnitPriceQCModel" resultClass="MDLSD_SalesOrderDetail">
+      SELECT TOP 1
+      T2.SOD_UnitPrice
+      FROM    SD_SalesOrder T1
+      INNER JOIN SD_SalesOrderDetail T2 ON T2.SOD_SO_ID = T1.SO_ID
+      AND T2.SOD_IsValid = 1
+      AND T2.SOD_Barcode = #WHERE_SOD_Barcode#
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryOrgId">T2.SOD_StockInOrgID = #WHERE_AutoFactoryOrgId#</isNotEmpty>
+      WHERE   T1.SO_IsValid = 1
+      AND T1.SO_CustomerID = #WHERE_SO_CustomerID#
+      ORDER BY T1.SO_CreatedTime DESC
+    </select>
+
+    <!--根据组织获取Venus仓库和仓位信息-->
+    <select id="SalesOrder_SQL03" parameterClass="WarehouseAndBinUIModel" resultClass="WarehouseAndBinUIModel">
+      SELECT  T1.WH_ID ,
+      T1.WH_Name ,
+      T2.WHB_ID ,
+      T2.WHB_WH_ID ,
+      T2.WHB_Name ,
+      T3.Org_ID ,
+      T3.Org_Code ,
+      T3.Org_ShortName
+      FROM    APM_Warehouse T1
+      LEFT JOIN APM_WarehouseBin T2 ON T2.WHB_WH_ID = T1.WH_ID
+      AND T2.WHB_IsValid = 1
+      INNER JOIN SM_Organization T3 ON T3.Org_ID = T1.WH_Org_ID
+      AND T3.Org_IsValid = 1
+      WHERE   T1.WH_IsValid = 1
+      <isNotEmpty prepend="AND" property="Org_ID">T3.Org_ID = #Org_ID#</isNotEmpty>
+    </select>
+
+    <!--查询销售订单列表-->
+    <select id="SalesOrder_SQL04" parameterClass="SalesOrderManagerQCModel" resultClass="SalesOrderManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SO_ID)
+      FROM    SD_SalesOrder T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.SO_Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN ( SELECT DISTINCT
+      T31.SOD_SO_ID ,
+      T31.SOD_StockInOrgID 'AROrgID' ,
+      T31.SOD_StockInOrgCode 'AROrgCode' ,
+      T31.SOD_StockInOrgName 'AROrgName' ,
+      CASE WHEN ISNULL(T31.SOD_BatchNoNew, '') = ''
+      THEN 0
+      ELSE 1
+      END 'IsPrintBarcode'
+      FROM   SD_SalesOrderDetail T31
+      WHERE  T31.SOD_IsValid = 1
+      ) T3 ON T3.SOD_SO_ID = T1.SO_ID
+      LEFT JOIN ( SELECT  T41.ARB_SrcBillNo ,
+      SUM(ISNULL(T41.ARB_AccountReceivableAmount, 0)) 'AccountReceivableAmount' ,
+      SUM(ISNULL(T41.ARB_ReceivedAmount, 0)) 'ReceivedAmount'
+      FROM    FM_AccountReceivableBill T41
+      WHERE   T41.ARB_IsValid = 1
+      AND T41.ARB_ApprovalStatusName = '已审核'
+      AND T41.ARB_SourceTypeName != '其他应收（赔偿）'
+      AND T41.ARB_BillDirectName = '正向'
+      GROUP BY T41.ARB_SrcBillNo ,
+      T41.ARB_BillDirectName
+      ) T4 ON T4.ARB_SrcBillNo = T1.SO_No
+      LEFT JOIN ( SELECT  T51.AFC_ID 'CustomerID' ,
+      CASE T51.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      WHEN 0 THEN '一般汽修商户'
+      END 'CustomerType' ,
+      T51.AFC_Code 'AutoFactoryCode' ,
+      T51.AFC_Name 'AutoFactoryName' ,
+      T51.AFC_PhoneNo 'CustomerPhoneNo' ,
+      T51.AFC_CreditAmount 'CreditAmount'
+      FROM    PIS_AutoFactoryCustomer T51
+      WHERE   T51.AFC_IsValid = 1
+      UNION
+      SELECT  T52.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      NULL 'AutoFactoryCode' ,
+      NULL 'AutoFactoryName' ,
+      T52.GC_PhoneNo 'CustomerPhoneNo' ,
+      T52.GC_CreditAmount 'CreditAmount'
+      FROM    PIS_GeneralCustomer T52
+      WHERE   T52.GC_IsValid = 1
+      ) T5 ON T5.CustomerType = T1.SO_CustomerTypeName
+      AND T5.CustomerID = T1.SO_CustomerID
+      LEFT JOIN (   SELECT   T61.ARB_Org_ID ,
+      T61.ARB_PayObjectID ,
+      SUM(ISNULL(T61.ARB_UnReceiveAmount, 0)) 'DebtAmount'
+      FROM     FM_AccountReceivableBill T61
+      WHERE    T61.ARB_IsValid = 1
+      AND T61.ARB_ApprovalStatusName = '已审核'
+      AND '执行中;已对账;'  LIKE '%'+T61.ARB_BusinessStatusName+';%'
+      GROUP BY T61.ARB_Org_ID ,
+      T61.ARB_PayObjectID
+      ) T6 ON T6.ARB_Org_ID = T1.SO_Org_ID
+      AND T6.ARB_PayObjectID = T1.SO_CustomerID
+      LEFT JOIN EWM_Wallet T7 ON T7.Wal_CustomerID = T1.SO_CustomerID
+      AND T7.Wal_IsValid = 1
+      AND T7.Wal_AutoFactoryCode = ( CASE
+      WHEN T1.SO_CustomerTypeName = '平台内汽修商'
+      THEN T5.AutoFactoryCode
+      ELSE T7.Wal_AutoFactoryCode
+      END )
+      AND T7.Wal_AutoFactoryOrgCode = ( CASE
+      WHEN T1.SO_CustomerTypeName = '平台内汽修商'
+      THEN T3.AROrgCode
+      ELSE T7.Wal_AutoFactoryOrgCode
+      END )
+      WHERE   T1.SO_IsValid = 1
+      AND T1.SO_SourceTypeName != '主动销售退货'
+      AND T1.SO_SourceTypeName != '在线销售退货'
+      AND T1.SO_SourceTypeName != '手工创建退货'
+      <!--单据编号-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_No">T1.SO_No LIKE '%'+#WHERE_SO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_Org_ID">T1.SO_Org_ID LIKE '%'+#WHERE_SO_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_SourceTypeName">T1.SO_SourceTypeName =#WHERE_SO_SourceTypeName#</isNotEmpty>
+      <!--客户类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerTypeName">T1.SO_CustomerTypeName =#WHERE_SO_CustomerTypeName#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerName">T1.SO_CustomerName LIKE '%'+#WHERE_SO_CustomerName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_StatusName">T1.SO_StatusName =#WHERE_SO_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_ApprovalStatusName">T1.SO_ApprovalStatusName =#WHERE_SO_ApprovalStatusName#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      1 'OrderIndex' ,
+      0 'IsChecked' ,
+      T1.SO_ID ,
+      T1.SO_No ,
+      T1.SO_Org_ID ,
+      T1.SO_SourceTypeCode ,
+      T1.SO_SourceTypeName ,
+      T1.SO_SourceNo ,
+      T1.SO_CustomerID ,
+      T1.SO_CustomerTypeCode ,
+      T1.SO_CustomerTypeName ,
+      T1.SO_CustomerName ,
+      T1.SO_IsPriceIncludeTax ,
+      T1.SO_TaxRate ,
+      T1.SO_TotalTax ,
+      T1.SO_TotalAmount ,
+      T1.SO_TotalNetAmount ,
+      T1.SO_StatusCode ,
+      T1.SO_StatusName ,
+      T1.SO_ApprovalStatusCode ,
+      T1.SO_ApprovalStatusName ,
+      T1.SO_AutoPartsPriceType ,
+      T1.SO_SalesByID ,
+      T1.SO_SalesByName ,
+      T1.SO_Remark ,
+      T1.SO_IsValid ,
+      T1.SO_CreatedBy ,
+      T1.SO_CreatedTime ,
+      T1.SO_UpdatedBy ,
+      T1.SO_UpdatedTime ,
+      T1.SO_VersionNo ,
+      T2.Org_ShortName ,
+      T3.AROrgID ,
+      T3.AROrgCode ,
+      T3.AROrgName ,
+      T4.AccountReceivableAmount ,
+      T4.ReceivedAmount ,
+      ISNULL(T4.AccountReceivableAmount, 0) - ISNULL(T4.ReceivedAmount, 0) 'UnReceiveAmount' ,
+      T5.AutoFactoryCode ,
+      T5.AutoFactoryName ,
+      T5.CustomerPhoneNo ,
+      T5.CreditAmount ,
+      T5.AutoPartsPriceType ,
+      T6.DebtAmount ,
+      T7.Wal_No ,
+      T7.Wal_AvailableBalance
+      FROM    SD_SalesOrder T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.SO_Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN ( SELECT DISTINCT
+      T31.SOD_SO_ID ,
+      T31.SOD_StockInOrgID 'AROrgID' ,
+      T31.SOD_StockInOrgCode 'AROrgCode' ,
+      T31.SOD_StockInOrgName 'AROrgName' ,
+      CASE WHEN ISNULL(T31.SOD_BatchNoNew, '') = ''
+      THEN 0
+      ELSE 1
+      END 'IsPrintBarcode'
+      FROM   SD_SalesOrderDetail T31
+      WHERE  T31.SOD_IsValid = 1
+      ) T3 ON T3.SOD_SO_ID = T1.SO_ID
+      LEFT JOIN ( SELECT  T41.ARB_SrcBillNo ,
+      SUM(ISNULL(T41.ARB_AccountReceivableAmount, 0)) 'AccountReceivableAmount' ,
+      SUM(ISNULL(T41.ARB_ReceivedAmount, 0)) 'ReceivedAmount'
+      FROM    FM_AccountReceivableBill T41
+      WHERE   T41.ARB_IsValid = 1
+      AND T41.ARB_ApprovalStatusName = '已审核'
+      AND T41.ARB_SourceTypeName != '其他应收（赔偿）'
+      AND T41.ARB_BillDirectName = '正向'
+      GROUP BY T41.ARB_SrcBillNo ,
+      T41.ARB_BillDirectName
+      ) T4 ON T4.ARB_SrcBillNo = T1.SO_No
+      LEFT JOIN ( SELECT  T51.AFC_ID 'CustomerID' ,
+      CASE T51.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      WHEN 0 THEN '一般汽修商户'
+      END 'CustomerType' ,
+      T51.AFC_Code 'AutoFactoryCode' ,
+      T51.AFC_Name 'AutoFactoryName' ,
+      T51.AFC_PhoneNo 'CustomerPhoneNo' ,
+      T51.AFC_CreditAmount 'CreditAmount' ,
+      T51.AFC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM    PIS_AutoFactoryCustomer T51
+      WHERE   T51.AFC_IsValid = 1
+      UNION
+      SELECT  T52.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      NULL 'AutoFactoryCode' ,
+      NULL 'AutoFactoryName' ,
+      T52.GC_PhoneNo 'CustomerPhoneNo' ,
+      T52.GC_CreditAmount 'CreditAmount' ,
+      T52.GC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM    PIS_GeneralCustomer T52
+      WHERE   T52.GC_IsValid = 1
+      ) T5 ON T5.CustomerType = T1.SO_CustomerTypeName
+      AND T5.CustomerID = T1.SO_CustomerID
+      LEFT JOIN (   SELECT   T61.ARB_Org_ID ,
+      T61.ARB_PayObjectID ,
+      SUM(ISNULL(T61.ARB_UnReceiveAmount, 0)) 'DebtAmount'
+      FROM     FM_AccountReceivableBill T61
+      WHERE    T61.ARB_IsValid = 1
+      AND T61.ARB_ApprovalStatusName = '已审核'
+      AND '执行中;已对账;'  LIKE '%'+T61.ARB_BusinessStatusName+';%'
+      GROUP BY T61.ARB_Org_ID ,
+      T61.ARB_PayObjectID
+      ) T6 ON T6.ARB_Org_ID = T1.SO_Org_ID
+      AND T6.ARB_PayObjectID = T1.SO_CustomerID
+      LEFT JOIN EWM_Wallet T7 ON T7.Wal_CustomerID = T1.SO_CustomerID
+      AND T7.Wal_IsValid = 1
+      AND T7.Wal_AutoFactoryCode = ( CASE
+      WHEN T1.SO_CustomerTypeName = '平台内汽修商'
+      THEN T5.AutoFactoryCode
+      ELSE T7.Wal_AutoFactoryCode
+      END )
+      AND T7.Wal_AutoFactoryOrgCode = ( CASE
+      WHEN T1.SO_CustomerTypeName = '平台内汽修商'
+      THEN T3.AROrgCode
+      ELSE T7.Wal_AutoFactoryOrgCode
+      END )
+      WHERE   T1.SO_IsValid = 1
+      AND T1.SO_SourceTypeName != '主动销售退货'
+      AND T1.SO_SourceTypeName != '在线销售退货'
+      AND T1.SO_SourceTypeName != '手工创建退货'
+      <!--单据编号-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_No">T1.SO_No LIKE '%'+#WHERE_SO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_Org_ID">T1.SO_Org_ID LIKE '%'+#WHERE_SO_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_SourceTypeName">T1.SO_SourceTypeName =#WHERE_SO_SourceTypeName#</isNotEmpty>
+      <!--客户类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerTypeName">T1.SO_CustomerTypeName =#WHERE_SO_CustomerTypeName#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerName">T1.SO_CustomerName LIKE '%'+#WHERE_SO_CustomerName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_StatusName">T1.SO_StatusName =#WHERE_SO_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_ApprovalStatusName">T1.SO_ApprovalStatusName =#WHERE_SO_ApprovalStatusName#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      UNION
+      SELECT  @RecordCount 'RecordCount' ,
+      2 'OrderIndex' ,
+      NULL 'IsChecked' ,
+      NULL 'SO_ID' ,
+      NULL 'SO_No' ,
+      NULL 'SO_Org_ID' ,
+      NULL 'SO_SourceTypeCode' ,
+      NULL 'SO_SourceTypeName' ,
+      NULL 'SO_SourceNo' ,
+      NULL 'SO_CustomerID' ,
+      NULL 'SO_CustomerTypeCode' ,
+      NULL 'SO_CustomerTypeName' ,
+      NULL 'SO_CustomerName' ,
+      NULL 'SO_IsPriceIncludeTax' ,
+      NULL 'SO_TaxRate' ,
+      SUM(ISNULL(Temp.SO_TotalTax, 0)) 'SO_TotalTax' ,
+      SUM(ISNULL(Temp.SO_TotalAmount, 0)) 'SO_TotalAmount' ,
+      SUM(ISNULL(Temp.SO_TotalNetAmount, 0)) 'SO_TotalNetAmount' ,
+      NULL 'SO_StatusCode' ,
+      NULL 'SO_StatusName' ,
+      NULL 'SO_ApprovalStatusCode' ,
+      NULL 'SO_ApprovalStatusName' ,
+      NULL 'SO_AutoPartsPriceType' ,
+      NULL 'SO_SalesByID' ,
+      NULL 'SO_SalesByName' ,
+      NULL 'SO_Remark' ,
+      NULL 'SO_IsValid' ,
+      NULL 'SO_CreatedBy' ,
+      NULL 'SO_CreatedTime' ,
+      NULL 'SO_UpdatedBy' ,
+      NULL 'SO_UpdatedTime' ,
+      NULL 'SO_VersionNo' ,
+      NULL 'Org_ShortName' ,
+      NULL 'AROrgID' ,
+      NULL 'AROrgCode' ,
+      NULL 'AROrgName' ,
+      SUM(ISNULL(Temp.AccountReceivableAmount, 0)) 'AccountReceivableAmount' ,
+      SUM(ISNULL(Temp.ReceivedAmount, 0)) 'ReceivedAmount' ,
+      SUM(ISNULL(Temp.UnReceiveAmount, 0)) 'UnReceiveAmount' ,
+      NULL 'AutoFactoryCode' ,
+      '	    合计：' 'AutoFactoryName' ,
+      NULL 'CustomerPhoneNo ' ,
+      SUM(ISNULL(Temp.CreditAmount, 0)) 'CreditAmount' ,
+      NULL 'AutoPartsPriceType' ,
+      SUM(ISNULL(Temp.DebtAmount, 0)) 'DebtAmount' ,
+      NULL 'Wal_No' ,
+      NULL 'Wal_AvailableBalance'
+      FROM    ( SELECT    T1.SO_TaxRate ,
+      T1.SO_TotalTax ,
+      T1.SO_TotalAmount ,
+      T1.SO_TotalNetAmount ,
+      T1.SO_StatusCode ,
+      T4.AccountReceivableAmount ,
+      T4.ReceivedAmount ,
+      ISNULL(T4.AccountReceivableAmount, 0)
+      - ISNULL(T4.ReceivedAmount, 0) 'UnReceiveAmount' ,
+      T5.CreditAmount ,
+      T6.DebtAmount
+      FROM      SD_SalesOrder T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.SO_Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN ( SELECT DISTINCT
+      T31.SOD_SO_ID ,
+      T31.SOD_StockInOrgID 'AROrgID' ,
+      T31.SOD_StockInOrgCode 'AROrgCode' ,
+      T31.SOD_StockInOrgName 'AROrgName' ,
+      CASE WHEN ISNULL(T31.SOD_BatchNoNew,
+      '') = '' THEN 0
+      ELSE 1
+      END 'IsPrintBarcode'
+      FROM   SD_SalesOrderDetail T31
+      WHERE  T31.SOD_IsValid = 1
+      ) T3 ON T3.SOD_SO_ID = T1.SO_ID
+      LEFT JOIN ( SELECT  T41.ARB_SrcBillNo ,
+      SUM(ISNULL(T41.ARB_AccountReceivableAmount,
+      0)) 'AccountReceivableAmount' ,
+      SUM(ISNULL(T41.ARB_ReceivedAmount, 0)) 'ReceivedAmount'
+      FROM    FM_AccountReceivableBill T41
+      WHERE   T41.ARB_IsValid = 1
+      AND T41.ARB_ApprovalStatusName = '已审核'
+      AND T41.ARB_SourceTypeName != '其他应收（赔偿）'
+      AND T41.ARB_BillDirectName = '正向'
+      GROUP BY T41.ARB_SrcBillNo ,
+      T41.ARB_BillDirectName
+      ) T4 ON T4.ARB_SrcBillNo = T1.SO_No
+      LEFT JOIN ( SELECT  T51.AFC_ID 'CustomerID' ,
+      CASE T51.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      WHEN 0 THEN '一般汽修商户'
+      END 'CustomerType' ,
+      T51.AFC_Code 'AutoFactoryCode' ,
+      T51.AFC_Name 'AutoFactoryName' ,
+      T51.AFC_PhoneNo 'CustomerPhoneNo' ,
+      T51.AFC_CreditAmount 'CreditAmount' ,
+      T51.AFC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM    PIS_AutoFactoryCustomer T51
+      WHERE   T51.AFC_IsValid = 1
+      UNION
+      SELECT  T52.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      NULL 'AutoFactoryCode' ,
+      NULL 'AutoFactoryName' ,
+      T52.GC_PhoneNo 'CustomerPhoneNo' ,
+      T52.GC_CreditAmount 'CreditAmount' ,
+      T52.GC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM    PIS_GeneralCustomer T52
+      WHERE   T52.GC_IsValid = 1
+      ) T5 ON T5.CustomerType = T1.SO_CustomerTypeName
+      AND T5.CustomerID = T1.SO_CustomerID
+      LEFT JOIN (   SELECT   T61.ARB_Org_ID ,
+      T61.ARB_PayObjectID ,
+      SUM(ISNULL(T61.ARB_UnReceiveAmount, 0)) 'DebtAmount'
+      FROM     FM_AccountReceivableBill T61
+      WHERE    T61.ARB_IsValid = 1
+      AND T61.ARB_ApprovalStatusName = '已审核'
+      AND '执行中;已对账;'  LIKE '%'+T61.ARB_BusinessStatusName+';%'
+      GROUP BY T61.ARB_Org_ID ,
+      T61.ARB_PayObjectID
+      ) T6 ON T6.ARB_Org_ID = T1.SO_Org_ID
+      AND T6.ARB_PayObjectID = T1.SO_CustomerID
+      LEFT JOIN EWM_Wallet T7 ON T7.Wal_CustomerID = T1.SO_CustomerID
+      AND T7.Wal_IsValid = 1
+      AND T7.Wal_AutoFactoryCode = ( CASE
+      WHEN T1.SO_CustomerTypeName = '平台内汽修商'
+      THEN T5.AutoFactoryCode
+      ELSE T7.Wal_AutoFactoryCode
+      END )
+      AND T7.Wal_AutoFactoryOrgCode = ( CASE
+      WHEN T1.SO_CustomerTypeName = '平台内汽修商'
+      THEN T3.AROrgCode
+      ELSE T7.Wal_AutoFactoryOrgCode
+      END )
+      WHERE     T1.SO_IsValid = 1
+      AND T1.SO_SourceTypeName != '主动销售退货'
+      AND T1.SO_SourceTypeName != '在线销售退货'
+      AND T1.SO_SourceTypeName != '手工创建退货'
+      <!--单据编号-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_No">T1.SO_No LIKE '%'+#WHERE_SO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_Org_ID">T1.SO_Org_ID LIKE '%'+#WHERE_SO_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_SourceTypeName">T1.SO_SourceTypeName =#WHERE_SO_SourceTypeName#</isNotEmpty>
+      <!--客户类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerTypeName">T1.SO_CustomerTypeName =#WHERE_SO_CustomerTypeName#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerName">T1.SO_CustomerName LIKE '%'+#WHERE_SO_CustomerName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_StatusName">T1.SO_StatusName =#WHERE_SO_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_ApprovalStatusName">T1.SO_ApprovalStatusName =#WHERE_SO_ApprovalStatusName#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.SO_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      ) Temp
+
+      <!--翻页用-->
+      ORDER BY T1.SO_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据销售订单ID更新物流订单列表-->
+    <update id="SalesOrder_SQL05" parameterClass="MDLSD_LogisticsBill">
+      UPDATE  T1
+      SET     T1.LBD_SignQty = T4.SOD_SignQty ,
+      T1.LBD_RejectQty = T4.SOD_RejectQty ,
+      T1.LBD_LoseQty = T4.SOD_LoseQty ,
+      T1.LBD_StatusName = #WHERE_LB_StatusName# ,
+      T1.LBD_StatusCode = #WHERE_LB_StatusCode#,
+      T1.LBD_UpdatedTime = GETDATE(),
+      T1.LBD_VersionNo = T1.LBD_VersionNo+1
+      FROM    SD_LogisticsBillDetail T1 ,
+      SD_LogisticsBill T2 ,
+      SD_SalesOrder T3 ,
+      SD_SalesOrderDetail T4
+      WHERE   T1.LBD_IsValid = 1
+      AND T3.SO_No = T2.LB_SourceNo
+      AND T2.LB_ID = T1.LBD_LB_ID
+      AND T4.SOD_SO_ID = T3.SO_ID
+      AND T4.SOD_Barcode = T1.LBD_Barcode
+      AND T2.LB_ID = #WHERE_LB_ID#
+
+      UPDATE  T1
+      SET     T1.LB_StatusName = #WHERE_LB_StatusName# ,
+      T1.LB_StatusCode = #WHERE_LB_StatusCode#,
+      T1.LB_UpdatedTime = GETDATE(),
+      T1.LB_VersionNo = T1.LB_VersionNo+1
+      FROM    SD_LogisticsBill T1
+      WHERE   T1.LB_IsValid = 1
+      AND T1.LB_ID = #WHERE_LB_ID#
+    </update>
+
+  </statements>
+</sqlMap>

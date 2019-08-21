@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0EE606A-680E-4050-AE66-446E7CF50DC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.UIModel.Common</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.UIModel.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\Reference\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APModel\AutoPartsPictureQCModel.cs" />
+    <Compile Include="APModel\AutoPartsPictureUIModel.cs" />
+    <Compile Include="APModel\WalletInfoUIModel.cs" />
+    <Compile Include="AROrganizationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AROrganizationDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AutoPartsArchiveDataSet.cs">
+      <DependentUpon>AutoPartsArchiveDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AutoPartsArchiveDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoPartsArchiveDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUIModel.cs" />
+    <Compile Include="QCModel\AccountPayableBillManagerQCModel.cs" />
+    <Compile Include="QCModel\AuthorityVerifyQCModel.cs" />
+    <Compile Include="QCModel\AutoFactoryOrgQueryQCModel.cs" />
+    <Compile Include="QCModel\InventoryTransLogQueryQCModel.cs" />
+    <Compile Include="QCModel\InventoryToShareQueryQCModel.cs" />
+    <Compile Include="QCModel\TransferrQueryQCModel.cs" />
+    <Compile Include="QCModel\StockOutBillQueryQCModel.cs" />
+    <Compile Include="QCModel\StockInBillQueryQCModel.cs" />
+    <Compile Include="QCModel\RecordCodeQCModel.cs" />
+    <Compile Include="UIModel\AutoFactoryOrgQueryUIModel.cs" />
+    <Compile Include="UIModel\AccountPayableBillManagerUIModel.cs" />
+    <Compile Include="UIModel\InventoryTransLogQueryUIModel.cs" />
+    <Compile Include="UIModel\ComClientUIModel.cs" />
+    <Compile Include="UIModel\InventoryToShareQueryUIModel.cs" />
+    <Compile Include="UIModel\MerchantServerUIModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QCModel\CustomerQueryQCModel.cs" />
+    <Compile Include="QCModel\LogisticsBillQueryQCModel.cs" />
+    <Compile Include="QCModel\PickPartsQueryQCModel.cs" />
+    <Compile Include="QCModel\PayBillQueryQCModel.cs" />
+    <Compile Include="QCModel\SalesForecastOrderQCModel.cs" />
+    <Compile Include="QCModel\SalesOrderDetailQueryQCModel.cs" />
+    <Compile Include="QCModel\SalesTemplateQueryQCModel.cs" />
+    <Compile Include="QCModel\SalesOrderQueryQCModel.cs" />
+    <Compile Include="QCModel\PurchaseOrderQueryQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsTypeQueryQCModel.cs" />
+    <Compile Include="QCModel\MaintainAutoPartsDetailQCModel.cs" />
+    <Compile Include="QCModel\OrgQueryQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsLevelQueryQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsBrandQueryQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsNameQueryQCModel.cs" />
+    <Compile Include="QCModel\BaseQCModel.cs" />
+    <Compile Include="QCModel\MenuGroupActionQCModel.cs" />
+    <Compile Include="QCModel\UserQueryQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsArchiveQueryQCModel.cs" />
+    <Compile Include="QCModel\WarehouseBinQueryQCModel.cs" />
+    <Compile Include="QCModel\SupplierQueryQCModel.cs" />
+    <Compile Include="QCModel\WarehouseQueryQCModel.cs" />
+    <Compile Include="QCModel\VehicleInspireQueryQCModel.cs" />
+    <Compile Include="QCModel\VehicleBrandQueryQCModel.cs" />
+    <Compile Include="SystemConfigInfoUIModel.cs" />
+    <Compile Include="UIModel\CustomerQueryUIModel.cs" />
+    <Compile Include="UIModel\LogisticsBillQueryUIModel.cs" />
+    <Compile Include="UIModel\BusinessPayConfirmWindowModel.cs" />
+    <Compile Include="UIModel\PickPartsQueryUIModel.cs" />
+    <Compile Include="UIModel\SalesForecastOrderUIModel.cs" />
+    <Compile Include="UIModel\SalesOrderDetailQueryUIModel.cs" />
+    <Compile Include="UIModel\BusinessCollectionConfirmUIModel.cs" />
+    <Compile Include="UIModel\TransferQueryUIModel.cs" />
+    <Compile Include="UIModel\SalesTemplateQueryUIModel.cs" />
+    <Compile Include="UIModel\SkyCarBindingList.cs" />
+    <Compile Include="UIModel\BaseNotificationUIModel.cs" />
+    <Compile Include="UIModel\PayBillQueryUIModel.cs" />
+    <Compile Include="UIModel\SalesOrderQueryUIModel.cs" />
+    <Compile Include="UIModel\PurchaseOrderQueryUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsTypeQueryUIModel.cs" />
+    <Compile Include="UIModel\MaintainAutoPartsDetailUIModel.cs" />
+    <Compile Include="UIModel\OrgQueryUIModel.cs" />
+    <Compile Include="UIModel\MenuGroupActionUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsArchiveQueryUIModel.cs" />
+    <Compile Include="UIModel\StockInBillQueryUIModel.cs" />
+    <Compile Include="UIModel\StockOutBillQueryUIModel.cs" />
+    <Compile Include="UIModel\WarehouseBinQueryUIModel.cs" />
+    <Compile Include="UIModel\SupplierQueryUIModel.cs" />
+    <Compile Include="UIModel\WarehouseQueryUIModel.cs" />
+    <Compile Include="UIModel\VehicleInspireQueryUIModel.cs" />
+    <Compile Include="UIModel\VehicleBrandQueryUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsLevelQueryUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsBrandQueryUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsNameQueryUIModel.cs" />
+    <Compile Include="UIModel\BaseUIModel.cs" />
+    <Compile Include="UIModel\UserQueryUIModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.ExtendClass\SkyCar.Coeus.Common.ExtendClass.csproj">
+      <Project>{bb67629c-4fe0-415b-9b9e-24872e8c2121}</Project>
+      <Name>SkyCar.Coeus.Common.ExtendClass</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AROrganizationDataSet.xsc">
+      <DependentUpon>AROrganizationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AROrganizationDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AROrganizationDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AROrganizationDataSet.xss">
+      <DependentUpon>AROrganizationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AutoPartsArchiveDataSet.xsc">
+      <DependentUpon>AutoPartsArchiveDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AutoPartsArchiveDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AutoPartsArchiveDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AutoPartsArchiveDataSet.xss">
+      <DependentUpon>AutoPartsArchiveDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

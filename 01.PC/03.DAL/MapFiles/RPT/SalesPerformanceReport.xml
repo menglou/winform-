@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--销售业绩统计QCModel-->
+    <typeAlias alias="SalesPerformanceReportQCModel" type="SkyCar.Coeus.UIModel.RPT.QCModel.SalesPerformanceReportQCModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--销售业绩统计汇总UIModel-->
+    <typeAlias alias="SalesPerformanceTotalReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.SalesPerformanceTotalReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--销售业绩统计明细UIModel-->
+    <typeAlias alias="SalesPerformanceDetailReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.SalesPerformanceDetailReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+
+  </alias>
+  <statements>
+
+    <!--销售业绩统计——汇总-->
+    <procedure id="RPT_SalesPerformanceReport_SQL01" parameterMap="RPT_SalesPerformanceReport_ParameteMap" resultClass="SalesPerformanceTotalReportUIModel">
+      P_RPT_Get_SalesPerformanceReport_Total
+    </procedure>
+
+    <!--销售业绩统计——明细-->
+    <procedure id="RPT_SalesPerformanceReport_SQL02" parameterMap="RPT_SalesPerformanceReport_ParameteMap" resultClass="SalesPerformanceDetailReportUIModel">
+      P_RPT_Get_SalesPerformanceReport_Detail
+    </procedure>
+
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="RPT_SalesPerformanceReport_ParameteMap" class="SalesPerformanceReportQCModel">
+      <parameter property="SalesByID" />
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="OrgIdList"/>
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+
+  </parameterMaps>
+
+</sqlMap>

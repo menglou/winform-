@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--钱包查询及操作QCModel-->
+    <typeAlias alias="WalletQueryAndOperateQCModel" type="SkyCar.Coeus.UIModel.RIA.QCModel.WalletQueryAndOperateQCModel,SkyCar.Coeus.UIModel.RIA" />
+    <!--钱包查询及操作UIModel-->
+    <typeAlias alias="WalletQueryAndOperateUIModel" type="SkyCar.Coeus.UIModel.RIA.UIModel.WalletQueryAndOperateUIModel,SkyCar.Coeus.UIModel.RIA" />
+
+  </alias>
+  <statements>
+
+    <!--查询钱包列表-->
+    <select  id="WalletQueryAndOperate_SQL01" parameterClass="WalletQueryAndOperateQCModel" resultClass="WalletQueryAndOperateUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.Wal_ID)
+      FROM    EWM_Wallet T1
+      LEFT JOIN ( SELECT  T21.AFC_ID 'CustomerID' ,
+      CASE T21.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      WHEN 0 THEN '一般汽修商户'
+      END 'CustomerType' ,
+      T21.AFC_Name 'CustomerName' ,
+      T21.AFC_PhoneNo 'CustomerPhoneNo' ,
+      CASE T21.AFC_IsPlatform
+      WHEN 1 THEN T21.AFC_Name
+      WHEN 0 THEN NULL
+      END 'AutoFactoryName'
+      FROM    PIS_AutoFactoryCustomer T21
+      WHERE   T21.AFC_IsValid = 1
+      UNION
+      SELECT  T22.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      T22.GC_Name 'CustomerName' ,
+      T22.GC_PhoneNo 'CustomerPhoneNo' ,
+      NULL 'AutoFactoryName'
+      FROM    PIS_GeneralCustomer T22
+      WHERE   T22.GC_IsValid = 1
+      ) T2 ON T2.CustomerID = T1.Wal_CustomerID
+      AND T2.CustomerType = T1.Wal_OwnerTypeName
+      WHERE   T1.Wal_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_Org_ID">T1.Wal_Org_ID LIKE '%'+#WHERE_Wal_Org_ID#+'%'</isNotEmpty>
+      <!--钱包账号-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_No">T1.Wal_No LIKE '%'+#WHERE_Wal_No#+'%'</isNotEmpty>
+      <!--钱包所有人类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_OwnerTypeName">T1.Wal_OwnerTypeName LIKE '%'+#WHERE_Wal_OwnerTypeName#+'%'</isNotEmpty>
+      <!--开户人姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_CustomerName">T1.Wal_CustomerName LIKE '%'+#WHERE_Wal_CustomerName#+'%'</isNotEmpty>
+      <!--推荐员工-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_RecommendEmployee">T1.Wal_RecommendEmployee LIKE '%'+#WHERE_Wal_RecommendEmployee#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.Wal_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.Wal_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.Wal_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--手机号-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerPhoneNo">T2.CustomerPhoneNo LIKE '%'+#WHERE_CustomerPhoneNo#+'%'</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryName">T2.AutoFactoryName LIKE '%'+#WHERE_AutoFactoryName#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.Wal_ID ,
+      T1.Wal_Org_ID ,
+      T1.Wal_Org_Name ,
+      T1.Wal_No ,
+      T1.Wal_SourceTypeCode ,
+      T1.Wal_SourceTypeName ,
+      T1.Wal_SourceNo ,
+      T1.Wal_OwnerTypeCode ,
+      T1.Wal_OwnerTypeName ,
+      T1.Wal_CustomerID ,
+      T1.Wal_CustomerName ,
+      T1.Wal_AutoFactoryCode ,
+      T1.Wal_AutoFactoryOrgCode ,
+      T1.Wal_TradingPassword ,
+      T1.Wal_AvailableBalance ,
+      T1.Wal_FreezingBalance ,
+      T1.Wal_DepositBaseAmount ,
+      T1.Wal_RecommendEmployeeID ,
+      T1.Wal_RecommendEmployee ,
+      T1.Wal_CreatedByOrgID ,
+      T1.Wal_CreatedByOrgName ,
+      T1.Wal_EffectiveTime ,
+      T1.Wal_IneffectiveTime ,
+      T1.Wal_StatusCode ,
+      T1.Wal_StatusName ,
+      T1.Wal_Remark ,
+      T1.Wal_IsValid ,
+      T1.Wal_CreatedBy ,
+      T1.Wal_CreatedTime ,
+      T1.Wal_UpdatedBy ,
+      T1.Wal_UpdatedTime ,
+      T1.Wal_VersionNo ,
+      T2.CustomerPhoneNo ,
+      T2.AutoFactoryName
+      FROM    EWM_Wallet T1
+      LEFT JOIN ( SELECT  T21.AFC_ID 'CustomerID' ,
+      CASE T21.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      WHEN 0 THEN '一般汽修商户'
+      END 'CustomerType' ,
+      T21.AFC_Name 'CustomerName' ,
+      T21.AFC_PhoneNo 'CustomerPhoneNo' ,
+      CASE T21.AFC_IsPlatform
+      WHEN 1 THEN T21.AFC_Name
+      WHEN 0 THEN NULL
+      END 'AutoFactoryName'
+      FROM    PIS_AutoFactoryCustomer T21
+      WHERE   T21.AFC_IsValid = 1
+      UNION
+      SELECT  T22.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      T22.GC_Name 'CustomerName' ,
+      T22.GC_PhoneNo 'CustomerPhoneNo' ,
+      NULL 'AutoFactoryName'
+      FROM    PIS_GeneralCustomer T22
+      WHERE   T22.GC_IsValid = 1
+      ) T2 ON T2.CustomerID = T1.Wal_CustomerID
+      AND T2.CustomerType = T1.Wal_OwnerTypeName
+      WHERE   T1.Wal_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_Org_ID">T1.Wal_Org_ID LIKE '%'+#WHERE_Wal_Org_ID#+'%'</isNotEmpty>
+      <!--钱包账号-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_No">T1.Wal_No LIKE '%'+#WHERE_Wal_No#+'%'</isNotEmpty>
+      <!--钱包所有人类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_OwnerTypeName">T1.Wal_OwnerTypeName LIKE '%'+#WHERE_Wal_OwnerTypeName#+'%'</isNotEmpty>
+      <!--开户人姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_CustomerName">T1.Wal_CustomerName LIKE '%'+#WHERE_Wal_CustomerName#+'%'</isNotEmpty>
+      <!--推荐员工-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_RecommendEmployee">T1.Wal_RecommendEmployee LIKE '%'+#WHERE_Wal_RecommendEmployee#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.Wal_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.Wal_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.Wal_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--手机号-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerPhoneNo">T2.CustomerPhoneNo LIKE '%'+#WHERE_CustomerPhoneNo#+'%'</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryName">T2.AutoFactoryName LIKE '%'+#WHERE_AutoFactoryName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.Wal_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--更新钱包-->
+    <update id="WalletQueryAndOperate_SQL02" parameterClass="MDLEWM_Wallet">
+      UPDATE  EWM_Wallet
+      SET     Wal_RecommendEmployee = #Wal_RecommendEmployee# ,
+      Wal_RecommendEmployeeID = #Wal_RecommendEmployeeID# ,
+      Wal_Remark = #Wal_Remark# ,
+      Wal_VersionNo = Wal_VersionNo + 1 ,
+      Wal_UpdatedBy = #Wal_UpdatedBy# ,
+      Wal_UpdatedTime = GETDATE()
+      WHERE   Wal_ID = #WHERE_Wal_ID#
+      AND Wal_VersionNo = #WHERE_Wal_VersionNo#
+    </update>
+
+  </statements>
+
+</sqlMap>

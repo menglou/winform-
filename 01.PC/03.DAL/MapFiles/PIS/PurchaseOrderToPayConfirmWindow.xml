@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+    <!--获取采购单下对应的应付单-->
+    <select id="PurchaseOrderToPayConfirmWindow_01" parameterClass="MDLFM_AccountPayableBill" resultClass="MDLFM_AccountPayableBill">
+      SELECT T1.APB_ID,
+      T1.APB_No,
+      T1.APB_BillDirectCode,
+      T1.APB_BillDirectName,
+      T1.APB_SourceTypeCode,
+      T1.APB_SourceTypeName,
+      T1.APB_SourceBillNo,
+      T1.APB_Org_ID,
+      T1.APB_Org_Name,
+      T1.APB_AccountPayableAmount,
+      T1.APB_PaidAmount,
+      T1.APB_UnpaidAmount,
+      T1.APB_BusinessStatusCode,
+      T1.APB_BusinessStatusName,
+      T1.APB_ApprovalStatusCode,
+      T1.APB_ApprovalStatusName,
+      T1.APB_Remark,
+      T1.APB_IsValid,
+      T1.APB_CreatedBy,
+      T1.APB_CreatedTime,
+      T1.APB_UpdatedBy,
+      T1.APB_UpdatedTime,
+      T1.APB_VersionNo
+      FROM FM_AccountPayableBill T1
+      WHERE T1.APB_IsValid = 1
+      AND #WHERE_APB_SourceBillNo# LIKE '%;' + T1.APB_SourceBillNo + ';%'
+      AND T1.APB_SourceBillNo IS NOT NULL
+      AND T1.APB_SourceBillNo!=''
+      ORDER BY T1.APB_CreatedBy DESC
+    </select>
+  </statements>
+
+</sqlMap>

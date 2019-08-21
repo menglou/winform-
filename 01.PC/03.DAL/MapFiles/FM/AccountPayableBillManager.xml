@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--应付管理UIModel-->
+    <typeAlias alias="AccountPayableBillManagerUIModel" type="SkyCar.Coeus.UIModel.FM.AccountPayableBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--应付管理DetailUIModel-->
+    <typeAlias alias="AccountPayableBillManagerDetailUIModel" type="SkyCar.Coeus.UIModel.FM.AccountPayableBillManagerDetailUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--应付管理QCModel-->
+    <typeAlias alias="AccountPayableBillManagerQCModel" type="SkyCar.Coeus.UIModel.FM.AccountPayableBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[应付管理]【列表】信息-->
+    <select id="AccountPayableBillManager_SQL_01" parameterClass="AccountPayableBillManagerQCModel" resultClass="AccountPayableBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.APB_ID)
+      FROM    FM_AccountPayableBill T1
+      WHERE   1 = 1
+      <!--应付单号-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_No">T1.APB_No LIKE '%'+#WHERE_APB_No#+'%'</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_SourceTypeName">T1.APB_SourceTypeName LIKE '%'+#WHERE_APB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_SourceBillNo">T1.APB_SourceBillNo LIKE '%'+#WHERE_APB_SourceBillNo#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_BusinessStatusName">#WHERE_APB_BusinessStatusName# LIKE '%;'+T1.APB_BusinessStatusName+';%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ApprovalStatusName">T1.APB_ApprovalStatusName LIKE '%'+#WHERE_APB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_APB_IsValid">T1.APB_IsValid=#WHERE_APB_IsValid#</isNotNull>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_Org_ID">T1.APB_Org_ID LIKE '%'+#WHERE_APB_Org_ID#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_Org_Name">T1.APB_Org_Name LIKE '%'+#WHERE_APB_Org_Name#+'%'</isNotEmpty>
+      <!--收款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ReceiveObjectTypeName">T1.APB_ReceiveObjectTypeName LIKE '%'+#WHERE_APB_ReceiveObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ReceiveObjectName">T1.APB_ReceiveObjectName LIKE '%'+#WHERE_APB_ReceiveObjectName#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--修改时间-->
+      <isNotNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime BETWEEN #_UpdatedTimeStart# AND #_UpdatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime <![CDATA[>=]]> #_UpdatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime <![CDATA[<=]]> #_UpdatedTimeEnd#</isNotNull>
+      </isNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      1 'OrderIndex' ,
+      0 'IsChecked' ,
+      T1.APB_ID ,
+      T1.APB_No ,
+      T1.APB_BillDirectCode ,
+      T1.APB_BillDirectName ,
+      T1.APB_SourceTypeCode ,
+      T1.APB_SourceTypeName ,
+      T1.APB_SourceBillNo ,
+      T1.APB_Org_ID ,
+      T1.APB_Org_Name ,
+      T1.APB_ReceiveObjectTypeCode ,
+      T1.APB_ReceiveObjectTypeName ,
+      T1.APB_ReceiveObjectID ,
+      T1.APB_ReceiveObjectName ,
+      T1.APB_AccountPayableAmount ,
+      T1.APB_PaidAmount ,
+      T1.APB_UnpaidAmount ,
+      T1.APB_BusinessStatusCode ,
+      T1.APB_BusinessStatusName ,
+      T1.APB_ApprovalStatusCode ,
+      T1.APB_ApprovalStatusName ,
+      T1.APB_ReconciliationTime ,
+      T1.APB_Remark ,
+      T1.APB_IsValid ,
+      T1.APB_CreatedBy ,
+      T1.APB_CreatedTime ,
+      T1.APB_UpdatedBy ,
+      T1.APB_UpdatedTime ,
+      T1.APB_VersionNo
+      FROM    FM_AccountPayableBill T1
+      WHERE   1 = 1
+      <!--应付单号-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_No">T1.APB_No LIKE '%'+#WHERE_APB_No#+'%'</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_SourceTypeName">T1.APB_SourceTypeName LIKE '%'+#WHERE_APB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_SourceBillNo">T1.APB_SourceBillNo LIKE '%'+#WHERE_APB_SourceBillNo#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_BusinessStatusName">#WHERE_APB_BusinessStatusName# LIKE '%;'+T1.APB_BusinessStatusName+';%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ApprovalStatusName">T1.APB_ApprovalStatusName LIKE '%'+#WHERE_APB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_APB_IsValid">T1.APB_IsValid=#WHERE_APB_IsValid#</isNotNull>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_Org_ID">T1.APB_Org_ID LIKE '%'+#WHERE_APB_Org_ID#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_Org_Name">T1.APB_Org_Name LIKE '%'+#WHERE_APB_Org_Name#+'%'</isNotEmpty>
+      <!--收款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ReceiveObjectTypeName">T1.APB_ReceiveObjectTypeName LIKE '%'+#WHERE_APB_ReceiveObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ReceiveObjectName">T1.APB_ReceiveObjectName LIKE '%'+#WHERE_APB_ReceiveObjectName#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--修改时间-->
+      <isNotNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime BETWEEN #_UpdatedTimeStart# AND #_UpdatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime <![CDATA[>=]]> #_UpdatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime <![CDATA[<=]]> #_UpdatedTimeEnd#</isNotNull>
+      </isNull>
+      UNION
+      SELECT  @RecordCount 'RecordCount' ,
+      2 'OrderIndex' ,
+      0 'IsChecked' ,
+      NULL 'APB_ID' ,
+      NULL 'APB_No' ,
+      NULL 'APB_BillDirectCode' ,
+      NULL 'APB_BillDirectName' ,
+      NULL 'APB_SourceTypeCode' ,
+      NULL 'APB_SourceTypeName' ,
+      NULL 'APB_SourceBillNo' ,
+      NULL 'APB_Org_ID' ,
+      NULL 'APB_Org_Name' ,
+      NULL 'APB_ReceiveObjectTypeCode' ,
+      NULL 'APB_ReceiveObjectTypeName' ,
+      NULL 'APB_ReceiveObjectID' ,
+      '	    合计：' 'APB_ReceiveObjectName' ,
+      SUM(ISNULL(Temp.APB_AccountPayableAmount, 0)) 'APB_AccountPayableAmount' ,
+      SUM(ISNULL(Temp.APB_PaidAmount, 0)) 'APB_PaidAmount' ,
+      SUM(ISNULL(Temp.APB_UnpaidAmount, 0)) 'APB_UnpaidAmount' ,
+      NULL 'APB_BusinessStatusCode' ,
+      NULL 'APB_BusinessStatusName' ,
+      NULL 'APB_ApprovalStatusCode' ,
+      NULL 'APB_ApprovalStatusName' ,
+      NULL 'APB_ReconciliationTime' ,
+      NULL 'APB_Remark' ,
+      NULL 'APB_IsValid' ,
+      NULL 'APB_CreatedBy' ,
+      NULL 'APB_CreatedTime' ,
+      NULL 'APB_UpdatedBy' ,
+      NULL 'APB_UpdatedTime' ,
+      NULL 'APB_VersionNo'
+      FROM    ( SELECT    T1.APB_AccountPayableAmount ,
+      T1.APB_PaidAmount ,
+      T1.APB_UnpaidAmount
+      FROM      FM_AccountPayableBill T1
+      WHERE     1 = 1
+      <!--应付单号-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_No">T1.APB_No LIKE '%'+#WHERE_APB_No#+'%'</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_SourceTypeName">T1.APB_SourceTypeName LIKE '%'+#WHERE_APB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_SourceBillNo">T1.APB_SourceBillNo LIKE '%'+#WHERE_APB_SourceBillNo#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_BusinessStatusName">#WHERE_APB_BusinessStatusName# LIKE '%;'+T1.APB_BusinessStatusName+';%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ApprovalStatusName">T1.APB_ApprovalStatusName LIKE '%'+#WHERE_APB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_APB_IsValid">T1.APB_IsValid=#WHERE_APB_IsValid#</isNotNull>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_Org_ID">T1.APB_Org_ID LIKE '%'+#WHERE_APB_Org_ID#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_Org_Name">T1.APB_Org_Name LIKE '%'+#WHERE_APB_Org_Name#+'%'</isNotEmpty>
+      <!--收款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ReceiveObjectTypeName">T1.APB_ReceiveObjectTypeName LIKE '%'+#WHERE_APB_ReceiveObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_APB_ReceiveObjectName">T1.APB_ReceiveObjectName LIKE '%'+#WHERE_APB_ReceiveObjectName#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.APB_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--修改时间-->
+      <isNotNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime BETWEEN #_UpdatedTimeStart# AND #_UpdatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime <![CDATA[>=]]> #_UpdatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.APB_UpdatedTime <![CDATA[<=]]> #_UpdatedTimeEnd#</isNotNull>
+      </isNull>
+      ) Temp
+
+      <!--翻页用-->
+      ORDER BY T1.APB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[应付明细管理]【明细】信息-->
+    <select id="AccountPayableBillManager_SQL_02" parameterClass="AccountPayableBillManagerQCModel" resultClass="AccountPayableBillManagerDetailUIModel">
+
+      SELECT T1.APBD_ID,
+      T1.APBD_APB_ID,
+      T1.APBD_IsMinusDetail,
+      T1.APBD_SourceBillNo,
+      T1.APBD_SourceBillDetailID,
+      T1.APBD_Org_ID,
+      T1.APBD_Org_Name,
+      T1.APBD_AccountPayableAmount,
+      T1.APBD_PaidAmount,
+      T1.APBD_UnpaidAmount,
+      T1.APBD_BusinessStatusCode,
+      T1.APBD_BusinessStatusName,
+      T1.APBD_ApprovalStatusCode,
+      T1.APBD_ApprovalStatusName,
+      T1.APBD_Remark,
+      T1.APBD_IsValid,
+      T1.APBD_CreatedBy,
+      T1.APBD_CreatedTime,
+      T1.APBD_UpdatedBy,
+      T1.APBD_UpdatedTime,
+      T1.APBD_VersionNo
+      FROM FM_AccountPayableBillDetail T1
+      <dynamic prepend="WHERE">
+        <!--应付单ID-->
+        <isNotEmpty prepend="AND" property="WHERE_APBD_APB_ID">T1.APBD_APB_ID = #WHERE_APBD_APB_ID#</isNotEmpty>
+      </dynamic>
+      ORDER BY T1.APBD_UpdatedTime DESC
+    </select>
+
+  </statements>
+
+</sqlMap>

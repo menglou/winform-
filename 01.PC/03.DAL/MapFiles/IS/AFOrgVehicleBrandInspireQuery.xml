@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--汽修商库存和异动日志查询QCModel-->
+    <typeAlias alias="AFOrgVehicleBrandInspireQueryQCModel" type="SkyCar.Coeus.UIModel.IS.QCModel.AFOrgVehicleBrandInspireQueryQCModel,SkyCar.Coeus.UIModel.IS" />
+    <!--汽修商库存异动日志UIModel-->
+    <typeAlias alias="AFOrgVehicleBrandInspireQueryUIModel" type="SkyCar.Coeus.UIModel.IS.UIModel.AFOrgVehicleBrandInspireQueryUIModel,SkyCar.Coeus.UIModel.IS" />
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--根据汽修组织车辆品牌车系统计车辆数-->
+    <procedure id="AFOrgVehicleBrandInspireQuery_SQL01" parameterMap="AFOrgVehicleBrandInspireQuery_SQL01_ParameteMap" resultClass="AFOrgVehicleBrandInspireQueryUIModel">
+      P_CoeusIS_Get_AFOrgVehicleCountByBrandInspire
+    </procedure>
+    
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="AFOrgVehicleBrandInspireQuery_SQL01_ParameteMap" class="AFOrgVehicleBrandInspireQueryQCModel">
+      <parameter property="ARMerchantCode" />
+      <parameter property="ARMerchantName" />
+      <parameter property="AROrgName"/>
+      <parameter property="StatisticsMode"/>
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+    
+  </parameterMaps>
+
+</sqlMap>

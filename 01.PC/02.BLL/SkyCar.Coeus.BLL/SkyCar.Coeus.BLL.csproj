@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E703719C-FAD6-4FD9-9CE4-76D4A3A65462}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.BLL</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SkyCar.Common.Utility, Version=2.17.109.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\SkyCar.Common.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="00.COMM\ApiUrl.cs" />
+    <Compile Include="00.COMM\BLLCom.cs" />
+    <Compile Include="02.SM\LoginBLL.cs" />
+    <Compile Include="02.SM\MenuBLL.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="01.BS\" />
+    <Folder Include="03.FM\" />
+    <Folder Include="04.PIS\" />
+    <Folder Include="05.WC\" />
+    <Folder Include="06.SD\" />
+    <Folder Include="07.RPT\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\03.DAL\SkyCar.Coeus.DAL.csproj">
+      <Project>{11efcea2-ce88-4605-904f-be66a5f0e99e}</Project>
+      <Name>SkyCar.Coeus.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04.Model\SkyCar.Coeus.ComModel\SkyCar.Coeus.ComModel.csproj">
+      <Project>{9b4a8412-11fb-4224-af04-1f4157c443b3}</Project>
+      <Name>SkyCar.Coeus.ComModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04.Model\SkyCar.Coeus.Model.TBModel\SkyCar.Coeus.TBModel.csproj">
+      <Project>{962ce42f-618f-439d-a6fb-b0ae0c762c3c}</Project>
+      <Name>SkyCar.Coeus.TBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04.Model\SkyCar.Coeus.UIModel\SkyCar.Coeus.UIModel.csproj">
+      <Project>{985e509f-44b1-4d20-86f0-5972a98e0477}</Project>
+      <Name>SkyCar.Coeus.UIModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.Const\SkyCar.Coeus.Common.Const.csproj">
+      <Project>{b73b6292-4bb9-44ba-adb3-38ae836c3ba4}</Project>
+      <Name>SkyCar.Coeus.Common.Const</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.Log\SkyCar.Coeus.Common.Log.csproj">
+      <Project>{28b83d74-dc74-452b-8c29-d856bd4e663f}</Project>
+      <Name>SkyCar.Coeus.Common.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkyCar.Coeus.BLL.Common\SkyCar.Coeus.BLL.Common.csproj">
+      <Project>{1b5d4295-a8dd-4ce9-8a09-156dbb02c1b6}</Project>
+      <Name>SkyCar.Coeus.BLL.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

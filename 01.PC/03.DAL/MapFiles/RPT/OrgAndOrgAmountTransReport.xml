@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--组织与组织资金往来统计QCModel-->
+    <typeAlias alias="OrgAndOrgAmountTransReportQCModel" type="SkyCar.Coeus.UIModel.RPT.QCModel.OrgAndOrgAmountTransReportQCModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--组织与组织资金往来统计汇总UIModel-->
+    <typeAlias alias="OrgAndOrgAmountTransTotalReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.OrgAndOrgAmountTransTotalReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--组织与组织资金往来统计明细UIModel-->
+    <typeAlias alias="OrgAndOrgAmountTransDetailReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.OrgAndOrgAmountTransDetailReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+
+  </alias>
+  <statements>
+
+    <!--组织与组织资金往来统计——汇总-->
+    <procedure id="RPT_OrgAndOrgAmountTransReport_SQL01" parameterMap="RPT_OrgAndOrgAmountTransReport_Total_ParameteMap" resultClass="OrgAndOrgAmountTransTotalReportUIModel">
+      P_RPT_Get_OrgAndOrgAmountTransReport_Total
+    </procedure>
+
+    <!--组织与组织资金往来统计——明细-->
+    <procedure id="RPT_OrgAndOrgAmountTransReport_SQL02" parameterMap="RPT_OrgAndOrgAmountTransReport_Detail_ParameteMap" resultClass="OrgAndOrgAmountTransDetailReportUIModel">
+      P_RPT_Get_OrgAndOrgAmountTransReport_Detail
+    </procedure>
+    
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="RPT_OrgAndOrgAmountTransReport_Total_ParameteMap" class="OrgAndOrgAmountTransReportQCModel">
+      <parameter property="SourOrgIdList" />
+      <parameter property="DestOrgIdList"/>
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+
+    <parameterMap id="RPT_OrgAndOrgAmountTransReport_Detail_ParameteMap" class="OrgAndOrgAmountTransReportQCModel">
+      <parameter property="SourOrgIdList" />
+      <parameter property="DestOrgIdList"/>
+      <parameter property="SourOrgId" />
+      <parameter property="DestOrgId"/>
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+  </parameterMaps>
+
+</sqlMap>

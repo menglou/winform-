@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--普通客户管理QCModel-->
+    <typeAlias alias="GeneralCustomerManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.GeneralCustomerManagerQCModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--普通客户管理UIModel-->
+    <typeAlias alias="GeneralCustomerManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.GeneralCustomerManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+  </alias>
+  <statements>
+    <!--验证普通客户唯一性-->
+    <select  id="GeneralCustomerManager_SQL01" parameterClass="MDLPIS_GeneralCustomer" resultClass="int">
+      SELECT  COUNT(T1.GC_ID)
+      FROM    PIS_GeneralCustomer T1
+      WHERE   T1.GC_IsValid = 1
+      <!--普通客户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_GC_ID">T1.GC_ID!=#WHERE_GC_ID#</isNotEmpty>
+      <!--姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_GC_Name">T1.GC_Name=#WHERE_GC_Name#</isNotEmpty>
+      <!--手机号码-->
+      <isNotEmpty prepend="AND" property="WHERE_GC_PhoneNo">T1.GC_PhoneNo=#WHERE_GC_PhoneNo#</isNotEmpty>
+    </select>
+
+    <!--查询普通客户是否被引用-->
+    <select  id="GeneralCustomerManager_SQL02" parameterClass="MDLPIS_GeneralCustomer" resultClass="MDLPIS_GeneralCustomer">
+      SELECT T2.GC_Name
+      FROM SD_SalesOrder T1
+      INNER JOIN PIS_GeneralCustomer T2
+      ON T2.GC_ID=T1.SO_CustomerID
+      WHERE T1.SO_IsValid = 1
+      AND T1.SO_CustomerID IS NOT NULL
+      AND T1.SO_CustomerID != ''
+      AND #WHERE_GC_ID# LIKE '%;' + T1.SO_CustomerID + ';%'
+      UNION
+      SELECT T2.GC_Name
+      FROM EWM_Wallet T1
+      INNER JOIN PIS_GeneralCustomer T2
+      ON T2.GC_ID=T1.Wal_CustomerID
+      WHERE T1.Wal_IsValid = 1
+      AND T1.Wal_CustomerID IS NOT NULL
+      AND T1.Wal_CustomerID != ''
+      AND #WHERE_GC_ID# LIKE '%;' + T1.Wal_CustomerID + ';%'
+
+    </select>
+  </statements>
+</sqlMap>

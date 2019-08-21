@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--物流单管理QCModel-->
+    <typeAlias alias="LogisticsBillManagerQCModel" type="SkyCar.Coeus.UIModel.SD.LogisticsBillManagerQCModel,SkyCar.Coeus.UIModel.SD" />
+    <!--物流单管理UIModel-->
+    <typeAlias alias="LogisticsBillManagerUIModel" type="SkyCar.Coeus.UIModel.SD.LogisticsBillManagerUIModel,SkyCar.Coeus.UIModel.SD" />
+    <!--物流单明细UIModel-->
+    <typeAlias alias="LogisticsBillDetailManagerUIModel" type="SkyCar.Coeus.UIModel.SD.LogisticsBillDetailManagerUIModel,SkyCar.Coeus.UIModel.SD" />
+  </alias>
+  <statements>
+
+    <!-- 查询物流单明细-->
+    <select id="LogisticsBill_SQL01" parameterClass="MDLSD_LogisticsBillDetail" resultClass="LogisticsBillDetailManagerUIModel">
+      SELECT
+      t1.LBD_ID ,
+      t1.LBD_LB_ID ,
+      t1.LBD_LB_No ,
+      t1.LBD_Barcode ,
+      t1.LBD_BatchNo ,
+      t1.LBD_BatchNoNew ,
+      t1.LBD_Name ,
+      t1.LBD_Specification ,
+      t1.LBD_UOM ,
+      t1.LBD_DeliveryQty ,
+      T2.SOD_UnitPrice 'LBD_SOD_UnitPrice' ,
+      t1.LBD_SignQty ,
+      t1.LBD_RejectQty ,
+      t1.LBD_LoseQty ,
+      t1.LBD_Indemnification ,
+      t1.LBD_AccountReceivableAmount ,
+      t1.LBD_StatusCode ,
+      t1.LBD_StatusName ,
+      t1.LBD_Remark ,
+      t1.LBD_IsValid ,
+      t1.LBD_CreatedBy ,
+      t1.LBD_CreatedTime ,
+      t1.LBD_UpdatedBy ,
+      t1.LBD_UpdatedTime ,
+      t1.LBD_VersionNo ,
+      t1.LBD_TransID
+      FROM    SD_LogisticsBillDetail t1
+      LEFT JOIN SD_SalesOrderDetail T2 ON T2.SOD_Barcode = t1.LBD_Barcode
+      AND T2.SOD_BatchNo = t1.LBD_BatchNo
+      AND T2.SOD_BatchNoNew = t1.LBD_BatchNoNew
+      WHERE   t1.LBD_LB_ID =#WHERE_LBD_LB_ID#;
+    </select>
+
+    <!-- 根据图片名称查询物流单-->
+    <select id="LogisticsBill_SQL02" parameterClass="string" resultClass="MDLSD_LogisticsBill">
+      SELECT  T1.LB_ID ,
+      T1.LB_VersionNo ,
+      T1.LB_AcceptPicPath1 ,
+      T1.LB_AcceptPicPath2 ,
+      T1.LB_ReceivedPicPath1 ,
+      T1.LB_ReceivedPicPath2
+      FROM    SD_LogisticsBill T1
+      WHERE   T1.LB_IsValid = 1
+      AND ( T1.LB_AcceptPicPath1 = #value#
+      OR T1.LB_AcceptPicPath2 =  #value#
+      OR T1.LB_ReceivedPicPath1 = #value#
+      OR T1.LB_ReceivedPicPath2 =  #value#
+      )
+    </select>
+
+    <!-- 查询物流单列表-->
+    --<select id="LogisticsBill_SQL03" parameterClass="LogisticsBillManagerQCModel" resultClass="LogisticsBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.LB_ID)
+      FROM   SD_LogisticsBill T1
+      LEFT JOIN SD_SalesOrder T2 ON T2.SO_No = T1.LB_SourceNo
+      AND T2.SO_IsValid = 1
+      LEFT JOIN ( SELECT T31.ARB_SrcBillNo ,
+      T31.ARB_AccountReceivableAmount ,
+      T31.ARB_ReceivedAmount ,
+      T31.ARB_UnReceiveAmount
+      FROM   FM_AccountReceivableBill T31
+      WHERE  T31.ARB_IsValid = 1
+      AND T31.ARB_BillDirectName = '正向'
+      AND T31.ARB_SourceTypeName = '销售应收'
+      ) T3 ON T3.ARB_SrcBillNo = T2.SO_No
+      WHERE  1 = 1
+      <!--物流单号-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_No">T1.LB_No LIKE '%'+#WHERE_LB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_Org_ID">T1.LB_Org_ID LIKE '%'+#WHERE_LB_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_SourceTypeName">T1.LB_SourceTypeName LIKE '%'+#WHERE_LB_SourceTypeName#+'%'</isNotEmpty>
+      <!--物流单来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_SourceNo">T1.LB_SourceNo LIKE '%'+#WHERE_LB_SourceNo#+'%'</isNotEmpty>
+      <!--物流人员名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_DeliveryBy">T1.LB_DeliveryBy LIKE '%'+#WHERE_LB_DeliveryBy#+'%'</isNotEmpty>
+      <!--收件人姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_Receiver">T1.LB_Receiver LIKE '%'+#WHERE_LB_Receiver#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_StatusName">T1.LB_StatusName LIKE '%'+#WHERE_LB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_ApprovalStatusName">T1.LB_ApprovalStatusName LIKE '%'+#WHERE_LB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_LB_IsValid">T1.LB_IsValid=#WHERE_LB_IsValid#</isNotNull>
+
+      SELECT @RecordCount 'RecordCount' ,
+      T1.LB_ID ,
+      T1.LB_No ,
+      T1.LB_Org_ID ,
+      T1.LB_Org_Name ,
+      T1.LB_SourceTypeCode ,
+      T1.LB_SourceTypeName ,
+      T1.LB_SourceNo ,
+      T1.LB_SourceCode ,
+      T1.LB_SourceName ,
+      T1.LB_DeliveryByID ,
+      T1.LB_DeliveryBy ,
+      T1.LB_PhoneNo ,
+      T1.LB_AcceptTime ,
+      T1.LB_AcceptPicPath1 ,
+      T1.LB_AcceptPicPath2 ,
+      T1.LB_Receiver ,
+      T1.LB_ReceiverAddress ,
+      T1.LB_ReceiverPostcode ,
+      T1.LB_ReceiverPhoneNo ,
+      T1.LB_ReceivedBy ,
+      T1.LB_ReceivedTime ,
+      T1.LB_ReceivedPicPath1 ,
+      T1.LB_ReceivedPicPath2 ,
+      T1.LB_Fee ,
+      T1.LB_Indemnification ,
+      T1.LB_AccountReceivableAmount ,
+      T1.LB_PayStautsCode ,
+      T1.LB_PayStautsName ,
+      T1.LB_StatusCode ,
+      T1.LB_StatusName ,
+      T1.LB_ApprovalStatusCode ,
+      T1.LB_ApprovalStatusName ,
+      T1.LB_Remark ,
+      T1.LB_IsValid ,
+      T1.LB_CreatedBy ,
+      T1.LB_CreatedTime ,
+      T1.LB_UpdatedBy ,
+      T1.LB_UpdatedTime ,
+      T1.LB_VersionNo ,
+      T3.ARB_ReceivedAmount ,
+      T3.ARB_UnReceiveAmount
+      FROM   SD_LogisticsBill T1
+      LEFT JOIN SD_SalesOrder T2 ON T2.SO_No = T1.LB_SourceNo
+      AND T2.SO_IsValid = 1
+      LEFT JOIN ( SELECT T31.ARB_SrcBillNo ,
+      T31.ARB_AccountReceivableAmount ,
+      T31.ARB_ReceivedAmount ,
+      T31.ARB_UnReceiveAmount
+      FROM   FM_AccountReceivableBill T31
+      WHERE  T31.ARB_IsValid = 1
+      AND T31.ARB_BillDirectName = '正向'
+      AND T31.ARB_SourceTypeName = '销售应收'
+      ) T3 ON T3.ARB_SrcBillNo = T2.SO_No
+      WHERE  1 = 1
+      <!--物流单号-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_No">T1.LB_No LIKE '%'+#WHERE_LB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_Org_ID">T1.LB_Org_ID LIKE '%'+#WHERE_LB_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_SourceTypeName">T1.LB_SourceTypeName LIKE '%'+#WHERE_LB_SourceTypeName#+'%'</isNotEmpty>
+      <!--物流单来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_SourceNo">T1.LB_SourceNo LIKE '%'+#WHERE_LB_SourceNo#+'%'</isNotEmpty>
+      <!--物流人员名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_DeliveryBy">T1.LB_DeliveryBy LIKE '%'+#WHERE_LB_DeliveryBy#+'%'</isNotEmpty>
+      <!--收件人姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_Receiver">T1.LB_Receiver LIKE '%'+#WHERE_LB_Receiver#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_StatusName">T1.LB_StatusName LIKE '%'+#WHERE_LB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_ApprovalStatusName">T1.LB_ApprovalStatusName LIKE '%'+#WHERE_LB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_LB_IsValid">T1.LB_IsValid=#WHERE_LB_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY LB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--更新物流订单-->
+    <update id="LogisticsBill_SQL04" parameterClass="MDLSD_LogisticsBill">
+      UPDATE  SD_LogisticsBill
+      SET     LB_AcceptPicPath1 = #LB_AcceptPicPath1# ,
+      LB_AcceptPicPath2 = #LB_AcceptPicPath2# ,
+      LB_ReceivedPicPath1 = #LB_ReceivedPicPath1# ,
+      LB_ReceivedPicPath2 = #LB_ReceivedPicPath2# ,
+      LB_UpdatedTime = GETDATE(),
+      LB_VersionNo = LB_VersionNo+1
+      WHERE   LB_ID = #WHERE_LB_ID#
+    </update>
+
+  </statements>
+</sqlMap>

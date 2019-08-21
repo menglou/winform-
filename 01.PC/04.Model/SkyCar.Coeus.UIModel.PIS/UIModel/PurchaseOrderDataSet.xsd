@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PurchaseOrderDataSet" targetNamespace="http://tempuri.org/PurchaseOrderDataSet.xsd" xmlns:mstns="http://tempuri.org/PurchaseOrderDataSet.xsd" xmlns="http://tempuri.org/PurchaseOrderDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PurchaseOrderDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PurchaseOrderDataSet" msprop:Generator_UserDSName="PurchaseOrderDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PurchaseOrder" msprop:Generator_TableClassName="PurchaseOrderDataTable" msprop:Generator_TableVarName="tablePurchaseOrder" msprop:Generator_TablePropName="PurchaseOrder" msprop:Generator_RowDeletingName="PurchaseOrderRowDeleting" msprop:Generator_RowChangingName="PurchaseOrderRowChanging" msprop:Generator_RowEvHandlerName="PurchaseOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="PurchaseOrderRowDeleted" msprop:Generator_UserTableName="PurchaseOrder" msprop:Generator_RowChangedName="PurchaseOrderRowChanged" msprop:Generator_RowEvArgName="PurchaseOrderRowChangeEvent" msprop:Generator_RowClassName="PurchaseOrderRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PO_No" msprop:Generator_ColumnVarNameInTable="columnPO_No" msprop:Generator_ColumnPropNameInRow="PO_No" msprop:Generator_ColumnPropNameInTable="PO_NoColumn" msprop:Generator_UserColumnName="PO_No" type="xs:string" minOccurs="0" />
+              <xs:element name="PO_SourceTypeName" msprop:Generator_ColumnVarNameInTable="columnPO_SourceTypeName" msprop:Generator_ColumnPropNameInRow="PO_SourceTypeName" msprop:Generator_ColumnPropNameInTable="PO_SourceTypeNameColumn" msprop:Generator_UserColumnName="PO_SourceTypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="PO_Org_ID" msprop:Generator_ColumnVarNameInTable="columnPO_Org_ID" msprop:Generator_ColumnPropNameInRow="PO_Org_ID" msprop:Generator_ColumnPropNameInTable="PO_Org_IDColumn" msprop:Generator_UserColumnName="PO_Org_ID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PurchaseOrderToPay" msprop:Generator_TableClassName="PurchaseOrderToPayDataTable" msprop:Generator_TableVarName="tablePurchaseOrderToPay" msprop:Generator_TablePropName="PurchaseOrderToPay" msprop:Generator_RowDeletingName="PurchaseOrderToPayRowDeleting" msprop:Generator_RowChangingName="PurchaseOrderToPayRowChanging" msprop:Generator_RowEvHandlerName="PurchaseOrderToPayRowChangeEventHandler" msprop:Generator_RowDeletedName="PurchaseOrderToPayRowDeleted" msprop:Generator_UserTableName="PurchaseOrderToPay" msprop:Generator_RowChangedName="PurchaseOrderToPayRowChanged" msprop:Generator_RowEvArgName="PurchaseOrderToPayRowChangeEvent" msprop:Generator_RowClassName="PurchaseOrderToPayRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BusinessID" msprop:Generator_ColumnVarNameInTable="columnBusinessID" msprop:Generator_ColumnPropNameInRow="BusinessID" msprop:Generator_ColumnPropNameInTable="BusinessIDColumn" msprop:Generator_UserColumnName="BusinessID" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessNo" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnBusinessNo" msprop:Generator_ColumnPropNameInRow="BusinessNo" msprop:Generator_ColumnPropNameInTable="BusinessNoColumn" msprop:Generator_UserColumnName="BusinessNo" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessOrgID" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnBusinessOrgID" msprop:Generator_ColumnPropNameInRow="BusinessOrgID" msprop:Generator_ColumnPropNameInTable="BusinessOrgIDColumn" msprop:Generator_UserColumnName="BusinessOrgID" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessOrgName" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnBusinessOrgName" msprop:Generator_ColumnPropNameInRow="BusinessOrgName" msprop:Generator_ColumnPropNameInTable="BusinessOrgNameColumn" msprop:Generator_UserColumnName="BusinessOrgName" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessSourceTypeCode" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnBusinessSourceTypeCode" msprop:Generator_ColumnPropNameInRow="BusinessSourceTypeCode" msprop:Generator_ColumnPropNameInTable="BusinessSourceTypeCodeColumn" msprop:Generator_UserColumnName="BusinessSourceTypeCode" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessSourceTypeName" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnBusinessSourceTypeName" msprop:Generator_ColumnPropNameInRow="BusinessSourceTypeName" msprop:Generator_ColumnPropNameInTable="BusinessSourceTypeNameColumn" msprop:Generator_UserColumnName="BusinessSourceTypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="BusinessSourceNo" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnBusinessSourceNo" msprop:Generator_ColumnPropNameInRow="BusinessSourceNo" msprop:Generator_ColumnPropNameInTable="BusinessSourceNoColumn" msprop:Generator_UserColumnName="BusinessSourceNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PayObjectID" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnPayObjectID" msprop:Generator_ColumnPropNameInRow="PayObjectID" msprop:Generator_ColumnPropNameInTable="PayObjectIDColumn" msprop:Generator_UserColumnName="PayObjectID" type="xs:string" minOccurs="0" />
+              <xs:element name="PayObjectName" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnPayObjectName" msprop:Generator_ColumnPropNameInRow="PayObjectName" msprop:Generator_ColumnPropNameInTable="PayObjectNameColumn" msprop:Generator_UserColumnName="PayObjectName" type="xs:string" minOccurs="0" />
+              <xs:element name="PayableTotalAmount" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnPayableTotalAmount" msprop:Generator_ColumnPropNameInRow="PayableTotalAmount" msprop:Generator_ColumnPropNameInTable="PayableTotalAmountColumn" msprop:Generator_UserColumnName="PayableTotalAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PaidTotalAmount" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnPaidTotalAmount" msprop:Generator_ColumnPropNameInRow="PaidTotalAmount" msprop:Generator_ColumnPropNameInTable="PaidTotalAmountColumn" msprop:Generator_UserColumnName="PaidTotalAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UnpaidTotalAmount" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnUnpaidTotalAmount" msprop:Generator_ColumnPropNameInRow="UnpaidTotalAmount" msprop:Generator_ColumnPropNameInTable="UnpaidTotalAmountColumn" msprop:Generator_UserColumnName="UnpaidTotalAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="APB_SourceTypeCode" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_SourceTypeCode" msprop:Generator_ColumnPropNameInRow="APB_SourceTypeCode" msprop:Generator_ColumnPropNameInTable="APB_SourceTypeCodeColumn" msprop:Generator_UserColumnName="APB_SourceTypeCode" type="xs:string" minOccurs="0" />
+              <xs:element name="APB_SourceTypeName" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_SourceTypeName" msprop:Generator_ColumnPropNameInRow="APB_SourceTypeName" msprop:Generator_ColumnPropNameInTable="APB_SourceTypeNameColumn" msprop:Generator_UserColumnName="APB_SourceTypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="APB_SourceBillNo" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_SourceBillNo" msprop:Generator_ColumnPropNameInRow="APB_SourceBillNo" msprop:Generator_ColumnPropNameInTable="APB_SourceBillNoColumn" msprop:Generator_UserColumnName="APB_SourceBillNo" type="xs:string" minOccurs="0" />
+              <xs:element name="APB_Org_ID" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_Org_ID" msprop:Generator_ColumnPropNameInRow="APB_Org_ID" msprop:Generator_ColumnPropNameInTable="APB_Org_IDColumn" msprop:Generator_UserColumnName="APB_Org_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="APB_Org_Name" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_Org_Name" msprop:Generator_ColumnPropNameInRow="APB_Org_Name" msprop:Generator_ColumnPropNameInTable="APB_Org_NameColumn" msprop:Generator_UserColumnName="APB_Org_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="APB_AccountPayableAmount" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_AccountPayableAmount" msprop:Generator_ColumnPropNameInRow="APB_AccountPayableAmount" msprop:Generator_ColumnPropNameInTable="APB_AccountPayableAmountColumn" msprop:Generator_UserColumnName="APB_AccountPayableAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="APB_PaidAmount" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_PaidAmount" msprop:Generator_ColumnPropNameInRow="APB_PaidAmount" msprop:Generator_ColumnPropNameInTable="APB_PaidAmountColumn" msprop:Generator_UserColumnName="APB_PaidAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="APB_UnpaidAmount" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnAPB_UnpaidAmount" msprop:Generator_ColumnPropNameInRow="APB_UnpaidAmount" msprop:Generator_ColumnPropNameInTable="APB_UnpaidAmountColumn" msprop:Generator_UserColumnName="APB_UnpaidAmount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

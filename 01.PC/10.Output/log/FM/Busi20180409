@@ -1,0 +1,34 @@
+2018/04/09 21:48:11.525 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:11.541 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:33.918 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:33.978 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:34.002 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:34.048 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:47.338 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:47.353 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:47.378 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:47.388 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:49:01.734 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:49:01.836 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:49:01.862 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:49:01.931 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:50:21.177 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:50:21.215 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:50:21.242 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:50:21.281 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:51:03.520 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:51:03.530 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:51:41.351 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:51:41.360 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:56:11.478 [INFO] SuperAdmin SaveReceiveableCashierConfirmData 【START】  
+2018/04/09 21:56:11.737 [INFO] SuperAdmin Boolean Insert[T](T) 【START】  
+2018/04/09 21:56:11.785 [INFO] SuperAdmin Boolean Insert[T](T) 【END】-OK  
+2018/04/09 21:56:11.804 [INFO] SuperAdmin Boolean InsertByList[S,D](System.Collections.Generic.IList`1[S]) 【START】  
+2018/04/09 21:56:11.843 [INFO] SuperAdmin Boolean InsertByList[S,D](System.Collections.Generic.IList`1[S]) 【END】-OK  
+2018/04/09 21:56:11.854 [INFO] SuperAdmin Boolean Update(System.Object) 【START】  
+2018/04/09 21:56:11.869 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) 【START】  
+2018/04/09 21:56:11.880 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) WHERE主键值非空 
+2018/04/09 21:56:11.891 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) WHERE版本号值非空 
+2018/04/09 21:56:11.904 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) 【END】-OK WHERE主键和版本号的值都已赋值 
+2018/04/09 21:56:11.962 [INFO] SuperAdmin Boolean Update(System.Object) 【END】-OK  
+2018/04/09 21:56:11.997 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmReceiveableCollectionConfirmWindow, Text: 确认收款 保存成功！ 

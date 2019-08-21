@@ -1,0 +1,2878 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-inserttance">
+  <!--模块配置-->
+  <alias>
+    <typeAlias alias="ComCRUDModel" type="SkyCar.Coeus.ComModel.ComCRUDModel,SkyCar.Coeus.ComModel" />
+    <typeAlias alias="ComComboBoxDataSourceTC" type="SkyCar.Coeus.ComModel.ComComboBoxDataSourceTC,SkyCar.Coeus.ComModel" />
+    <typeAlias alias="ComLoginModel" type="SkyCar.Coeus.ComModel.ComLoginModel,SkyCar.Coeus.ComModel" />
+    <typeAlias alias="EnumCodeTextModel" type="SkyCar.Coeus.ComModel.EnumCodeTextModel,SkyCar.Coeus.ComModel" />
+    <!--用户查询UIModel-->
+    <typeAlias alias="UserQueryQCModel" type="SkyCar.Coeus.UIModel.Common.QCModel.UserQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--用户查询QCModel-->
+    <typeAlias alias="UserQueryUIModel" type="SkyCar.Coeus.UIModel.Common.UIModel.UserQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--车辆品牌查询UIModel-->
+    <typeAlias alias="VehicleBrandQueryUIModel" type="SkyCar.Coeus.UIModel.Common.VehicleBrandQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--车辆品牌查询QCModel-->
+    <typeAlias alias="VehicleBrandQueryQCModel" type="SkyCar.Coeus.UIModel.Common.VehicleBrandQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--车辆车系查询UIModel-->
+    <typeAlias alias="VehicleInspireQueryUIModel" type="SkyCar.Coeus.UIModel.Common.VehicleInspireQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--车辆车系查询QCModel-->
+    <typeAlias alias="VehicleInspireQueryQCModel" type="SkyCar.Coeus.UIModel.Common.VehicleInspireQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--客户查询QCModel-->
+    <typeAlias alias="CustomerQueryQCModel" type="SkyCar.Coeus.UIModel.Common.QCModel.CustomerQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--客户查询UIModel-->
+    <typeAlias alias="CustomerQueryUIModel" type="SkyCar.Coeus.UIModel.Common.UIModel.CustomerQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件档案查询UIModel-->
+    <typeAlias alias="AutoPartsArchiveQueryUIModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsArchiveQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件档案查询QCModel-->
+    <typeAlias alias="AutoPartsArchiveQueryQCModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsArchiveQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件名称查询UIModel-->
+    <typeAlias alias="AutoPartsNameQueryUIModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsNameQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件名称查询QCModel-->
+    <typeAlias alias="AutoPartsNameQueryQCModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsNameQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--组织查询UIModel-->
+    <typeAlias alias="OrgQueryUIModel" type="SkyCar.Coeus.UIModel.Common.OrgQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--组织查询QCModel-->
+    <typeAlias alias="OrgQueryQCModel" type="SkyCar.Coeus.UIModel.Common.OrgQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件品牌查询UIModel-->
+    <typeAlias alias="AutoPartsBrandQueryUIModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsBrandQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件品牌查询QCModel-->
+    <typeAlias alias="AutoPartsBrandQueryQCModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsBrandQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--仓库查询UIModel-->
+    <typeAlias alias="WarehouseQueryUIModel" type="SkyCar.Coeus.UIModel.Common.WarehouseQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--仓库查询QCModel-->
+    <typeAlias alias="WarehouseQueryQCModel" type="SkyCar.Coeus.UIModel.Common.WarehouseQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--仓位查询UIModel-->
+    <typeAlias alias="WarehouseBinQueryUIModel" type="SkyCar.Coeus.UIModel.Common.WarehouseBinQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--仓位查询QCModel-->
+    <typeAlias alias="WarehouseBinQueryQCModel" type="SkyCar.Coeus.UIModel.Common.WarehouseBinQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--供应商查询UIModel-->
+    <typeAlias alias="SupplierQueryUIModel" type="SkyCar.Coeus.UIModel.Common.SupplierQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--供应商查询QCModel-->
+    <typeAlias alias="SupplierQueryQCModel" type="SkyCar.Coeus.UIModel.Common.SupplierQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--维护配件明细UIModel-->
+    <typeAlias alias="MaintainAutoPartsDetailUIModel" type="SkyCar.Coeus.UIModel.Common.MaintainAutoPartsDetailUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--维护配件明细QCModel-->
+    <typeAlias alias="MaintainAutoPartsDetailQCModel" type="SkyCar.Coeus.UIModel.Common.MaintainAutoPartsDetailQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件类别查询UIModel-->
+    <typeAlias alias="AutoPartsTypeQueryUIModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsTypeQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--配件类别查询QCModel-->
+    <typeAlias alias="AutoPartsTypeQueryQCModel" type="SkyCar.Coeus.UIModel.Common.AutoPartsTypeQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--ComboBoxDataSource类型(Text,Value)-->
+    <typeAlias alias="ComComboBoxDataSource" type="SkyCar.Coeus.ComModel.ComComboBoxDataSource,SkyCar.Coeus.ComModel" />
+    <typeAlias alias="MDLAPM_Inventory" type="SkyCar.Coeus.TBModel.MDLAPM_Inventory,SkyCar.Coeus.TBModel" />
+    <!--采购订单查询UIModel-->
+    <typeAlias alias="PurchaseOrderQueryUIModel" type="SkyCar.Coeus.UIModel.Common.PurchaseOrderQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--采购订单查询QCModel-->
+    <typeAlias alias="PurchaseOrderQueryQCModel" type="SkyCar.Coeus.UIModel.Common.PurchaseOrderQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--销售订单查询UIModel-->
+    <typeAlias alias="SalesOrderQueryUIModel" type="SkyCar.Coeus.UIModel.Common.SalesOrderQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--销售订单查询QCModel-->
+    <typeAlias alias="SalesOrderQueryQCModel" type="SkyCar.Coeus.UIModel.Common.SalesOrderQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--付款单查询UIModel-->
+    <typeAlias alias="PayBillQueryUIModel" type="SkyCar.Coeus.UIModel.Common.PayBillQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--付款单查询QCModel-->
+    <typeAlias alias="PayBillQueryQCModel" type="SkyCar.Coeus.UIModel.Common.PayBillQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--主动销售模板查询UIModel-->
+    <typeAlias alias="SalesTemplateQueryUIModel" type="SkyCar.Coeus.UIModel.Common.SalesTemplateQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--主动销售模板查询QCModel-->
+    <typeAlias alias="SalesTemplateQueryQCModel" type="SkyCar.Coeus.UIModel.Common.SalesTemplateQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--销售预测订单查询UIModel-->
+    <typeAlias alias="SalesForecastOrderUIModel" type="SkyCar.Coeus.UIModel.Common.SalesForecastOrderUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--销售预测订单查询QCModel-->
+    <typeAlias alias="SalesForecastOrderQCModel" type="SkyCar.Coeus.UIModel.Common.SalesForecastOrderQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--物流单管理查询UIModel-->
+    <typeAlias alias="LogisticsBillQueryUIModel" type="SkyCar.Coeus.UIModel.Common.LogisticsBillQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--物流单管理查询QCModel-->
+    <typeAlias alias="LogisticsBillQueryQCModel" type="SkyCar.Coeus.UIModel.Common.LogisticsBillQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--领料查询UIModel-->
+    <typeAlias alias="PickPartsQueryUIModel" type="SkyCar.Coeus.UIModel.Common.PickPartsQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--领料查询QCModel-->
+    <typeAlias alias="PickPartsQueryQCModel" type="SkyCar.Coeus.UIModel.Common.PickPartsQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--菜单动作授权验证QCModel-->
+    <typeAlias alias="AuthorityVerifyQCModel" type="SkyCar.Coeus.UIModel.Common.AuthorityVerifyQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--获取Venus单据编号QCModel-->
+    <typeAlias alias="RecordCodeQCModel" type="SkyCar.Coeus.UIModel.Common.RecordCodeQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--入库单查询UIModel-->
+    <typeAlias alias="StockInBillQueryUIModel" type="SkyCar.Coeus.UIModel.Common.StockInBillQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--入库单查询QCModel-->
+    <typeAlias alias="StockInBillQueryQCModel" type="SkyCar.Coeus.UIModel.Common.StockInBillQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--库存查询UIModel-->
+    <typeAlias alias="InventoryToShareQueryUIModel" type="SkyCar.Coeus.UIModel.Common.InventoryToShareQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--库存单查询QCModel-->
+    <typeAlias alias="InventoryToShareQueryQCModel" type="SkyCar.Coeus.UIModel.Common.InventoryToShareQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--汽修商户组织查询QCModel-->
+    <typeAlias alias="AutoFactoryOrgQueryQCModel" type="SkyCar.Coeus.UIModel.Common.QCModel.AutoFactoryOrgQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--汽修商户组织查询UIModel-->
+    <typeAlias alias="AutoFactoryOrgQueryUIModel" type="SkyCar.Coeus.UIModel.Common.UIModel.AutoFactoryOrgQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--应付查询QCModel-->
+    <typeAlias alias="AccountPayableBillQueryQCModel" type="SkyCar.Coeus.UIModel.Common.AccountPayableBillQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--应付查询UIModel-->
+    <typeAlias alias="AccountPayableBillQueryUIModel" type="SkyCar.Coeus.UIModel.Common.AccountPayableBillQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--确认付款UIModel-->
+    <typeAlias alias="BusinessPayConfirmWindowModel" type="SkyCar.Coeus.UIModel.Common.BusinessPayConfirmWindowModel,SkyCar.Coeus.UIModel.Common" />
+    <!--钱包相关信息UIModel-->
+    <typeAlias alias="WalletInfoUIModel" type="SkyCar.Coeus.UIModel.Common.APModel.WalletInfoUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--出库库单查询UIModel-->
+    <typeAlias alias="StockOutBillQueryUIModel" type="SkyCar.Coeus.UIModel.Common.StockOutBillQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--出库单查询QCModel-->
+    <typeAlias alias="StockOutBillQueryQCModel" type="SkyCar.Coeus.UIModel.Common.StockOutBillQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--客户信息UIModel-->
+    <typeAlias alias="ComClientUIModel" type="SkyCar.Coeus.UIModel.Common.UIModel.ComClientUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--调拨单查询UIModel-->
+    <typeAlias alias="TransferQueryUIModel" type="SkyCar.Coeus.UIModel.Common.TransferQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--调拨单查询QCModel-->
+    <typeAlias alias="TransferrQueryQCModel" type="SkyCar.Coeus.UIModel.Common.TransferrQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+    <!--库存异动日志查询UIModel-->
+    <typeAlias alias="InventoryTransLogQueryUIModel" type="SkyCar.Coeus.UIModel.Common.UIModel.InventoryTransLogQueryUIModel,SkyCar.Coeus.UIModel.Common" />
+    <!--库存异动日志查询QCModel-->
+    <typeAlias alias="InventoryTransLogQueryQCModel" type="SkyCar.Coeus.UIModel.Common.QCModel.InventoryTransLogQueryQCModel,SkyCar.Coeus.UIModel.Common" />
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--公共增删调用-->
+    <procedure id="COMM_SQL01" parameterMap="COMMSQL_ParameteMap">
+      P_SYS_Get_COMM
+    </procedure>
+
+    <!--查询省份-->
+    <select id="COMM_SQL03" parameterClass="MDLSM_ChineseProvince" resultClass="EnumCodeTextModel">
+      SELECT Prov_Code Code,Prov_Name Text FROM SM_ChineseProvince
+      WHERE Prov_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_Prov_Reg_ID">
+        Prov_Reg_ID = #WHERE_Prov_Reg_ID#
+      </isNotEmpty>
+      ORDER BY Prov_Index ASC
+    </select>
+
+    <!--查询城市-->
+    <select id="COMM_SQL04" parameterClass="MDLSM_ProvinceCity" resultClass="EnumCodeTextModel">
+      SELECT City_Code Code,City_Name Text FROM SM_ProvinceCity WHERE City_IsValid = 1 AND City_Prov_Code = #WHERE_City_Prov_Code# ORDER BY City_Index ASC
+    </select>
+
+    <!--查询区域-->
+    <select id="COMM_SQL05" parameterClass="MDLSM_CityDistrict" resultClass="EnumCodeTextModel">
+      SELECT Dist_Code Code,Dist_Name Text FROM SM_CityDistrict WHERE Dist_IsValid = 1 AND Dist_City_Code = #WHERE_Dist_City_Code# ORDER BY Dist_Index ASC
+    </select>
+
+    <!--查询大区-->
+    <select id="COMM_SQL06" parameterClass="MDLSM_ChineseProvince" resultClass="EnumCodeTextModel">
+      SELECT Reg_Code Code,Reg_Name Text
+      FROM SM_ChineseRegion
+      <isNotEmpty prepend="" property="WHERE_Prov_Code">
+        INNER JOIN SM_ChineseProvince
+        ON Prov_Reg_ID=Reg_ID
+      </isNotEmpty>
+      WHERE Reg_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_Prov_Code">
+        Prov_Code=#WHERE_Prov_Code#
+      </isNotEmpty>
+      ORDER BY Reg_Index ASC
+    </select>
+
+    <!--查询用户信息-->
+    <select id="COMM_SQL08" parameterClass="UserQueryQCModel" resultClass="UserQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.User_ID)
+      FROM    ( SELECT    T11.User_ID
+      FROM      SM_User T11
+      INNER JOIN SM_UserOrg T12 ON T11.User_ID = T12.UO_User_ID
+      INNER JOIN SM_Organization T13 ON T13.Org_ID = T12.UO_Org_ID
+      WHERE     T11.User_IsValid = 1
+      AND T11.User_EMPNO != 'SuperAdmin'
+      <!--姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_User_Name">T11.User_Name LIKE '%'+#WHERE_User_Name#+'%'</isNotEmpty>
+      <!--工号-->
+      <isNotEmpty prepend="AND" property="WHERE_User_EMPNO">T11.User_EMPNO LIKE '%'+#WHERE_User_EMPNO#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ID">T13.Org_ID =#WHERE_Org_ID#</isNotEmpty>
+      <!--组织简称-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">T13.Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.User_ID ,
+      T11.User_Name ,
+      T11.User_Password ,
+      T11.User_EMPNO ,
+      T11.User_Sex ,
+      T11.User_Address ,
+      T11.User_PhoneNo ,
+      T13.Org_ID ,
+      T13.Org_ShortName
+      FROM    SM_User T11
+      INNER JOIN SM_UserOrg T12 ON T11.User_ID = T12.UO_User_ID
+      INNER JOIN SM_Organization T13 ON T13.Org_ID = T12.UO_Org_ID
+      WHERE   T11.User_IsValid = 1
+      AND T11.User_EMPNO != 'SuperAdmin'
+      <!--姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_User_Name">T11.User_Name LIKE '%'+#WHERE_User_Name#+'%'</isNotEmpty>
+      <!--工号-->
+      <isNotEmpty prepend="AND" property="WHERE_User_EMPNO">T11.User_EMPNO LIKE '%'+#WHERE_User_EMPNO#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ID">T13.Org_ID =#WHERE_Org_ID#</isNotEmpty>
+      <!--组织简称-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">T13.Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T13.Org_ShortName ,
+      T11.User_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--检查配件档案是否已存在-->
+    <select id="COMM_SQL0701" parameterClass="MDLBS_AutoPartsArchive" resultClass="MDLBS_AutoPartsArchive">
+      SELECT  T1.APA_ID ,
+      T1.APA_Org_ID ,
+      T1.APA_Barcode ,
+      T1.APA_OEMNo ,
+      T1.APA_ThirdNo ,
+      T1.APA_Name ,
+      T1.APA_Brand ,
+      T1.APA_Specification ,
+      T1.APA_UOM ,
+      T1.APA_Level ,
+      T1.APA_VehicleBrand ,
+      T1.APA_VehicleInspire ,
+      T1.APA_VehicleCapacity ,
+      T1.APA_VehicleYearModel ,
+      T1.APA_VehicleGearboxTypeCode ,
+      T1.APA_VehicleGearboxTypeName ,
+      T1.APA_SUPP_ID ,
+      T1.APA_WH_ID ,
+      T1.APA_WHB_ID ,
+      T1.APA_IsWarningSafeStock ,
+      T1.APA_SafeStockNum ,
+      T1.APA_IsWarningDeadStock ,
+      T1.APA_SlackDays ,
+      T1.APA_SalePriceRate ,
+      T1.APA_SalePrice ,
+      T1.APA_IsValid ,
+      T1.APA_CreatedBy ,
+      T1.APA_CreatedTime ,
+      T1.APA_UpdatedBy ,
+      T1.APA_UpdatedTime ,
+      T1.APA_VersionNo ,
+      T1.APA_TransID
+      FROM    BS_AutoPartsArchive T1
+      WHERE   T1.APA_IsValid = 1
+      AND ISNULL(T1.APA_OEMNo,'')=#WHERE_APA_OEMNo#
+      AND ISNULL(T1.APA_ThirdNo,'')=#WHERE_APA_ThirdNo#
+      AND ISNULL(T1.APA_Name,'')=#WHERE_APA_Name#
+      AND ISNULL(T1.APA_Brand,'')=#WHERE_APA_Brand#
+      AND ISNULL(T1.APA_Specification,'')=#WHERE_APA_Specification#
+      AND ISNULL(T1.APA_UOM,'')=#WHERE_APA_UOM#
+      AND ISNULL(T1.APA_Level,'')=#WHERE_APA_Level#
+      AND ISNULL(T1.APA_VehicleBrand,'')=#WHERE_APA_VehicleBrand#
+      AND ISNULL(T1.APA_VehicleInspire,'')=#WHERE_APA_VehicleInspire#
+      AND ISNULL(T1.APA_VehicleCapacity,'')=#WHERE_APA_VehicleCapacity#
+      AND ISNULL(T1.APA_VehicleYearModel,'')=#WHERE_APA_VehicleYearModel#
+      AND ISNULL(T1.APA_VehicleGearboxTypeName,'')=#WHERE_APA_VehicleGearboxTypeName#
+
+    </select>
+
+    <!--查询配件档案列表-->
+    <select id="COMM_SQL0702" parameterClass="AutoPartsArchiveQueryQCModel" resultClass="AutoPartsArchiveQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.APA_ID)
+      FROM    ( SELECT    T11.APA_ID ,
+      T11.APA_Barcode ,
+      T11.APA_OEMNo ,
+      T11.APA_ThirdNo ,
+      T11.APA_Name ,
+      T11.APA_Brand ,
+      T11.APA_Specification ,
+      T11.APA_UOM ,
+      T11.APA_Level ,
+      T11.APA_VehicleBrand ,
+      T11.APA_VehicleInspire ,
+      T11.APA_VehicleCapacity ,
+      T11.APA_VehicleYearModel ,
+      T11.APA_VehicleGearboxTypeCode ,
+      T11.APA_VehicleGearboxTypeName ,
+      T11.APA_VehicleModelCode ,
+      T11.APA_ExchangeCode ,
+      T11.APA_IsValid
+      FROM      BS_AutoPartsArchive T11
+      WHERE     T11.APA_IsValid = 1
+      <!--条形码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Barcode">T11.APA_Barcode LIKE '%'+#WHERE_APA_Barcode#+'%'</isNotEmpty>
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_OEMNo">T11.APA_OEMNo LIKE '%'+#WHERE_APA_OEMNo#+'%'</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ThirdNo">T11.APA_ThirdNo LIKE '%'+#WHERE_APA_ThirdNo#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T11.APA_Name LIKE '%'+#WHERE_APA_Name#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T11.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      <!--规格型号-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Specification">T11.APA_Specification LIKE '%'+#WHERE_APA_Specification#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.APA_ID ,
+      T11.APA_Barcode ,
+      T11.APA_OEMNo ,
+      T11.APA_ThirdNo ,
+      T11.APA_Name ,
+      T11.APA_Brand ,
+      T11.APA_Specification ,
+      T11.APA_UOM ,
+      T11.APA_Level ,
+      T11.APA_VehicleBrand ,
+      T11.APA_VehicleInspire ,
+      T11.APA_VehicleCapacity ,
+      T11.APA_VehicleYearModel ,
+      T11.APA_VehicleGearboxTypeCode ,
+      T11.APA_VehicleGearboxTypeName ,
+      T11.APA_VehicleModelCode ,
+      T11.APA_ExchangeCode ,
+      T11.APA_IsValid
+      FROM    BS_AutoPartsArchive T11
+      WHERE   T11.APA_IsValid = 1
+      <!--条形码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Barcode">T11.APA_Barcode LIKE '%'+#WHERE_APA_Barcode#+'%'</isNotEmpty>
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_OEMNo">T11.APA_OEMNo LIKE '%'+#WHERE_APA_OEMNo#+'%'</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ThirdNo">T11.APA_ThirdNo LIKE '%'+#WHERE_APA_ThirdNo#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T11.APA_Name LIKE '%'+#WHERE_APA_Name#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T11.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      <!--规格型号-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Specification">T11.APA_Specification LIKE '%'+#WHERE_APA_Specification#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.APA_Barcode ,
+      T11.APA_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--验证原厂编码和第三方编码是否被其他配件名称使用-->
+    <select id="COMM_SQL0703" parameterClass="MDLBS_AutoPartsArchive" resultClass="int">
+      SELECT  COUNT(T1.APA_ID)
+      FROM    BS_AutoPartsArchive T1
+      WHERE   T1.APA_IsValid = 1
+      AND T1.APA_Name <![CDATA[<>]]> #WHERE_APA_Name#
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_OEMNo">T1.APA_OEMNo=#WHERE_APA_OEMNo#</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ThirdNo">T1.APA_ThirdNo=#WHERE_APA_ThirdNo#</isNotEmpty>
+    </select>
+
+    <!--根据配件条形码获取配件档案-->
+    <select id="COMM_SQL0704" parameterClass="string" resultClass="MDLBS_AutoPartsArchive">
+      SELECT  T1.APA_ID ,
+      T1.APA_Org_ID ,
+      T1.APA_Barcode ,
+      T1.APA_OEMNo ,
+      T1.APA_ThirdNo ,
+      T1.APA_Name ,
+      T1.APA_Brand ,
+      T1.APA_Specification ,
+      T1.APA_UOM ,
+      T1.APA_Level ,
+      T1.APA_VehicleBrand ,
+      T1.APA_VehicleInspire ,
+      T1.APA_VehicleCapacity ,
+      T1.APA_VehicleYearModel ,
+      T1.APA_VehicleGearboxTypeCode ,
+      T1.APA_VehicleGearboxTypeName ,
+      T1.APA_SUPP_ID ,
+      T1.APA_WH_ID ,
+      T1.APA_WHB_ID ,
+      T1.APA_IsWarningSafeStock ,
+      T1.APA_SafeStockNum ,
+      T1.APA_IsWarningDeadStock ,
+      T1.APA_SlackDays ,
+      T1.APA_SalePriceRate ,
+      T1.APA_SalePrice ,
+      T1.APA_IsValid ,
+      T1.APA_CreatedBy ,
+      T1.APA_CreatedTime ,
+      T1.APA_UpdatedBy ,
+      T1.APA_UpdatedTime ,
+      T1.APA_VersionNo ,
+      T1.APA_TransID
+      FROM    BS_AutoPartsArchive T1
+      WHERE   T1.APA_IsValid = 1
+      AND T1.APA_Barcode = #value#
+    </select>
+
+    <!--查询车辆品牌列表-->
+    <select id="COMM_SQL09" parameterClass="VehicleBrandQueryQCModel" resultClass="VehicleBrandQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.VBIS_Brand)
+      FROM    ( SELECT
+      DISTINCT      T11.VBIS_Brand
+      FROM      BS_VehicleBrandInspireSumma T11
+      WHERE     T11.VBIS_IsValid = 1
+      AND T11.VBIS_Brand IS NOT NULL
+      AND T11.VBIS_Brand != ''
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Brand">T11.VBIS_Brand LIKE '%'+#WHERE_VBIS_Brand#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.VBIS_Brand
+      FROM    ( SELECT      DISTINCT
+      T11.VBIS_Brand
+      FROM      BS_VehicleBrandInspireSumma T11
+      WHERE     T11.VBIS_IsValid = 1
+      AND T11.VBIS_Brand IS NOT NULL
+      AND T11.VBIS_Brand != ''
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Brand">T11.VBIS_Brand LIKE '%'+#WHERE_VBIS_Brand#+'%'</isNotEmpty>
+      ) T1
+
+      <!--翻页用-->
+      ORDER BY T1.VBIS_Brand
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询车辆车系列表-->
+    <select id="COMM_SQL10" parameterClass="VehicleInspireQueryQCModel" resultClass="VehicleInspireQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.VBIS_Inspire)
+      FROM    ( SELECT
+      DISTINCT      T11.VBIS_Brand ,
+      T11.VBIS_Inspire
+      FROM      BS_VehicleBrandInspireSumma T11
+      WHERE     T11.VBIS_IsValid = 1
+      AND T11.VBIS_Inspire IS NOT NULL
+      AND T11.VBIS_Inspire != ''
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Brand">';'+#WHERE_VBIS_Brand#+';' LIKE '%;'+T11.VBIS_Brand+';%'</isNotEmpty>
+      <!--车系-->
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Inspire">T11.VBIS_Inspire LIKE '%'+#WHERE_VBIS_Inspire#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.VBIS_Brand ,
+      T1.VBIS_Inspire
+      FROM    ( SELECT
+      DISTINCT      T11.VBIS_Brand ,
+      T11.VBIS_Inspire
+      FROM      BS_VehicleBrandInspireSumma T11
+      WHERE     T11.VBIS_IsValid = 1
+      AND T11.VBIS_Inspire IS NOT NULL
+      AND T11.VBIS_Inspire != ''
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Brand">';'+#WHERE_VBIS_Brand#+';' LIKE '%;'+T11.VBIS_Brand+';%'</isNotEmpty>
+      <!--车系-->
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Inspire">T11.VBIS_Inspire LIKE '%'+#WHERE_VBIS_Inspire#+'%'</isNotEmpty>
+      ) T1
+
+      <!--翻页用-->
+      ORDER BY T1.VBIS_Brand ,
+      T1.VBIS_Inspire
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询客户（汽修、普通）列表-->
+    <select id="COMM_SQL11" parameterClass="CustomerQueryQCModel" resultClass="CustomerQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.CustomerID)
+      FROM    ( SELECT  DISTINCT   T11.AFC_ID 'CustomerID' ,
+      CASE T11.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      ELSE '一般汽修商户'
+      END 'CustomerType' ,
+      T11.AFC_Code 'AutoFactoryCode' ,
+      T11.AFC_Name 'AutoFactoryName' ,
+      CASE T11.AFC_IsPlatform
+      WHEN 1 THEN T11.AFC_AROrg_Name
+      ELSE T11.AFC_Name
+      END 'CustomerName' ,
+      CASE T11.AFC_IsPlatform
+      WHEN 1 THEN T11.AFC_AROrg_Code
+      ELSE NULL
+      END 'AutoFactoryOrgCode' ,
+      T11.AFC_PhoneNo 'CustomerPhoneNo' ,
+      T11.AFC_Address 'CustomerAddress' ,
+      T11.AFC_CreditAmount 'CreditAmount' ,
+      T11.AFC_PaymentTypeCode 'PaymentTypeCode' ,
+      T11.AFC_PaymentTypeName 'PaymentTypeName' ,
+      T11.AFC_BillingTypeCode 'BillingTypeCode' ,
+      T11.AFC_BillingTypeName 'BillingTypeName' ,
+      T11.AFC_DeliveryTypeCode 'DeliveryTypeCode' ,
+      T11.AFC_DeliveryTypeName 'DeliveryTypeName' ,
+      T11.AFC_DeliveryByID 'DeliveryByID' ,
+      T11.AFC_DeliveryByName 'DeliveryByName' ,
+      T11.AFC_DeliveryByPhoneNo 'DeliveryByPhone' ,
+      T11.AFC_IsEndSales 'IsEndSales' ,
+      T11.AFC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM      PIS_AutoFactoryCustomer T11
+      LEFT JOIN SM_AROrgSupOrgAuthority T12 ON T12.ASOAH_AFC_ID = T11.AFC_ID
+      AND T12.ASOAH_ARMerchant_Code = T11.AFC_Code
+      AND T12.ASOAH_AROrg_Code = T11.AFC_AROrg_Code
+      AND T12.ASOAH_IsValid = 1
+      WHERE     T11.AFC_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_OrgID">
+        ( CASE WHEN T11.AFC_IsPlatform = 0 THEN T11.AFC_Org_ID
+        ELSE T12.ASOAH_SupOrg_ID
+        END ) LIKE '%'+#WHERE_OrgID#+'%'
+      </isNotEmpty>
+      <!--商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryCode">T11.AFC_Code LIKE '%'+#WHERE_AutoFactoryCode#+'%'</isNotEmpty>
+      <!--商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryName">T11.AFC_Name LIKE '%'+#WHERE_AutoFactoryName#+'%'</isNotEmpty>
+      UNION
+      SELECT    T21.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      NULL 'AutoFactoryCode' ,
+      NULL 'AutoFactoryName' ,
+      T21.GC_Name 'CustomerName' ,
+      NULL 'AutoFactoryOrgCode' ,
+      T21.GC_PhoneNo 'CustomerPhoneNo' ,
+      T21.GC_Address 'CustomerAddress' ,
+      T21.GC_CreditAmount 'CreditAmount' ,
+      T21.GC_PaymentTypeCode 'PaymentTypeCode' ,
+      T21.GC_PaymentTypeName 'PaymentTypeName' ,
+      T21.GC_BillingTypeCode 'BillingTypeCode' ,
+      T21.GC_BillingTypeName 'BillingTypeName' ,
+      T21.GC_DeliveryTypeCode 'DeliveryTypeCode' ,
+      T21.GC_DeliveryTypeName 'DeliveryTypeName' ,
+      T21.GC_DeliveryByID 'DeliveryByID' ,
+      T21.GC_DeliveryByName 'DeliveryByName' ,
+      T21.GC_DeliveryByPhoneNo 'DeliveryByPhone' ,
+      T21.GC_IsEndSales 'IsEndSales' ,
+      T21.GC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM      PIS_GeneralCustomer T21
+      WHERE     T21.GC_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_OrgID">T21.GC_Org_ID LIKE '%'+#WHERE_OrgID#+'%'</isNotEmpty>
+      ) T1
+      LEFT JOIN ( SELECT  T21.ARB_PayObjectID ,
+      SUM(ISNULL(T21.ARB_UnReceiveAmount, 0)) 'DebtAmount'
+      FROM    FM_AccountReceivableBill T21
+      WHERE   T21.ARB_IsValid = 1
+      AND T21.ARB_ApprovalStatusName = '已审核'
+      AND '执行中;已对账;'  LIKE '%'+T21.ARB_BusinessStatusName+';%'
+      GROUP BY T21.ARB_PayObjectID
+      ) T2 ON T2.ARB_PayObjectID = T1.CustomerID
+      LEFT JOIN EWM_Wallet T3 ON T3.Wal_CustomerID = T1.CustomerID
+      AND T3.Wal_OwnerTypeName = T1.CustomerType
+      AND T3.Wal_IsValid = 1
+      WHERE   1 = 1
+      <!--客户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerID">T1.CustomerID = #WHERE_CustomerID#</isNotEmpty>
+      <!--客户类型-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerType">T1.CustomerType = #WHERE_CustomerType#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerName">T1.CustomerName LIKE '%'+#WHERE_CustomerName#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.CustomerID ,
+      T1.CustomerType ,
+      T1.AutoFactoryCode ,
+      T1.AutoFactoryName ,
+      T1.CustomerName ,
+      T1.AutoFactoryOrgCode ,
+      T1.CustomerPhoneNo ,
+      T1.CustomerAddress ,
+      T1.CreditAmount ,
+      T1.PaymentTypeCode ,
+      T1.PaymentTypeName ,
+      T1.BillingTypeCode ,
+      T1.BillingTypeName ,
+      T1.DeliveryTypeCode ,
+      T1.DeliveryTypeName ,
+      T1.DeliveryByID ,
+      T1.DeliveryByName ,
+      T1.DeliveryByPhone ,
+      T1.IsEndSales ,
+      T1.AutoPartsPriceType ,
+      T2.DebtAmount ,
+      T3.Wal_ID ,
+      T3.Wal_Org_ID ,
+      T3.Wal_Org_Name ,
+      T3.Wal_No ,
+      T3.Wal_AvailableBalance
+      FROM    ( SELECT    T11.AFC_ID 'CustomerID' ,
+      CASE T11.AFC_IsPlatform
+      WHEN 1 THEN '平台内汽修商'
+      ELSE '一般汽修商户'
+      END 'CustomerType' ,
+      T11.AFC_Code 'AutoFactoryCode' ,
+      T11.AFC_Name 'AutoFactoryName' ,
+      CASE T11.AFC_IsPlatform
+      WHEN 1 THEN T11.AFC_AROrg_Name
+      ELSE T11.AFC_Name
+      END 'CustomerName' ,
+      CASE T11.AFC_IsPlatform
+      WHEN 1 THEN T11.AFC_AROrg_Code
+      ELSE NULL
+      END 'AutoFactoryOrgCode' ,
+      T11.AFC_PhoneNo 'CustomerPhoneNo' ,
+      T11.AFC_Address 'CustomerAddress' ,
+      T11.AFC_CreditAmount 'CreditAmount' ,
+      T11.AFC_PaymentTypeCode 'PaymentTypeCode' ,
+      T11.AFC_PaymentTypeName 'PaymentTypeName' ,
+      T11.AFC_BillingTypeCode 'BillingTypeCode' ,
+      T11.AFC_BillingTypeName 'BillingTypeName' ,
+      T11.AFC_DeliveryTypeCode 'DeliveryTypeCode' ,
+      T11.AFC_DeliveryTypeName 'DeliveryTypeName' ,
+      T11.AFC_DeliveryByID 'DeliveryByID' ,
+      T11.AFC_DeliveryByName 'DeliveryByName' ,
+      T11.AFC_DeliveryByPhoneNo 'DeliveryByPhone' ,
+      T11.AFC_IsEndSales 'IsEndSales',
+      T11.AFC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM      PIS_AutoFactoryCustomer T11
+      LEFT JOIN SM_AROrgSupOrgAuthority T12 ON T12.ASOAH_AFC_ID = T11.AFC_ID
+      AND T12.ASOAH_ARMerchant_Code = T11.AFC_Code
+      AND T12.ASOAH_AROrg_Code = T11.AFC_AROrg_Code
+      AND T12.ASOAH_IsValid = 1
+      WHERE     T11.AFC_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_OrgID">
+        ( CASE WHEN T11.AFC_IsPlatform = 0 THEN T11.AFC_Org_ID
+        ELSE T12.ASOAH_SupOrg_ID
+        END ) LIKE '%'+#WHERE_OrgID#+'%'
+      </isNotEmpty>
+      <!--商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryCode">T11.AFC_Code LIKE '%'+#WHERE_AutoFactoryCode#+'%'</isNotEmpty>
+      <!--商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryName">T11.AFC_Name LIKE '%'+#WHERE_AutoFactoryName#+'%'</isNotEmpty>
+      UNION
+      SELECT    T21.GC_ID 'CustomerID' ,
+      '普通客户' 'CustomerType' ,
+      NULL 'AutoFactoryCode' ,
+      NULL 'AutoFactoryName' ,
+      T21.GC_Name 'CustomerName' ,
+      NULL 'AutoFactoryOrgCode' ,
+      T21.GC_PhoneNo 'CustomerPhoneNo' ,
+      T21.GC_Address 'CustomerAddress' ,
+      T21.GC_CreditAmount 'CreditAmount' ,
+      T21.GC_PaymentTypeCode 'PaymentTypeCode' ,
+      T21.GC_PaymentTypeName 'PaymentTypeName' ,
+      T21.GC_BillingTypeCode 'BillingTypeCode' ,
+      T21.GC_BillingTypeName 'BillingTypeName' ,
+      T21.GC_DeliveryTypeCode 'DeliveryTypeCode' ,
+      T21.GC_DeliveryTypeName 'DeliveryTypeName' ,
+      T21.GC_DeliveryByID 'DeliveryByID' ,
+      T21.GC_DeliveryByName 'DeliveryByName' ,
+      T21.GC_DeliveryByPhoneNo 'DeliveryByPhone' ,
+      T21.GC_IsEndSales 'IsEndSales',
+      T21.GC_AutoPartsPriceType 'AutoPartsPriceType'
+      FROM      PIS_GeneralCustomer T21
+      WHERE     T21.GC_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_OrgID">T21.GC_Org_ID LIKE '%'+#WHERE_OrgID#+'%'</isNotEmpty>
+      ) T1
+      LEFT JOIN ( SELECT  T21.ARB_PayObjectID ,
+      SUM(ISNULL(T21.ARB_UnReceiveAmount, 0)) 'DebtAmount'
+      FROM    FM_AccountReceivableBill T21
+      WHERE   T21.ARB_IsValid = 1
+      AND T21.ARB_ApprovalStatusName = '已审核'
+      AND '执行中;已对账;'  LIKE '%'+T21.ARB_BusinessStatusName+';%'
+      GROUP BY T21.ARB_PayObjectID
+      ) T2 ON T2.ARB_PayObjectID = T1.CustomerID
+      LEFT JOIN EWM_Wallet T3 ON T3.Wal_CustomerID = T1.CustomerID
+      AND T3.Wal_OwnerTypeName = T1.CustomerType
+      AND T3.Wal_IsValid = 1
+      WHERE   1 = 1
+      <!--客户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerID">T1.CustomerID = #WHERE_CustomerID#</isNotEmpty>
+      <!--客户类型-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerType">T1.CustomerType = #WHERE_CustomerType#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_CustomerName">T1.CustomerName LIKE '%'+#WHERE_CustomerName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.CustomerType ,
+      T1.CustomerName
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询配件名称列表-->
+    <select id="COMM_SQL12" parameterClass="AutoPartsNameQueryQCModel" resultClass="AutoPartsNameQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.APN_Name)
+      FROM   ( SELECT DISTINCT
+      T11.APN_Name
+      FROM      BS_AutoPartsName T11
+      WHERE     T11.APN_IsValid = 1
+      AND T11.APN_Name IS NOT NULL
+      AND T11.APN_Name != ''
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APN_Name">T11.APN_Name LIKE '%'+#WHERE_APN_Name#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.APN_Name
+      FROM   ( SELECT DISTINCT
+      T11.APN_Name
+      FROM      BS_AutoPartsName T11
+      WHERE     T11.APN_IsValid = 1
+      AND T11.APN_Name IS NOT NULL
+      AND T11.APN_Name != ''
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APN_Name">T11.APN_Name LIKE '%'+#WHERE_APN_Name#+'%'</isNotEmpty>
+      ) T1
+
+      <!--翻页用-->
+      ORDER BY T1.APN_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询组织列表-->
+    <select id="COMM_SQL13" parameterClass="OrgQueryQCModel" resultClass="OrgQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.Org_ID)
+      FROM    ( SELECT    DISTINCT
+      T11.Org_ID ,
+      T11.Org_MCT_ID ,
+      T11.Org_Code ,
+      T11.Org_PlatformCode ,
+      T11.Org_FullName ,
+      T11.Org_ShortName ,
+      T11.Org_Contacter ,
+      T11.Org_TEL ,
+      T11.Org_PhoneNo ,
+      T11.Org_Addr ,
+      T11.Org_Remark
+      FROM SM_Organization T11
+      INNER JOIN SM_UserOrg T22
+      ON T22.UO_Org_ID = T11.Org_ID
+      INNER JOIN SM_User T33
+      ON T33.User_ID = T22.UO_User_ID
+      WHERE T11.Org_IsValid = 1
+      <!--门店编码-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_Code">T11.Org_Code LIKE '%'+#WHERE_Org_Code#+'%'</isNotEmpty>
+      <!--组织简称-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">T11.Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+      <!--联系人-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_Contacter">T11.Org_Contacter LIKE '%'+#WHERE_Org_Contacter#+'%'</isNotEmpty>
+      <!--用户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_User_ID">T33.User_ID LIKE '%'+#WHERE_User_ID#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT @RecordCount 'RecordCount',
+      CONVERT(VARCHAR(50), NEWID()) 'RowID',
+      T1.Org_ID,
+      T1.Org_MCT_ID,
+      T1.Org_Code,
+      T1.Org_PlatformCode,
+      T1.Org_FullName,
+      T1.Org_ShortName,
+      T1.Org_Contacter,
+      T1.Org_TEL,
+      T1.Org_PhoneNo,
+      T1.Org_Addr,
+      T1.Org_Remark
+      FROM
+      (
+      SELECT DISTINCT
+      T11.Org_ID,
+      T11.Org_MCT_ID,
+      T11.Org_Code,
+      T11.Org_PlatformCode,
+      T11.Org_FullName,
+      T11.Org_ShortName,
+      T11.Org_Contacter,
+      T11.Org_TEL,
+      T11.Org_PhoneNo,
+      T11.Org_Addr,
+      T11.Org_Remark
+      FROM SM_Organization T11
+      INNER JOIN SM_UserOrg T22
+      ON T22.UO_Org_ID = T11.Org_ID
+      INNER JOIN SM_User T33
+      ON T33.User_ID = T22.UO_User_ID
+      WHERE T11.Org_IsValid = 1
+      <!--门店编码-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_Code">T11.Org_Code LIKE '%'+#WHERE_Org_Code#+'%'</isNotEmpty>
+      <!--组织简称-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">T11.Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+      <!--联系人-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_Contacter">T11.Org_Contacter LIKE '%'+#WHERE_Org_Contacter#+'%'</isNotEmpty>
+      <!--用户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_User_ID">T33.User_ID LIKE '%'+#WHERE_User_ID#+'%'</isNotEmpty>
+      ) T1
+
+
+      <!--翻页用-->
+      ORDER BY T1.Org_ShortName
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询配件品牌-->
+    <select id="COMM_SQL14" parameterClass="AutoPartsBrandQueryQCModel" resultClass="AutoPartsBrandQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.APA_Name)
+      FROM    ( SELECT DISTINCT
+      T11.APA_Name ,
+      T11.APA_Brand
+      FROM      BS_AutoPartsArchive T11
+      WHERE     T11.APA_IsValid = 1
+      AND T11.APA_Brand IS NOT NULL
+      AND T11.APA_Brand != ''
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T11.APA_Name =#WHERE_APA_Name#</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T11.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.APA_Name ,
+      T1.APA_Brand
+      FROM    ( SELECT DISTINCT
+      T11.APA_Name ,
+      T11.APA_Brand
+      FROM      BS_AutoPartsArchive T11
+      WHERE     T11.APA_IsValid = 1
+      AND T11.APA_Brand IS NOT NULL
+      AND T11.APA_Brand != ''
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T11.APA_Name =#WHERE_APA_Name#</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T11.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      ) T1
+      ORDER BY T1.APA_Name ,
+      T1.APA_Brand
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询仓库-->
+    <select id="COMM_SQL15" parameterClass="WarehouseQueryQCModel" resultClass="WarehouseQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.WH_ID)
+      FROM    ( SELECT    T11.WH_ID ,
+      T11.WH_Name ,
+      T11.WH_Org_ID ,
+      T12.Org_ShortName
+      FROM      PIS_Warehouse T11
+      INNER JOIN SM_Organization T12 ON T12.Org_ID = T11.WH_Org_ID
+      WHERE     T11.WH_IsValid = 1
+      AND T11.WH_Name IS NOT NULL
+      AND T11.WH_Name != ''
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T11.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Org_ID">T11.WH_Org_ID =#WHERE_WH_Org_ID#</isNotEmpty>
+      <!--组织简称-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">T12.Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.WH_ID ,
+      T11.WH_Name ,
+      T11.WH_Org_ID ,
+      T12.Org_ShortName
+      FROM    PIS_Warehouse T11
+      INNER JOIN SM_Organization T12 ON T12.Org_ID = T11.WH_Org_ID
+      WHERE   T11.WH_IsValid = 1
+      AND T11.WH_Name IS NOT NULL
+      AND T11.WH_Name != ''
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T11.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Org_ID">T11.WH_Org_ID =#WHERE_WH_Org_ID#</isNotEmpty>
+      <!--组织简称-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">T12.Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.WH_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询仓位-->
+    <select id="COMM_SQL16" parameterClass="WarehouseBinQueryQCModel" resultClass="WarehouseBinQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.WHB_ID)
+      FROM    ( SELECT    T11.WHB_ID ,
+      T12.WH_Name ,
+      T11.WHB_Name
+      FROM      PIS_WarehouseBin T11
+      INNER JOIN PIS_Warehouse T12 ON T12.WH_ID = T11.WHB_WH_ID
+      AND T12.WH_IsValid = 1
+      WHERE     T11.WHB_IsValid = 1
+      AND T11.WHB_Name IS NOT NULL
+      AND T11.WHB_Name != ''
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T12.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--仓位名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WHB_Name">T11.WHB_Name LIKE '%'+#WHERE_WHB_Name#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.WHB_ID ,
+      T12.WH_Name ,
+      T11.WHB_Name
+      FROM    PIS_WarehouseBin T11
+      INNER JOIN PIS_Warehouse T12 ON T12.WH_ID = T11.WHB_WH_ID
+      AND T12.WH_IsValid = 1
+      WHERE   T11.WHB_IsValid = 1
+      AND T11.WHB_Name IS NOT NULL
+      AND T11.WHB_Name != ''
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T12.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--仓位名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WHB_Name">T11.WHB_Name LIKE '%'+#WHERE_WHB_Name#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T12.WH_Name ,
+      T11.WHB_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询供应商-->
+    <select id="COMM_SQL17" parameterClass="SupplierQueryQCModel" resultClass="SupplierQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SUPP_ID)
+      FROM    ( SELECT    T11.SUPP_ID
+      FROM      PIS_Supplier T11
+      WHERE     T11.SUPP_IsValid = 1
+      AND T11.SUPP_Name IS NOT NULL
+      AND T11.SUPP_Name != ''
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">T11.SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.SUPP_ID ,
+      T11.SUPP_Name ,
+      T11.SUPP_ShortName
+      FROM    PIS_Supplier T11
+      WHERE   T11.SUPP_IsValid = 1
+      AND T11.SUPP_Name IS NOT NULL
+      AND T11.SUPP_Name != ''
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">T11.SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.SUPP_Name DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询配件档案信息-->
+    <select id="COMM_SQL19" parameterClass="MaintainAutoPartsDetailQCModel" resultClass="MaintainAutoPartsDetailUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.APA_ID)
+      FROM   ( SELECT    T11.APA_ID
+      FROM      BS_AutoPartsArchive T11
+      LEFT JOIN BS_AutoPartsName T12 ON T12.APN_Name = T11.APA_Name
+      LEFT JOIN ( SELECT  T131.INV_Barcode ,
+      T131.INV_ThirdNo ,
+      T131.INV_SUPP_ID ,
+      T132.SUPP_Name ,
+      T131.INV_WH_ID ,
+      T133.WH_Name ,
+      T131.INV_WHB_ID ,
+      T134.WHB_Name ,
+      T131.INV_PurchaseUnitPrice ,
+      T131.INV_CreatedTime ,
+      ROW_NUMBER() OVER ( PARTITION BY T131.INV_Barcode ORDER BY T131.INV_CreatedTime DESC ) 'StockIndex'
+      FROM    PIS_Inventory T131
+      INNER JOIN PIS_Supplier T132 ON T132.SUPP_ID = T131.INV_SUPP_ID
+      AND T132.SUPP_IsValid = 1
+      INNER JOIN PIS_Warehouse T133 ON T133.WH_Org_ID = T131.INV_Org_ID
+      AND T133.WH_ID = T131.INV_WH_ID
+      AND T133.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T134 ON T134.WHB_ID = T131.INV_WHB_ID
+      AND T134.WHB_IsValid = 1
+      WHERE   T131.INV_IsValid = 1
+      AND T131.INV_Org_ID = #WHERE_Org_ID#
+      ) T13 ON T13.StockIndex = 1
+      AND T13.INV_Barcode = T11.APA_Barcode
+      WHERE     T11.APA_IsValid = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T11.APA_Name LIKE '%'+#WHERE_APA_Name#+'%'</isNotEmpty>
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">(T11.APA_OEMNo LIKE '%'+#WHERE_AutoPartsCode#+'%' OR T11.APA_ThirdNo LIKE '%' + #WHERE_AutoPartsCode# + '%' OR T13.INV_ThirdNo LIKE '%' + #WHERE_AutoPartsCode# + '%')</isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T11.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_Specification LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      ) T1
+
+      SELECT @RecordCount 'RecordCount' ,
+      T11.APA_ID ,
+      T11.APA_Org_ID ,
+      T11.APA_Barcode ,
+      T11.APA_OEMNo ,
+      T11.APA_ThirdNo ,
+      T11.APA_Name ,
+      T11.APA_Brand ,
+      T11.APA_Specification ,
+      T11.APA_UOM ,
+      T11.APA_Level ,
+      T11.APA_VehicleModelCode,
+      T11.APA_ExchangeCode,
+      T11.APA_VehicleBrand ,
+      T11.APA_VehicleInspire ,
+      T11.APA_VehicleCapacity ,
+      T11.APA_VehicleYearModel ,
+      T11.APA_VehicleGearboxTypeCode ,
+      T11.APA_VehicleGearboxTypeName ,
+      T13.INV_SUPP_ID 'APA_SUPP_ID' ,
+      T13.SUPP_Name ,
+      T13.INV_WH_ID 'APA_WH_ID' ,
+      T13.WH_Name ,
+      T13.INV_WHB_ID 'APA_WHB_ID' ,
+      T13.WHB_Name ,
+      T11.APA_SalePriceRate ,
+      T11.APA_SalePrice ,
+      T12.APN_FixUOM ,
+      T13.INV_PurchaseUnitPrice 'PurchaseUnitPrice' ,
+      T13.INV_CreatedTime 'LastStockInTime'
+      FROM   BS_AutoPartsArchive T11
+      LEFT JOIN BS_AutoPartsName T12 ON T12.APN_Name = T11.APA_Name
+      LEFT JOIN ( SELECT  T131.INV_Barcode ,
+      T131.INV_ThirdNo ,
+      T131.INV_SUPP_ID ,
+      T132.SUPP_Name ,
+      T131.INV_WH_ID ,
+      T133.WH_Name ,
+      T131.INV_WHB_ID ,
+      T134.WHB_Name ,
+      T131.INV_PurchaseUnitPrice ,
+      T131.INV_CreatedTime ,
+      ROW_NUMBER() OVER ( PARTITION BY T131.INV_Barcode ORDER BY T131.INV_CreatedTime DESC ) 'StockIndex'
+      FROM    PIS_Inventory T131
+      INNER JOIN PIS_Supplier T132 ON T132.SUPP_ID = T131.INV_SUPP_ID
+      AND T132.SUPP_IsValid = 1
+      INNER JOIN PIS_Warehouse T133 ON T133.WH_Org_ID = T131.INV_Org_ID
+      AND T133.WH_ID = T131.INV_WH_ID
+      AND T133.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T134 ON T134.WHB_ID = T131.INV_WHB_ID
+      AND T134.WHB_IsValid = 1
+      WHERE   T131.INV_IsValid = 1
+      AND T131.INV_Org_ID = #WHERE_Org_ID#
+      ) T13 ON T13.StockIndex = 1
+      AND T13.INV_Barcode = T11.APA_Barcode
+      WHERE  T11.APA_IsValid = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T11.APA_Name LIKE '%'+#WHERE_APA_Name#+'%'</isNotEmpty>
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">(T11.APA_OEMNo LIKE '%'+#WHERE_AutoPartsCode#+'%' OR T11.APA_ThirdNo LIKE '%' + #WHERE_AutoPartsCode# + '%' OR T13.INV_ThirdNo LIKE '%' + #WHERE_AutoPartsCode# + '%')</isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T11.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T11.APA_Specification LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T13.INV_CreatedTime DESC ,
+      T11.APA_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+
+    </select>
+
+
+    <!--配件类别父类名称-->
+    <select id="COMM_SQL20" parameterClass="MDLBS_AutoPartsType" resultClass="MDLBS_AutoPartsType">
+      SELECT  T1.APT_ID ,
+      T1.APT_Name ,
+      T1.APT_ParentID ,
+      T1.APT_Index ,
+      T1.APT_IsValid ,
+      T1.APT_CreatedBy ,
+      T1.APT_CreatedTime ,
+      T1.APT_UpdatedBy ,
+      T1.APT_UpdatedTime ,
+      T1.APT_VersionNo ,
+      T1.APT_TransID
+      FROM    BS_AutoPartsType T1
+      WHERE   1 = 1
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_APT_IsValid">APT_IsValid=#WHERE_APT_IsValid#</isNotNull>
+      ORDER BY T1.APT_ParentID ASC ,
+      T1.APT_Index ASC
+    </select>
+
+    <!--获取指定汽修商户的有效组织信息-->
+    <select id="COMM_SQL21" parameterClass="MDLSM_Organization" resultClass="MDLSM_Organization">
+      SELECT  T1.Org_ID ,
+      T1.Org_Code ,
+      T1.Org_ShortName
+      FROM    SM_Organization T1
+      WHERE   T1.Org_IsValid = 1
+      <!--组织编码-->
+      <isNotEmpty prepend="AND" property="WHERE_Org_Code">T1.Org_Code = #WHERE_Org_Code# </isNotEmpty>
+    </select>
+
+    <!--获取Venus的枚举类型-->
+    <select id="COMM_SQL22" parameterClass="string" resultClass="ComComboBoxDataSourceTC">
+      SELECT
+      Enum_ValueCode 'Code' ,
+      Enum_DisplayName 'Text'  FROM SM_Enum WHERE Enum_Key = #value# AND Enum_IsValid = 1
+    </select>
+
+    <!--从VenusDB中获取批次号-->
+    <procedure id="COMM_SQL23" parameterMap="AutoPartsCom_SQL01_ParameteMap" resultClass="string">
+      P_APM_Inventory_GetBatchNo
+    </procedure>
+
+    <!--查询采购订单-->
+    <select id="COMM_SQL25" parameterClass="PurchaseOrderQueryQCModel" resultClass="PurchaseOrderQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.PO_ID)
+      FROM
+      (
+      SELECT T11.PO_ID
+      FROM PIS_PurchaseOrder T11
+      WHERE T11.PO_IsValid = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_No">T11.PO_No LIKE '%'+#WHERE_PO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_Org_ID">T11.PO_Org_ID LIKE '%'+#WHERE_PO_Org_ID#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SUPP_Name">T11.PO_SUPP_Name LIKE '%'+#WHERE_PO_SUPP_Name#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_StatusName">T11.PO_StatusName LIKE '%'+#WHERE_PO_StatusName#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SourceTypeName">T11.PO_SourceTypeName LIKE '%'+#WHERE_PO_SourceTypeName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_ApprovalStatusName">T11.PO_ApprovalStatusName LIKE '%'+#WHERE_PO_ApprovalStatusName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT @RecordCount 'RecordCount',
+      CONVERT(VARCHAR(50), NEWID()) 'RowID',
+      T11.PO_ID,
+      T11.PO_No,
+      T11.PO_Org_ID,
+      T11.PO_SUPP_ID,
+      T11.PO_SUPP_Name,
+      T11.PO_SourceTypeCode,
+      T11.PO_SourceTypeName,
+      T11.PO_TotalAmount,
+      T22.APB_PaidAmount,
+      T22.APB_UnpaidAmount,
+      T11.PO_LogisticFee,
+      T11.PO_StatusCode,
+      T11.PO_StatusName,
+      T11.PO_ApprovalStatusCode,
+      T11.PO_ApprovalStatusName,
+      T11.PO_ReceivedTime,
+      T11.PO_IsValid,
+      T11.PO_CreatedBy,
+      T11.PO_CreatedTime,
+      T11.PO_UpdatedBy,
+      T11.PO_UpdatedTime,
+      T11.PO_VersionNo
+      FROM PIS_PurchaseOrder T11
+      LEFT JOIN
+      (
+      SELECT T2.APB_SourceBillNo,
+      CONVERT(DECIMAL(18, 2), SUM(T2.APB_AccountPayableAmount)) 'APB_AccountPayableAmount',
+      CONVERT(DECIMAL(18, 2), SUM(T2.APB_PaidAmount)) 'APB_PaidAmount',
+      CONVERT(DECIMAL(18, 2), SUM(T2.APB_UnpaidAmount)) 'APB_UnpaidAmount'
+      FROM FM_AccountPayableBill T2
+      WHERE T2.APB_IsValid = 1
+      GROUP BY T2.APB_SourceBillNo
+      ) T22
+      ON T22.APB_SourceBillNo = T11.PO_No
+      WHERE T11.PO_IsValid = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_No">T11.PO_No LIKE '%'+#WHERE_PO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_Org_ID">T11.PO_Org_ID LIKE '%'+#WHERE_PO_Org_ID#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SUPP_Name">T11.PO_SUPP_Name LIKE '%'+#WHERE_PO_SUPP_Name#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_StatusName">T11.PO_StatusName LIKE '%'+#WHERE_PO_StatusName#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SourceTypeName">T11.PO_SourceTypeName LIKE '%'+#WHERE_PO_SourceTypeName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_ApprovalStatusName">T11.PO_ApprovalStatusName LIKE '%'+#WHERE_PO_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.PO_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询销售订单-->
+    <select id="COMM_SQL26" parameterClass="SalesOrderQueryQCModel" resultClass="SalesOrderQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SO_ID)
+      FROM    ( SELECT    T11.SO_ID
+      FROM      SD_SalesOrder T11
+      WHERE     T11.SO_IsValid = 1
+      <!--单据编号-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_No">T11.SO_No LIKE '%'+#WHERE_SO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_Org_ID">T11.SO_Org_ID LIKE '%'+#WHERE_SO_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_SourceTypeName">T11.SO_SourceTypeName LIKE '%'+#WHERE_SO_SourceTypeName#+'%'</isNotEmpty>
+      <!--客户类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerTypeName">T11.SO_CustomerTypeName LIKE '%'+#WHERE_SO_CustomerTypeName#+'%'</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerName">T11.SO_CustomerName LIKE '%'+#WHERE_SO_CustomerName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_StatusName">T11.SO_StatusName =#WHERE_SO_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_ApprovalStatusName">T11.SO_ApprovalStatusName LIKE '%'+#WHERE_SO_ApprovalStatusName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.SO_ID ,
+      T11.SO_No ,
+      T11.SO_Org_ID ,
+      T11.SO_SourceTypeCode ,
+      T11.SO_SourceTypeName ,
+      T11.SO_SourceNo ,
+      T11.SO_CustomerID ,
+      T11.SO_CustomerTypeCode ,
+      T11.SO_CustomerTypeName ,
+      T11.SO_CustomerName ,
+      T11.SO_IsPriceIncludeTax ,
+      T11.SO_TaxRate ,
+      T11.SO_TotalTax ,
+      T11.SO_TotalAmount ,
+      T11.SO_TotalNetAmount ,
+      T11.SO_StatusCode ,
+      T11.SO_StatusName ,
+      T11.SO_ApprovalStatusCode ,
+      T11.SO_ApprovalStatusName ,
+      T11.SO_AutoPartsPriceType ,
+      T11.SO_SalesByID ,
+      T11.SO_SalesByName ,
+      T11.SO_Remark ,
+      T11.SO_IsValid ,
+      T11.SO_CreatedBy ,
+      T11.SO_CreatedTime ,
+      T11.SO_UpdatedBy ,
+      T11.SO_UpdatedTime ,
+      T11.SO_VersionNo
+      FROM    SD_SalesOrder T11
+      WHERE   T11.SO_IsValid = 1
+      <!--单据编号-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_No">T11.SO_No LIKE '%'+#WHERE_SO_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_Org_ID">T11.SO_Org_ID LIKE '%'+#WHERE_SO_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_SourceTypeName">T11.SO_SourceTypeName =#WHERE_SO_SourceTypeName#</isNotEmpty>
+      <!--客户类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerTypeName">T11.SO_CustomerTypeName LIKE '%'+#WHERE_SO_CustomerTypeName#+'%'</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_CustomerName">T11.SO_CustomerName LIKE '%'+#WHERE_SO_CustomerName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_StatusName">T11.SO_StatusName =#WHERE_SO_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SO_ApprovalStatusName">T11.SO_ApprovalStatusName LIKE '%'+#WHERE_SO_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.SO_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询付款单-->
+    <select id="COMM_SQL27" parameterClass="PayBillQueryQCModel" resultClass="PayBillQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.PB_ID)
+      FROM    ( SELECT    T11.PB_ID
+      FROM      FM_PayBill T11
+      WHERE     T11.PB_IsValid = 1
+      <!--付款单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_No">T11.PB_No LIKE '%'+#WHERE_PB_No#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_SourceTypeName">T11.PB_SourceTypeName =#WHERE_PB_SourceTypeName#</isNotEmpty>
+      <!--付款组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_Pay_Org_ID">T11.PB_Pay_Org_ID LIKE '%'+#WHERE_PB_Pay_Org_ID#+'%'</isNotEmpty>
+      <!--收款对象类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectTypeName">T11.PB_RecObjectTypeName LIKE '%'+#WHERE_PB_RecObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectName">T11.PB_RecObjectName LIKE '%'+#WHERE_PB_RecObjectName#+'%'</isNotEmpty>
+      <!--业务状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_BusinessStatusName">T11.PB_BusinessStatusName LIKE '%'+#WHERE_PB_BusinessStatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_ApprovalStatusName">T11.PB_ApprovalStatusName LIKE '%'+#WHERE_PB_ApprovalStatusName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.PB_ID ,
+      T11.PB_No ,
+      T11.PB_Pay_Org_ID ,
+      T11.PB_Pay_Org_Name ,
+      T11.PB_Date ,
+      T11.PB_RecObjectTypeCode ,
+      T11.PB_RecObjectTypeName ,
+      T11.PB_RecObjectID ,
+      T11.PB_RecObjectName ,
+      T11.PB_PayableTotalAmount ,
+      T11.PB_RealPayableTotalAmount ,
+      T11.PB_PayAccount ,
+      T11.PB_RecAccount ,
+      T11.PB_PayTypeCode ,
+      T11.PB_PayTypeName ,
+      T11.PB_CertificateNo ,
+      T11.PB_CertificatePic ,
+      T11.PB_BusinessStatusCode ,
+      T11.PB_BusinessStatusName ,
+      T11.PB_ApprovalStatusCode ,
+      T11.PB_ApprovalStatusName ,
+      T11.PB_Remark ,
+      T11.PB_IsValid ,
+      T11.PB_CreatedBy ,
+      T11.PB_CreatedTime ,
+      T11.PB_UpdatedBy ,
+      T11.PB_UpdatedTime ,
+      T11.PB_VersionNo ,
+      T11.PB_TransID
+      FROM    FM_PayBill T11
+      WHERE   T11.PB_IsValid = 1
+      <!--付款单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_No">T11.PB_No LIKE '%'+#WHERE_PB_No#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_SourceTypeName">T11.PB_SourceTypeName LIKE '%'+#WHERE_PB_SourceTypeName#+'%'</isNotEmpty>
+      <!--付款组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_Pay_Org_ID">T11.PB_Pay_Org_ID LIKE '%'+#WHERE_PB_Pay_Org_ID#+'%'</isNotEmpty>
+      <!--收款对象类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectTypeName">T11.PB_RecObjectTypeName LIKE '%'+#WHERE_PB_RecObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectName">T11.PB_RecObjectName LIKE '%'+#WHERE_PB_RecObjectName#+'%'</isNotEmpty>
+      <!--业务状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_BusinessStatusName">T11.PB_BusinessStatusName LIKE '%'+#WHERE_PB_BusinessStatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_ApprovalStatusName">T11.PB_ApprovalStatusName LIKE '%'+#WHERE_PB_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.PB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询配件的批次号-->
+    <procedure id="COMM_SQL28" parameterMap="COMM_SQL28_ParameteMap" resultClass="string">
+      P_PIS_Inventory_GetBatchNo
+    </procedure>
+
+    <!--查询主动销售模板-->
+    <select id="COMM_SQL29" parameterClass="SalesTemplateQueryQCModel" resultClass="SalesTemplateQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SasT_ID)
+      FROM    SD_SalesTemplate T1
+      INNER JOIN ( SELECT DISTINCT
+      T21.SasTD_SasT_ID ,
+      T21.SasTD_AutoFactoryOrgID 'AROrgID' ,
+      T21.SasTD_AutoFactoryOrgName 'AROrgName'
+      FROM   SD_SalesTemplateDetail T21
+      WHERE  T21.SasTD_IsValid = 1
+      <!--汽修商户组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryOrgID">
+        ( CASE WHEN ISNULL(T21.SasTD_AutoFactoryOrgID,
+        '') != ''
+        THEN T21.SasTD_AutoFactoryOrgID
+        ELSE #WHERE_AutoFactoryOrgID#
+        END ) =#WHERE_AutoFactoryOrgID#
+      </isNotEmpty>
+      <!--汽修商户组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryOrgName">
+        ( CASE WHEN ISNULL(T21.SasTD_AutoFactoryOrgName,
+        '') != ''
+        THEN T21.SasTD_AutoFactoryOrgName
+        ELSE #WHERE_AutoFactoryOrgName#
+        END ) LIKE '%'+#WHERE_AutoFactoryOrgName#+'%'
+      </isNotEmpty>
+      ) T2 ON T2.SasTD_SasT_ID = T1.SasT_ID
+      WHERE   T1.SasT_IsValid = 1
+      <!--销售模板名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Name">T1.SasT_Name LIKE '%'+#WHERE_SasT_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Org_ID">T1.SasT_Org_ID =#WHERE_SasT_Org_ID#</isNotEmpty>
+      <!--汽修商户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_CustomerID">T1.SasT_CustomerID =#WHERE_SasT_CustomerID#</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_CustomerName">T1.SasT_CustomerName LIKE '%'+#WHERE_SasT_CustomerName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_ApprovalStatusName">T1.SasT_ApprovalStatusName LIKE '%'+#WHERE_SasT_ApprovalStatusName#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.SasT_ID ,
+      T1.SasT_Name ,
+      T1.SasT_Org_ID ,
+      T1.SasT_CustomerID ,
+      T1.SasT_CustomerName ,
+      T1.SasT_ApprovalStatusCode ,
+      T1.SasT_ApprovalStatusName ,
+      T1.SasT_Remark ,
+      T1.SasT_IsValid ,
+      T1.SasT_CreatedBy ,
+      T1.SasT_CreatedTime ,
+      T1.SasT_UpdatedBy ,
+      T1.SasT_UpdatedTime ,
+      T1.SasT_VersionNo ,
+      T2.AROrgID ,
+      T2.AROrgName
+      FROM    SD_SalesTemplate T1
+      INNER JOIN ( SELECT DISTINCT
+      T21.SasTD_SasT_ID ,
+      T21.SasTD_AutoFactoryOrgID 'AROrgID' ,
+      T21.SasTD_AutoFactoryOrgName 'AROrgName'
+      FROM   SD_SalesTemplateDetail T21
+      WHERE  T21.SasTD_IsValid = 1
+      <!--汽修商户组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryOrgID">
+        ( CASE WHEN ISNULL(T21.SasTD_AutoFactoryOrgID,
+        '') != ''
+        THEN T21.SasTD_AutoFactoryOrgID
+        ELSE #WHERE_AutoFactoryOrgID#
+        END ) =#WHERE_AutoFactoryOrgID#
+      </isNotEmpty>
+      <!--汽修商户组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryOrgName">
+        ( CASE WHEN ISNULL(T21.SasTD_AutoFactoryOrgName,
+        '') != ''
+        THEN T21.SasTD_AutoFactoryOrgName
+        ELSE #WHERE_AutoFactoryOrgName#
+        END ) LIKE '%'+#WHERE_AutoFactoryOrgName#+'%'
+      </isNotEmpty>
+      ) T2 ON T2.SasTD_SasT_ID = T1.SasT_ID
+      WHERE   T1.SasT_IsValid = 1
+      <!--销售模板名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Name">T1.SasT_Name LIKE '%'+#WHERE_SasT_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Org_ID">T1.SasT_Org_ID =#WHERE_SasT_Org_ID#</isNotEmpty>
+      <!--汽修商户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_CustomerID">T1.SasT_CustomerID =#WHERE_SasT_CustomerID#</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_CustomerName">T1.SasT_CustomerName LIKE '%'+#WHERE_SasT_CustomerName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_ApprovalStatusName">T1.SasT_ApprovalStatusName LIKE '%'+#WHERE_SasT_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.SasT_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询销售预测订单-->
+    <select id="COMM_SQL30" parameterClass="SalesForecastOrderQCModel" resultClass="SalesForecastOrderUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SFO_ID)
+      FROM    SD_SalesForecastOrder T1
+      WHERE   T1.SFO_IsValid = 1
+      <!--客户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_CustomerID">T1.SFO_CustomerID =#WHERE_SFO_CustomerID#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_CustomerName">T1.SFO_CustomerName LIKE '%'+#WHERE_SFO_CustomerName#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_SourceTypeName">T1.SFO_SourceTypeName LIKE '%'+#WHERE_SFO_SourceTypeName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_StatusName">T1.SFO_StatusName LIKE '%'+#WHERE_SFO_StatusName#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.SFO_ID ,
+      T1.SFO_No ,
+      T1.SFO_Org_ID ,
+      T1.SFO_AutoFactoryCode ,
+      T1.SFO_AutoFactoryName ,
+      T1.SFO_CustomerID ,
+      T1.SFO_CustomerName ,
+      T1.SFO_AutoFactoryOrgCode ,
+      T1.SFO_SourceTypeCode ,
+      T1.SFO_SourceTypeName ,
+      T1.SFO_StatusCode ,
+      T1.SFO_StatusName ,
+      T1.SFO_Remark ,
+      T1.SFO_IsValid ,
+      T1.SFO_CreatedBy ,
+      T1.SFO_CreatedTime ,
+      T1.SFO_UpdatedBy ,
+      T1.SFO_UpdatedTime ,
+      T1.SFO_VersionNo
+      FROM    SD_SalesForecastOrder T1
+      WHERE   T1.SFO_IsValid = 1
+      <!--客户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_CustomerID">T1.SFO_CustomerID =#WHERE_SFO_CustomerID#</isNotEmpty>
+      <!--客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_CustomerName">T1.SFO_CustomerName LIKE '%'+#WHERE_SFO_CustomerName#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_SourceTypeName">T1.SFO_SourceTypeName LIKE '%'+#WHERE_SFO_SourceTypeName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SFO_StatusName">T1.SFO_StatusName LIKE '%'+#WHERE_SFO_StatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.SFO_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询物流人员-->
+    <select id="COMM_SQL31" parameterClass="LogisticsBillQueryQCModel" resultClass="LogisticsBillQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.LB_DeliveryBy)
+      FROM    ( SELECT  DISTINCT
+      T11.LB_DeliveryBy ,
+      T11.LB_PhoneNo
+      FROM      SD_LogisticsBill T11
+      WHERE     T11.LB_IsValid = 1
+      <!--名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_DeliveryBy">T11.LB_DeliveryBy LIKE '%'+#WHERE_LB_DeliveryBy#+'%'</isNotEmpty>
+      <!--手机号-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_PhoneNo">T11.LB_PhoneNo LIKE '%'+#WHERE_LB_PhoneNo#+'%'</isNotEmpty>
+      <!--物流人员类型-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_SourceName">T11.LB_SourceName LIKE '%'+#WHERE_LB_SourceName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.LB_DeliveryBy ,
+      T1.LB_PhoneNo
+      FROM    ( SELECT  DISTINCT
+      T11.LB_DeliveryBy ,
+      T11.LB_PhoneNo
+      FROM      SD_LogisticsBill T11
+      WHERE     T11.LB_IsValid = 1
+      <!--名称-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_DeliveryBy">T11.LB_DeliveryBy LIKE '%'+#WHERE_LB_DeliveryBy#+'%'</isNotEmpty>
+      <!--手机号-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_PhoneNo">T11.LB_PhoneNo LIKE '%'+#WHERE_LB_PhoneNo#+'%'</isNotEmpty>
+      <!--物流人员类型-->
+      <isNotEmpty prepend="AND" property="WHERE_LB_SourceName">T11.LB_SourceName LIKE '%'+#WHERE_LB_SourceName#+'%'</isNotEmpty>
+      ) T1
+
+      <!--翻页用-->
+      ORDER BY T1.LB_DeliveryBy
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询库存（领料查询）-->
+    <select id="COMM_SQL32" parameterClass="PickPartsQueryQCModel" resultClass="PickPartsQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.INV_ID)
+      FROM
+      (
+      SELECT T11.INV_ID
+      FROM PIS_Inventory T11
+      INNER JOIN SM_Organization T12
+      ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Supplier T13
+      ON T13.SUPP_ID = T11.INV_SUPP_ID
+      LEFT JOIN PIS_Warehouse T14
+      ON T14.WH_ID = T11.INV_WH_ID
+      AND T14.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T15
+      ON T15.WHB_ID = T11.INV_WHB_ID
+      AND T15.WHB_IsValid = 1
+      LEFT JOIN BS_AutoPartsArchive T16
+      ON T16.APA_Barcode = T11.INV_Barcode
+      AND T16.APA_Name = T11.INV_Name
+      AND T16.APA_IsValid = 1
+      LEFT JOIN BS_AutoPartsName T17
+      ON T17.APN_Name = T11.INV_Name
+      AND T17.APN_IsValid = 1
+      WHERE T11.INV_IsValid = 1
+      AND T11.INV_Qty != 0
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T11.INV_Org_ID =#WHERE_INV_Org_ID#</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T11.INV_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--供应商ID-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_SUPP_ID">T11.INV_SUPP_ID =#WHERE_INV_SUPP_ID#</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">T13.SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+      <!--仓库-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T14.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--仓位-->
+      <isNotEmpty prepend="AND" property="WHERE_WHB_Name">T15.WHB_Name LIKE '%'+#WHERE_WHB_Name#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T16.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      <!--车辆品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleBrand">T16.APA_VehicleBrand LIKE '%'+#WHERE_APA_VehicleBrand#+'%'</isNotEmpty>
+      <!--车系-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleInspire">T16.APA_VehicleInspire LIKE '%'+#WHERE_APA_VehicleInspire#+'%'</isNotEmpty>
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsBarcode">(T11.INV_Barcode +T11.INV_BatchNo LIKE '%'+#WHERE_AutoPartsBarcode#+'%')</isNotEmpty>
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">
+        (ISNULL(T11.INV_OEMNo, T16.APA_OEMNo) LIKE '%'+#WHERE_AutoPartsCode#+'%'
+        OR ISNULL(T11.INV_ThirdNo, T16.APA_ThirdNo) LIKE '%' + #WHERE_AutoPartsCode# + '%'
+        OR T16.APA_ExchangeCode  LIKE '%' + #WHERE_AutoPartsCode# + '%' )
+      </isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T16.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        ISNULL(T11.INV_Specification, T16.APA_Specification) LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      <!--车型代码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleModelCode">T16.APA_VehicleModelCode LIKE '%'+#WHERE_APA_VehicleModelCode#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T11.INV_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T11.INV_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T11.INV_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      ) T1
+
+      SELECT @RecordCount 'RecordCount',
+      CONVERT(VARCHAR(50), NEWID()) 'RowID',
+      T11.INV_ID,
+      T11.INV_Org_ID,
+      T12.Org_ShortName,
+      T11.INV_WH_ID,
+      T14.WH_Name,
+      T11.INV_WHB_ID,
+      T15.WHB_Name,
+      ISNULL(T11.INV_ThirdNo, T16.APA_ThirdNo) 'INV_ThirdNo',
+      ISNULL(T11.INV_OEMNo, T16.APA_OEMNo) 'INV_OEMNo',
+      T11.INV_Barcode,
+      T11.INV_BatchNo,
+      T11.INV_Name,
+      ISNULL(T11.INV_Specification, T16.APA_Specification) 'INV_Specification',
+      T11.INV_SUPP_ID,
+      T13.SUPP_Name,
+      T11.INV_Qty,
+      T11.INV_PurchaseUnitPrice,
+      T11.INV_IsValid,
+      T11.INV_CreatedBy,
+      T11.INV_CreatedTime,
+      T11.INV_UpdatedBy,
+      T11.INV_UpdatedTime,
+      T16.APA_Brand,
+      T16.APA_Specification,
+      T16.APA_Level,
+      T16.APA_UOM,
+      T16.APA_VehicleBrand,
+      T16.APA_VehicleInspire,
+      T16.APA_VehicleCapacity,
+      T16.APA_VehicleYearModel,
+      T16.APA_VehicleGearboxTypeName,
+      T16.APA_VehicleGearboxTypeCode,
+      T16.APA_VehicleModelCode,
+      T16.APA_ExchangeCode,
+      T17.APN_FixUOM
+      FROM PIS_Inventory T11
+      INNER JOIN SM_Organization T12
+      ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Supplier T13
+      ON T13.SUPP_ID = T11.INV_SUPP_ID
+      LEFT JOIN PIS_Warehouse T14
+      ON T14.WH_ID = T11.INV_WH_ID
+      AND T14.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T15
+      ON T15.WHB_ID = T11.INV_WHB_ID
+      AND T15.WHB_IsValid = 1
+      LEFT JOIN BS_AutoPartsArchive T16
+      ON T16.APA_Barcode = T11.INV_Barcode
+      AND T16.APA_Name = T11.INV_Name
+      AND T16.APA_IsValid = 1
+      LEFT JOIN BS_AutoPartsName T17
+      ON T17.APN_Name = T11.INV_Name
+      AND T17.APN_IsValid = 1
+      WHERE T11.INV_IsValid = 1
+      AND T11.INV_Qty != 0
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T11.INV_Org_ID =#WHERE_INV_Org_ID#</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T11.INV_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--供应商ID-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_SUPP_ID">T11.INV_SUPP_ID =#WHERE_INV_SUPP_ID#</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">T13.SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+      <!--仓库-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T14.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--仓位-->
+      <isNotEmpty prepend="AND" property="WHERE_WHB_Name">T15.WHB_Name LIKE '%'+#WHERE_WHB_Name#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T16.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      <!--车辆品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleBrand">T16.APA_VehicleBrand LIKE '%'+#WHERE_APA_VehicleBrand#+'%'</isNotEmpty>
+      <!--车系-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleInspire">T16.APA_VehicleInspire LIKE '%'+#WHERE_APA_VehicleInspire#+'%'</isNotEmpty>
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsBarcode">(T11.INV_Barcode +T11.INV_BatchNo LIKE '%'+#WHERE_AutoPartsBarcode#+'%')</isNotEmpty>
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">
+        (ISNULL(T11.INV_OEMNo, T16.APA_OEMNo) LIKE '%'+#WHERE_AutoPartsCode#+'%'
+        OR ISNULL(T11.INV_ThirdNo, T16.APA_ThirdNo) LIKE '%' + #WHERE_AutoPartsCode# + '%'
+        OR T16.APA_ExchangeCode  LIKE '%' + #WHERE_AutoPartsCode# + '%' )
+      </isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T16.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T16.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        ISNULL(T11.INV_Specification, T16.APA_Specification) LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      <!--车型代码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleModelCode">T16.APA_VehicleModelCode LIKE '%'+#WHERE_APA_VehicleModelCode#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T11.INV_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T11.INV_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T11.INV_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+
+      <!--翻页用-->
+      ORDER BY T12.Org_ShortName ,
+      T14.WH_Name ,
+      T11.INV_CreatedTime DESC ,
+      T11.INV_Name ,
+      T11.INV_BatchNo
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+
+    </select>
+
+    <!--根据组织查询仓位列表-->
+    <select id="COMM_SQL33" parameterClass="MDLPIS_Warehouse" resultClass="MDLPIS_WarehouseBin">
+      SELECT  T1.WHB_ID ,
+      T1.WHB_WH_ID ,
+      T1.WHB_Name ,
+      T1.WHB_Description ,
+      T1.WHB_IsValid ,
+      T1.WHB_CreatedBy ,
+      T1.WHB_CreatedTime ,
+      T1.WHB_UpdatedBy ,
+      T1.WHB_UpdatedTime ,
+      T1.WHB_VersionNo ,
+      T1.WHB_TransID
+      FROM    PIS_WarehouseBin T1
+      INNER JOIN PIS_Warehouse T2 ON T2.WH_ID = T1.WHB_WH_ID
+      AND T2.WH_IsValid = 1
+      AND T2.WH_Org_ID = #WHERE_WH_Org_ID#
+      WHERE   T1.WHB_IsValid = 1
+    </select>
+
+    <!--查询用户是否在相应的组织下是否拥有菜单的某个动作权限-->
+    <select id="COMM_SQL34" parameterClass="AuthorityVerifyQCModel" resultClass="int">
+      SELECT  COUNT(T1.UAA_ID)
+      FROM    SM_UserActionAuthority T1
+      INNER JOIN SM_Action T2 ON T2.Act_ID = T1.UAA_Action_ID
+      AND T2.Act_IsValid = 1
+      AND T2.Act_Key = #ActionKey#
+      WHERE   T1.UAA_IsValid = 1
+      AND T1.UAA_Org_ID = #OrgId#
+      AND T1.UAA_User_ID = #UserId#
+      AND T1.UAA_MenuD_ID = #MenuId#
+    </select>
+
+    <!--查询用户在相应组织下是否拥有相应菜单权限-->
+    <select id="COMM_SQL35" parameterClass="AuthorityVerifyQCModel" resultClass="int">
+      SELECT  COUNT(T1.UMA_ID)
+      FROM    SM_UserMenuAuthority T1
+      INNER JOIN SM_MenuDetail T2 ON T2.MenuD_ID = T1.UMA_MenuD_ID
+      AND T2.MenuD_IsValid = 1
+      AND T2.MenuD_ClassFullName = #MenuFullName#
+      WHERE   T1.UMA_IsValid = 1
+      AND T1.UMA_Org_ID = #OrgId#
+      AND T1.UMA_User_ID = #UserId#
+    </select>
+
+    <!--获取Venus单据编号-->
+    <procedure id="COMM_SQL36" parameterMap="COMM_SQL36_ParameteMap_01" resultClass="String">
+      P_COM_GetRecordCode
+    </procedure>
+
+    <!--入库单查询-->
+    <select id="COMM_SQL37" parameterClass="StockInBillQueryQCModel" resultClass="StockInBillQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SIB_ID)
+      FROM    PIS_StockInBill T1
+      INNER JOIN ( SELECT DISTINCT
+      T12.SID_SIB_ID ,
+      T12.SID_SIB_No ,
+      T12.SID_SUPP_ID
+      FROM   PIS_StockInDetail T12
+      WHERE  T12.SID_IsValid = 1
+      ) T2 ON T2.SID_SIB_ID = T1.SIB_ID
+      AND T2.SID_SIB_No = T1.SIB_No
+      LEFT JOIN PIS_Supplier T3 ON T3.SUPP_ID = T2.SID_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      WHERE   T1.SIB_IsValid = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_No">T1.SIB_No LIKE '%'+#WHERE_SIB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_Org_ID">T1.SIB_Org_ID LIKE '%'+#WHERE_SIB_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SourceTypeName">T1.SIB_SourceTypeName LIKE '%'+#WHERE_SIB_SourceTypeName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_ApprovalStatusName">T1.SIB_ApprovalStatusName LIKE '%'+#WHERE_SIB_ApprovalStatusName#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.SIB_ID ,
+      T1.SIB_Org_ID ,
+      T1.SIB_No ,
+      T1.SIB_SourceTypeCode ,
+      T1.SIB_SourceTypeName ,
+      T1.SIB_SourceNo ,
+      T1.SIB_StatusCode ,
+      T1.SIB_StatusName ,
+      T1.SIB_ApprovalStatusCode ,
+      T1.SIB_ApprovalStatusName ,
+      T1.SIB_IsValid ,
+      T1.SIB_CreatedBy ,
+      T1.SIB_CreatedTime ,
+      T1.SIB_UpdatedBy ,
+      T1.SIB_UpdatedTime ,
+      T1.SIB_VersionNo ,
+      T2.SID_SUPP_ID ,
+      T3.SUPP_Name
+      FROM    PIS_StockInBill T1
+      INNER JOIN ( SELECT DISTINCT
+      T12.SID_SIB_ID ,
+      T12.SID_SIB_No ,
+      T12.SID_SUPP_ID
+      FROM   PIS_StockInDetail T12
+      WHERE  T12.SID_IsValid = 1
+      ) T2 ON T2.SID_SIB_ID = T1.SIB_ID
+      AND T2.SID_SIB_No = T1.SIB_No
+      LEFT JOIN PIS_Supplier T3 ON T3.SUPP_ID = T2.SID_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      WHERE   T1.SIB_IsValid = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_No">T1.SIB_No LIKE '%'+#WHERE_SIB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_Org_ID">T1.SIB_Org_ID LIKE '%'+#WHERE_SIB_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SourceTypeName">T1.SIB_SourceTypeName LIKE '%'+#WHERE_SIB_SourceTypeName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_ApprovalStatusName">T1.SIB_ApprovalStatusName LIKE '%'+#WHERE_SIB_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.SIB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--获取Coeus单据编号-->
+    <procedure id="COMM_SQL38" parameterMap="COMM_SQL38_ParameteMap_01" resultClass="String">
+      P_COM_GetRecordCode
+    </procedure>
+
+    <!--库存查询-->
+    <select id="COMM_SQL39" parameterClass="InventoryToShareQueryQCModel" resultClass="InventoryToShareQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.INV_ID)
+      FROM    PIS_Inventory T1
+      LEFT JOIN PIS_ShareInventory T2 ON T2.SI_WH_ID = T1.INV_WH_ID
+      AND T2.SI_Barcode = T1.INV_Barcode
+      AND T2.SI_BatchNo = T1.INV_BatchNo
+      AND T2.SI_Org_ID = T1.INV_Org_ID
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T4 ON T4.APA_Barcode = T1.INV_Barcode
+      AND T4.APA_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T5 ON T5.WHB_ID = T1.INV_WHB_ID
+      AND T5.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T6 ON T6.SUPP_ID = T1.INV_SUPP_ID
+      AND T6.SUPP_IsValid = 1
+      WHERE   T2.SI_ID IS NULL
+      AND T1.INV_IsValid = 1
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WH_Name">T3.WH_Name LIKE '%'+#WHERE_INV_WH_Name#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T1.INV_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_OEMNo">T1.INV_OEMNo LIKE '%'+#WHERE_INV_OEMNo#+'%'</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_ThirdNo">T1.INV_ThirdNo LIKE '%'+#WHERE_INV_ThirdNo#+'%'</isNotEmpty>
+      <!--配件批次号-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_BatchNo">T1.INV_Barcode+T1.INV_BatchNo LIKE '%'+#WHERE_INV_BatchNo#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T1.INV_Org_ID =#WHERE_INV_Org_ID#</isNotEmpty>
+      <!--车型代码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleModelCode">T4.APA_VehicleModelCode LIKE '%'+#WHERE_APA_VehicleModelCode#+'%'</isNotEmpty>
+      <!--互换码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ExchangeCode">T4.APA_ExchangeCode LIKE '%'+#WHERE_APA_ExchangeCode#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.INV_ID ,
+      T1.INV_Org_ID ,
+      T1.INV_WH_ID ,
+      T1.INV_WHB_ID ,
+      T1.INV_ThirdNo ,
+      T1.INV_OEMNo ,
+      T1.INV_Barcode ,
+      T1.INV_BatchNo ,
+      T1.INV_Name ,
+      T1.INV_Specification ,
+      T1.INV_SUPP_ID ,
+      T1.INV_Qty ,
+      T1.INV_PurchaseUnitPrice ,
+      T1.INV_IsValid ,
+      T1.INV_CreatedBy ,
+      T1.INV_CreatedTime ,
+      T1.INV_UpdatedBy ,
+      T1.INV_UpdatedTime ,
+      T1.INV_VersionNo ,
+      T3.WH_Name ,
+      T4.APA_Name ,
+      T4.APA_VehicleModelCode ,
+      T4.APA_ExchangeCode ,
+      T4.APA_Brand ,
+      T5.WHB_Name ,
+      T6.SUPP_Name
+      FROM    PIS_Inventory T1
+      LEFT JOIN PIS_ShareInventory T2 ON T2.SI_WH_ID = T1.INV_WH_ID
+      AND T2.SI_Barcode = T1.INV_Barcode
+      AND T2.SI_BatchNo = T1.INV_BatchNo
+      AND T2.SI_Org_ID = T1.INV_Org_ID
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T4 ON T4.APA_Barcode = T1.INV_Barcode
+      AND T4.APA_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T5 ON T5.WHB_ID = T1.INV_WHB_ID
+      AND T5.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T6 ON T6.SUPP_ID = T1.INV_SUPP_ID
+      AND T6.SUPP_IsValid = 1
+      WHERE   T2.SI_ID IS NULL
+      AND T1.INV_IsValid = 1
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WH_Name">T3.WH_Name LIKE '%'+#WHERE_INV_WH_Name#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T1.INV_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_OEMNo">T1.INV_OEMNo LIKE '%'+#WHERE_INV_OEMNo#+'%'</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_ThirdNo">T1.INV_ThirdNo LIKE '%'+#WHERE_INV_ThirdNo#+'%'</isNotEmpty>
+      <!--配件批次号-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_BatchNo">T1.INV_Barcode+T1.INV_BatchNo LIKE '%'+#WHERE_INV_BatchNo#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T1.INV_Org_ID =#WHERE_INV_Org_ID#</isNotEmpty>
+      <!--车型代码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleModelCode">T4.APA_VehicleModelCode LIKE '%'+#WHERE_APA_VehicleModelCode#+'%'</isNotEmpty>
+      <!--互换码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ExchangeCode">T4.APA_ExchangeCode LIKE '%'+#WHERE_APA_ExchangeCode#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.INV_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询汽修商户组织-->
+    <select id="COMM_SQL41" parameterClass="AutoFactoryOrgQueryQCModel" resultClass="AutoFactoryOrgQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.AFC_ID)
+      FROM    PIS_AutoFactoryCustomer T1
+      LEFT JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      AND T2.ASOAH_ARMerchant_Code = T1.AFC_Code
+      AND T2.ASOAH_AROrg_Code = T1.AFC_AROrg_Code
+      AND T2.ASOAH_IsValid = 1
+      LEFT JOIN EWM_Wallet T3 ON T3.Wal_AutoFactoryCode = T1.AFC_Code
+      AND T3.Wal_AutoFactoryOrgCode = T1.AFC_AROrg_Code
+      AND T3.Wal_OwnerTypeName = '平台内汽修商'
+      AND T3.Wal_IsValid = 1
+      WHERE   T1.AFC_IsValid = 1
+      AND T1.AFC_IsPlatform = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_OrgID">T2.ASOAH_SupOrg_ID=#WHERE_OrgID#</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Name">T1.AFC_Name LIKE '%'+#WHERE_AFC_Name#+'%'</isNotEmpty>
+      <!--汽修商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Code">T1.AFC_Code LIKE '%'+#WHERE_AFC_Code#+'%'</isNotEmpty>
+      <!--汽修商户组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Name">T1.AFC_AROrg_Name LIKE '%'+#WHERE_AFC_AROrg_Name#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T1.AFC_ID ,
+      T1.AFC_Code ,
+      T1.AFC_Name ,
+      T1.AFC_Contacter ,
+      T1.AFC_PhoneNo ,
+      T1.AFC_Address ,
+      T1.AFC_AROrg_Code ,
+      T1.AFC_AROrg_Name ,
+      T1.AFC_AROrg_Contacter ,
+      T1.AFC_AROrg_Phone ,
+      T1.AFC_AROrg_Address ,
+      T1.AFC_CreditAmount ,
+      T1.AFC_PaymentTypeCode ,
+      T1.AFC_PaymentTypeName ,
+      T1.AFC_BillingTypeCode ,
+      T1.AFC_BillingTypeName ,
+      T1.AFC_DeliveryTypeCode ,
+      T1.AFC_DeliveryTypeName ,
+      T1.AFC_DeliveryByID ,
+      T1.AFC_DeliveryByName ,
+      T1.AFC_DeliveryByPhoneNo ,
+      T1.AFC_IsEndSales ,
+      T1.AFC_AutoPartsPriceType ,
+      T3.Wal_ID ,
+      T3.Wal_Org_ID ,
+      T3.Wal_Org_Name ,
+      T3.Wal_No ,
+      T3.Wal_AvailableBalance
+      FROM    PIS_AutoFactoryCustomer T1
+      LEFT JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      AND T2.ASOAH_ARMerchant_Code = T1.AFC_Code
+      AND T2.ASOAH_AROrg_Code = T1.AFC_AROrg_Code
+      AND T2.ASOAH_IsValid = 1
+      LEFT JOIN EWM_Wallet T3 ON T3.Wal_AutoFactoryCode = T1.AFC_Code
+      AND T3.Wal_AutoFactoryOrgCode = T1.AFC_AROrg_Code
+      AND T3.Wal_OwnerTypeName = '平台内汽修商'
+      AND T3.Wal_IsValid = 1
+      WHERE   T1.AFC_IsValid = 1
+      AND T1.AFC_IsPlatform = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_OrgID">T2.ASOAH_SupOrg_ID=#WHERE_OrgID#</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Name">T1.AFC_Name LIKE '%'+#WHERE_AFC_Name#+'%'</isNotEmpty>
+      <!--汽修商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Code">T1.AFC_Code LIKE '%'+#WHERE_AFC_Code#+'%'</isNotEmpty>
+      <!--汽修商户组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Name">T1.AFC_AROrg_Name LIKE '%'+#WHERE_AFC_AROrg_Name#+'%'</isNotEmpty>
+    </select>
+
+    <!--查询[应付查询]【列表】信息-->
+    <select id="COMM_SQL42" parameterClass="AccountPayableBillQueryQCModel" resultClass="AccountPayableBillQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.APB_ID)
+      FROM FM_AccountPayableBill T1
+      <dynamic prepend="WHERE">
+        <!--应付单号-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_No">T1.APB_No LIKE '%'+#WHERE_APB_No#+'%'</isNotEmpty>
+        <!--来源类型-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_SourceTypeName">T1.APB_SourceTypeName LIKE '%'+#WHERE_APB_SourceTypeName#+'%'</isNotEmpty>
+        <!--业务状态-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_BusinessStatusName">T1.APB_BusinessStatusName LIKE '%'+#WHERE_APB_BusinessStatusName#+'%'</isNotEmpty>
+        <!--审核状态-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_ApprovalStatusName">T1.APB_ApprovalStatusName LIKE '%'+#WHERE_APB_ApprovalStatusName#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_APB_IsValid">T1.APB_IsValid=#WHERE_APB_IsValid#</isNotNull>
+        <!--组织ID-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_Org_ID">T1.APB_Org_ID LIKE '%'+#WHERE_APB_Org_ID#+'%'</isNotEmpty>
+      </dynamic>
+
+      SELECT
+      @RecordCount 'RecordCount',
+      CONVERT(VARCHAR(50), NEWID()) 'RowID',
+      T1.APB_No,
+      T1.APB_BillDirectName,
+      T1.APB_SourceTypeName,
+      T1.APB_SourceBillNo,
+      T1.APB_Org_Name,
+      T1.APB_AccountPayableAmount,
+      T1.APB_PaidAmount,
+      T1.APB_UnpaidAmount,
+      T1.APB_BusinessStatusName,
+      T1.APB_ApprovalStatusName,
+      T1.APB_Remark,
+      T1.APB_IsValid,
+      T1.APB_CreatedBy,
+      T1.APB_CreatedTime,
+      T1.APB_UpdatedBy,
+      T1.APB_UpdatedTime,
+      T1.APB_ID,
+      T1.APB_BillDirectCode,
+      T1.APB_SourceTypeCode,
+      T1.APB_Org_ID,
+      T1.APB_BusinessStatusCode,
+      T1.APB_ApprovalStatusCode,
+      T1.APB_VersionNo
+      FROM FM_AccountPayableBill T1
+      <dynamic prepend="WHERE">
+        <!--应付单号-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_No">T1.APB_No LIKE '%'+#WHERE_APB_No#+'%'</isNotEmpty>
+        <!--来源类型-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_SourceTypeName">T1.APB_SourceTypeName LIKE '%'+#WHERE_APB_SourceTypeName#+'%'</isNotEmpty>
+        <!--业务状态-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_BusinessStatusName">T1.APB_BusinessStatusName LIKE '%'+#WHERE_APB_BusinessStatusName#+'%'</isNotEmpty>
+        <!--审核状态-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_ApprovalStatusName">T1.APB_ApprovalStatusName LIKE '%'+#WHERE_APB_ApprovalStatusName#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_APB_IsValid">T1.APB_IsValid=#WHERE_APB_IsValid#</isNotNull>
+        <!--组织ID-->
+        <isNotEmpty prepend="AND" property="WHERE_APB_Org_ID">T1.APB_Org_ID LIKE '%'+#WHERE_APB_Org_ID#+'%'</isNotEmpty>
+      </dynamic>
+
+      <!--翻页用-->
+      ORDER BY T1.APB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据所有人信息获取钱包列表-->
+    <select id="COMM_SQL44" parameterClass="MDLEWM_Wallet" resultClass="WalletInfoUIModel">
+      SELECT  T1.Wal_ID ,
+      T1.Wal_Org_ID ,
+      T1.Wal_Org_Name ,
+      T1.Wal_No ,
+      T1.Wal_SourceTypeCode ,
+      T1.Wal_SourceTypeName ,
+      T1.Wal_SourceNo ,
+      T1.Wal_OwnerTypeCode ,
+      T1.Wal_OwnerTypeName ,
+      T1.Wal_CustomerID ,
+      T1.Wal_CustomerName ,
+      T1.Wal_AutoFactoryCode ,
+      T1.Wal_AutoFactoryOrgCode ,
+      T1.Wal_TradingPassword ,
+      T1.Wal_AvailableBalance ,
+      T1.Wal_FreezingBalance ,
+      T1.Wal_DepositBaseAmount ,
+      T1.Wal_RecommendEmployeeID ,
+      T1.Wal_RecommendEmployee ,
+      T1.Wal_CreatedByOrgID ,
+      T1.Wal_CreatedByOrgName ,
+      T1.Wal_EffectiveTime ,
+      T1.Wal_IneffectiveTime ,
+      T1.Wal_StatusCode ,
+      T1.Wal_StatusName ,
+      T1.Wal_Remark ,
+      T1.Wal_IsValid ,
+      T1.Wal_CreatedBy ,
+      T1.Wal_CreatedTime ,
+      T1.Wal_UpdatedBy ,
+      T1.Wal_UpdatedTime ,
+      T1.Wal_VersionNo ,
+      T2.AFC_Name 'AutoFactoryName'
+      FROM    EWM_Wallet T1
+      LEFT JOIN PIS_AutoFactoryCustomer T2 ON T2.AFC_ID = T1.Wal_CustomerID
+      AND T2.AFC_IsValid = 1
+      AND T1.Wal_OwnerTypeName = '平台内汽修商'
+      WHERE   1 = 1
+      <!--钱包ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_ID">T1.Wal_ID=#WHERE_Wal_ID#</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_Org_ID">T1.Wal_Org_ID LIKE '%'+#WHERE_Wal_Org_ID#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_Org_Name">T1.Wal_Org_Name LIKE '%'+#WHERE_Wal_Org_Name#+'%'</isNotEmpty>
+      <!--钱包账号-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_No">T1.Wal_No =#WHERE_Wal_No#</isNotEmpty>
+      <!--钱包来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_SourceTypeName">T1.Wal_SourceTypeName LIKE '%'+#WHERE_Wal_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源账号-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_SourceNo">T1.Wal_SourceNo LIKE '%'+#WHERE_Wal_SourceNo#+'%'</isNotEmpty>
+      <!--钱包所有人类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_OwnerTypeName">T1.Wal_OwnerTypeName LIKE '%'+#WHERE_Wal_OwnerTypeName#+'%'</isNotEmpty>
+      <!--开户人ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_CustomerID">T1.Wal_CustomerID LIKE '%'+#WHERE_Wal_CustomerID#+'%'</isNotEmpty>
+      <!--开户人姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_CustomerName">T1.Wal_CustomerName LIKE '%'+#WHERE_Wal_CustomerName#+'%'</isNotEmpty>
+      <!--汽修商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_AutoFactoryCode">T1.Wal_AutoFactoryCode LIKE '%'+#WHERE_Wal_AutoFactoryCode#+'%'</isNotEmpty>
+      <!--汽修商户组织编码-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_AutoFactoryOrgCode">T1.Wal_AutoFactoryOrgCode LIKE '%'+#WHERE_Wal_AutoFactoryOrgCode#+'%'</isNotEmpty>
+      <!--交易密码-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_TradingPassword">T1.Wal_TradingPassword LIKE '%'+#WHERE_Wal_TradingPassword#+'%'</isNotEmpty>
+      <!--推荐员工ID-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_RecommendEmployeeID">T1.Wal_RecommendEmployeeID LIKE '%'+#WHERE_Wal_RecommendEmployeeID#+'%'</isNotEmpty>
+      <!--推荐员工-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_RecommendEmployee">T1.Wal_RecommendEmployee LIKE '%'+#WHERE_Wal_RecommendEmployee#+'%'</isNotEmpty>
+      <!--钱包状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_Wal_StatusName">T1.Wal_StatusName LIKE '%'+#WHERE_Wal_StatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_Wal_IsValid">T1.Wal_IsValid=#WHERE_Wal_IsValid#</isNotNull>
+    </select>
+
+    <!--查询出库-->
+    <select id="COMM_SQL45" parameterClass="StockOutBillQueryQCModel" resultClass="StockOutBillQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.SOB_ID)
+      FROM
+      (
+      SELECT T11.SOB_ID
+      FROM PIS_StockOutBill T11
+      WHERE T11.SOB_IsValid = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_No">T11.SOB_No LIKE '%'+#WHERE_SOB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_Org_ID">T11.SOB_Org_ID LIKE '%'+#WHERE_SOB_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceTypeName">T11.SOB_SourceTypeName LIKE '%'+#WHERE_SOB_SourceTypeName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_ApprovalStatusName">T11.SOB_ApprovalStatusName LIKE '%'+#WHERE_SOB_ApprovalStatusName#+'%'</isNotEmpty>
+      ) T1
+
+      SELECT @RecordCount 'RecordCount',
+      CONVERT(VARCHAR(50), NEWID()) 'RowID',
+      T11.SOB_ID ,
+      T11.SOB_Org_ID ,
+      T11.SOB_No ,
+      T11.SOB_SourceTypeCode ,
+      T11.SOB_SourceTypeName ,
+      T11.SOB_SourceNo ,
+      T11.SOB_SUPP_ID ,
+      T11.SOB_SUPP_Name ,
+      T11.SOB_StatusCode ,
+      T11.SOB_StatusName ,
+      T11.SOB_ApprovalStatusCode ,
+      T11.SOB_ApprovalStatusName ,
+      T11.SOB_Remark ,
+      T11.SOB_IsValid ,
+      T11.SOB_CreatedBy ,
+      T11.SOB_CreatedTime ,
+      T11.SOB_UpdatedBy ,
+      T11.SOB_UpdatedTime ,
+      T11.SOB_VersionNo
+      FROM PIS_StockOutBill T11
+      WHERE T11.SOB_IsValid = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_No">T11.SOB_No LIKE '%'+#WHERE_SOB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_Org_ID">T11.SOB_Org_ID LIKE '%'+#WHERE_SOB_Org_ID#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceTypeName">T11.SOB_SourceTypeName LIKE '%'+#WHERE_SOB_SourceTypeName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_ApprovalStatusName">T11.SOB_ApprovalStatusName LIKE '%'+#WHERE_SOB_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T11.SOB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据配件条形码获取配件价格类别明细-->
+    <select id="COMM_SQL46" parameterClass="MDLBS_AutoPartsPriceType" resultClass="string">
+      SELECT  T1.APPT_Barcode + ';' + CONVERT(NVARCHAR(50), T1.APPT_Price)
+      FROM    BS_AutoPartsPriceType T1
+      WHERE   T1.APPT_IsValid = 1
+      AND #WHERE_APPT_Barcode# LIKE '%' + T1.APPT_Barcode
+      + ';%'
+      AND T1.APPT_Name = #WHERE_APPT_Name#
+    </select>
+
+    <!--获取已授权到组织的汽修商户-->
+    <select id="COMM_SQL47" parameterClass="MDLSM_AROrgSupOrgAuthority" resultClass="MDLPIS_AutoFactoryCustomer">
+      SELECT  T1.AFC_ID ,
+      T1.AFC_Org_ID ,
+      T1.AFC_IsPlatform ,
+      T1.AFC_Code ,
+      T1.AFC_Name ,
+      T1.AFC_Contacter ,
+      T1.AFC_PhoneNo ,
+      T1.AFC_Address ,
+      T1.AFC_AROrg_Code ,
+      T1.AFC_AROrg_Name ,
+      T1.AFC_AROrg_Contacter ,
+      T1.AFC_AROrg_Phone ,
+      T1.AFC_AROrg_Address ,
+      T1.AFC_CreditAmount ,
+      T1.AFC_PaymentTypeCode ,
+      T1.AFC_PaymentTypeName ,
+      T1.AFC_BillingTypeCode ,
+      T1.AFC_BillingTypeName ,
+      T1.AFC_DeliveryTypeCode ,
+      T1.AFC_DeliveryTypeName ,
+      T1.AFC_DeliveryByID ,
+      T1.AFC_DeliveryByName ,
+      T1.AFC_DeliveryByPhoneNo ,
+      T1.AFC_IsEndSales ,
+      T1.AFC_AutoPartsPriceType ,
+      T1.AFC_Remark ,
+      T1.AFC_IsValid ,
+      T1.AFC_CreatedBy ,
+      T1.AFC_CreatedTime ,
+      T1.AFC_UpdatedBy ,
+      T1.AFC_UpdatedTime ,
+      T1.AFC_VersionNo
+      FROM    PIS_AutoFactoryCustomer T1
+      INNER JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      AND T2.ASOAH_IsValid = 1
+      AND T2.ASOAH_SupOrg_ID = #WHERE_ASOAH_SupOrg_ID#
+      WHERE   T1.AFC_IsValid = 1
+    </select>
+
+    <!--查询所有客户(平台内汽修商+一般汽修商户+普通客户+供应商)-->
+    <select id="COMM_SQL48" parameterClass="ComClientUIModel" resultClass="ComClientUIModel">
+      SELECT  temp.SortIndex ,
+      temp.ClientType ,
+      temp.ClientID ,
+      temp.ClientName ,
+      temp.IsEndSales
+      FROM    (
+      <!--1. 平台内汽修商-->
+      SELECT    #SupplierFirstlyDisplay# 'SortIndex' ,
+      '平台内汽修商' 'ClientType' ,
+      T1.AFC_ID 'ClientID' ,
+      T1.AFC_AROrg_Name 'ClientName' ,
+      T1.AFC_IsEndSales 'IsEndSales'
+      FROM      PIS_AutoFactoryCustomer T1
+      LEFT JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      AND T2.ASOAH_IsValid = 1
+      WHERE     T1.AFC_IsValid = 1
+      AND T1.AFC_IsPlatform = 1
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T2.ASOAH_SupOrg_ID = #OrgID#
+      )
+      UNION
+      <!--2. 一般汽修商户-->
+      SELECT    #SupplierFirstlyDisplay# 'SortIndex' ,
+      '一般汽修商户' 'ClientType' ,
+      T1.AFC_ID 'ClientID' ,
+      T1.AFC_Name 'ClientName' ,
+      T1.AFC_IsEndSales 'IsEndSales'
+      FROM      PIS_AutoFactoryCustomer T1
+      WHERE     T1.AFC_IsValid = 1
+      AND T1.AFC_IsPlatform = 0
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T1.AFC_Org_ID = #OrgID#
+      )
+      UNION
+      <!--3. 普通客户-->
+      SELECT    #SupplierFirstlyDisplay# 'SortIndex' ,
+      '普通客户' 'ClientType' ,
+      T1.GC_ID 'ClientID' ,
+      T1.GC_Name 'ClientName' ,
+      T1.GC_IsEndSales 'IsEndSales'
+      FROM      PIS_GeneralCustomer T1
+      WHERE     T1.GC_IsValid = 1
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T1.GC_Org_ID = #OrgID#
+      )
+      UNION
+      <!--4. 供应商-->
+      SELECT    CASE WHEN #SupplierFirstlyDisplay# = 1 THEN 0
+      ELSE 1
+      END 'SortIndex' ,
+      '供应商' 'ClientType' ,
+      T1.SUPP_ID 'ClientID' ,
+      T1.SUPP_Name 'ClientName' ,
+      NULL 'IsEndSales'
+      FROM      PIS_Supplier T1
+      WHERE     T1.SUPP_IsValid = 1
+      UNION
+      <!--5. 组织-->
+      SELECT    #SupplierFirstlyDisplay# 'SortIndex' ,
+      '组织' 'ClientType' ,
+      T1.Org_ID 'ClientID' ,
+      T1.Org_ShortName 'ClientName' ,
+      NULL 'IsEndSales'
+      FROM      SM_Organization T1
+      WHERE     T1.Org_IsValid = 1
+      ) temp
+      ORDER BY temp.SortIndex ,
+      temp.ClientType ,
+      temp.ClientName
+    </select>
+
+    <!--根据配件条形码查询库存图片列表-->
+    <select id="COMM_SQL49" parameterClass="MDLPIS_InventoryPicture" resultClass="MDLPIS_InventoryPicture">
+      SELECT  T1.INVP_ID ,
+      T1.INVP_SourceTypeCode ,
+      T1.INVP_SourceTypeName ,
+      T1.INVP_AutoPartsID ,
+      T1.INVP_Barcode ,
+      T1.INVP_PictureName ,
+      T1.INVP_IsValid ,
+      T1.INVP_CreatedBy ,
+      T1.INVP_CreatedTime ,
+      T1.INVP_UpdatedBy ,
+      T1.INVP_UpdatedTime ,
+      T1.INVP_VersionNo ,
+      T1.INVP_ID 'WHERE_INVP_ID' ,
+      T1.INVP_VersionNo 'WHERE_INVP_VersionNo'
+      FROM    PIS_InventoryPicture T1
+      WHERE   T1.INVP_IsValid = 1
+      <!--配件条形码-->
+      AND #WHERE_INVP_Barcode# LIKE '%' + T1.INVP_Barcode + ';%'
+      <!--图片名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INVP_PictureName">#WHERE_INVP_PictureName# LIKE '%' + T1.INVP_PictureName + ';%'</isNotEmpty>
+    </select>
+
+    <!--查询所有客户-->
+    <select id="COMM_SQL50" parameterClass="ComClientUIModel" resultClass="ComClientUIModel">
+      SELECT  temp.SortIndex ,
+      temp.ClientType ,
+      temp.ClientID ,
+      temp.ClientName ,
+      temp.MerchantCode ,
+      temp.OrgCode ,
+      temp.OrgID ,
+      temp.AutoPartsPriceType ,
+      temp.IsEndSales
+      FROM    ( SELECT    1 'SortIndex' ,
+      '组织' 'ClientType' ,
+      T1.Org_ID 'ClientID' ,
+      ISNULL(T1.Org_PlatformCode, '') 'MerchantCode' ,
+      T1.Org_Code 'OrgCode' ,
+      T1.Org_ID 'OrgID' ,
+      T1.Org_ShortName 'ClientName' ,
+      '' 'AutoPartsPriceType' ,
+      NULL 'IsEndSales'
+      FROM      SM_Organization T1
+      WHERE     T1.Org_IsValid = 1
+      UNION
+      SELECT    2 'SortIndex' ,
+      '供应商' 'ClientType' ,
+      T1.SUPP_ID 'ClientID' ,
+      '' 'MerchantCode' ,
+      '' 'OrgCode' ,
+      '' 'OrgID' ,
+      T1.SUPP_Name 'ClientName' ,
+      '' 'AutoPartsPriceType' ,
+      NULL 'IsEndSales'
+      FROM      PIS_Supplier T1
+      WHERE     T1.SUPP_IsValid = 1
+      UNION
+      SELECT    3 'SortIndex' ,
+      '一般汽修商户' 'ClientType' ,
+      T1.AFC_ID 'ClientID' ,
+      T1.AFC_Code 'MerchantCode' ,
+      T1.AFC_AROrg_Code 'OrgCode' ,
+      T1.AFC_Org_ID 'OrgID' ,
+      T1.AFC_Name 'ClientName' ,
+      T1.AFC_AutoPartsPriceType 'AutoPartsPriceType' ,
+      T1.AFC_IsEndSales 'IsEndSales'
+      FROM      PIS_AutoFactoryCustomer T1
+      WHERE     T1.AFC_IsPlatform = 0
+      AND T1.AFC_IsValid = 1
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T1.AFC_Org_ID = #OrgID#
+      )
+      UNION
+      SELECT    4 'SortIndex' ,
+      '平台内汽修商' 'ClientType' ,
+      T1.AFC_ID 'ClientID' ,
+      T1.AFC_Code 'MerchantCode' ,
+      T1.AFC_AROrg_Code 'OrgCode' ,
+      T1.AFC_Org_ID 'OrgID' ,
+      T1.AFC_AROrg_Name 'ClientName' ,
+      T1.AFC_AutoPartsPriceType 'AutoPartsPriceType' ,
+      T1.AFC_IsEndSales 'IsEndSales'
+      FROM      PIS_AutoFactoryCustomer T1
+      LEFT JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      WHERE     T1.AFC_IsPlatform = 1
+      AND T1.AFC_IsValid = 1
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T2.ASOAH_SupOrg_ID = #OrgID#
+      )
+      UNION
+      SELECT    5 'SortIndex' ,
+      '普通客户' 'ClientType' ,
+      T1.GC_ID 'ClientID' ,
+      '' 'MerchantCode' ,
+      '' 'OrgCode' ,
+      T1.GC_Org_ID 'OrgID' ,
+      T1.GC_Name 'ClientName' ,
+      T1.GC_AutoPartsPriceType 'AutoPartsPriceType' ,
+      T1.GC_IsEndSales 'IsEndSales'
+      FROM      PIS_GeneralCustomer T1
+      WHERE     T1.GC_IsValid = 1
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T1.GC_Org_ID = #OrgID#
+      )
+      UNION
+      SELECT    6 'SortIndex' ,
+      '配送人员' 'ClientType' ,
+      T1.LB_DeliveryBy 'ClientID' ,
+      '' 'MerchantCode' ,
+      '' 'OrgCode' ,
+      T1.LB_Org_ID 'OrgID' ,
+      T1.LB_DeliveryBy 'ClientName' ,
+      '' 'AutoPartsPriceType' ,
+      NULL 'IsEndSales'
+      FROM      SD_LogisticsBill T1
+      WHERE     T1.LB_IsValid = 1
+      AND ( ISNULL(#OrgID#, '') = ''
+      OR T1.LB_Org_ID = #OrgID#
+      )
+      ) temp
+      ORDER BY temp.SortIndex ,
+      temp.ClientType ,
+      temp.ClientName
+    </select>
+
+    <!--查询所有物流人员-->
+    <select id="COMM_SQL51" parameterClass="bool" resultClass="ComClientUIModel">
+      SELECT DISTINCT
+      temp.SortIndex ,
+      temp.ClientType ,
+      temp.ClientID ,
+      temp.ClientName
+      FROM    ( SELECT    1 'SortIndex' ,
+      '员工' 'ClientType' ,
+      T11.User_ID + '|' + ISNULL(T11.User_PhoneNo, '') + '|'
+      + T13.Org_ID 'ClientID' ,
+      T11.User_Name + '|' + ISNULL(T11.User_PhoneNo, '') + '|'
+      + T13.Org_ShortName 'ClientName'
+      FROM      SM_User T11
+      INNER JOIN SM_UserOrg T12 ON T11.User_ID = T12.UO_User_ID
+      INNER JOIN SM_Organization T13 ON T13.Org_ID = T12.UO_Org_ID
+      WHERE     T11.User_IsValid = 1
+      AND T11.User_EMPNO != 'SuperAdmin'
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T12.UO_Org_ID =#OrgID#</isNotEmpty>
+      UNION
+      SELECT    CASE WHEN T11.LB_SourceTypeName = '第三方个人' THEN 2
+      ELSE 3
+      END 'SortIndex' ,
+      T11.LB_SourceName 'ClientType' ,
+      T11.LB_DeliveryByID 'ClientID' ,
+      T11.LB_DeliveryBy 'ClientName'
+      FROM      SD_LogisticsBill T11
+      WHERE     T11.LB_IsValid = 1
+      AND T11.LB_SourceName != '员工'
+      ) temp
+      ORDER BY temp.SortIndex ,
+      temp.ClientType ,
+      temp.ClientName
+    </select>
+
+    <!--查询客户欠款-->
+    <select id="COMM_SQL52" parameterClass="MDLFM_AccountReceivableBill" resultClass="Decimal">
+      SELECT ISNULL(SUM(T1.ARB_UnReceiveAmount),0)
+      FROM   FM_AccountReceivableBill T1
+      WHERE  T1.ARB_IsValid = 1
+      AND T1.ARB_ApprovalStatusName = '已审核'
+      AND T1.ARB_Org_ID = #WHERE_ARB_Org_ID#
+      AND T1.ARB_PayObjectID = #WHERE_ARB_PayObjectID#
+    </select>
+
+    <!--查询调拨单-->
+    <select id="COMM_SQL53" parameterClass="TransferrQueryQCModel" resultClass="TransferQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.TB_ID)
+      FROM    ( SELECT    T11.TB_ID
+      FROM      PIS_TransferBill T11
+      WHERE     T11.TB_IsValid = 1
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_No">T11.TB_No LIKE '%'+#WHERE_TB_No#+'%'</isNotEmpty>
+      <!--调拨类型-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferTypeName">T11.TB_TransferTypeName LIKE '%'+#WHERE_TB_TransferTypeName#+'%'</isNotEmpty>
+      <!--调出组织-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferOutOrgName">T11.TB_TransferOutOrgName =#WHERE_TB_TransferOutOrgName#</isNotEmpty>
+      <!--调入组织-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferInOrgName">T11.TB_TransferInOrgName LIKE '%'+#WHERE_TB_TransferInOrgName#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_ApprovalStatusName">T11.TB_ApprovalStatusName LIKE '%'+#WHERE_TB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_StatusName">T11.TB_StatusName =#WHERE_TB_StatusName#</isNotEmpty>
+      ) T1
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      T11.TB_ID ,
+      T11.TB_No ,
+      T11.TB_TypeCode ,
+      T11.TB_TypeName ,
+      T11.TB_TransferTypeCode ,
+      T11.TB_TransferTypeName ,
+      T11.TB_TransferOutOrgId ,
+      T11.TB_TransferOutOrgName ,
+      T11.TB_TransferInOrgId ,
+      T11.TB_TransferInOrgName ,
+      T11.TB_StatusCode ,
+      T11.TB_StatusName ,
+      T11.TB_ApprovalStatusCode ,
+      T11.TB_ApprovalStatusName ,
+      T11.TB_Remark ,
+      T11.TB_IsValid ,
+      T11.TB_CreatedBy ,
+      T11.TB_CreatedTime ,
+      T11.TB_UpdatedBy ,
+      T11.TB_UpdatedTime ,
+      T11.TB_VersionNo
+      FROM    PIS_TransferBill T11
+      WHERE   T11.TB_IsValid = 1
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_No">T11.TB_No LIKE '%'+#WHERE_TB_No#+'%'</isNotEmpty>
+      <!--调拨类型-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferTypeName">T11.TB_TransferTypeName LIKE '%'+#WHERE_TB_TransferTypeName#+'%'</isNotEmpty>
+      <!--调出组织-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferOutOrgName">T11.TB_TransferOutOrgName =#WHERE_TB_TransferOutOrgName#</isNotEmpty>
+      <!--调入组织-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferInOrgName">T11.TB_TransferInOrgName LIKE '%'+#WHERE_TB_TransferInOrgName#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_ApprovalStatusName">T11.TB_ApprovalStatusName LIKE '%'+#WHERE_TB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_StatusName">T11.TB_StatusName =#WHERE_TB_StatusName#</isNotEmpty>
+
+
+      <!--翻页用-->
+      ORDER BY T11.TB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询客户欠款-->
+    <select id="COMM_SQL54" parameterClass="MDLFM_AccountReceivableBill" resultClass="MDLFM_AccountReceivableBill">
+      SELECT  T1.ARB_ID ,
+      T1.ARB_No ,
+      T1.ARB_BillDirectCode ,
+      T1.ARB_BillDirectName ,
+      T1.ARB_SourceTypeCode ,
+      T1.ARB_SourceTypeName ,
+      T1.ARB_SrcBillNo ,
+      T1.ARB_Org_ID ,
+      T1.ARB_Org_Name ,
+      T1.ARB_PayObjectTypeCode ,
+      T1.ARB_PayObjectTypeName ,
+      T1.ARB_PayObjectID ,
+      T1.ARB_PayObjectName ,
+      T1.ARB_AccountReceivableAmount ,
+      T1.ARB_ReceivedAmount ,
+      T1.ARB_UnReceiveAmount ,
+      T1.ARB_BusinessStatusCode ,
+      T1.ARB_BusinessStatusName ,
+      T1.ARB_ApprovalStatusCode ,
+      T1.ARB_ApprovalStatusName ,
+      T1.ARB_ReconciliationTime ,
+      T1.ARB_Remark ,
+      T1.ARB_IsValid ,
+      T1.ARB_CreatedBy ,
+      T1.ARB_CreatedTime ,
+      T1.ARB_UpdatedBy ,
+      T1.ARB_UpdatedTime ,
+      T1.ARB_VersionNo
+      FROM    FM_AccountReceivableBill T1
+      WHERE   T1.ARB_IsValid = 1
+      AND T1.ARB_ApprovalStatusName = '已审核'
+      AND T1.ARB_UnReceiveAmount > 0
+      AND T1.ARB_PayObjectID = #WHERE_ARB_PayObjectID#
+    </select>
+
+    <!--查询库存异动日志-->
+    <select id="COMM_SQL55" parameterClass="InventoryTransLogQueryQCModel" resultClass="InventoryTransLogQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.ITL_ID)
+      FROM    PIS_InventoryTransLog T1
+      WHERE   T1.ITL_IsValid = 1
+      <!--异动类型-->
+      AND #WHERE_ITL_TransType# LIKE '%'+ T1.ITL_TransType + ';%'
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_ITL_Barcode">T1.ITL_Barcode LIKE '%'+#WHERE_ITL_Barcode#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_ITL_Name">T1.ITL_Name LIKE '%'+#WHERE_ITL_Name#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.ITL_ID ,
+      T1.ITL_TransType ,
+      T1.ITL_Org_ID ,
+      T1.ITL_WH_ID ,
+      T1.ITL_WHB_ID ,
+      T1.ITL_BusinessNo ,
+      T1.ITL_Barcode ,
+      T1.ITL_BatchNo ,
+      T1.ITL_Name ,
+      T1.ITL_Specification ,
+      T1.ITL_UnitCostPrice ,
+      T1.ITL_UnitSalePrice ,
+      CONVERT(DECIMAL(18, 0), T1.ITL_Qty) 'ITL_Qty' ,
+      T1.ITL_AfterTransQty ,
+      T1.ITL_Source ,
+      T1.ITL_Destination ,
+      T1.ITL_IsValid ,
+      T1.ITL_CreatedBy ,
+      T1.ITL_CreatedTime ,
+      T1.ITL_UpdatedBy ,
+      T1.ITL_UpdatedTime ,
+      T1.ITL_VersionNo
+      FROM    PIS_InventoryTransLog T1
+      WHERE   T1.ITL_IsValid = 1
+      <!--异动类型-->
+      AND #WHERE_ITL_TransType# LIKE '%'+ T1.ITL_TransType + ';%'
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_ITL_Barcode">T1.ITL_Barcode LIKE '%'+#WHERE_ITL_Barcode#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_ITL_Name">T1.ITL_Name LIKE '%'+#WHERE_ITL_Name#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+
+      <!--翻页用-->
+      ORDER BY T1.ITL_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="COMMSQL_ParameteMap" class="ComCRUDModel">
+      <parameter property="StrSQL"/>
+    </parameterMap>
+
+    <parameterMap id="AutoPartsCom_SQL01_ParameteMap" class="MDLAPM_Inventory">
+      <parameter property="INV_Barcode" />
+      <parameter property="INV_Org_ID" />
+      <parameter property="INV_WH_ID" />
+    </parameterMap>
+
+    <parameterMap id="COMM_SQL28_ParameteMap" class="MDLPIS_Inventory">
+      <parameter property="WHERE_INV_Org_ID" />
+      <parameter property="WHERE_INV_Barcode" />
+    </parameterMap>
+
+    <parameterMap id="COMM_SQL36_ParameteMap_01" class="RecordCodeQCModel">
+      <parameter property="OrgCode" />
+      <parameter property="TableAbridge"/>
+      <parameter property="BusinessTime"/>
+    </parameterMap>
+
+    <parameterMap id="COMM_SQL38_ParameteMap_01" class="RecordCodeQCModel">
+      <parameter property="OrgCode" />
+      <parameter property="TableAbridge"/>
+    </parameterMap>
+
+  </parameterMaps>
+
+</sqlMap>

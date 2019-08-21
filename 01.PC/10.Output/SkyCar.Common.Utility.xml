@@ -1,0 +1,1156 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SkyCar.Common.Utility</name>
+    </assembly>
+    <members>
+        <member name="T:SkyCar.Common.Utility.APIDataHelper">
+            <summary>
+            API接口帮助类
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.APIDataHelper.GetAPIData(System.String,System.String)">
+            <summary>
+            获取接口数据
+            </summary>
+            <param name="paramUrl">地址</param>
+            <param name="paramPostData">参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.AuthorizationHelp">
+             <summary>
+            授权信息获取和验证
+             </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.AuthorizationHelp.CPUID">
+            <summary>
+            CPUID
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.AuthorizationHelp.HDID">
+            <summary>
+            硬盘ID
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.AuthorizationHelp.MACList">
+            <summary>
+            MAC地址列表
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.AuthorizationHelp.MAC">
+            <summary>
+            MAC地址
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.AuthorizationHelp.OS">
+            <summary>
+            操作系统
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.AuthorizationHelp.ResultErrorMessage">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.GetLocalHardwareInfo">
+            <summary>
+            获取本地硬件信息
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateRequestKey(System.String,System.String,System.String)">
+            <summary>
+            授权申请码生成
+            </summary>
+            <param name="paramCPUID">CPUID</param>
+            <param name="paramHDID">HDID</param>
+            <param name="paramMAC">MAC</param>
+            <returns>授权申请码</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateRequestKey">
+            <summary>
+            授权申请码生成
+            </summary>
+            <returns>授权申请码</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CheckRequestKey(System.String)">
+            <summary>
+            授权申请码生成
+            </summary>
+            <returns>授权申请码</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CheckLicenseKeyMD5(System.String)">
+            <summary>
+            授权序列号验证（MD5）
+            </summary>
+            <returns>验证结果</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateLicenseKeyMD5">
+            <summary>
+            授权序列号生成（MD5）
+            </summary>
+            <returns>生成的授权序列号</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateLicenseKeyMD5(System.String,System.String,System.String)">
+            <summary>
+            授权序列号生成（MD5）
+            </summary>
+            <param name="paramCPUID">CPUID</param>
+            <param name="paramHDID">HDID</param>
+            <param name="paramMAC">MAC</param>
+            <returns>授权序列号(MD5)</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateLicenseKeySHA1(System.String,System.String,System.String)">
+            <summary>
+            通过SHA1加密生成授权序列号
+            </summary>
+            <param name="paramCPUID">CPUID</param>
+            <param name="paramHDID">HDID</param>
+            <param name="paramMAC">MAC</param>
+            <returns>生成的授权序列号</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CheckLicenseKeySHA1(System.String)">
+            <summary>
+            通过SHA1加密检查授权序列号
+            </summary>
+            <returns>生成的授权序列号</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateLicenseKeySHA1">
+            <summary>
+            通过SHA1加密生成授权序列号
+            </summary>
+            <returns>生成的授权序列号</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateDateKey">
+            <summary>
+            根据当前客户端时间生成时间码
+            </summary>
+            <returns>返回时间码</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateDateKey(System.DateTime)">
+            <summary>
+            根据指定时间生成时间码
+            </summary>
+            <param name="paramCurrentDate">当前服务器时间</param>
+            <returns>时间码</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.DesCreateDateKey(System.String,System.String,System.String@,System.String@)">
+            <summary>
+            根据指定时间码生成时间
+            </summary>
+            <param name="paramDateKey"></param>
+            <param name="paramMac"></param>
+            <param name="paramYear"></param>
+            <param name="paramDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CreateDateKey(System.DateTime,System.String)">
+            <summary>
+            根据指定时间和MAC生成时间码
+            </summary>
+            <param name="paramCurrentDate">当前服务器时间</param>
+            <param name="paramMAC">MAC地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.RecordAuthorizationInfo(System.String,System.DateTime)">
+            <summary>
+            本地记录软件授权信息
+            </summary>
+            <param name="paramProductName">软件名称</param>
+            <param name="LicenseExpirationDate">授权失效日</param>
+            <returns>返回bool值（true成功）</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.RecordLicenseDateInfo(System.String,System.DateTime)">
+            <summary>
+            本地记录软件授权有效期信息
+            </summary>
+            <param name="paramProductName">软件名称</param>
+            <param name="LicenseExpirationDate">授权失效日</param>
+            <returns>返回bool值（true成功）</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.GetLicenseKey(System.String)">
+            <summary>
+            获取本地序列号
+            </summary>
+            <param name="paramProductName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CheckAuthorizationInfo(System.String)">
+            <summary>
+            验证本地软件产品是否已授权（true通过，false未通过）
+            </summary>
+            <param name="paramProductName">产品名称</param>
+            <returns>返回验证结果</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CheckAuthorizationDate(System.String,System.DateTime)">
+            <summary>
+            验证本地软件产品是否在有效期内（true通过，false未通过）
+            </summary>
+            <param name="paramProductName">产品名称</param>
+            <param name="paramCurrentDate">当前时间</param>
+            <returns>返回验证结果</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.AuthorizationHelp.CommonDiskID">
+            <summary>
+            通用截取8位16进制硬盘序列号(公共方法)
+            </summary>
+            <returns>8位硬盘</returns> 
+        </member>
+        <member name="T:SkyCar.Common.Utility.BarCodeHelper">
+             <summary>
+            BarCode 的摘要说明
+             </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.BarCodeHelper.MakeBarcodeImage(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Make an image of a Code128 barcode for a given string
+            </summary>
+            <param name="InputData">Message to be encoded</param>
+            <param name="BarWeight">Base thickness for bar width (1 or 2 works well)</param>
+            <param name="AddQuietZone">Add required horiz margins (use if output is tight)</param>
+            <returns>An Image of the Code128 barcode representing the message</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.Code128Content">
+            <summary>
+            Represent the set of code values to be output into barcode form
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Content.#ctor(System.String)">
+            <summary>
+            Create content based on a string of ASCII data
+            </summary>
+            <param name="AsciiData">the string that should be represented</param>
+        </member>
+        <member name="P:SkyCar.Common.Utility.Code128Content.Codes">
+            <summary>
+            Provides the Code128 code values representing the object's string
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Content.StringToCode128(System.String)">
+            <summary>
+            Transform the string into integers representing the Code128 codes
+            necessary to represent it
+            </summary>
+            <param name="AsciiData">String to be encoded</param>
+            <returns>Code128 representation</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Content.GetBestStartSet(SkyCar.Common.Utility.Code128Code.CodeSetAllowed,SkyCar.Common.Utility.Code128Code.CodeSetAllowed)">
+            <summary>
+            Determines the best starting code set based on the the first two 
+            characters of the string to be encoded
+            </summary>
+            <param name="csa1">First character of input string</param>
+            <param name="csa2">Second character of input string</param>
+            <returns>The codeset determined to be best to start with</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.Code128Code">
+            <summary>
+            Static tools for determining codes for individual characters in the content
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Code.CodesForChar(System.Int32,System.Int32,SkyCar.Common.Utility.CodeSet@)">
+            <summary>
+            Get the Code128 code value(s) to represent an ASCII character, with 
+            optional look-ahead for length optimization
+            </summary>
+            <param name="CharAscii">The ASCII value of the character to translate</param>
+            <param name="LookAheadAscii">The next character in sequence (or -1 if none)</param>
+            <param name="CurrCodeSet">The current codeset, that the returned codes need to follow;
+            if the returned codes change that, then this value will be changed to reflect it</param>
+            <returns>An array of integers representing the codes that need to be output to produce the 
+            given character</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Code.CodesetAllowedForChar(System.Int32)">
+            <summary>
+            Tells us which codesets a given character value is allowed in
+            </summary>
+            <param name="CharAscii">ASCII value of character to look at</param>
+            <returns>Which codeset(s) can be used to represent this character</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Code.CharCompatibleWithCodeset(System.Int32,SkyCar.Common.Utility.CodeSet)">
+            <summary>
+            Determine if a character can be represented in a given codeset
+            </summary>
+            <param name="CharAscii">character to check for</param>
+            <param name="currcs">codeset context to test</param>
+            <returns>true if the codeset contains a representation for the ASCII character</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Code.CodeValueForChar(System.Int32)">
+            <summary>
+            Gets the integer code128 code value for a character (assuming the appropriate code set)
+            </summary>
+            <param name="CharAscii">character to convert</param>
+            <returns>code128 symbol value for the character</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Code.StartCodeForCodeSet(SkyCar.Common.Utility.CodeSet)">
+            <summary>
+            Return the appropriate START code depending on the codeset we want to be in
+            </summary>
+            <param name="cs">The codeset you want to start in</param>
+            <returns>The code128 code to start a barcode in that codeset</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.Code128Code.StopCode">
+            <summary>
+            Return the Code128 stop code
+            </summary>
+            <returns>the stop code</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.Code128Code.CodeSetAllowed">
+            <summary>
+            Indicates which code sets can represent a character -- CodeA, CodeB, or either
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.CalculateHelp.BaseConvert(System.String,System.Int32,System.Int32)">
+            <summary>
+            任意进制转换
+            </summary>
+            <param name="paramSourceValue">要转换的字符串</param>
+            <param name="paramM">转换数字的当前进制</param>
+            <param name="paramN">要转换的进制</param>
+            <returns>转换后的字符串</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.CalculateHelp.RevBinaryFiles(System.String)">
+            <summary>
+            二进制字符串取反
+            </summary>
+            <param name="paramBinaryStr">字符串</param>
+            <returns>取反后字符串</returns>
+        </member>
+        <member name="F:SkyCar.Common.Utility.Constant.RegexList.MAILBOX">
+            <summary>
+            验证邮箱
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.Constant.RegexList.PHONENUMBER">
+            <summary>
+            验证手机号
+            </summary>
+        </member>
+        <member name="T:SkyCar.Common.Utility.CryptoHelp">
+            <summary>
+            加密解密
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.CryptoHelp.ErrorMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.CryptoHelp.Encode(System.String)">
+            <summary>
+            DES加密
+            </summary>
+            <param name="paramText">要加密的字符串</param>
+            <returns>返回加密后的结果</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.CryptoHelp.Decode(System.String)">
+            <summary>
+            DES解密
+            </summary>
+            <param name="paramText">要解密的字符串</param>
+            <returns>解密后结果</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.CryptoHelp.EncodeToSHA1(System.String)">
+            <summary>
+            SHA1加密
+            </summary>
+            <param name="paramText">要加密的字符串</param>
+            <returns>加密后的结果</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.CryptoHelp.EncodeToMD5(System.String)">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="paramText">要加密字符串</param>
+            <param name="error">异常信息</param>
+            <returns>加密后结果（null加密失败）</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.JpgImageHelp">
+            <summary>
+            图片操作（图片切割，图片压缩，缩略图生成）【未测试】
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JpgImageHelp.imageCut(System.String,System.Int32,System.Int32,System.Int64,System.String)">
+            <summary>
+            图片切割函数
+            </summary>
+            <param name="sourceFile">原始图片文件</param>
+            <param name="xNum">在Ｘ轴上的切割数量</param>
+            <param name="yNum">在Ｙ轴上的切割数量</param>
+            <param name="quality">质量压缩比</param>
+            <param name="outputFile">输出文件名，不带后缀</param>
+            <returns>成功返回true，失败则返回false</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JpgImageHelp.imageCompress(System.String,System.Int64,System.String)">
+            <summary>
+            图片压缩函数
+            </summary>
+            <param name="sourceFile">原始图片文件</param>
+            <param name="quality">质量压缩比</param>
+            <param name="ouputFile">输出文件名,请用 .jpg 后缀 </param>
+            <returns>成功返回true，失败则返回false</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SkyCar.Common.Utility.JpgImageHelp.getThumImage(System.String,System.Int64,System.Int32,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:SkyCar.Common.Utility.JpgImageHelp.GetEncoderInfo(System.String)" -->
+        <member name="T:SkyCar.Common.Utility.FileHelp">
+            <summary>
+            文件操作
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileHelp.ReadFile(System.String,System.String@)">
+            <summary>
+            读取文件
+            </summary>
+            <param name="paramFilePath">文件路径和名称</param>
+            <param name="paramFileContent">文件内容</param>
+            <returns>返回读取状态（bool）</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileHelp.WriteFile(System.String,System.String)">
+            <summary>
+            写文件
+            </summary>
+            <param name="paramFileContent">要写入的内容</param>
+            <param name="paramFilePath">文件存放的位置以及文件名</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileHelp.UpdateFile(System.String,System.String)">
+            <summary>
+            文件追加
+            </summary>
+            <param name="paramAddContent">新增内容</param>
+            <param name="paramFilePath">文件路径</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileHelp.DeleteFile(System.String)">
+            <summary>
+            文件删除
+            </summary>
+            <param name="paramFilePath">文件路径</param>
+        </member>
+        <member name="T:SkyCar.Common.Utility.FileItem">
+            <summary>
+            文件元数据。
+            可以使用以下几种构造方法：
+            本地路径：new FileItem("C:/temp.jpg");
+            本地文件：new FileItem(new FileInfo("C:/temp.jpg"));
+            字节流：new FileItem("abc.jpg", bytes);
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.#ctor(System.IO.FileInfo)">
+            <summary>
+            基于本地文件的构造器。
+            </summary>
+            <param name="paramFileInfo">本地文件</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.#ctor(System.String)">
+            <summary>
+            基于本地文件全路径的构造器。
+            </summary>
+            <param name="paramFilePath">本地文件全路径</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.#ctor(System.String,System.Byte[])">
+            <summary>
+            基于文件名和字节流的构造器。
+            </summary>
+            <param name="paramFileName">文件名称（服务端持久化字节流到磁盘时的文件名）</param>
+            <param name="paramContent">文件字节流</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.#ctor(System.String,System.Byte[],System.String)">
+            <summary>
+            基于文件名、字节流和媒体类型的构造器。
+            </summary>
+            <param name="paramFileName">文件名（服务端持久化字节流到磁盘时的文件名）</param>
+            <param name="paramContent">文件字节流</param>
+            <param name="paramMimeType">媒体类型</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.GetFileSuffix(System.Byte[])">
+            <summary>
+            获取文件的真实后缀名。目前只支持JPG, GIF, PNG, BMP四种图片文件。
+            </summary>
+            <param name="paramFileData">文件字节流</param>
+            <returns>JPG, GIF, PNG or null</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.GetMimeType(System.Byte[])">
+            <summary>
+            获取文件的真实媒体类型。目前只支持JPG, GIF, PNG, BMP四种图片文件。
+            </summary>
+            <param name="paramFileData">文件字节流</param>
+            <returns>媒体类型</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.FileItem.GetMimeType(System.String)">
+            <summary>
+            根据文件后缀名获取文件的媒体类型。
+            </summary>
+            <param name="paramFileName">带后缀的文件名或文件全名</param>
+            <returns>媒体类型</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.JsonHelper">
+            <summary>
+            Json帮助类
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.SerializeObject(System.Object)">
+            <summary>
+            将对象序列化为JSON格式
+            </summary>
+            <param name="paramObject">对象</param>
+            <returns>json字符串</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.DeserializeJsonToObject``1(System.String)">
+            <summary>
+            解析JSON字符串生成对象实体
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="paramJson">json字符串</param>
+            <returns>对象实体</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.DeserializeJsonToList``1(System.String)">
+            <summary>
+            解析JSON数组生成对象实体集合
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="paramJson">json数组字符串</param>
+            <returns>对象实体集合</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.DeserializeAnonymousType``1(System.String,``0)">
+            <summary>
+            反序列化JSON到给定的匿名对象.
+            </summary>
+            <typeparam name="T">匿名对象类型</typeparam>
+            <param name="paramJson">json字符串</param>
+            <param name="paramAnonymousTypeModel">匿名对象</param>
+            <returns>匿名对象</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.GetJosnValue(System.String,System.String)">
+            <summary>
+            获取Json string某节点的值。
+            </summary>
+            <param name="json"></param>
+            <param name="paramKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.ConvertDateTimeInt(System.DateTime)">
+            <summary>
+            datetime转换成unixtime
+            </summary>
+            <param name="paramTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.JsonHelper.ConvertIntDateTime(System.Double)">
+            <summary>
+            将Unix时间戳转换为DateTime类型时间
+            </summary>
+            <param name="paramUnixTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.#ctor">
+            <summary>
+            构造函数，初始化计数器等
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.LocalSystemHelper.ProcessorCount">
+            <summary>
+            获取CPU个数
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.LocalSystemHelper.CpuLoad">
+            <summary>
+            获取CPU占用率
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.LocalSystemHelper.MemoryAvailable">
+            <summary>
+            获取可用内存
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.LocalSystemHelper.AvailableMemory">
+            <summary>
+            获取可用内存(G)
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.LocalSystemHelper.PhysicalMemory">
+            <summary>
+            获取物理内存
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.EndProcess(System.Int32)">
+            <summary>
+            结束指定进程
+            </summary>
+            <param name="pid">进程的 Process ID</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.FindAllApps(System.Int32)">
+            <summary>
+            查找所有应用程序标题
+            </summary>
+            <returns>应用程序标题范型</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.GetBIOSSerialNumber">
+            <summary>
+            获取主板序列号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.GetCPUSerialNumber">
+            <summary>
+            获取CPU序列号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.GetHardDiskSerialNumber">
+            <summary>
+            获取硬盘序列号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.GetNetCardMACAddress">
+            <summary>
+            获取网卡地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.LocalSystemHelper.GetPhisicalMemorySize">
+            <summary>
+            获取系统内存大小（单位M）
+            </summary>
+            <returns>内存大小（单位M）</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.PCInfo">
+            <summary>
+            获取本地计算机相关信息类
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.PCInfo.GetLocalIP">
+            <summary>
+            获取本机的IP
+            </summary>
+            <returns>IP</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.PCInfo.GetLocalMac">
+            <summary>
+            获取本机MAC
+            </summary>
+            <returns>MAC</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.PCInfo.GetLocalCPU">
+            <summary>
+            获取本地CPU
+            </summary>
+            <returns>CPU</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.PCInfo.GetDiskID">
+            <summary>
+            获取硬盘序列号
+            </summary>
+            <returns>DiskID</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.PCInfo.GetlocalVersion">
+            <summary>
+            获取当前操作系统版本
+            </summary>
+            <returns>VersionNO</returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.QRCodeHelp">
+            <summary>
+            二维码生成类
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.QRCodeHelp.CreateQRCodeImg(System.String,System.Int32,System.Drawing.Color,System.Drawing.Color,System.Boolean)">
+            <summary>  
+            生成二维码图片  
+            </summary>  
+            <param name="paramContent">要生成二维码的字符串</param>       
+            <param name="paramSize">大小尺寸</param>  
+            <param name="paramBackgroundColor">背景颜色</param>  
+            <param name="paramForeColor">前景颜色</param>  
+            <param name="paramIsEncrypt">二维码内容是否加密</param> 
+            <returns>二维码图片</returns>  
+        </member>
+        <member name="M:SkyCar.Common.Utility.QRCodeHelp.CreateQRCodeImg(System.String,System.Int32)">
+            <summary>  
+            生成二维码图片  
+            </summary>  
+            <param name="paramContent">要生成二维码的字符串</param>       
+            <param name="paramSize">大小尺寸</param>  
+            <returns>二维码图片</returns>  
+        </member>
+        <member name="M:SkyCar.Common.Utility.QRCodeHelp.SaveImg(System.String,System.String,System.Drawing.Bitmap)">
+            <summary>  
+            保存图片  
+            </summary>  
+            <param name="paramPath">保存路径</param>  
+            <param name="paramImg">图片</param>  
+        </member>
+        <member name="M:SkyCar.Common.Utility.QRCodeHelp.QRCodeDecode(System.String)">
+            <summary>
+            二维码解码
+            </summary>
+            <param name="paramCode">加密后的二维码</param>
+            <returns></returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.RedisKey">
+            <summary>
+            缓存Key
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_USER_REQUEST_FORMATSTR">
+            <summary>
+            [新版Key]指定OpenID的请求
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_USER_PAY_FORMATSTR">
+            <summary>
+            [新版Key]指定OpenID请求相关缓存
+            <para>Get后请调用Remove方法移除此缓存</para>
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_MCTCODE">
+            <summary>
+            [新版Key]商户编码
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_MCTNAME">
+            <summary>
+            [新版Key]商户名称
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_MCTORGINFO">
+            <summary>
+            [新版Key]商户组织信息
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_MCTADDRESS_BOOK">
+            <summary>
+            [新版Key]商户通讯录
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_WECHAT_CODE">
+            <summary>
+            [新版Key]微信公众号的微信号
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVICE_APP_ID">
+            <summary>
+            [新版Key]ServiceAppID
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVICE_APP_SECRET">
+            <summary>
+            [新版Key]ServiceAppSecret
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVER_TOKEN">
+            <summary>
+            [新版Key]ServerToken
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVICE_ACCESS_TOKEN">
+            <summary>
+            [新版Key]ServiceAccessToken
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVICE_ACCESS_TOKEN_TIME">
+            <summary>
+            [新版Key]ServiceAccessTokenTime
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_JS_API_TICKET">
+            <summary>
+            [新版Key]Sky_JsApiTicket
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_JS_API_TICKET_TIME">
+            <summary>
+            [新版Key]Sky_JsApiTicketTime
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_WECHAT_STATION">
+            <summary>
+            [新版Key]WechatStation
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_TULING_API_KEY">
+            <summary>
+            [新版Key]TuLingAPIKey
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_AUTO_REPLAY_MACHINE_NAME">
+            <summary>
+            [新版Key]AutoReplayMachineName
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_LBSURL">
+            <summary>
+            [新版Key]LBSURL
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVER_TEL">
+            <summary>
+            [新版Key]微信服务电话
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_WECHAT_SEND_MSG_URL">
+            <summary>
+            [新版Key]模板消息统一发送服务地址
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SYSTEM_PARAMETER">
+            <summary>
+            [新版Key]系统参数
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_PRODUCT_INFO">
+            <summary>
+            [新版Key][平台用]所有产品信息
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_MERCHANT_INFO">
+            <summary>
+            [新版Key][平台用]所有商户信息
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_WECHAT_CONFIG_FORMATSTR">
+            <summary>
+            [新版Key][平台用]商户微信配置信息
+            <para>格式字符串:Sky_{0}_WechatConfig</para>
+            <para>调用:string.Format(RedisKey.SKY_WECHAT_CONFIG_FORMATSTR, "商户编码");</para>
+            <para>输出:Sky_商户编码_WechatConfig</para>
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_SERVER_CONFIG_FORMATSTR">
+            <summary>
+            [新版Key][平台用]商户服务器信息
+            <para>格式字符串:Sky_{0}_ServerConfig</para>
+            <para>调用:string.Format(RedisKey.SKY_SERVER_CONFIG_FORMATSTR, "商户编码");</para>
+            <para>输出:Sky_商户编码_ServerConfig</para>
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_PRODUCT_LICENSE_FORMATSTR">
+            <summary>
+            [新版Key][平台用]商户产品授权信息
+            <para>格式字符串:Sky_{0}_MctProductLicense</para>
+            <para>调用:string.Format(RedisKey.SKY_PRODUCT_LICENSE_FORMATSTR, "商户编码");</para>
+            <para>输出:Sky_商户编码_MctProductLicense</para>
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_ORG_PRODUCT_LICENSE_FORMATSTR">
+            <summary>
+            [新版Key][平台用]商户组织产品授权信息
+            <para>格式字符串:Sky_{0}_OrgProductLicense</para>
+            <para>调用:string.Format(RedisKey.SKY_ORG_PRODUCT_LICENSE_FORMATSTR, "商户编码");</para>
+            <para>输出:Sky_商户编码_OrgProductLicense</para>
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.SKY_VEHICLE_HEALTH_ARCHIVE_SERVICE_ACCESSTOKEN">
+            <summary>
+            [新版Key]AccessToken(车辆健康档案接口用)
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_NAME">
+            <summary>
+            [旧版Key]公司信息-公司名称
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_LEGALPERSON">
+            <summary>
+            [旧版Key]公司信息-法人
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_TYPE">
+            <summary>
+            [旧版Key]公司信息-公司类型
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_ADDRESS1">
+            <summary>
+            [旧版Key]公司信息-公司所在地
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_ADDRESS2">
+            <summary>
+            [旧版Key]公司信息-经营地址
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_TEL">
+            <summary>
+            [旧版Key]公司信息-固定电话
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_FAX">
+            <summary>
+            [旧版Key]公司信息-传真号码
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_EMAIL">
+            <summary>
+            [旧版Key]公司信息-公司邮箱
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_WEBSTATION">
+            <summary>
+            [旧版Key]公司信息-公司网站
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_BANKNAME">
+            <summary>
+            [旧版Key]公司信息-开户银行
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.COMPANY_BANKNO">
+            <summary>
+            [旧版Key]公司信息-账号
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_ORGNAME">
+            <summary>
+            [旧版Key]微信参数-组织名称
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_SERVICEAPPID">
+            <summary>
+            [旧版Key]微信参数-ServiceAppID
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_SERVICEAPPSECRET">
+            <summary>
+            [旧版Key]微信参数-ServiceAppSecret
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_SERVERTOKEN">
+            <summary>
+            [旧版Key]微信参数-Token(令牌)
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_SERVICEACCESSTOKEN">
+            <summary>
+            [旧版Key]微信参数-ServiceAccessToken
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_SERVICEACCESSTOKENTIME">
+            <summary>
+            [旧版Key]微信参数-ServiceAccessTokenTime
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_WECHATSTATION">
+            <summary>
+            [旧版Key]微信参数-微信网站域名(页面跳转用)
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_LBSURL">
+            <summary>
+            [旧版Key]微信参数-高德LBSURL
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_SERVERTEL">
+            <summary>
+            [旧版Key]微信参数-服务电话
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_TULINGAPIKEY">
+            <summary>
+            [旧版Key]微信参数-图灵APIKey
+            </summary>
+        </member>
+        <member name="F:SkyCar.Common.Utility.RedisKey.WECHAT_AUTOREPLAYMACHINENAME">
+            <summary>
+            [旧版Key]微信参数-图灵机器人名称
+            </summary>
+        </member>
+        <member name="T:SkyCar.Common.Utility.RegistryHelp">
+            <summary>
+            注册表操作
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.RegistryHelp.GetRegistryData(Microsoft.Win32.RegistryKey,System.String,System.String)">
+            <summary>
+            读取指定名称的注册表的值
+            </summary>
+            <param name="paramRoot">主键</param>
+            <param name="paramSubkey">子键</param>
+            <param name="paramName">注册表名称</param>
+            <returns>注册表项的值</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.RegistryHelp.SetRegistryData(Microsoft.Win32.RegistryKey,System.String,System.String,System.String)">
+            <summary>
+             向注册表中添加注册表项
+            </summary>
+            <param name="paramRoot">主键</param>
+            <param name="paramSubkey">子键</param>
+            <param name="paramName">注册表项名</param>
+            <param name="paramValue">写入的值</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.RegistryHelp.DeleteRegist(Microsoft.Win32.RegistryKey,System.String,System.String)">
+             <summary>
+            删除注册表中指定的注册表项 
+             </summary>
+             <param name="root">主键</param>
+             <param name="subkey">指定删除的子键</param>
+             <param name="paramName">注册表项值的名称</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.RegistryHelp.DeleteSubKey(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            删除注册表中指定的子键
+            </summary>
+            <param name="paramRoot">主键</param>
+            <param name="paramSubkey">子键</param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.RegistryHelp.UpdateRegist(Microsoft.Win32.RegistryKey,System.String,System.String,System.String)">
+            <summary>
+            修改注册表指定子键的值
+            </summary>
+            <param name="paramRoot">主键</param>
+            <param name="paramSubkey">子键</param>
+            <param name="paramName">要修改的注册表项的名称</param>
+            <param name="paramValue">修改后的值</param>
+        </member>
+        <member name="T:SkyCar.Common.Utility.WebUtils">
+            <summary>
+            网络工具类。
+            </summary>
+        </member>
+        <member name="P:SkyCar.Common.Utility.WebUtils.Timeout">
+            <summary>
+            请求与响应的超时时间
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DoPost(System.String,System.String)">
+            <summary>
+            执行HTTP POST请求。
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramPostData">post数据</param>
+            <returns>HTTP响应</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DoPostByJson(System.String,System.String)">
+            <summary>
+            执行HTTP POST请求。
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramJsonData">Json数据</param>
+            <returns>HTTP响应</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DoPost(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            执行HTTP POST请求。
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramParameters">请求参数</param>
+            <returns>HTTP响应</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DoGet(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            执行HTTP GET请求。
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramParameters">请求参数</param>
+            <returns>HTTP响应</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DoPost(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,SkyCar.Common.Utility.FileItem})">
+            <summary>
+            执行带文件上传的HTTP POST请求。【不推荐】
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramTextParameters">请求文本参数</param>
+            <param name="paramFileParameters">请求文件参数</param>
+            <returns>HTTP响应</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DoPost(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            执行带文件上传的HTTP POST请求。【推荐】
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramTextParameters">请求文本参数</param>
+            <param name="paramFileParameters">请求文件参数（Key将作为新文件名）</param>
+            <returns>HTTP响应</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.GetWebStatusCode(System.String,System.Int32)">
+            <summary>
+            获取Url请求返回码（正常:200）
+            </summary>
+            <param name="paramUrl">请求地址(格式：http://**.com)</param>
+            <param name="paramTimeout">超时时间（毫秒）</param>
+            <returns>正常:200</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.GetResponseAsString(System.Net.HttpWebResponse,System.Text.Encoding)">
+            <summary>
+            把响应流转换为文本。
+            </summary>
+            <param name="paramResponse">响应流对象</param>
+            <param name="paramEncoding">编码方式</param>
+            <returns>响应文本</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.BuildGetUrl(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            组装GET请求URL。
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramParameters">请求参数</param>
+            <returns>带参数的GET请求URL</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.BuildQuery(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            组装普通文本请求参数。
+            </summary>
+            <param name="paramParameters">Key-Value形式请求参数字典</param>
+            <returns>URL编码后的请求数据</returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.WebUtils.DownloadFileByWebClient(System.String,System.String,System.String@)">
+            <summary>
+            下载文件
+            </summary>
+            <param name="paramURL">请求地址</param>
+            <param name="paramSaveFileFullName">文件名（包含路径的文件全名）</param>
+            <param name="paramErrHtml"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SkyCar.Common.Utility.XmlFileUtility">
+            <summary>
+            Xml序列化与反序列化
+            </summary>
+        </member>
+        <member name="M:SkyCar.Common.Utility.XmlFileUtility.Deserialize(System.Type,System.String)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="paramType">类型</param>
+            <param name="paramXmlFilePath">XML文件位置</param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.XmlFileUtility.Deserialize(System.Type,System.IO.Stream)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="paramType"></param>
+            <param name="paramXmlStream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.XmlFileUtility.Serializer(System.Type,System.Object)">
+            <summary>
+            序列化
+            </summary>
+            <param name="paramType">类型</param>
+            <param name="paramObj">对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.XmlFileUtility.IsFileInUse(System.String)">
+            <summary>
+            判断文件是否正在被使用
+            </summary>
+            <param name="paramFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Common.Utility.XmlFileUtility.SerializeToXmlFile(System.String,System.Type,System.Object)">
+            <summary>
+            序列化对象并保存到Xml文件
+            </summary>
+            <param name="paramFileName"></param>
+            <param name="objType"></param>
+            <param name="paramObj"></param>
+        </member>
+        <member name="M:SkyCar.Common.Utility.XmlFileUtility.DeserializeXmlFileToObj(System.String,System.Type)">
+            <summary>
+            读取Xml文件反序列化并返回对象
+            </summary>
+            <param name="paramXmlFilePath"></param>
+            <param name="paramObjType"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

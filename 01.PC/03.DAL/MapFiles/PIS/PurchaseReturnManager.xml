@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--采购退货出库管理UIModel-->
+    <typeAlias alias="PurchaseReturnManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseReturnManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--采购退货出库管理QCModel-->
+    <typeAlias alias="PurchaseReturnManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseReturnManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[采购退货出库管理]【列表】信息-->
+    <select id="PurchaseReturnManager_SQL_01" parameterClass="PurchaseReturnManagerQCModel" resultClass="PurchaseReturnManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.SOB_ID)
+      FROM PIS_StockOutBill T1
+      INNER JOIN SM_Organization T2
+      ON T2.Org_ID = T1.SOB_Org_ID
+      AND T1.SOB_IsValid = 1
+      LEFT JOIN FM_AccountPayableBill T3
+      ON T3.APB_SourceBillNo = T1.SOB_No
+      AND T3.APB_ApprovalStatusName = '已审核'
+      AND T3.APB_SourceTypeName = '出库应付'
+      AND T3.APB_BillDirectName = '负向'
+      WHERE 1 = 1
+      AND T1.SOB_SourceTypeName = '退货出库'
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_Org_ID">T1.SOB_Org_ID LIKE '%'+#WHERE_SOB_Org_ID#+'%'</isNotEmpty>
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_No">T1.SOB_No LIKE '%'+#WHERE_SOB_No#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceNo">T1.SOB_SourceNo LIKE '%'+#WHERE_SOB_SourceNo#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SUPP_Name">T1.SOB_SUPP_Name LIKE '%'+#WHERE_SOB_SUPP_Name#+'%'</isNotEmpty>
+      <!--单据状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_StatusName">T1.SOB_StatusName LIKE '%'+#WHERE_SOB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_ApprovalStatusName">T1.SOB_ApprovalStatusName LIKE '%'+#WHERE_SOB_ApprovalStatusName#+'%'</isNotEmpty>
+
+      SELECT @RecordCount 'RecordCount',
+      0 'IsChecked',
+      T1.SOB_No,
+      T2.Org_ShortName,
+      T1.SOB_SourceTypeName,
+      T1.SOB_SourceNo,
+      T1.SOB_SUPP_Name,
+      T1.SOB_StatusName,
+      T1.SOB_ApprovalStatusName,
+      T1.SOB_Remark,
+      T1.SOB_IsValid,
+      T1.SOB_CreatedBy,
+      T1.SOB_CreatedTime,
+      T1.SOB_UpdatedBy,
+      T1.SOB_UpdatedTime,
+      T1.SOB_ID,
+      T1.SOB_Org_ID,
+      T1.SOB_SUPP_ID,
+      T1.SOB_SourceTypeCode,
+      T1.SOB_StatusCode,
+      T1.SOB_ApprovalStatusCode,
+      T1.SOB_VersionNo,
+      T3.APB_BillDirectName,
+      T3.APB_AccountPayableAmount 'APB_AccountPayableAmount',
+      T3.APB_PaidAmount 'APB_PaidAmount',
+      ISNULL( T3.APB_AccountPayableAmount, 0) - ISNULL(T3.APB_PaidAmount, 0) 'APB_UnPaidAmount'
+      FROM PIS_StockOutBill T1
+      INNER JOIN SM_Organization T2
+      ON T2.Org_ID = T1.SOB_Org_ID
+      AND T1.SOB_IsValid = 1
+      LEFT JOIN FM_AccountPayableBill T3
+      ON T3.APB_SourceBillNo = T1.SOB_No
+      AND T3.APB_ApprovalStatusName = '已审核'
+      AND T3.APB_SourceTypeName = '出库应付'
+      AND T3.APB_BillDirectName = '负向'
+      WHERE 1 = 1
+      AND T1.SOB_SourceTypeName = '退货出库'
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_Org_ID">T1.SOB_Org_ID LIKE '%'+#WHERE_SOB_Org_ID#+'%'</isNotEmpty>
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_No">T1.SOB_No LIKE '%'+#WHERE_SOB_No#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceNo">T1.SOB_SourceNo LIKE '%'+#WHERE_SOB_SourceNo#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SUPP_Name">T1.SOB_SUPP_Name LIKE '%'+#WHERE_SOB_SUPP_Name#+'%'</isNotEmpty>
+      <!--单据状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_StatusName">T1.SOB_StatusName LIKE '%'+#WHERE_SOB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_ApprovalStatusName">T1.SOB_ApprovalStatusName LIKE '%'+#WHERE_SOB_ApprovalStatusName#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.SOB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+  </statements>
+
+</sqlMap>

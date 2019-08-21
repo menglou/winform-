@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--码表管理QCModel-->
+    <typeAlias alias="CodeTableManagerQCModel" type="SkyCar.Coeus.UIModel.BS.CodeTableManagerQCModel,SkyCar.Coeus.UIModel.BS" />
+    <!--码表管理UIModel-->
+    <typeAlias alias="CodeTableManagerUIModel" type="SkyCar.Coeus.UIModel.BS.CodeTableManagerUIModel,SkyCar.Coeus.UIModel.BS" />
+  </alias>
+  <statements>
+    <!--查询码表管理列表-->
+    <select id="CodeTableManager_SQL01" parameterClass="CodeTableManagerQCModel" resultClass="CodeTableManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.CT_ID)
+      FROM SM_CodeTable  T1
+      INNER JOIN SM_Enum T2 ON T2.Enum_Key = 'CodeType'
+      AND T2.Enum_ValueCode = T1.CT_Type
+      <dynamic prepend="WHERE">
+        <!--类型-->
+        <isNotEmpty prepend="AND" property="WHERE_CT_Type">T1.CT_Type LIKE '%'+#WHERE_CT_Type#+'%'</isNotEmpty>
+        <!--参数名称-->
+        <isNotEmpty prepend="AND" property="WHERE_CT_Name">T1.CT_Name LIKE '%'+#WHERE_CT_Name#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_CT_IsValid">T1.CT_IsValid=#WHERE_CT_IsValid#</isNotNull>
+      </dynamic>
+
+      SELECT
+      @RecordCount 'RecordCount',
+      T1.CT_ID ,
+      T1.CT_Type ,
+      T1.CT_Name ,
+      T1.CT_Value ,
+      T1.CT_Desc ,
+      T1.CT_IsValid ,
+      T1.CT_CreatedBy ,
+      T1.CT_CreatedTime ,
+      T1.CT_UpdatedBy ,
+      T1.CT_UpdatedTime ,
+      T1.CT_VersionNo ,
+      T2.Enum_DisplayName
+      FROM SM_CodeTable T1
+      INNER JOIN SM_Enum T2 ON T2.Enum_Key = 'CodeType'
+      AND T2.Enum_ValueCode = T1.CT_Type
+      <dynamic prepend="WHERE">
+        <!--类型-->
+        <isNotEmpty prepend="AND" property="WHERE_CT_Type">T1.CT_Type LIKE '%'+#WHERE_CT_Type#+'%'</isNotEmpty>
+        <!--参数名称-->
+        <isNotEmpty prepend="AND" property="WHERE_CT_Name">T1.CT_Name LIKE '%'+#WHERE_CT_Name#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_CT_IsValid">T1.CT_IsValid=#WHERE_CT_IsValid#</isNotNull>
+      </dynamic>
+
+      <!--翻页用-->
+      ORDER BY T1.CT_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--验证参数类型和参数值的唯一性-->
+    <select id="CodeTableManager_SQL02" parameterClass="MDLSM_CodeTable" resultClass="int">
+      SELECT  COUNT(T1.CT_ID)
+      FROM SM_CodeTable  T1
+      WHERE T1.CT_IsValid=1
+      <!--ID-->
+      <isNotEmpty prepend="AND" property="WHERE_CT_ID">T1.CT_ID <![CDATA[<>]]> #WHERE_CT_ID# </isNotEmpty>
+      <!--类型-->
+      <isNotEmpty prepend="AND" property="WHERE_CT_Type">T1.CT_Type =#WHERE_CT_Type#</isNotEmpty>
+      <!--参数名称-->
+      <isNotEmpty prepend="AND" property="WHERE_CT_Name">T1.CT_Name =#WHERE_CT_Name#</isNotEmpty>
+    </select>
+
+    <!--查询码表是否被引用过-->
+    <select id="CodeTableManager_SQL03" parameterClass="MDLSM_CodeTable" resultClass="int">
+      SELECT  COUNT(T1.TempID)
+      FROM    ( SELECT    T11.APA_ID 'TempID'
+      FROM      BS_AutoPartsArchive T11
+      WHERE     T11.APA_IsValid = 1
+      AND #WHERE_CT_Type# = 'AutoPartsLevel'
+      AND ISNULL(T11.APA_Level, '') != ''
+      AND T11.APA_Level = #WHERE_CT_Name#
+      UNION
+      SELECT    T12.VBIS_ID 'TempID'
+      FROM      BS_VehicleBrandInspireSumma T12
+      WHERE     T12.VBIS_IsValid = 1
+      AND #WHERE_CT_Type# = 'VehicleModel'
+      AND ISNULL(T12.VBIS_Model, '') != ''
+      AND T12.VBIS_Model = #WHERE_CT_Name#
+      ) T1
+    </select>
+    
+  </statements>
+</sqlMap>

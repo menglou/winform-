@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--车型配件匹配管理QCModel-->
+    <typeAlias alias="VehicleModelMatchAutoPartsManagerQCModel" type="SkyCar.Coeus.UIModel.BS.QCModel.VehicleModelMatchAutoPartsManagerQCModel,SkyCar.Coeus.UIModel.BS" />
+    <!--车型配件匹配管理UIModel-->
+    <typeAlias alias="VehicleModelMatchAutoPartsManagerUIModel" type="SkyCar.Coeus.UIModel.BS.UIModel.VehicleModelMatchAutoPartsManagerUIModel,SkyCar.Coeus.UIModel.BS" />
+    <!--原厂件信息UIModel-->
+    <typeAlias alias="VehicleOemPartsInfoUIModel" type="SkyCar.Coeus.UIModel.BS.UIModel.VehicleOemPartsInfoUIModel,SkyCar.Coeus.UIModel.BS" />
+    <!--品牌件信息UIModel-->
+    <typeAlias alias="VehicleThirdPartsInfoUIModel" type="SkyCar.Coeus.UIModel.BS.UIModel.VehicleThirdPartsInfoUIModel,SkyCar.Coeus.UIModel.BS" />
+  </alias>
+
+  <statements>
+
+    <!--查询车辆信息列表-->
+    <select id="VehicleModelMatchAutoPartsManager_SQL01" parameterClass="VehicleModelMatchAutoPartsManagerQCModel" resultClass="VehicleModelMatchAutoPartsManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.VC_ID)
+      FROM    BS_VehicleInfo T1
+      WHERE   T1.VC_IsValid = 1
+      <!--车架号-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_VIN">T1.VC_VIN LIKE '%'+#WHERE_VC_VIN#+'%'</isNotEmpty>
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Brand">T1.VC_Brand LIKE '%'+#WHERE_VC_Brand#+'%'</isNotEmpty>
+      <!--车系-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Inspire">T1.VC_Inspire LIKE '%'+#WHERE_VC_Inspire#+'%'</isNotEmpty>
+      <!--车型描述-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_BrandDesc">T1.VC_BrandDesc LIKE '%'+#WHERE_VC_BrandDesc#+'%'</isNotEmpty>
+      <!--排量-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Capacity">T1.VC_Capacity LIKE '%'+#WHERE_VC_Capacity#+'%'</isNotEmpty>
+      <!--发动机型号-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_EngineType">T1.VC_EngineType LIKE '%'+#WHERE_VC_EngineType#+'%'</isNotEmpty>
+      <!--备注-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Remark">T1.VC_Remark LIKE '%'+#WHERE_VC_Remark#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.VC_ID ,
+      T1.VC_VIN ,
+      T1.VC_PlateNumber ,
+      T1.VC_Brand ,
+      T1.VC_Inspire ,
+      T1.VC_BrandDesc ,
+      T1.VC_Capacity ,
+      T1.VC_EngineType ,
+      T1.VC_Remark ,
+      T1.VC_IsValid ,
+      T1.VC_CreatedBy ,
+      T1.VC_CreatedTime ,
+      T1.VC_UpdatedBy ,
+      T1.VC_UpdatedTime ,
+      T1.VC_VersionNo
+      FROM    BS_VehicleInfo T1
+      WHERE   T1.VC_IsValid = 1
+      <!--车架号-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_VIN">T1.VC_VIN LIKE '%'+#WHERE_VC_VIN#+'%'</isNotEmpty>
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Brand">T1.VC_Brand LIKE '%'+#WHERE_VC_Brand#+'%'</isNotEmpty>
+      <!--车系-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Inspire">T1.VC_Inspire LIKE '%'+#WHERE_VC_Inspire#+'%'</isNotEmpty>
+      <!--车型描述-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_BrandDesc">T1.VC_BrandDesc LIKE '%'+#WHERE_VC_BrandDesc#+'%'</isNotEmpty>
+      <!--排量-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Capacity">T1.VC_Capacity LIKE '%'+#WHERE_VC_Capacity#+'%'</isNotEmpty>
+      <!--发动机型号-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_EngineType">T1.VC_EngineType LIKE '%'+#WHERE_VC_EngineType#+'%'</isNotEmpty>
+      <!--备注-->
+      <isNotEmpty prepend="AND" property="WHERE_VC_Remark">T1.VC_Remark LIKE '%'+#WHERE_VC_Remark#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.VC_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据车架号查询车辆原厂件信息-->
+    <select id="VehicleModelMatchAutoPartsManager_SQL02" parameterClass="VehicleModelMatchAutoPartsManagerQCModel" resultClass="VehicleOemPartsInfoUIModel">
+      SELECT  0 'IsChecked' ,
+      T1.VOPI_ID ,
+      T1.VOPI_VC_VIN ,
+      T1.VOPI_OEMNo ,
+      T1.VOPI_AutoPartsName ,
+      T1.VOPI_Remark ,
+      T1.VOPI_IsValid ,
+      T1.VOPI_CreatedBy ,
+      T1.VOPI_CreatedTime ,
+      T1.VOPI_UpdatedBy ,
+      T1.VOPI_UpdatedTime ,
+      T1.VOPI_VersionNo ,
+      T1.VOPI_ID 'WHERE_VOPI_ID' ,
+      CASE #IsUsedDelete#
+      WHEN 1 THEN 'Delete'
+      END 'VOPI_OperateType'
+      FROM    BS_VehicleOemPartsInfo T1
+      WHERE   T1.VOPI_IsValid = 1
+      AND #WHERE_VC_VIN# LIKE '%' + T1.VOPI_VC_VIN + ';%'
+    </select>
+
+    <!--根据车架号查询车辆品牌件信息-->
+    <select id="VehicleModelMatchAutoPartsManager_SQL03" parameterClass="VehicleModelMatchAutoPartsManagerQCModel" resultClass="VehicleThirdPartsInfoUIModel">
+      SELECT  0 'IsChecked' ,
+      T1.VTPI_ID ,
+      T1.VTPI_VC_VIN ,
+      T1.VTPI_ThirdNo ,
+      T1.VTPI_AutoPartsName ,
+      T1.VTPI_AutoPartsBrand ,
+      T1.VTPI_Remark ,
+      T1.VTPI_IsValid ,
+      T1.VTPI_CreatedBy ,
+      T1.VTPI_CreatedTime ,
+      T1.VTPI_UpdatedBy ,
+      T1.VTPI_UpdatedTime ,
+      T1.VTPI_VersionNo ,
+      T1.VTPI_ID 'WHERE_VTPI_ID' ,
+      CASE #IsUsedDelete#
+      WHEN 1 THEN 'Delete'
+      END 'VTPI_OperateType'
+      FROM    BS_VehicleThirdPartsInfo T1
+      WHERE   T1.VTPI_IsValid = 1
+      AND #WHERE_VC_VIN# LIKE '%' + T1.VTPI_VC_VIN + ';%'
+    </select>
+
+    <!--检查车架号是否已存在-->
+    <select id="VehicleModelMatchAutoPartsManager_SQL04" parameterClass="MDLBS_VehicleInfo" resultClass="int">
+      SELECT  COUNT(T1.VC_ID)
+      FROM    BS_VehicleInfo T1
+      WHERE   T1.VC_IsValid = 1
+      AND T1.VC_ID != #WHERE_VC_ID#
+      AND T1.VC_VIN = #WHERE_VC_VIN#
+    </select>
+
+    <!--根据ID查询车辆原厂件件信息-->
+    <select id="VehicleModelMatchAutoPartsManager_SQL05" parameterClass="MDLBS_VehicleOemPartsInfo" resultClass="MDLBS_VehicleOemPartsInfo">
+      SELECT  T1.VOPI_ID ,
+      T1.VOPI_VC_VIN ,
+      T1.VOPI_OEMNo ,
+      T1.VOPI_AutoPartsName ,
+      T1.VOPI_Remark ,
+      T1.VOPI_IsValid ,
+      T1.VOPI_CreatedBy ,
+      T1.VOPI_CreatedTime ,
+      T1.VOPI_UpdatedBy ,
+      T1.VOPI_UpdatedTime ,
+      T1.VOPI_VersionNo
+      FROM    BS_VehicleOemPartsInfo T1
+      WHERE   T1.VOPI_IsValid = 1
+      AND #WHERE_VOPI_ID# LIKE '%' + T1.VOPI_ID + ';%'
+    </select>
+
+    <!--根据ID查询车辆品牌件信息-->
+    <select id="VehicleModelMatchAutoPartsManager_SQL06" parameterClass="MDLBS_VehicleThirdPartsInfo" resultClass="MDLBS_VehicleThirdPartsInfo">
+      SELECT  T1.VTPI_ID ,
+      T1.VTPI_VC_VIN ,
+      T1.VTPI_ThirdNo ,
+      T1.VTPI_AutoPartsName ,
+      T1.VTPI_AutoPartsBrand ,
+      T1.VTPI_Remark ,
+      T1.VTPI_IsValid ,
+      T1.VTPI_CreatedBy ,
+      T1.VTPI_CreatedTime ,
+      T1.VTPI_UpdatedBy ,
+      T1.VTPI_UpdatedTime ,
+      T1.VTPI_VersionNo
+      FROM    BS_VehicleThirdPartsInfo T1
+      WHERE   T1.VTPI_IsValid = 1
+      AND #WHERE_VTPI_ID# LIKE '%' + T1.VTPI_ID + ';%'
+    </select>
+    
+  </statements>
+</sqlMap>

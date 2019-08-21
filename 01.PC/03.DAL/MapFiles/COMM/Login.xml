@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <typeAlias alias="LoginUIModel" type="SkyCar.Coeus.UIModel.Common.LoginUIModel , SkyCar.Coeus.UIModel.Common"/>
+    <typeAlias alias="SystemConfigInfoUIModel" type="SkyCar.Coeus.UIModel.Common.SystemConfigInfoUIModel , SkyCar.Coeus.UIModel.Common"/>
+  </alias>
+  <statements>
+    <!--根据用户ID、用户名、密码、工号获取用户信息-->
+    <select id="Login_SQL01" parameterClass="LoginUIModel" resultClass="MDLSM_User">
+      IF #User_ID#='SuperAdmin' OR #User_Name#='SuperAdmin'
+      BEGIN
+      SELECT
+      'SuperAdmin' [User_ID]
+      ,'SuperAdmin'[User_Name]
+      ,NULL [User_Password]
+      ,'SuperAdmin' [User_EMPNO]
+      ,NULL [User_Sex]
+      ,NULL [User_Address]
+      ,NULL [User_PhoneNo]
+      ,NULL [User_IsValid]
+      ,NULL [User_CreatedBy]
+      ,NULL [User_CreatedTime]
+      ,NULL [User_UpdatedBy]
+      ,NULL [User_UpdatedTime]
+      ,NULL [User_VersionNo]
+      ,NULL [User_TransID]
+      END
+      ELSE
+      BEGIN
+      SELECT DISTINCT
+      T1.[User_ID]
+      ,T1.[User_Name]
+      ,T1.[User_Password]
+      ,T1.[User_EMPNO]
+      ,T1.[User_Sex]
+      ,T1.[User_Address]
+      ,T1.[User_PhoneNo]
+      ,T1.[User_IsValid]
+      ,T1.[User_CreatedBy]
+      ,T1.[User_CreatedTime]
+      ,T1.[User_UpdatedBy]
+      ,T1.[User_UpdatedTime]
+      ,T1.[User_VersionNo]
+      ,T1.[User_TransID]
+      FROM SM_User T1
+      INNER JOIN SM_UserOrg T2 ON T2.UO_User_ID=T1.User_ID <isNotEmpty prepend="AND" property="UO_Org_ID">T2.UO_Org_ID=#UO_Org_ID#</isNotEmpty>
+      WHERE T1.User_IsValid=1
+      <isNotNull prepend="AND" property="User_ID">T1.User_ID=#User_ID#</isNotNull>
+      <isNotNull prepend="AND" property="User_Name">T1.User_Name=#User_Name#</isNotNull>
+      <isNotNull prepend="AND" property="User_Password">T1.User_Password=#User_Password#</isNotNull>
+      <isNotNull prepend="AND" property="User_EMPNO">T1.User_EMPNO=#User_EMPNO#</isNotNull>
+      END
+    </select>
+    <!--根据用户ID取当前用户所在的组织-->
+    <select id="Login_SQL02" parameterClass="LoginUIModel" resultClass="MDLSM_Organization">
+      IF #User_ID#='SuperAdmin' OR #User_Name#='SuperAdmin'
+      BEGIN
+      SELECT
+      DISTINCT
+      T3.[Org_ID]
+      ,T3.[Org_ShortName]
+      FROM SM_Organization T3
+      WHERE T3.Org_IsValid=1
+      END
+      ELSE
+      BEGIN
+      SELECT
+      DISTINCT
+      T3.[Org_ID]
+      ,T3.[Org_ShortName]
+      FROM SM_UserOrg T1
+      INNER JOIN SM_User T2 ON T2.User_ID=T1.UO_User_ID
+      <isNotNull prepend="AND" property="User_ID">T2.User_ID=#User_ID#</isNotNull>
+      <isNotNull prepend="AND" property="User_EMPNO">T2.User_EMPNO=#User_EMPNO#</isNotNull>
+      INNER JOIN SM_Organization T3 ON T3.Org_ID=T1.UO_Org_ID AND T3.Org_IsValid=1
+      WHERE T1.UO_IsValid=1
+      END
+    </select>
+    <!--根据用户ID，组织ID获取系统配置信息-->
+    <select id="Login_SQL03" parameterClass="LoginUIModel" resultClass="SystemConfigInfoUIModel">
+      IF #User_ID#='SuperAdmin' OR #User_Name#='SuperAdmin'
+      BEGIN
+      SELECT
+      1 'User_IsSuperAdmin',
+      'SuperAdmin' User_ID,
+      'SuperAdmin' User_Name,
+      '' User_Password,
+      'SuperAdmin' User_EMPNO,
+      T5.Org_ShortName 'User_PrintTitlePrefix',
+      T5.Org_PlatformCode,
+      T5.Org_ID,
+      T5.Org_Code,
+      T5.Org_FullName,
+      T5.Org_ShortName,
+      T5.Org_Prov_Code,
+      T5.Org_Addr,
+      T5.Org_TEL,
+      T5.Org_PhoneNo,
+      ISNULL(T7.Para_Value1,'Coeus') 'SM_SystemName',
+      'Coeus' SM_SystemCode
+      FROM SM_Organization T5
+      LEFT JOIN SM_Parameter T7 ON T7.Para_Code1='0002'
+      WHERE T5.Org_IsValid=1
+      <isNotEmpty prepend="AND" property="UO_Org_ID">T5.Org_ID=#UO_Org_ID#</isNotEmpty>
+      END
+      ELSE
+      BEGIN
+      SELECT
+      0 'User_IsSuperAdmin',
+      T1.User_ID,
+      T1.User_Name,
+      T1.User_Password,
+      T1.User_EMPNO,
+      ISNULL(T1.User_PrintTitlePrefix,T5.Org_ShortName) 'User_PrintTitlePrefix',
+      T5.Org_PlatformCode,
+      T5.Org_ID,
+      T5.Org_Code,
+      T5.Org_FullName,
+      T5.Org_ShortName,
+      T5.Org_Prov_Code,
+      T5.Org_Addr,
+      T5.Org_TEL,
+      T5.Org_PhoneNo,
+      ISNULL(T7.Para_Value1,'Coeus') 'SM_SystemName',
+      'Coeus' SM_SystemCode
+      FROM SM_User T1
+      INNER JOIN SM_UserOrg T4 ON T4.UO_User_ID=T1.User_ID <isNotEmpty prepend="AND" property="UO_Org_ID">T4.UO_Org_ID=#UO_Org_ID#</isNotEmpty>
+      LEFT JOIN SM_Organization T5 ON T5.Org_ID=T4.UO_Org_ID
+      LEFT JOIN SM_Parameter T7 ON T7.Para_Code1='0002'
+      WHERE T1.User_IsValid=1
+      <isNotEmpty prepend="AND" property="User_ID">T1.User_ID=#User_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="User_Name">T1.User_Name=#User_Name#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="User_EMPNO">T1.User_EMPNO=#User_EMPNO#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="User_Password">T1.User_Password=#User_Password#</isNotEmpty>
+      END
+    </select>
+    <!--查询用户许可证-->
+    <select id="Login_SQL04" parameterClass="MDLSM_ClientUseLicense" resultClass="MDLSM_ClientUseLicense">
+      SELECT
+      CUL_ID
+      ,CUL_No
+      ,CUL_Name
+      ,CUL_ApplyReason
+      ,CUL_ContactNo
+      ,CUL_NetworkCardType1
+      ,CUL_MACAdress1
+      ,CUL_NetworkCardType2
+      ,CUL_MACAdress2
+      ,CUL_NetworkCardType3
+      ,CUL_MACAdress3
+      ,CUL_ApproveStatus
+      ,CUL_InvalidDate
+      ,CUL_IsValid
+      ,CUL_Remark
+      ,CUL_CreatedBy
+      ,CUL_CreatedTime
+      ,CUL_UpdatedBy
+      ,CUL_UpdatedTime
+      ,CUL_VersionNo
+      ,CUL_TransID
+      FROM SM_ClientUseLicense
+      WHERE CUL_IsValid=1
+      <!--AND (CUL_InvalidDate IS NULL OR CUL_InvalidDate > GETDATE())-->
+      AND (
+      CUL_MACAdress1 = #CUL_MACAdress1# OR CUL_MACAdress2 = #CUL_MACAdress1# OR CUL_MACAdress3 = #CUL_MACAdress1#
+      OR CUL_MACAdress2 = #CUL_MACAdress1# OR CUL_MACAdress2 = #CUL_MACAdress2# OR CUL_MACAdress2 = #CUL_MACAdress3#
+      OR CUL_MACAdress3 = #CUL_MACAdress1# OR CUL_MACAdress3 = #CUL_MACAdress2# OR CUL_MACAdress3 = #CUL_MACAdress3#
+      ) ORDER BY CUL_CreatedTime DESC
+    </select>
+  </statements>
+</sqlMap>

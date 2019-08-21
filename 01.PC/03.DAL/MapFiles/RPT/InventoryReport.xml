@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--库存统计QCModel-->
+    <typeAlias alias="InventoryReportQCModel" type="SkyCar.Coeus.UIModel.RPT.QCModel.InventoryReportQCModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--库存统计汇总UIModel-->
+    <typeAlias alias="InventoryTotalReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.InventoryTotalReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--库存统计明细UIModel-->
+    <typeAlias alias="InventoryDetailReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.InventoryDetailReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+
+  </alias>
+  <statements>
+
+    <!--根据配件名称统计库存-->
+    <select id="RPT_InventoryReport_SQL01" parameterClass="InventoryReportQCModel" resultClass="InventoryTotalReportUIModel">
+      DECLARE @RecordCount INT
+      DECLARE @TotalInventoryQty DECIMAL(18, 2)
+      DECLARE @TotalInventoryAmount DECIMAL(18, 2)
+
+      SELECT  @RecordCount = COUNT(Temp.OrgID) ,
+      @TotalInventoryQty = SUM(Temp.InventoryQty) ,
+      @TotalInventoryAmount = SUM(Temp.InventoryAmount)
+      FROM    ( SELECT    T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      SUM(ISNULL(T1.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T1.InventoryAmount, 0)) 'InventoryAmount' ,
+      T2.InventoryQty 'WarehouseQty' ,
+      T2.InventoryAmount 'WarehouseAmount' ,
+      CASE WHEN T2.InventoryQty = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryQty,
+      0))
+      / T2.InventoryQty * 100)
+      END 'InventoryQtyPercent' ,
+      CASE WHEN T2.InventoryAmount = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryAmount,
+      0))
+      / T2.InventoryAmount * 100)
+      END 'InventoryAmountPercent'
+      FROM      ( SELECT    T11.INV_Org_ID 'OrgID' ,
+      T12.Org_ShortName 'OrgShortName' ,
+      T11.INV_WH_ID 'WarehouseID' ,
+      T13.WH_Name 'WarehouseName' ,
+      T11.INV_Name 'AutoPartsName' ,
+      CONVERT(DECIMAL(18, 0), T11.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T11.INV_Qty, 0)
+      * ISNULL(T11.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T11
+      INNER JOIN SM_Organization T12 ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T13 ON T13.WH_ID = T11.INV_WH_ID
+      AND T13.WH_IsValid = 1
+      WHERE     T11.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T11.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T11.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T1
+      INNER JOIN ( SELECT T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName ,
+      SUM(ISNULL(T21.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T21.InventoryAmount, 0)) 'InventoryAmount'
+      FROM   ( SELECT    T211.INV_Org_ID 'OrgID' ,
+      T212.Org_ShortName 'OrgShortName' ,
+      T211.INV_WH_ID 'WarehouseID' ,
+      T213.WH_Name 'WarehouseName' ,
+      T211.INV_Name 'AutoPartsName' ,
+      CONVERT(DECIMAL(18, 0), T211.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T211.INV_Qty,
+      0)
+      * ISNULL(T211.INV_PurchaseUnitPrice,
+      0)) 'InventoryAmount'
+      FROM      PIS_Inventory T211
+      INNER JOIN SM_Organization T212 ON T212.Org_ID = T211.INV_Org_ID
+      AND T212.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T213 ON T213.WH_ID = T211.INV_WH_ID
+      AND T213.WH_IsValid = 1
+      WHERE     T211.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T211.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T211.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T21
+      GROUP BY T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName
+      ) T2 ON T2.OrgID = T1.OrgID
+      AND T2.WarehouseID = T1.WarehouseID
+      GROUP BY  T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      T2.InventoryQty ,
+      T2.InventoryAmount
+      ) Temp
+
+      SELECT  @RecordCount 'RecordCount' ,
+      @TotalInventoryQty 'TotalInventoryQty' ,
+      @TotalInventoryAmount 'TotalInventoryAmount' ,
+      T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      SUM(ISNULL(T1.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T1.InventoryAmount, 0)) 'InventoryAmount' ,
+      T2.InventoryQty 'WarehouseQty' ,
+      T2.InventoryAmount 'WarehouseAmount' ,
+      CASE WHEN T2.InventoryQty = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryQty, 0))
+      / T2.InventoryQty * 100)
+      END 'InventoryQtyPercent' ,
+      CASE WHEN T2.InventoryAmount = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryAmount, 0))
+      / T2.InventoryAmount * 100)
+      END 'InventoryAmountPercent'
+      FROM    ( SELECT    T11.INV_Org_ID 'OrgID' ,
+      T12.Org_ShortName 'OrgShortName' ,
+      T11.INV_WH_ID 'WarehouseID' ,
+      T13.WH_Name 'WarehouseName' ,
+      T11.INV_Name 'AutoPartsName' ,
+      CONVERT(DECIMAL(18, 0), T11.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T11.INV_Qty, 0)
+      * ISNULL(T11.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T11
+      INNER JOIN SM_Organization T12 ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T13 ON T13.WH_ID = T11.INV_WH_ID
+      AND T13.WH_IsValid = 1
+      WHERE     T11.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T11.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T11.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T1
+      INNER JOIN ( SELECT T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName ,
+      SUM(ISNULL(T21.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T21.InventoryAmount, 0)) 'InventoryAmount'
+      FROM   ( SELECT    T211.INV_Org_ID 'OrgID' ,
+      T212.Org_ShortName 'OrgShortName' ,
+      T211.INV_WH_ID 'WarehouseID' ,
+      T213.WH_Name 'WarehouseName' ,
+      T211.INV_Name 'AutoPartsName' ,
+      CONVERT(DECIMAL(18, 0), T211.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T211.INV_Qty,
+      0)
+      * ISNULL(T211.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T211
+      INNER JOIN SM_Organization T212 ON T212.Org_ID = T211.INV_Org_ID
+      AND T212.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T213 ON T213.WH_ID = T211.INV_WH_ID
+      AND T213.WH_IsValid = 1
+      WHERE     T211.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T211.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T211.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T21
+      GROUP BY T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName
+      ) T2 ON T2.OrgID = T1.OrgID
+      AND T2.WarehouseID = T1.WarehouseID
+      GROUP BY T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      T2.InventoryQty ,
+      T2.InventoryAmount
+      ORDER BY T1.OrgShortName ,
+      T1.WarehouseName ,
+      T1.AutoPartsName
+
+      <!--翻页用-->
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据配件名称和品牌统计库存-->
+    <select id="RPT_InventoryReport_SQL02" parameterClass="InventoryReportQCModel" resultClass="InventoryTotalReportUIModel">
+      DECLARE @RecordCount INT
+      DECLARE @TotalInventoryQty DECIMAL(18, 2)
+      DECLARE @TotalInventoryAmount DECIMAL(18, 2)
+
+      SELECT  @RecordCount = COUNT(Temp.OrgID) ,
+      @TotalInventoryQty = SUM(Temp.InventoryQty) ,
+      @TotalInventoryAmount = SUM(Temp.InventoryAmount)
+      FROM    ( SELECT    T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      SUM(ISNULL(T1.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T1.InventoryAmount, 0)) 'InventoryAmount' ,
+      T2.InventoryQty 'WarehouseQty' ,
+      T2.InventoryAmount 'WarehouseAmount' ,
+      CASE WHEN T2.InventoryQty = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryQty,
+      0))
+      / T2.InventoryQty * 100)
+      END 'InventoryQtyPercent' ,
+      CASE WHEN T2.InventoryAmount = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryAmount,
+      0))
+      / T2.InventoryAmount * 100)
+      END 'InventoryAmountPercent'
+      FROM      ( SELECT    T11.INV_Org_ID 'OrgID' ,
+      T12.Org_ShortName 'OrgShortName' ,
+      T11.INV_WH_ID 'WarehouseID' ,
+      T13.WH_Name 'WarehouseName' ,
+      T11.INV_Name 'AutoPartsName' ,
+      CONVERT(DECIMAL(18, 0), T11.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T11.INV_Qty, 0)
+      * ISNULL(T11.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T11
+      INNER JOIN SM_Organization T12 ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T13 ON T13.WH_ID = T11.INV_WH_ID
+      AND T13.WH_IsValid = 1
+      WHERE     T11.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T11.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T11.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T1
+      INNER JOIN ( SELECT T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName ,
+      SUM(ISNULL(T21.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T21.InventoryAmount, 0)) 'InventoryAmount'
+      FROM   ( SELECT    T211.INV_Org_ID 'OrgID' ,
+      T212.Org_ShortName 'OrgShortName' ,
+      T211.INV_WH_ID 'WarehouseID' ,
+      T213.WH_Name 'WarehouseName' ,
+      T211.INV_Name 'AutoPartsName' ,
+      CONVERT(DECIMAL(18, 0), T211.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T211.INV_Qty,
+      0)
+      * ISNULL(T211.INV_PurchaseUnitPrice,
+      0)) 'InventoryAmount'
+      FROM      PIS_Inventory T211
+      INNER JOIN SM_Organization T212 ON T212.Org_ID = T211.INV_Org_ID
+      AND T212.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T213 ON T213.WH_ID = T211.INV_WH_ID
+      AND T213.WH_IsValid = 1
+      WHERE     T211.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T211.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T211.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T21
+      GROUP BY T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName
+      ) T2 ON T2.OrgID = T1.OrgID
+      AND T2.WarehouseID = T1.WarehouseID
+      GROUP BY  T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      T2.InventoryQty ,
+      T2.InventoryAmount
+      ) Temp
+
+      SELECT  @RecordCount 'RecordCount' ,
+      @TotalInventoryQty 'TotalInventoryQty' ,
+      @TotalInventoryAmount 'TotalInventoryAmount' ,
+      T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      T1.AutoPartsBrand ,
+      SUM(ISNULL(T1.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T1.InventoryAmount, 0)) 'InventoryAmount' ,
+      T2.InventoryQty 'WarehouseQty' ,
+      T2.InventoryAmount 'WarehouseAmount' ,
+      CASE WHEN T2.InventoryQty = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryQty, 0))
+      / T2.InventoryQty * 100)
+      END 'InventoryQtyPercent' ,
+      CASE WHEN T2.InventoryAmount = 0 THEN 0
+      ELSE CONVERT(DECIMAL(18, 2), SUM(ISNULL(T1.InventoryAmount, 0))
+      / T2.InventoryAmount * 100)
+      END 'InventoryAmountPercent'
+      FROM    ( SELECT    T11.INV_Org_ID 'OrgID' ,
+      T12.Org_ShortName 'OrgShortName' ,
+      T11.INV_WH_ID 'WarehouseID' ,
+      T13.WH_Name 'WarehouseName' ,
+      T11.INV_Name 'AutoPartsName' ,
+      T14.APA_Brand 'AutoPartsBrand' ,
+      CONVERT(DECIMAL(18, 0), T11.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T11.INV_Qty, 0)
+      * ISNULL(T11.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T11
+      INNER JOIN SM_Organization T12 ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T13 ON T13.WH_ID = T11.INV_WH_ID
+      AND T13.WH_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T14 ON T14.APA_Barcode = T11.INV_Barcode
+      AND T14.APA_IsValid = 1
+      WHERE     T11.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T11.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T11.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T11.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T1
+      INNER JOIN ( SELECT T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName ,
+      SUM(ISNULL(T21.InventoryQty, 0)) 'InventoryQty' ,
+      SUM(ISNULL(T21.InventoryAmount, 0)) 'InventoryAmount'
+      FROM   ( SELECT    T211.INV_Org_ID 'OrgID' ,
+      T212.Org_ShortName 'OrgShortName' ,
+      T211.INV_WH_ID 'WarehouseID' ,
+      T213.WH_Name 'WarehouseName' ,
+      T211.INV_Name 'AutoPartsName' ,
+      T214.APA_Brand 'AutoPartsBrand' ,
+      CONVERT(DECIMAL(18, 0), T211.INV_Qty) 'InventoryQty' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T211.INV_Qty,
+      0)
+      * ISNULL(T211.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T211
+      INNER JOIN SM_Organization T212 ON T212.Org_ID = T211.INV_Org_ID
+      AND T212.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T213 ON T213.WH_ID = T211.INV_WH_ID
+      AND T213.WH_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T214 ON T214.APA_Barcode = T211.INV_Barcode
+      AND T214.APA_IsValid = 1
+      WHERE     T211.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T211.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T211.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T211.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) T21
+      GROUP BY T21.OrgID ,
+      T21.OrgShortName ,
+      T21.WarehouseID ,
+      T21.WarehouseName
+      ) T2 ON T2.OrgID = T1.OrgID
+      AND T2.WarehouseID = T1.WarehouseID
+      GROUP BY T1.OrgID ,
+      T1.OrgShortName ,
+      T1.WarehouseID ,
+      T1.WarehouseName ,
+      T1.AutoPartsName ,
+      T1.AutoPartsBrand ,
+      T2.InventoryQty ,
+      T2.InventoryAmount
+      ORDER BY T1.OrgShortName ,
+      T1.WarehouseName ,
+      T1.AutoPartsName
+
+      <!--翻页用-->
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!-- 库存统计明细表-->
+    <select id="RPT_InventoryReport_SQL03" parameterClass="InventoryReportQCModel" resultClass="InventoryDetailReportUIModel">
+      DECLARE @RecordCount INT
+      DECLARE @TotalInventoryQty DECIMAL(18, 2)
+      DECLARE @TotalInventoryAmount DECIMAL(18, 2)
+
+      SELECT  @RecordCount = COUNT(Temp.INV_ID) ,
+      @TotalInventoryQty = SUM(Temp.INV_Qty) ,
+      @TotalInventoryAmount = SUM(Temp.InventoryAmount)
+      FROM    ( SELECT    T1.INV_ID ,
+      CONVERT(DECIMAL(18, 0), T1.INV_Qty) 'INV_Qty' ,
+      T1.INV_PurchaseUnitPrice ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.INV_Qty, 0)
+      * ISNULL(T1.INV_PurchaseUnitPrice, 0)) 'InventoryAmount'
+      FROM      PIS_Inventory T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.INV_Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T3 ON T3.APA_Barcode = T1.INV_Barcode
+      AND T3.APA_IsValid = 1
+      LEFT JOIN PIS_Warehouse T4 ON T4.WH_ID = T1.INV_WH_ID
+      AND T4.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T5 ON T5.WHB_ID = T1.INV_WHB_ID
+      AND T5.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T6 ON T6.SUPP_ID = T1.INV_SUPP_ID
+      AND T6.SUPP_IsValid = 1
+      WHERE     T1.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T1.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T1.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="AutoPartsName">T1.INV_Name LIKE '%'+#AutoPartsName#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="AutoPartsBrand">T3.APA_Brand LIKE '%'+#AutoPartsBrand#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T1.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T1.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T1.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ) Temp
+
+      SELECT  @RecordCount 'RecordCount' ,
+      @TotalInventoryQty 'TotalInventoryQty' ,
+      @TotalInventoryAmount 'TotalInventoryAmount' ,
+      T1.INV_Org_ID ,
+      T1.INV_WH_ID ,
+      T1.INV_WHB_ID ,
+      T1.INV_ThirdNo ,
+      T1.INV_OEMNo ,
+      T1.INV_Barcode ,
+      T1.INV_BatchNo ,
+      T1.INV_Name ,
+      T1.INV_Specification ,
+      T1.INV_SUPP_ID ,
+      CONVERT(DECIMAL(18, 0), T1.INV_Qty) 'INV_Qty' ,
+      T1.INV_PurchaseUnitPrice ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.INV_Qty, 0)
+      * ISNULL(T1.INV_PurchaseUnitPrice, 0)) 'InventoryAmount' ,
+      T1.INV_CreatedBy ,
+      T1.INV_CreatedTime ,
+      T2.Org_ShortName ,
+      T3.APA_Brand ,
+      T3.APA_UOM ,
+      T3.APA_Level ,
+      T3.APA_VehicleBrand ,
+      T3.APA_VehicleInspire ,
+      T3.APA_VehicleCapacity ,
+      T3.APA_VehicleYearModel ,
+      T3.APA_VehicleGearboxTypeCode ,
+      T3.APA_VehicleGearboxTypeName ,
+      T3.APA_VehicleModelCode ,
+      T3.APA_ExchangeCode ,
+      T4.WH_Name ,
+      T5.WHB_Name ,
+      T6.SUPP_Name
+      FROM    PIS_Inventory T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.INV_Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T3 ON T3.APA_Barcode = T1.INV_Barcode
+      AND T3.APA_IsValid = 1
+      LEFT JOIN PIS_Warehouse T4 ON T4.WH_ID = T1.INV_WH_ID
+      AND T4.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T5 ON T5.WHB_ID = T1.INV_WHB_ID
+      AND T5.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T6 ON T6.SUPP_ID = T1.INV_SUPP_ID
+      AND T6.SUPP_IsValid = 1
+      WHERE   T1.INV_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="OrgID">T1.INV_Org_ID = #OrgID#</isNotEmpty>
+      <!--仓库ID-->
+      <isNotEmpty prepend="AND" property="WarehouseID">T1.INV_WH_ID =#WarehouseID#</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="AutoPartsName">T1.INV_Name LIKE '%'+#AutoPartsName#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="AutoPartsBrand">T3.APA_Brand LIKE '%'+#AutoPartsBrand#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T1.INV_CreatedTime BETWEEN #StockInTimeStart# AND #StockInTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="StockInTimeEnd">T1.INV_CreatedTime <![CDATA[>=]]> #StockInTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="StockInTimeStart">
+        <isNotNull prepend="AND" property="StockInTimeEnd">T1.INV_CreatedTime <![CDATA[<=]]> #StockInTimeEnd#</isNotNull>
+      </isNull>
+      ORDER BY T2.Org_ShortName ,
+      T1.INV_Name ,
+      T1.INV_UpdatedTime DESC
+
+      <!--翻页用-->
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+  </statements>
+</sqlMap>

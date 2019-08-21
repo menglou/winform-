@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
+  <!--模块配置-->
+  <alias>
+    
+    <!--采购补货建议查询UIModel-->
+    <typeAlias alias="PurchaseForecastOrderQueryUIModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseForecastOrderQueryUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--采购补货建议查询DetailUIModel-->
+    <typeAlias alias="PurchaseForecastOrderQueryDetailUIModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseForecastOrderQueryDetailUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--采购补货建议查询QCModel-->
+    <typeAlias alias="PurchaseForecastOrderQueryQCModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseForecastOrderQueryUIModel,SkyCar.Coeus.UIModel.PIS" />
+    
+  </alias>
+  
+  <!--statements配置-->
+  <statements>
+    
+    <!--查询[采购补货建议查询]【列表】信息-->
+    <select id="PurchaseForecastOrderQuery_SQL_01" parameterClass="PurchaseForecastOrderQueryQCModel" resultClass="PurchaseForecastOrderQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.PFO_ID)
+      FROM PIS_PurchaseForecastOrder T1
+      <dynamic prepend="WHERE">
+        <!--单号-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_No">T1.PFO_No LIKE '%'+#WHERE_PFO_No#+'%'</isNotEmpty>
+        <!--供应商名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_SUPP_Name">T1.PFO_SUPP_Name LIKE '%'+#WHERE_PFO_SUPP_Name#+'%'</isNotEmpty>
+        <!--来源类型名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_SourceTypeName">T1.PFO_SourceTypeName LIKE '%'+#WHERE_PFO_SourceTypeName#+'%'</isNotEmpty>
+        <!--单据状态名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_StatusName">T1.PFO_StatusName LIKE '%'+#WHERE_PFO_StatusName#+'%'</isNotEmpty>
+        <!--组织名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_Org_ID">T1.PFO_Org_ID LIKE '%'+#WHERE_PFO_Org_ID#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_PFO_IsValid">T1.PFO_IsValid=#WHERE_PFO_IsValid#</isNotNull>
+      </dynamic>
+
+      SELECT 
+      @RecordCount 'RecordCount',
+      T1.PFO_No,
+      T1.PFO_SUPP_Name,
+      T1.PFO_SourceTypeName,
+      T1.PFO_TotalAmount,
+      T1.PFO_StatusName,
+      T1.PFO_IsValid,
+      T1.PFO_CreatedBy,
+      T1.PFO_CreatedTime,
+      T1.PFO_UpdatedBy,
+      T1.PFO_UpdatedTime,
+      T1.PFO_ID,
+      T1.PFO_Org_ID,
+      T1.PFO_SUPP_ID,
+      T1.PFO_SourceTypeCode,
+      T1.PFO_StatusCode,
+      T1.PFO_VersionNo
+      FROM PIS_PurchaseForecastOrder T1
+      <dynamic prepend="WHERE">
+        <!--单号-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_No">T1.PFO_No LIKE '%'+#WHERE_PFO_No#+'%'</isNotEmpty>
+        <!--供应商名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_SUPP_Name">T1.PFO_SUPP_Name LIKE '%'+#WHERE_PFO_SUPP_Name#+'%'</isNotEmpty>
+        <!--来源类型名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_SourceTypeName">T1.PFO_SourceTypeName LIKE '%'+#WHERE_PFO_SourceTypeName#+'%'</isNotEmpty>
+        <!--单据状态名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_StatusName">T1.PFO_StatusName LIKE '%'+#WHERE_PFO_StatusName#+'%'</isNotEmpty>
+        <!--组织名称-->
+        <isNotEmpty prepend="AND" property="WHERE_PFO_Org_ID">T1.PFO_Org_ID LIKE '%'+#WHERE_PFO_Org_ID#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_PFO_IsValid">T1.PFO_IsValid=#WHERE_PFO_IsValid#</isNotNull>
+      </dynamic>
+
+      <!--翻页用-->
+      ORDER BY T1.PFO_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+      OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+      FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+    <!--查询[采购补货建议查询]【明细】信息-->
+    <select id="PurchaseForecastOrderQuery_SQL_02" parameterClass="PurchaseForecastOrderQueryQCModel" resultClass="PurchaseForecastOrderQueryDetailUIModel">
+
+      SELECT 
+      T1.PFOD_PFO_No,
+      T1.PFOD_AutoPartsBarcode,
+      T1.PFOD_ThirdCode,
+      T1.PFOD_OEMCode,
+      T1.PFOD_AutoPartsName,
+      T1.PFOD_AutoPartsBrand,
+      T1.PFOD_AutoPartsSpec,
+      T1.PFOD_AutoPartsLevel,
+      T1.PFOD_UOM,
+      T1.PFOD_VehicleBrand,
+      T1.PFOD_VehicleInspire,
+      T1.PFOD_VehicleCapacity,
+      T1.PFOD_VehicleYearModel,
+      T1.PFOD_VehicleGearboxType,
+      T1.PFOD_Qty,
+      T1.PFOD_LastUnitPrice,
+      T1.PFOD_IsValid,
+      T1.PFOD_CreatedBy,
+      T1.PFOD_CreatedTime,
+      T1.PFOD_UpdatedBy,
+      T1.PFOD_UpdatedTime,
+      T1.PFOD_VersionNo,
+      T1.PFOD_ID,
+      T1.PFOD_PFO_ID
+      FROM PIS_PurchaseForecastOrderDetail T1
+      <!--INNER JOIN PIS_PurchaseOrder T2-->
+      <dynamic prepend="WHERE">
+        <!--采购预测订单ID-->
+        <isNotEmpty prepend="AND" property="WHERE_PFOD_PFO_ID">T1.PFOD_PFO_ID LIKE '%'+#WHERE_PFOD_PFO_ID#+'%'</isNotEmpty>
+        
+      </dynamic>
+      ORDER BY T1.PFOD_UpdatedTime DESC
+    </select>
+    
+  </statements>
+  
+</sqlMap>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <typeAlias alias="SupplierManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.SupplierManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <typeAlias alias="SupplierManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.SupplierManagerQCModel,SkyCar.Coeus.UIModel.PIS" />
+  </alias>
+  <statements>
+    <!--查询[供应商管理]信息-->
+    <select id="SupplierManager_SQL01" parameterClass="SupplierManagerQCModel" resultClass="SupplierManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(SUPP_ID)
+      FROM PIS_Supplier
+      <dynamic prepend="WHERE">
+        <!--名称-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+        <!--简称-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_ShortName">SUPP_ShortName LIKE '%'+#WHERE_SUPP_ShortName#+'%'</isNotEmpty>
+        <!--编码-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_Code">SUPP_Code LIKE '%'+#WHERE_SUPP_Code#+'%'</isNotEmpty>
+        <!--联系人-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_Contacter">SUPP_Contacter LIKE '%'+#WHERE_SUPP_Contacter#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_SUPP_IsValid">SUPP_IsValid=#WHERE_SUPP_IsValid#</isNotNull>
+      </dynamic>
+
+      SELECT
+      @RecordCount 'RecordCount',
+      SUPP_ID ,
+      SUPP_Code ,
+      SUPP_Name ,
+      SUPP_ShortName ,
+      SUPP_Contacter ,
+      SUPP_Tel ,
+      SUPP_Phone ,
+      SUPP_QQ ,
+      SUPP_Territory ,
+      SUPP_Prov_Code ,
+      SUPP_City_Code ,
+      SUPP_Dist_Code ,
+      SUPP_Address ,
+      SUPP_EvaluateLevel ,
+      SUPP_LastEvaluateDate ,
+      SUPP_BankName ,
+      SUPP_BankAccountName ,
+      SUPP_BankAccountNo ,
+      SUPP_MainAutoParts ,
+      SUPP_Remark ,
+      SUPP_IsValid ,
+      SUPP_CreatedBy ,
+      SUPP_CreatedTime ,
+      SUPP_UpdatedBy ,
+      SUPP_UpdatedTime ,
+      SUPP_VersionNo ,
+      SUPP_TransID ,
+      T2.Prov_Name 'Prov_Name' ,
+      T3.City_Name 'City_Name' ,
+      T4.Dist_Name 'Dist_Name'
+      FROM   PIS_Supplier T1
+      LEFT JOIN SM_ChineseProvince T2 ON T2.Prov_Code = T1.SUPP_Prov_Code
+      AND T2.Prov_IsValid = 1
+      LEFT JOIN SM_ProvinceCity T3 ON T3.City_Code = T1.SUPP_City_Code
+      AND T3.City_IsValid = 1
+      LEFT JOIN SM_CityDistrict T4 ON T4.Dist_Code = T1.SUPP_Dist_Code
+      AND T4.Dist_IsValid = 1
+      <dynamic prepend="WHERE">
+        <!--名称-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+        <!--简称-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_ShortName">SUPP_ShortName LIKE '%'+#WHERE_SUPP_ShortName#+'%'</isNotEmpty>
+        <!--编码-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_Code">SUPP_Code LIKE '%'+#WHERE_SUPP_Code#+'%'</isNotEmpty>
+        <!--联系人-->
+        <isNotEmpty prepend="AND" property="WHERE_SUPP_Contacter">SUPP_Contacter LIKE '%'+#WHERE_SUPP_Contacter#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_SUPP_IsValid">SUPP_IsValid=#WHERE_SUPP_IsValid#</isNotNull>
+      </dynamic>
+      <!--翻页用-->
+      ORDER BY SUPP_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+  
+    <!--获取被使用的供应商名称-->
+    <select id="SupplierManager_SQL02" parameterClass="MDLPIS_Supplier" resultClass="MDLPIS_Supplier">
+      SELECT T2.SUPP_Name
+      FROM BS_AutoPartsArchive T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.APA_SUPP_ID
+      WHERE APA_SUPP_ID IS NOT NULL
+      AND APA_SUPP_ID != ''
+      AND #WHERE_SUPP_ID# LIKE '%' + T1.APA_SUPP_ID + ';%'
+      AND APA_IsValid = 1
+      UNION
+      SELECT T2.SUPP_Name
+      FROM PIS_Inventory T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.INV_SUPP_ID
+      WHERE INV_SUPP_ID IS NOT NULL
+      AND INV_SUPP_ID != ''
+      AND  #WHERE_SUPP_ID# LIKE '%' + T1.INV_SUPP_ID + ';%'
+      AND INV_IsValid = 1
+      UNION
+      SELECT T2.SUPP_Name
+      FROM PIS_PurchaseForecastOrder T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.PFO_SUPP_ID
+      WHERE PFO_Org_ID IS NOT NULL
+      AND PFO_Org_ID != ''
+      AND  #WHERE_SUPP_ID# LIKE '%' + T1.PFO_SUPP_ID + ';%'
+      AND PFO_IsValid = 1
+      UNION
+      SELECT T2.SUPP_Name
+      FROM PIS_PurchaseOrder T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.PO_SUPP_ID
+      WHERE PO_SUPP_ID IS NOT NULL
+      AND PO_SUPP_ID != ''
+      AND  #WHERE_SUPP_ID# LIKE '%' + T1.PO_SUPP_ID + ';%'
+      AND PO_IsValid = 1
+      UNION
+      SELECT T2.SUPP_Name
+      FROM PIS_ShareInventory T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.SI_SUPP_ID
+      WHERE SI_WH_ID IS NOT NULL
+      AND SI_SUPP_ID != ''
+      AND  #WHERE_SUPP_ID# LIKE '%' + T1.SI_SUPP_ID + ';%'
+      AND SI_IsValid = 1
+      UNION
+      SELECT T2.SUPP_Name
+      FROM PIS_StockInDetail T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.SID_SUPP_ID
+      WHERE SID_SUPP_ID IS NOT NULL
+      AND SID_SUPP_ID != ''
+      AND  #WHERE_SUPP_ID# LIKE '%' + T1.SID_SUPP_ID + ';%'
+      AND SID_IsValid = 1
+      UNION
+      SELECT T2.SUPP_Name
+      FROM PIS_TransferBillDetail T1
+      INNER JOIN PIS_Supplier T2
+      ON T2.SUPP_ID = T1.TBD_SUPP_ID
+      WHERE TBD_SUPP_ID IS NOT NULL
+      AND TBD_SUPP_ID != ''
+      AND  #WHERE_SUPP_ID# LIKE '%' + T1.TBD_SUPP_ID + ';%'
+      AND TBD_IsValid = 1
+
+    </select>
+  </statements>
+</sqlMap>

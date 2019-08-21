@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--销售模板售管理QCModel-->
+    <typeAlias alias="SalesTemplateManagerQCModel" type="SkyCar.Coeus.UIModel.SD.SalesTemplateManagerQCModel,SkyCar.Coeus.UIModel.SD" />
+    <!--销售模板售管理UIModel-->
+    <typeAlias alias="SalesTemplateManagerUIModel" type="SkyCar.Coeus.UIModel.SD.SalesTemplateManagerUIModel,SkyCar.Coeus.UIModel.SD" />
+
+  </alias>
+  <statements>
+
+    <!--判断是否存在相同名称的销售模板-->
+    <select id="SalesTemplate_SQL01" parameterClass="MDLSD_SalesTemplate" resultClass="int">
+      SELECT COUNT(SasT_ID)
+      FROM   SD_SalesTemplate
+      <dynamic prepend="WHERE">
+        <!--销售模板ID-->
+        <isNotEmpty prepend="AND" property="WHERE_SasT_ID">SasT_ID != #WHERE_SasT_ID#</isNotEmpty>
+        <!--销售模板名称-->
+        <isNotEmpty prepend="AND" property="WHERE_SasT_Name">SasT_Name = #WHERE_SasT_Name#</isNotEmpty>
+        <!--销售模板组织ID-->
+        <isNotEmpty prepend="AND" property="WHERE_SasT_Org_ID">SasT_Org_ID = #WHERE_SasT_Org_ID#</isNotEmpty>
+      </dynamic>
+    </select>
+
+    <!--查询主动销售模板管理列表-->
+    <select id="SalesTemplate_SQL02" parameterClass="SalesTemplateManagerQCModel" resultClass="SalesTemplateManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SasT_ID)
+      FROM    SD_SalesTemplate T1
+      INNER JOIN ( SELECT DISTINCT
+      T21.SasTD_SasT_ID ,
+      T21.SasTD_AutoFactoryOrgID 'AROrgID'
+      FROM   SD_SalesTemplateDetail T21
+      WHERE  T21.SasTD_IsValid = 1
+      ) T2 ON T2.SasTD_SasT_ID = T1.SasT_ID
+      WHERE   1 = 1
+      <!--销售模板名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Name">T1.SasT_Name LIKE '%'+#WHERE_SasT_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Org_ID">T1.SasT_Org_ID LIKE '%'+#WHERE_SasT_Org_ID#+'%'</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_AutoFactoryName">T1.SasT_AutoFactoryName LIKE '%'+#WHERE_SasT_AutoFactoryName#+'%'</isNotEmpty>
+      <!--汽修客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_CustomerName">T1.SasT_CustomerName LIKE '%'+#WHERE_SasT_CustomerName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_ApprovalStatusName">T1.SasT_ApprovalStatusName LIKE '%'+#WHERE_SasT_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SasT_IsValid">T1.SasT_IsValid=#WHERE_SasT_IsValid#</isNotNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.SasT_ID ,
+      T1.SasT_Name ,
+      T1.SasT_Org_ID ,
+      T1.SasT_AutoFactoryCode ,
+      T1.SasT_AutoFactoryName ,
+      T1.SasT_CustomerID ,
+      T1.SasT_CustomerName ,
+      T1.SasT_AutoFactoryOrgCode ,
+      T1.SasT_ApprovalStatusCode ,
+      T1.SasT_ApprovalStatusName ,
+      T1.SasT_Remark ,
+      T1.SasT_IsValid ,
+      T1.SasT_CreatedBy ,
+      T1.SasT_CreatedTime ,
+      T1.SasT_UpdatedBy ,
+      T1.SasT_UpdatedTime ,
+      T1.SasT_VersionNo ,
+      T2.AROrgID ,
+      ISNULL(T1.SasT_CustomerID, '') + ';' + ISNULL(T2.AROrgID, '') + ';'
+      + ISNULL(T1.SasT_AutoFactoryOrgCode, '') 'AutoFactoryOrgInfo'
+      FROM    SD_SalesTemplate T1
+      INNER JOIN ( SELECT DISTINCT
+      T21.SasTD_SasT_ID ,
+      T21.SasTD_AutoFactoryOrgID 'AROrgID'
+      FROM   SD_SalesTemplateDetail T21
+      WHERE  T21.SasTD_IsValid = 1
+      ) T2 ON T2.SasTD_SasT_ID = T1.SasT_ID
+      WHERE   1 = 1
+      <!--销售模板名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Name">T1.SasT_Name LIKE '%'+#WHERE_SasT_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_Org_ID">T1.SasT_Org_ID LIKE '%'+#WHERE_SasT_Org_ID#+'%'</isNotEmpty>
+      <!--汽修商户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_AutoFactoryName">T1.SasT_AutoFactoryName LIKE '%'+#WHERE_SasT_AutoFactoryName#+'%'</isNotEmpty>
+      <!--汽修客户名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_CustomerName">T1.SasT_CustomerName LIKE '%'+#WHERE_SasT_CustomerName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SasT_ApprovalStatusName">T1.SasT_ApprovalStatusName LIKE '%'+#WHERE_SasT_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SasT_IsValid">T1.SasT_IsValid=#WHERE_SasT_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.SasT_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询目的组织下的销售模板-->
+    <select id="SalesTemplate_SQL03" parameterClass="SalesTemplateManagerQCModel" resultClass="MDLSD_SalesTemplate">
+      SELECT  T1.SasT_ID ,
+      T1.SasT_Name ,
+      T1.SasT_Org_ID ,
+      T1.SasT_AutoFactoryCode ,
+      T1.SasT_AutoFactoryName ,
+      T1.SasT_CustomerID ,
+      T1.SasT_CustomerName ,
+      T1.SasT_AutoFactoryOrgCode ,
+      T1.SasT_ApprovalStatusCode ,
+      T1.SasT_ApprovalStatusName ,
+      T1.SasT_Remark ,
+      T1.SasT_IsValid ,
+      T1.SasT_CreatedBy ,
+      T1.SasT_CreatedTime ,
+      T1.SasT_UpdatedBy ,
+      T1.SasT_UpdatedTime ,
+      T1.SasT_VersionNo ,
+      T1.SasT_TransID
+      FROM    SD_SalesTemplate T1
+      INNER JOIN SD_DistributePath T2 ON T2.DP_Org_ID_To = T1.SasT_Org_ID
+      AND T2.DP_IsValid = 1
+      AND T2.DP_SendDataID = #WHERE_DP_SendDataID#
+      AND T2.DP_Org_ID_From = #WHERE_DP_Org_ID_From#
+      AND T2.DP_Org_ID_To = #WHERE_DP_Org_ID_To#
+      WHERE   T1.SasT_IsValid = 1
+      AND T1.SasT_Name = #WHERE_SasT_Name#
+    </select>
+
+    <!--查询某汽修商户某组织是否存在已审核的销售模板-->
+    <select id="SalesTemplate_SQL05" parameterClass="SalesTemplateManagerQCModel" resultClass="int">
+      SELECT  COUNT(T1.SasT_ID)
+      FROM    SD_SalesTemplate T1
+      INNER JOIN ( SELECT DISTINCT
+      T21.SasTD_SasT_ID ,
+      T21.SasTD_AutoFactoryOrgID ,
+      T21.SasTD_AutoFactoryOrgName
+      FROM   SD_SalesTemplateDetail T21
+      WHERE  T21.SasTD_IsValid = 1
+      <!--汽修商户组织-->
+      <isNotEmpty prepend="AND" property="WHERE_AROrgID">T21.SasTD_AutoFactoryOrgID =#WHERE_AROrgID#</isNotEmpty>
+      ) T2 ON T2.SasTD_SasT_ID = T1.SasT_ID
+      WHERE   T1.SasT_IsValid = 1
+      AND T1.SasT_Org_ID = #WHERE_SasT_Org_ID#
+      AND T1.SasT_CustomerID = #WHERE_SasT_CustomerID#
+      AND T1.SasT_ApprovalStatusName = #WHERE_SasT_ApprovalStatusName#
+    </select>
+
+  </statements>
+</sqlMap>

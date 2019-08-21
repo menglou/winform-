@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--组织与供应商资金往来统计QCModel-->
+    <typeAlias alias="OrgAndSupplierAmountTransReportQCModel" type="SkyCar.Coeus.UIModel.RPT.QCModel.OrgAndSupplierAmountTransReportQCModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--组织与供应商资金往来统计汇总UIModel-->
+    <typeAlias alias="OrgAndSupplierAmountTransTotalReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.OrgAndSupplierAmountTransTotalReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--组织与供应商资金往来统计明细UIModel-->
+    <typeAlias alias="OrgAndSupplierAmountTransDetailReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.OrgAndSupplierAmountTransDetailReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+
+  </alias>
+  <statements>
+
+    <!--组织与供应商资金往来统计——汇总-->
+    <procedure id="RPT_OrgAndSupplierAmountTransReport_SQL01" parameterMap="RPT_OrgAndSupplierAmountTransReport_Total_ParameteMap" resultClass="OrgAndSupplierAmountTransTotalReportUIModel">
+      P_RPT_Get_OrgAndSupplierAmountTransReport_Total
+    </procedure>
+
+    <!--组织与供应商资金往来统计——明细-->
+    <procedure id="RPT_OrgAndSupplierAmountTransReport_SQL02" parameterMap="RPT_OrgAndSupplierAmountTransReport_Detail_ParameteMap" resultClass="OrgAndSupplierAmountTransDetailReportUIModel">
+      P_RPT_Get_OrgAndSupplierAmountTransReport_Detail
+    </procedure>
+    
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="RPT_OrgAndSupplierAmountTransReport_Total_ParameteMap" class="OrgAndSupplierAmountTransReportQCModel">
+      <parameter property="SupplierID" />
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="OrgIdList"/>
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+
+    <parameterMap id="RPT_OrgAndSupplierAmountTransReport_Detail_ParameteMap" class="OrgAndSupplierAmountTransReportQCModel">
+      <parameter property="SupplierID" />
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="OrgIdList"/>
+      <parameter property="BusinessType" />
+      <parameter property="PageSize"/>
+      <parameter property="PageIndex"/>
+    </parameterMap>
+  </parameterMaps>
+
+</sqlMap>

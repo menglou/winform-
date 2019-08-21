@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--调拨管理UIModel-->
+    <typeAlias alias="TransferBillManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.TransferBillManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--调拨管理DetailUIModel-->
+    <typeAlias alias="TransferBillManagerDetailUIModel" type="SkyCar.Coeus.UIModel.PIS.TransferBillManagerDetailUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--调拨管理QCModel-->
+    <typeAlias alias="TransferBillManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.TransferBillManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[调拨单管理]【列表】信息-->
+    <select id="TransferBillManager_SQL_01" parameterClass="TransferBillManagerQCModel" resultClass="TransferBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(Temp.TB_No)
+      FROM
+      (
+      SELECT T1.TB_No,
+      T1.TB_TypeName,
+      T1.TB_TransferTypeName,
+      T1.TB_TransferOutOrgName,
+      T1.TB_TransferInOrgName,
+      T1.TB_StatusName,
+      T1.TB_ApprovalStatusName,
+      T1.TB_IsValid,
+      T1.TB_CreatedBy,
+      T1.TB_CreatedTime,
+      T1.TB_UpdatedBy,
+      T1.TB_UpdatedTime,
+      T1.TB_ID,
+      T1.TB_TypeCode,
+      T1.TB_TransferTypeCode,
+      T1.TB_TransferOutOrgId,
+      T1.TB_TransferInOrgId,
+      T1.TB_StatusCode,
+      T1.TB_ApprovalStatusCode,
+      T1.TB_VersionNo,
+      T1.TB_Remark
+      FROM PIS_TransferBill T1
+      INNER JOIN PIS_TransferBillDetail T2
+      ON T2.TBD_TB_ID = T1.TB_ID
+      AND T2.TBD_IsValid = 1
+      WHERE 1 = 1
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_No">T1.TB_No LIKE '%'+#WHERE_TB_No#+'%'</isNotEmpty>
+      <!--单据类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TypeName">T1.TB_TypeName LIKE '%'+#WHERE_TB_TypeName#+'%'</isNotEmpty>
+      <!--调拨类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferTypeName">T1.TB_TransferTypeName LIKE '%'+#WHERE_TB_TransferTypeName#+'%'</isNotEmpty>
+      <!--调出组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferOutOrgName">T1.TB_TransferOutOrgName LIKE '%'+#WHERE_TB_TransferOutOrgName#+'%'</isNotEmpty>
+      <!--调入组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferInOrgName">T1.TB_TransferInOrgName LIKE '%'+#WHERE_TB_TransferInOrgName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_StatusName">T1.TB_StatusName LIKE '%'+#WHERE_TB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_ApprovalStatusName">T1.TB_ApprovalStatusName LIKE '%'+#WHERE_TB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_TB_IsValid">T1.TB_IsValid=#WHERE_TB_IsValid#</isNotNull>
+      GROUP BY T1.TB_No,
+      T1.TB_TypeName,
+      T1.TB_TransferTypeName,
+      T1.TB_TransferOutOrgName,
+      T1.TB_TransferInOrgName,
+      T1.TB_StatusName,
+      T1.TB_ApprovalStatusName,
+      T1.TB_IsValid,
+      T1.TB_CreatedBy,
+      T1.TB_CreatedTime,
+      T1.TB_UpdatedBy,
+      T1.TB_UpdatedTime,
+      T1.TB_ID,
+      T1.TB_TypeCode,
+      T1.TB_TransferTypeCode,
+      T1.TB_TransferOutOrgId,
+      T1.TB_TransferInOrgId,
+      T1.TB_StatusCode,
+      T1.TB_ApprovalStatusCode,
+      T1.TB_VersionNo,
+      T1.TB_Remark
+      ) Temp
+
+
+      SELECT  @RecordCount 'RecordCount' ,
+      0 'IsChecked' ,
+      T1.TB_No ,
+      T1.TB_TypeName ,
+      T1.TB_TransferTypeName ,
+      T1.TB_TransferOutOrgName ,
+      T1.TB_TransferInOrgName ,
+      T1.TB_StatusName ,
+      T1.TB_ApprovalStatusName ,
+      T1.TB_IsValid ,
+      T1.TB_CreatedBy ,
+      T1.TB_CreatedTime ,
+      T1.TB_UpdatedBy ,
+      T1.TB_UpdatedTime ,
+      T1.TB_ID ,
+      T1.TB_TypeCode ,
+      T1.TB_TransferTypeCode ,
+      T1.TB_TransferOutOrgId ,
+      T1.TB_TransferInOrgId ,
+      T1.TB_StatusCode ,
+      T1.TB_ApprovalStatusCode ,
+      T1.TB_VersionNo ,
+      T1.TB_Remark	  ,
+      SUM(ISNULL(T2.TBD_Qty, 0)) 'TotalQty' ,
+      SUM(CONVERT(DECIMAL(18, 2), ISNULL(T2.TBD_Qty, 0)
+      * ISNULL(T2.TBD_DestUnitPrice, 0))) 'TotalAmount'
+      FROM    PIS_TransferBill T1
+      INNER JOIN PIS_TransferBillDetail T2 ON T2.TBD_TB_ID = T1.TB_ID
+      AND T2.TBD_IsValid = 1
+      WHERE   1 = 1
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_No">T1.TB_No LIKE '%'+#WHERE_TB_No#+'%'</isNotEmpty>
+      <!--单据类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TypeName">T1.TB_TypeName LIKE '%'+#WHERE_TB_TypeName#+'%'</isNotEmpty>
+      <!--调拨类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferTypeName">T1.TB_TransferTypeName LIKE '%'+#WHERE_TB_TransferTypeName#+'%'</isNotEmpty>
+      <!--调出组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferOutOrgName">T1.TB_TransferOutOrgName LIKE '%'+#WHERE_TB_TransferOutOrgName#+'%'</isNotEmpty>
+      <!--调入组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_TransferInOrgName">T1.TB_TransferInOrgName LIKE '%'+#WHERE_TB_TransferInOrgName#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_StatusName">T1.TB_StatusName LIKE '%'+#WHERE_TB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_TB_ApprovalStatusName">T1.TB_ApprovalStatusName LIKE '%'+#WHERE_TB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_TB_IsValid">T1.TB_IsValid=#WHERE_TB_IsValid#</isNotNull>
+      GROUP BY T1.TB_No ,
+      T1.TB_TypeName ,
+      T1.TB_TransferTypeName ,
+      T1.TB_TransferOutOrgName ,
+      T1.TB_TransferInOrgName ,
+      T1.TB_StatusName ,
+      T1.TB_ApprovalStatusName ,
+      T1.TB_IsValid ,
+      T1.TB_CreatedBy ,
+      T1.TB_CreatedTime ,
+      T1.TB_UpdatedBy ,
+      T1.TB_UpdatedTime ,
+      T1.TB_ID ,
+      T1.TB_TypeCode ,
+      T1.TB_TransferTypeCode ,
+      T1.TB_TransferOutOrgId ,
+      T1.TB_TransferInOrgId ,
+      T1.TB_StatusCode ,
+      T1.TB_ApprovalStatusCode ,
+      T1.TB_VersionNo,
+      T1.TB_Remark
+      <!--翻页用-->
+      ORDER BY T1.TB_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[调拨单管理]【明细】信息-->
+    <select id="TransferBillManager_SQL_02" parameterClass="TransferBillManagerQCModel" resultClass="TransferBillManagerDetailUIModel">
+
+      SELECT  0 'IsChecked' ,
+      T1.TBD_ID ,
+      T1.TBD_TB_ID ,
+      T1.TBD_TB_No ,
+      T1.TBD_Name ,
+      T1.TBD_UOM ,
+      T1.TBD_Barcode ,
+      T1.TBD_TransOutBatchNo ,
+      T1.TBD_TransInBatchNo ,
+      T1.TBD_Qty ,
+      T1.TBD_SourUnitPrice ,
+      T1.TBD_DestUnitPrice ,
+      T1.TBD_OEMNo ,
+      T1.TBD_ThirdNo ,
+      T1.TBD_TransOutWhId ,
+      T1.TBD_TransOutBinId ,
+      T1.TBD_TransInWhId ,
+      T1.TBD_TransInBinId ,
+      T1.TBD_SUPP_ID ,
+      T1.TBD_Specification ,
+      T1.TBD_IsSettled ,
+      T1.TBD_IsValid ,
+      T1.TBD_CreatedBy ,
+      T1.TBD_CreatedTime ,
+      T1.TBD_UpdatedBy ,
+      T1.TBD_UpdatedTime ,
+      T1.TBD_VersionNo ,
+      T3.INV_Qty ,
+      T4.APA_Brand ,
+      T4.APA_Level ,
+      T4.APA_VehicleBrand ,
+      T4.APA_VehicleInspire ,
+      T4.APA_VehicleCapacity ,
+      T4.APA_VehicleYearModel ,
+      T4.APA_VehicleGearboxTypeName ,
+      T4.APA_VehicleGearboxTypeCode ,
+      T5.SUPP_Name ,
+      T6.WH_Name 'TransOutWhName' ,
+      T7.WHB_Name 'TransOutWhbName' ,
+      T8.WH_Name 'TransInWhName' ,
+      T9.WHB_Name 'TransInWhbName' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.TBD_Qty, 0)
+      * ISNULL(T1.TBD_DestUnitPrice, 0)) 'DetailDestAmount'
+      FROM    PIS_TransferBillDetail T1
+      INNER JOIN PIS_TransferBill T2 ON T2.TB_ID = T1.TBD_TB_ID
+      AND T2.TB_No = T1.TBD_TB_No
+      LEFT JOIN PIS_Inventory T3 ON T3.INV_Org_ID = T2.TB_TransferOutOrgId
+      AND T3.INV_Barcode = T1.TBD_Barcode
+      AND T3.INV_BatchNo = T1.TBD_TransOutBatchNo
+      LEFT JOIN BS_AutoPartsArchive T4 ON T4.APA_Barcode = T1.TBD_Barcode
+      AND T4.APA_Name = T1.TBD_Name
+      LEFT JOIN PIS_Supplier T5 ON T5.SUPP_ID = T1.TBD_SUPP_ID
+      LEFT JOIN PIS_Warehouse T6 ON T6.WH_ID = T1.TBD_TransOutWhId
+      LEFT JOIN PIS_WarehouseBin T7 ON T7.WHB_ID = T1.TBD_TransOutBinId
+      LEFT JOIN PIS_Warehouse T8 ON T8.WH_ID = T1.TBD_TransInWhId
+      LEFT JOIN PIS_WarehouseBin T9 ON T9.WHB_ID = T1.TBD_TransInBinId
+      LEFT JOIN BS_AutoPartsName T10 ON T10.APN_Name = T1.TBD_Name
+      <dynamic prepend="WHERE">
+        <!--调拨单ID-->
+        <isNotEmpty prepend="AND" property="WHERE_TBD_TB_ID">T1.TBD_TB_ID LIKE '%'+#WHERE_TBD_TB_ID#+'%'</isNotEmpty>
+        <!--调拨单号-->
+        <isNotEmpty prepend="AND" property="WHERE_TBD_TB_No">T1.TBD_TB_No LIKE '%'+#WHERE_TBD_TB_No#+'%'</isNotEmpty>
+      </dynamic>
+      ORDER BY T1.TBD_UpdatedTime DESC
+    </select>
+
+    <update id="TransferBillManager_SQL_03" parameterClass="MDLPIS_TransferBillDetail" >
+      UPDATE PIS_TransferBillDetail
+      SET    TBD_TransInBatchNo = NULL ,
+      TBD_UpdatedTime = GETDATE() ,
+      TBD_VersionNo = TBD_VersionNo + 1
+      WHERE 1 = 1
+      <!--调拨单ID-->
+      <isNotEmpty prepend="AND" property="TB_ID">TBD_TB_ID=#TB_ID#</isNotEmpty>
+    </update>
+
+  </statements>
+
+</sqlMap>

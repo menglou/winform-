@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <typeAlias alias="OrganizationManagerUIModel" type="SkyCar.Coeus.UIModel.SM.OrganizationManagerUIModel,SkyCar.Coeus.UIModel.SM" />
+    <typeAlias alias="OrganizationManagerQCModel" type="SkyCar.Coeus.UIModel.SM.OrganizationManagerQCModel,SkyCar.Coeus.UIModel.SM" />
+  </alias>
+  <statements>
+    <!--查询[组织管理]信息-->
+    <select id="OrganizationManager_SQL01" parameterClass="OrganizationManagerQCModel" resultClass="OrganizationManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(Org_ID)
+      FROM SM_Organization
+      <dynamic prepend="WHERE">
+        <!--门店编码-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_Code">Org_Code LIKE '%'+#WHERE_Org_Code#+'%'</isNotEmpty>
+        <!--组织全称-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_FullName">Org_FullName LIKE '%'+#WHERE_Org_FullName#+'%'</isNotEmpty>
+        <!--组织简称-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_Org_IsValid">Org_IsValid=#WHERE_Org_IsValid#</isNotNull>
+      </dynamic>
+
+      SELECT
+      @RecordCount 'RecordCount',
+      Org_ID,
+      Org_MCT_ID,
+      Org_Code,
+      Org_PlatformCode,
+      Org_FullName,
+      Org_ShortName,
+      Org_Contacter,
+      Org_TEL,
+      Org_PhoneNo,
+      Org_Prov_Code,
+      Org_City_Code,
+      Org_Dist_Code,
+      Org_Addr,
+      Org_Longitude,
+      Org_Latitude,
+      Org_MarkerTitle,
+      Org_MarkerContent,
+      Org_MainBrands,
+      Org_MainProducts,
+      Org_Remark,
+      Org_IsValid,
+      Org_CreatedBy,
+      Org_CreatedTime,
+      Org_UpdatedBy,
+      Org_UpdatedTime,
+      Org_VersionNo,
+      Org_TransID,
+      T2.Prov_Name 'Prov_Name',
+      T3.City_Name 'City_Name',
+      T4.Dist_Name 'Dist_Name'
+      FROM SM_Organization T1
+      LEFT JOIN SM_ChineseProvince T2
+      ON T2.Prov_Code = T1.Org_Prov_Code AND T2.Prov_IsValid = 1
+      LEFT JOIN SM_ProvinceCity T3
+      ON T3.City_Code = T1.Org_City_Code AND T3.City_IsValid = 1
+      LEFT JOIN SM_CityDistrict T4
+      ON T4.Dist_Code = T1.Org_Dist_Code AND T4.Dist_IsValid = 1
+      <dynamic prepend="WHERE">
+        <!--门店编码-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_Code">Org_Code LIKE '%'+#WHERE_Org_Code#+'%'</isNotEmpty>
+        <!--组织全称-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_FullName">Org_FullName LIKE '%'+#WHERE_Org_FullName#+'%'</isNotEmpty>
+        <!--组织简称-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_ShortName">Org_ShortName LIKE '%'+#WHERE_Org_ShortName#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_Org_IsValid">Org_IsValid=#WHERE_Org_IsValid#</isNotNull>
+      </dynamic>
+      <!--翻页用-->
+      ORDER BY Org_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询 该商户名称（唯一）下 门店编码 是否存在-->
+    <select id="OrganizationManager_SQL02" parameterClass="MDLSM_Organization" resultClass="int">
+      SELECT
+      COUNT(Org_ID)
+      FROM SM_Organization
+      WHERE
+      Org_Code=#WHERE_Org_Code# 
+      AND
+      Org_ID!=#WHERE_Org_ID#
+    </select>
+
+    <!--更新组织信息-->
+    <update id="OrganizationManager_SQL03" parameterClass="MDLSM_Organization">
+      UPDATE SM_Organization
+      SET
+      Org_UpdatedTime=GETDATE()
+      <isNotEmpty prepend="," property="Org_Code">Org_Code=#Org_Code#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_FullName">Org_FullName=#Org_FullName#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_ShortName">Org_ShortName=#Org_ShortName#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Contacter">Org_Contacter=#Org_Contacter#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_TEL">Org_TEL=#Org_TEL#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_PhoneNo">Org_PhoneNo=#Org_PhoneNo#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Prov_Code">Org_Prov_Code=#Org_Prov_Code#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_City_Code">Org_City_Code=#Org_City_Code#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Dist_Code">Org_Dist_Code=#Org_Dist_Code#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Addr">Org_Addr=#Org_Addr#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Longitude">Org_Longitude=#Org_Longitude#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Latitude">Org_Latitude=#Org_Latitude#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_MarkerTitle">Org_MarkerTitle=#Org_MarkerTitle#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_MarkerContent">Org_MarkerContent=#Org_MarkerContent#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_MainBrands">Org_MainBrands=#Org_MainBrands#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_MainProducts">Org_MainProducts=#Org_MainProducts#</isNotEmpty>
+      <isNotEmpty prepend="," property="Org_Remark">Org_Remark=#Org_Remark#</isNotEmpty>
+      <isNotNull prepend="," property="Org_IsValid">Org_IsValid=#Org_IsValid#</isNotNull>
+      <isNotEmpty prepend="," property="Org_CreatedBy">Org_CreatedBy=#Org_CreatedBy#</isNotEmpty>
+      <isNotNull prepend="," property="Org_CreatedTime">Org_CreatedTime=#Org_CreatedTime#</isNotNull>
+      <isNotEmpty prepend="," property="Org_UpdatedBy">Org_UpdatedBy=#Org_UpdatedBy#</isNotEmpty>
+      <isNotNull prepend="," property="Org_VersionNo">Org_VersionNo=#Org_VersionNo#</isNotNull>
+      <dynamic prepend="WHERE">
+        <!--ID-->
+        <isNotEmpty prepend="AND" property="WHERE_Org_ID">Org_ID=#WHERE_Org_ID#</isNotEmpty>
+        <!--版本号-->
+        <isNotNull prepend="AND" property="WHERE_Org_VersionNo">Org_VersionNo=#WHERE_Org_VersionNo#</isNotNull>
+      </dynamic>
+    </update>
+  </statements>
+</sqlMap>

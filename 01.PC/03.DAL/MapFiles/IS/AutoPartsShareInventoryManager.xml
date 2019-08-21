@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--共享库存管理UIModel-->
+    <typeAlias alias="AutoPartsShareInventoryManagerUIModel" type="SkyCar.Coeus.UIModel.IS.UIModel.AutoPartsShareInventoryManagerUIModel,SkyCar.Coeus.UIModel.IS" />
+    <!--共享库存管理QCModel-->
+    <typeAlias alias="AutoPartsShareInventoryManagerQCModel" type="SkyCar.Coeus.UIModel.IS.QCModel.AutoPartsShareInventoryManagerQCModel,SkyCar.Coeus.UIModel.IS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[共享库存]【列表】信息-->
+    <select id="AutoPartsShareInventoryManager_SQL01" parameterClass="AutoPartsShareInventoryManagerQCModel" resultClass="AutoPartsShareInventoryManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SI_ID)
+      FROM    PIS_ShareInventory T1
+      LEFT JOIN PIS_Warehouse T2 ON T2.WH_ID = T1.SI_WH_ID
+      AND T2.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T3 ON T3.WHB_ID = T1.SI_WHB_ID
+      AND T3.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T4 ON T4.SUPP_ID = T1.SI_SUPP_ID
+      AND T4.SUPP_IsValid = 1
+      WHERE   1 = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_Name">T1.SI_Name LIKE '%'+#WHERE_SI_Name#+'%'</isNotEmpty>
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_OEMNo">T1.SI_OEMNo LIKE '%'+#WHERE_SI_OEMNo#+'%'</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_ThirdNo">T1.SI_ThirdNo LIKE '%'+#WHERE_SI_ThirdNo#+'%'</isNotEmpty>
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_Barcode">T1.SI_Barcode LIKE '%'+#WHERE_SI_Barcode#+'%'</isNotEmpty>
+      <!--配件批次号-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_BatchNo">T1.SI_BatchNo LIKE '%'+#WHERE_SI_BatchNo#+'%'</isNotEmpty>
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_WH_Name">T2.WH_Name LIKE '%'+#WHERE_SI_WH_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_Org_ID">T1.SI_Org_ID =#WHERE_SI_Org_ID#</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SI_IsValid">T1.SI_IsValid=#WHERE_SI_IsValid#</isNotNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), LOWER(NEWID())) 'RowID' ,
+      T1.SI_ID ,
+      T1.SI_Org_ID ,
+      T1.SI_WH_ID ,
+      T1.SI_WHB_ID ,
+      T1.SI_ThirdNo ,
+      T1.SI_OEMNo ,
+      T1.SI_Barcode ,
+      T1.SI_BatchNo ,
+      T1.SI_Name ,
+      T1.SI_Specification ,
+      T1.SI_SUPP_ID ,
+      CONVERT(DECIMAL(18, 0),T1.SI_Qty ) 'SI_Qty',
+      T1.SI_PurchasePriceIsVisible ,
+      T1.SI_PurchaseUnitPrice ,
+      T1.SI_PriceOfGeneralCustomer ,
+      T1.SI_PriceOfCommonAutoFactory ,
+      T1.SI_PriceOfPlatformAutoFactory ,
+      T1.SI_IsValid ,
+      T1.SI_CreatedBy ,
+      T1.SI_CreatedTime ,
+      T1.SI_UpdatedBy ,
+      T1.SI_UpdatedTime ,
+      T1.SI_VersionNo ,
+      T2.WH_Name ,
+      T3.WHB_Name ,
+      T4.SUPP_Name
+      FROM    PIS_ShareInventory T1
+      LEFT JOIN PIS_Warehouse T2 ON T2.WH_ID = T1.SI_WH_ID
+      AND T2.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T3 ON T3.WHB_ID = T1.SI_WHB_ID
+      AND T3.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T4 ON T4.SUPP_ID = T1.SI_SUPP_ID
+      AND T4.SUPP_IsValid = 1
+      WHERE   1 = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_Name">T1.SI_Name LIKE '%'+#WHERE_SI_Name#+'%'</isNotEmpty>
+      <!--原厂编码-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_OEMNo">T1.SI_OEMNo LIKE '%'+#WHERE_SI_OEMNo#+'%'</isNotEmpty>
+      <!--第三方编码-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_ThirdNo">T1.SI_ThirdNo LIKE '%'+#WHERE_SI_ThirdNo#+'%'</isNotEmpty>
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_Barcode">T1.SI_Barcode LIKE '%'+#WHERE_SI_Barcode#+'%'</isNotEmpty>
+      <!--配件批次号-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_BatchNo">T1.SI_BatchNo LIKE '%'+#WHERE_SI_BatchNo#+'%'</isNotEmpty>
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_WH_Name">T2.WH_Name LIKE '%'+#WHERE_SI_WH_Name#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SI_Org_ID">T1.SI_Org_ID =#WHERE_SI_Org_ID#</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SI_IsValid">T1.SI_IsValid=#WHERE_SI_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.SI_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据ID查询共享库存-->
+    <select id="AutoPartsShareInventoryManager_SQL02" parameterClass="MDLPIS_ShareInventory" resultClass="MDLPIS_ShareInventory">
+      SELECT  T1.SI_ID ,
+      T1.SI_Org_ID ,
+      T1.SI_WH_ID ,
+      T1.SI_WHB_ID ,
+      T1.SI_ThirdNo ,
+      T1.SI_OEMNo ,
+      T1.SI_Barcode ,
+      T1.SI_BatchNo ,
+      T1.SI_Name ,
+      T1.SI_Specification ,
+      T1.SI_SUPP_ID ,
+      CONVERT(DECIMAL(18, 0),T1.SI_Qty ) 'SI_Qty',
+      T1.SI_PurchasePriceIsVisible ,
+      T1.SI_PurchaseUnitPrice ,
+      T1.SI_PriceOfGeneralCustomer ,
+      T1.SI_PriceOfCommonAutoFactory ,
+      T1.SI_PriceOfPlatformAutoFactory ,
+      T1.SI_IsValid ,
+      T1.SI_CreatedBy ,
+      T1.SI_CreatedTime ,
+      T1.SI_UpdatedBy ,
+      T1.SI_UpdatedTime ,
+      T1.SI_VersionNo
+      FROM    PIS_ShareInventory T1
+      WHERE   T1.SI_IsValid = 1
+      AND #WHERE_SI_ID# LIKE '%' + T1.SI_ID + ';%'
+    </select>
+
+  </statements>
+
+</sqlMap>

@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--汽修商库存和异动日志查询QCModel-->
+    <typeAlias alias="ARInventoryAndTransLogQCModel" type="SkyCar.Coeus.UIModel.IS.QCModel.ARInventoryAndTransLogQCModel,SkyCar.Coeus.UIModel.IS" />
+    <!--汽修商库存异动日志UIModel-->
+    <typeAlias alias="ARInventoryTransLogUIModel" type="SkyCar.Coeus.UIModel.IS.UIModel.ARInventoryTransLogUIModel,SkyCar.Coeus.UIModel.IS" />
+    <!--汽修商库存UIModel-->
+    <typeAlias alias="ARInventoryUIModel" type="SkyCar.Coeus.UIModel.IS.UIModel.ARInventoryUIModel,SkyCar.Coeus.UIModel.IS" />
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询Venus库存异动日志-->
+
+    <select id="AutoFactoryInventoryQuery_SQL01" parameterClass="ARInventoryAndTransLogQCModel" resultClass="ARInventoryTransLogUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.INV_ID)
+      FROM    APM_Inventory T1
+      INNER JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_Org_ID = T1.INV_Org_ID
+      AND T2.ITL_IsValid = 1
+      <!--汽修库存异动类型-->
+      <isNotEmpty prepend="AND" property="ITL_TransType">T2.ITL_TransType LIKE '%'+#ITL_TransType#+'%'</isNotEmpty>
+      INNER JOIN SM_Organization T3 ON T3.Org_ID = T1.INV_Org_ID
+      AND T3.Org_IsValid = 1
+      <!--汽修商组织-->
+      <isNotEmpty prepend="AND" property="ITL_Org_Name">T3.Org_ShortName LIKE '%'+#ITL_Org_Name#+'%'</isNotEmpty>
+      INNER JOIN APM_AutoPartsArchive T4 ON T4.APA_Barcode = T1.INV_Barcode
+      AND T4.APA_IsValid = 1
+      INNER JOIN APM_Supplier T5 ON T5.SUPP_ID = T1.INV_SUPP_ID
+      WHERE   T1.INV_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T1.INV_SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T2.ITL_Org_ID ,
+      T2.ITL_TransType ,
+      T2.ITL_BusinessNo ,
+      T2.ITL_Barcode ,
+      T2.ITL_BatchNo ,
+      T2.ITL_TransQty ,
+      T2.ITL_AfterTransQty ,
+      T2.ITL_Source ,
+      T2.ITL_Destination ,
+      T2.ITL_CreatedBy ,
+      T2.ITL_CreatedTime ,
+      T4.APA_Name ,
+      T4.APA_Specification ,
+      T4.APA_ThirdNo ,
+      T3.Org_ShortName
+      FROM    APM_Inventory T1
+      INNER JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_Org_ID = T1.INV_Org_ID
+      AND T2.ITL_IsValid = 1
+      <!--汽修库存异动类型-->
+      <isNotEmpty prepend="AND" property="ITL_TransType">T2.ITL_TransType LIKE '%'+#ITL_TransType#+'%'</isNotEmpty>
+      INNER JOIN SM_Organization T3 ON T3.Org_ID = T1.INV_Org_ID
+      AND T3.Org_IsValid = 1
+      <!--汽修商组织-->
+      <isNotEmpty prepend="AND" property="ITL_Org_Name">T3.Org_ShortName LIKE '%'+#ITL_Org_Name#+'%'</isNotEmpty>
+      INNER JOIN APM_AutoPartsArchive T4 ON T4.APA_Barcode = T1.INV_Barcode
+      AND T4.APA_IsValid = 1
+      INNER JOIN APM_Supplier T5 ON T5.SUPP_ID = T1.INV_SUPP_ID
+      WHERE   T1.INV_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T1.INV_SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.INV_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询Venus库存【考虑汽修组织】-->
+    <select id="AutoFactoryInventoryQuery_SQL02" parameterClass="ARInventoryAndTransLogQCModel" resultClass="ARInventoryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T11.INV_Barcode)
+      FROM    ( SELECT    T1.INV_Org_ID ,
+      T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      SUM(T1.INV_Quantity) 'INV_Quantity' ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T6.Org_ShortName ,
+      T5.SUPP_MerchantCode ,
+      T6.Org_Code
+      FROM      APM_Inventory T1
+      INNER JOIN APM_AutoPartsArchive T2 ON T1.INV_Barcode = T2.APA_Barcode
+      AND T2.APA_IsValid = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="APA_Name">T2.APA_Name LIKE '%'+#APA_Name#+'%'</isNotEmpty>
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="APA_Brand">T2.APA_Brand LIKE '%'+#APA_Brand#+'%'</isNotEmpty>
+      INNER JOIN APM_Supplier T5 ON T5.SUPP_ID = T1.INV_SUPP_ID
+      AND T5.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T5.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      INNER JOIN SM_Organization T6 ON T1.INV_Org_ID = T6.Org_ID
+      AND T6.Org_IsValid = 1
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="INV_Org_ShortName">T6.Org_ShortName LIKE '%'+#INV_Org_ShortName#+'%'</isNotEmpty>
+      WHERE     T1.INV_IsValid = 1
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY  T1.INV_Org_ID ,
+      T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T6.Org_ShortName ,
+      T5.SUPP_MerchantCode ,
+      T6.Org_Code
+      ) T11
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'InWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '入库', '领料退库',
+      '退货退库', '销售退库',
+      '调拨入库', '调拨退库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T12 ON T12.INV_Barcode = T11.INV_Barcode
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'OutWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '领料出库', '退货出库',
+      '销售出库', '销售退库',
+      '调拨出库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <!--入库时间-->
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T13 ON T13.INV_Barcode = T11.INV_Barcode
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T11.INV_Org_ID ,
+      T11.INV_Barcode ,
+      T11.INV_OEMNo ,
+      T11.INV_ThirdNo ,
+      T11.INV_Quantity ,
+      T11.APA_ID ,
+      T11.APA_Barcode ,
+      T11.APA_Name ,
+      T11.APA_Brand ,
+      T11.APA_Specification ,
+      T11.APA_Level ,
+      T11.APA_VehicleBrand ,
+      T11.APA_VehicleInspire ,
+      T11.APA_VehicleCapacity ,
+      T11.APA_VehicleYearModel ,
+      T11.APA_VehicleGearboxType ,
+      T11.APA_UOM ,
+      T11.Org_ShortName 'INV_Org_ShortName' ,
+      T11.SUPP_MerchantCode ,
+      T11.Org_Code ,
+      T12.InWareHouse 'INV_StockInQuantity' ,
+      T13.OutWareHouse 'INV_StockOutQuantity'
+      FROM    ( SELECT    T1.INV_Org_ID ,
+      T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      SUM(T1.INV_Quantity) 'INV_Quantity' ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T6.Org_ShortName ,
+      T5.SUPP_MerchantCode ,
+      T6.Org_Code
+      FROM      APM_Inventory T1
+      INNER JOIN APM_AutoPartsArchive T2 ON T1.INV_Barcode = T2.APA_Barcode
+      AND T2.APA_IsValid = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="APA_Name">T2.APA_Name LIKE '%'+#APA_Name#+'%'</isNotEmpty>
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="APA_Brand">T2.APA_Brand LIKE '%'+#APA_Brand#+'%'</isNotEmpty>
+      INNER JOIN APM_Supplier T5 ON T5.SUPP_ID = T1.INV_SUPP_ID
+      AND T5.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T5.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      INNER JOIN SM_Organization T6 ON T1.INV_Org_ID = T6.Org_ID
+      AND T6.Org_IsValid = 1
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="INV_Org_ShortName">T6.Org_ShortName LIKE '%'+#INV_Org_ShortName#+'%'</isNotEmpty>
+      WHERE     T1.INV_IsValid = 1
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY  T1.INV_Org_ID ,
+      T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T6.Org_ShortName ,
+      T5.SUPP_MerchantCode ,
+      T6.Org_Code
+      ) T11
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'InWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '入库', '领料退库',
+      '退货退库', '销售退库',
+      '调拨入库', '调拨退库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T12 ON T12.INV_Barcode = T11.INV_Barcode
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'OutWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '领料出库', '退货出库',
+      '销售出库', '销售退库',
+      '调拨出库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <!--入库时间-->
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T13 ON T13.INV_Barcode = T11.INV_Barcode
+      ORDER BY T11.INV_Barcode ASC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询Venus库存【不考虑汽修组织】-->
+    <select id="AutoFactoryInventoryQuery_SQL03" parameterClass="ARInventoryAndTransLogQCModel" resultClass="ARInventoryUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T11.INV_Barcode)
+      FROM    ( SELECT    T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      SUM(T1.INV_Quantity) 'INV_Quantity' ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T5.SUPP_MerchantCode ,
+      '' 'INV_Org_ShortName'
+      FROM      APM_Inventory T1
+      INNER JOIN APM_AutoPartsArchive T2 ON T1.INV_Barcode = T2.APA_Barcode
+      AND T2.APA_IsValid = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="APA_Name">T2.APA_Name LIKE '%'+#APA_Name#+'%'</isNotEmpty>
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="APA_Brand">T2.APA_Brand LIKE '%'+#APA_Brand#+'%'</isNotEmpty>
+      INNER JOIN APM_Supplier T5 ON T5.SUPP_ID = T1.INV_SUPP_ID
+      AND T5.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T5.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      INNER JOIN SM_Organization T6 ON T1.INV_Org_ID = T6.Org_ID
+      AND T6.Org_IsValid = 1
+      WHERE     T1.INV_IsValid = 1
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY  T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T5.SUPP_MerchantCode
+      ) T11
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'InWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '入库', '领料退库',
+      '退货退库', '销售退库',
+      '调拨入库', '调拨退库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T12 ON T12.INV_Barcode = T11.INV_Barcode
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'OutWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '领料出库', '退货出库',
+      '销售出库', '销售退库',
+      '调拨出库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T13 ON T13.INV_Barcode = T11.INV_Barcode
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T11.INV_Barcode ,
+      T11.INV_OEMNo ,
+      T11.INV_ThirdNo ,
+      T11.INV_Quantity ,
+      T11.APA_ID ,
+      T11.APA_Barcode ,
+      T11.APA_Name ,
+      T11.APA_Brand ,
+      T11.APA_Specification ,
+      T11.APA_Level ,
+      T11.APA_VehicleBrand ,
+      T11.APA_VehicleInspire ,
+      T11.APA_VehicleCapacity ,
+      T11.APA_VehicleYearModel ,
+      T11.APA_VehicleGearboxType ,
+      T11.APA_UOM ,
+      T11.SUPP_ID ,
+      T11.SUPP_Name ,
+      T11.SUPP_Code ,
+      T11.SUPP_MerchantCode ,
+      T12.InWareHouse 'INV_StockInQuantity' ,
+      T13.OutWareHouse 'INV_StockOutQuantity'
+      FROM    ( SELECT    T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      SUM(T1.INV_Quantity) 'INV_Quantity' ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T5.SUPP_MerchantCode ,
+      '' 'INV_Org_ShortName'
+      FROM      APM_Inventory T1
+      INNER JOIN APM_AutoPartsArchive T2 ON T1.INV_Barcode = T2.APA_Barcode
+      AND T2.APA_IsValid = 1
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="APA_Name">T2.APA_Name LIKE '%'+#APA_Name#+'%'</isNotEmpty>
+      <!--品牌-->
+      <isNotEmpty prepend="AND" property="APA_Brand">T2.APA_Brand LIKE '%'+#APA_Brand#+'%'</isNotEmpty>
+      INNER JOIN APM_Supplier T5 ON T5.SUPP_ID = T1.INV_SUPP_ID
+      AND T5.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T5.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      INNER JOIN SM_Organization T6 ON T1.INV_Org_ID = T6.Org_ID
+      AND T6.Org_IsValid = 1
+      WHERE     T1.INV_IsValid = 1
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY  T1.INV_Barcode ,
+      T1.INV_OEMNo ,
+      T1.INV_ThirdNo ,
+      T2.APA_ID ,
+      T2.APA_Barcode ,
+      T2.APA_Name ,
+      T2.APA_Brand ,
+      T2.APA_Specification ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxType ,
+      T2.APA_UOM ,
+      T5.SUPP_MerchantCode
+      ) T11
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'InWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '入库', '领料退库',
+      '退货退库', '销售退库',
+      '调拨入库', '调拨退库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T12 ON T12.INV_Barcode = T11.INV_Barcode
+      LEFT JOIN ( SELECT  T1.INV_Barcode ,
+      SUM(T2.ITL_TransQty) 'OutWareHouse'
+      FROM    APM_Inventory T1
+      LEFT JOIN APM_InventoryTransLog T2 ON T2.ITL_Barcode = T1.INV_Barcode
+      AND T2.ITL_BatchNo = T1.INV_BatchNo
+      AND T2.ITL_IsValid = 1
+      AND T2.ITL_TransType IN (
+      '领料出库', '退货出库',
+      '销售出库', '销售退库',
+      '调拨出库' )
+      INNER JOIN APM_Supplier T3 ON T3.SUPP_ID = T1.INV_SUPP_ID
+      AND T3.SUPP_IsValid = 1
+      <!--供应商商户编码-->
+      <isNotEmpty prepend="AND" property="MerchantCode">T3.SUPP_MerchantCode=#MerchantCode#</isNotEmpty>
+      WHERE   T1.INV_IsValid = 1
+      AND T1.INV_Barcode IS NOT NULL
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="INV_Barcode">T1.INV_Barcode LIKE '%'+#INV_Barcode#+'%'</isNotEmpty>
+      <!--入库时间-->
+      <isNotNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime BETWEEN #INV_CreatedTime_Start# AND #INV_CreatedTime_End#</isNotNull>
+        <isNull  prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[>=]]> #INV_CreatedTime_Start#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="INV_CreatedTime_Start">
+        <isNotNull prepend="AND" property="INV_CreatedTime_End">T1.INV_CreatedTime <![CDATA[<=]]> #INV_CreatedTime_End#</isNotNull>
+      </isNull>
+      GROUP BY T1.INV_Barcode
+      ) T13 ON T13.INV_Barcode = T11.INV_Barcode
+      ORDER BY T11.INV_Barcode ASC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+  </statements>
+
+</sqlMap>

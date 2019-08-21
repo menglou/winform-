@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--采购订单管理UIModel-->
+    <typeAlias alias="PurchaseOrderManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseOrderManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--采购订单管理DetailUIModel-->
+    <typeAlias alias="PurchaseOrderManagerDetailUIModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseOrderManagerDetailUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--采购订单管理QCModel-->
+    <typeAlias alias="PurchaseOrderManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.PurchaseOrderManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[采购订单管理]【列表】信息-->
+    <select id="PurchaseOrderManager_SQL_01" parameterClass="PurchaseOrderManagerQCModel" resultClass="PurchaseOrderManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.PO_ID)
+      FROM    PIS_PurchaseOrder T1
+      LEFT JOIN ( SELECT  T21.SIB_SourceNo ,
+      SUM(ISNULL(T22.APB_AccountPayableAmount, 0)) 'APB_AccountPayableAmount' ,
+      SUM(ISNULL(T22.APB_PaidAmount, 0)) 'APB_PaidAmount' ,
+      SUM(ISNULL(T22.APB_UnpaidAmount, 0)) 'APB_UnpaidAmount'
+      FROM    PIS_StockInBill T21
+      INNER JOIN FM_AccountPayableBill T22 ON T22.APB_SourceBillNo = T21.SIB_No
+      AND T22.APB_IsValid = 1
+      WHERE   T21.SIB_IsValid = 1
+      AND T21.SIB_SourceTypeName = '采购入库'
+      GROUP BY T21.SIB_SourceNo
+      ) T2 ON T2.SIB_SourceNo = T1.PO_No
+      LEFT JOIN SM_Organization T3 ON T3.Org_ID = T1.PO_Org_ID
+      WHERE   1 = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_No">T1.PO_No LIKE '%'+#WHERE_PO_No#+'%'</isNotEmpty>
+      <!--供应商-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SUPP_Name">T1.PO_SUPP_Name LIKE '%'+#WHERE_PO_SUPP_Name#+'%'</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SourceTypeName">T1.PO_SourceTypeName LIKE '%'+#WHERE_PO_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SourceNo">T1.PO_SourceNo LIKE '%'+#WHERE_PO_SourceNo#+'%'</isNotEmpty>
+      <!--单据状态-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_StatusName">T1.PO_StatusName LIKE '%'+#WHERE_PO_StatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_ApprovalStatusName">T1.PO_ApprovalStatusName LIKE '%'+#WHERE_PO_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_Org_ID">T1.PO_Org_ID =#WHERE_PO_Org_ID#</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_PO_IsValid">T1.PO_IsValid=#WHERE_PO_IsValid#</isNotNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.PO_No ,
+      T1.PO_SUPP_Name ,
+      T1.PO_SourceTypeName ,
+      T1.PO_SourceNo ,
+      T1.PO_TotalAmount ,
+      T1.PO_LogisticFee ,
+      T1.PO_StatusName ,
+      T1.PO_ApprovalStatusName ,
+      T1.PO_ReceivedTime ,
+      T1.PO_IsValid ,
+      T1.PO_CreatedBy ,
+      T1.PO_CreatedTime ,
+      T1.PO_UpdatedBy ,
+      T1.PO_UpdatedTime ,
+      T1.PO_ID ,
+      T1.PO_Org_ID ,
+      T1.PO_SUPP_ID ,
+      T1.PO_SourceTypeCode ,
+      T1.PO_StatusCode ,
+      T1.PO_ApprovalStatusCode ,
+      T1.PO_VersionNo ,
+      T2.APB_AccountPayableAmount ,
+      T2.APB_PaidAmount ,
+      T2.APB_UnpaidAmount ,
+      T3.Org_ShortName
+      FROM    PIS_PurchaseOrder T1
+      LEFT JOIN ( SELECT  T21.SIB_SourceNo ,
+      SUM(ISNULL(T22.APB_AccountPayableAmount, 0)) 'APB_AccountPayableAmount' ,
+      SUM(ISNULL(T22.APB_PaidAmount, 0)) 'APB_PaidAmount' ,
+      SUM(ISNULL(T22.APB_UnpaidAmount, 0)) 'APB_UnpaidAmount'
+      FROM    PIS_StockInBill T21
+      INNER JOIN FM_AccountPayableBill T22 ON T22.APB_SourceBillNo = T21.SIB_No
+      AND T22.APB_IsValid = 1
+      WHERE   T21.SIB_IsValid = 1
+      AND T21.SIB_SourceTypeName = '采购入库'
+      GROUP BY T21.SIB_SourceNo
+      ) T2 ON T2.SIB_SourceNo = T1.PO_No
+      LEFT JOIN SM_Organization T3 ON T3.Org_ID = T1.PO_Org_ID
+      WHERE   1 = 1
+      <!--订单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_No">T1.PO_No LIKE '%'+#WHERE_PO_No#+'%'</isNotEmpty>
+      <!--供应商-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SUPP_Name">T1.PO_SUPP_Name LIKE '%'+#WHERE_PO_SUPP_Name#+'%'</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SourceTypeName">T1.PO_SourceTypeName LIKE '%'+#WHERE_PO_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_SourceNo">T1.PO_SourceNo LIKE '%'+#WHERE_PO_SourceNo#+'%'</isNotEmpty>
+      <!--单据状态-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_StatusName">T1.PO_StatusName LIKE '%'+#WHERE_PO_StatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_ApprovalStatusName">T1.PO_ApprovalStatusName LIKE '%'+#WHERE_PO_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_PO_Org_ID">T1.PO_Org_ID =#WHERE_PO_Org_ID#</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_PO_IsValid">T1.PO_IsValid=#WHERE_PO_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.PO_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[采购订单管理]【明细】信息-->
+    <select id="PurchaseOrderManager_SQL_02" parameterClass="PurchaseOrderManagerQCModel" resultClass="PurchaseOrderManagerDetailUIModel">
+
+      SELECT
+      T1.POD_PO_No,
+      T1.POD_AutoPartsBarcode,
+      T1.POD_ThirdCode,
+      T1.POD_OEMCode,
+      T1.POD_AutoPartsName,
+      T1.POD_AutoPartsBrand,
+      T1.POD_AutoPartsSpec,
+      T1.POD_AutoPartsLevel,
+      T1.POD_UOM,
+      T1.POD_VehicleBrand,
+      T1.POD_VehicleInspire,
+      T1.POD_VehicleCapacity,
+      T1.POD_VehicleYearModel,
+      T1.POD_VehicleGearboxType,
+      T1.POD_WH_ID,
+      T3.WH_Name 'WH_Name',
+      T1.POD_WHB_ID,
+      T4.WHB_Name 'WHB_Name',
+      T1.POD_OrderQty,
+      T1.POD_ReceivedQty,
+      T1.POD_UnitPrice,
+      T1.POD_StatusName,
+      T1.POD_ReceivedTime,
+      T1.POD_IsValid,
+      T1.POD_CreatedBy,
+      T1.POD_CreatedTime,
+      T1.POD_UpdatedBy,
+      T1.POD_UpdatedTime,
+      T1.POD_VersionNo,
+      T1.POD_ID,
+      T1.POD_ID 'DetailID' ,
+      T1.POD_PO_ID,
+      T1.POD_StatusCode
+      FROM PIS_PurchaseOrderDetail T1
+      LEFT JOIN PIS_PurchaseOrder T2
+      ON T1.POD_PO_ID = T2.PO_ID
+      LEFT JOIN PIS_Warehouse T3
+      ON T3.WH_ID=T1.POD_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4
+      ON T4.WHB_ID=T1.POD_WHB_ID
+      <dynamic prepend="WHERE">
+        <!--组织名称-->
+        <isNotEmpty prepend="AND" property="WHERE_POD_PO_ID">T1.POD_PO_ID LIKE '%'+#WHERE_POD_PO_ID#+'%'</isNotEmpty>
+      </dynamic>
+      ORDER BY T1.POD_UpdatedTime DESC
+    </select>
+
+  </statements>
+
+</sqlMap>

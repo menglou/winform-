@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--库存查询UIModel-->
+    <typeAlias alias="InventoryQueryUIModel" type="SkyCar.Coeus.UIModel.PIS.InventoryQueryUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--库存明细查询UIModel-->
+    <typeAlias alias="InventoryQueryDetailUIModel" type="SkyCar.Coeus.UIModel.PIS.InventoryQueryDetailUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--库存日志查询UIModel-->
+    <typeAlias alias="InventoryTransLogUIModel" type="SkyCar.Coeus.UIModel.PIS.InventoryTransLogUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--库存查询QCModel-->
+    <typeAlias alias="InventoryQueryQCModel" type="SkyCar.Coeus.UIModel.PIS.InventoryQueryUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--库存查询DetailQCModel-->
+    <typeAlias alias="InventoryTransLogQCModel" type="SkyCar.Coeus.UIModel.PIS.InventoryTransLogQCModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[库存]【明细】信息-->
+    <select id="InventoryQuery_SQL_01" parameterClass="InventoryQueryQCModel" resultClass="InventoryQueryDetailUIModel">
+      DECLARE @RecordCount INT
+      DECLARE @PrintCount INT
+      SELECT @RecordCount = COUNT(T1.INV_ID),
+      @PrintCount = 1
+      FROM PIS_Inventory T1
+      INNER JOIN SM_Organization T2
+      ON T2.Org_ID = T1.INV_Org_ID
+      AND T2.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T3
+      ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T4
+      ON T4.WHB_ID = T1.INV_WHB_ID
+      AND T4.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T5
+      ON T5.SUPP_ID = T1.INV_SUPP_ID
+      AND T5.SUPP_IsValid = 1
+      LEFT JOIN BS_AutoPartsArchive T6
+      ON T6.APA_Barcode = T1.INV_Barcode
+      AND T6.APA_IsValid = 1
+      WHERE T1.INV_IsValid = 1
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">
+        (
+        ISNULL(T1.INV_ThirdNo, T6.APA_ThirdNo) LIKE '%'+#WHERE_AutoPartsCode#+'%' OR
+        ISNULL(T1.INV_OEMNo, T6.APA_OEMNo) LIKE '%' + #WHERE_AutoPartsCode# + '%' OR
+        T6.APA_ExchangeCode LIKE '%' + #WHERE_AutoPartsCode# + '%'
+        )
+      </isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T6.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_Specification LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      <!--配件条码+批次号-->
+      <isNotEmpty prepend="AND" property="WHERE_BarcodeAndBatchNo">T1.INV_Barcode+T1.INV_BatchNo LIKE '%'+#WHERE_BarcodeAndBatchNo#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T1.INV_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_SUPP_Name">T5.SUPP_Name LIKE '%'+#WHERE_INV_SUPP_Name#+'%'</isNotEmpty>
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WH_Name">T3.WH_Name LIKE '%'+#WHERE_INV_WH_Name#+'%'</isNotEmpty>
+      <!--仓位名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WHB_Name">T4.WHB_Name LIKE '%'+#WHERE_INV_WHB_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T1.INV_Org_ID = #WHERE_INV_Org_ID#</isNotEmpty>
+      <!--0库存-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_IsZero">
+        (( #WHERE_INV_IsZero# = 1 AND T1.INV_Qty = 0 ) OR
+        ( #WHERE_INV_IsZero# = 0 AND T1.INV_Qty > 0 ))
+      </isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.INV_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.INV_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.INV_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+
+      SELECT @RecordCount 'RecordCount',
+      @PrintCount 'PrintCount',
+      T1.INV_ID,
+      T1.INV_Org_ID,
+      T1.INV_WH_ID,
+      T1.INV_WHB_ID,
+      T1.INV_ThirdNo,
+      T1.INV_OEMNo,
+      T1.INV_Barcode,
+      T1.INV_BatchNo,
+      T1.INV_Name,
+      T1.INV_Specification,
+      T1.INV_SUPP_ID,
+      T1.INV_Qty,
+      T1.INV_PurchaseUnitPrice,
+      T1.INV_IsValid,
+      T1.INV_CreatedBy,
+      T1.INV_CreatedTime,
+      T1.INV_UpdatedBy,
+      T1.INV_UpdatedTime,
+      T1.INV_VersionNo,
+      T2.Org_ShortName,
+      T3.WH_Name,
+      T4.WHB_Name,
+      T5.SUPP_Name,
+      T6.APA_UOM,
+      T6.APA_Level,
+      T6.APA_Brand,
+      T6.APA_VehicleBrand,
+      T6.APA_VehicleInspire,
+      T6.APA_VehicleCapacity,
+      T6.APA_VehicleYearModel,
+      T6.APA_VehicleGearboxTypeName,
+      T6.APA_IsWarningSafeStock,
+      T6.APA_SafeStockNum,
+      T6.APA_IsWarningDeadStock,
+      T6.APA_SlackDays,
+      T6.APA_SalePriceRate,
+      T6.APA_SalePrice,
+      T6.APA_VehicleModelCode,
+      T6.APA_ExchangeCode
+      FROM PIS_Inventory T1
+      INNER JOIN SM_Organization T2
+      ON T2.Org_ID = T1.INV_Org_ID
+      AND T2.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T3
+      ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T4
+      ON T4.WHB_ID = T1.INV_WHB_ID
+      AND T4.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T5
+      ON T5.SUPP_ID = T1.INV_SUPP_ID
+      AND T5.SUPP_IsValid = 1
+      LEFT JOIN BS_AutoPartsArchive T6
+      ON T6.APA_Barcode = T1.INV_Barcode
+      AND T6.APA_IsValid = 1
+      WHERE T1.INV_IsValid = 1
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">
+        (
+        ISNULL(T1.INV_ThirdNo, T6.APA_ThirdNo) LIKE '%'+#WHERE_AutoPartsCode#+'%' OR
+        ISNULL(T1.INV_OEMNo, T6.APA_OEMNo) LIKE '%' + #WHERE_AutoPartsCode# + '%' OR
+        T6.APA_ExchangeCode LIKE '%' + #WHERE_AutoPartsCode# + '%'
+        )
+      </isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T6.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T6.APA_Specification LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_BarcodeAndBatchNo">T1.INV_Barcode+T1.INV_BatchNo LIKE '%'+#WHERE_BarcodeAndBatchNo#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T1.INV_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_SUPP_Name">T5.SUPP_Name LIKE '%'+#WHERE_INV_SUPP_Name#+'%'</isNotEmpty>
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WH_Name">T3.WH_Name LIKE '%'+#WHERE_INV_WH_Name#+'%'</isNotEmpty>
+      <!--仓位名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WHB_Name">T4.WHB_Name LIKE '%'+#WHERE_INV_WHB_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T1.INV_Org_ID = #WHERE_INV_Org_ID#</isNotEmpty>
+      <!--0库存-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_IsZero">
+        (( #WHERE_INV_IsZero# = 1 AND T1.INV_Qty = 0 ) OR
+        ( #WHERE_INV_IsZero# = 0 AND T1.INV_Qty > 0 ))
+      </isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.INV_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.INV_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.INV_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+
+      <!--翻页用-->
+      ORDER BY T1.INV_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[库存异动]信息-->
+    <select id="InventoryQuery_SQL_02" parameterClass="InventoryTransLogQCModel" resultClass="InventoryTransLogUIModel">
+
+      SELECT
+      T1.ITL_TransType,
+      T1.ITL_Org_ID,
+      t2.Org_FullName 'ITL_Org_FullName',
+      T1.ITL_WH_ID,
+      t3.WH_Name 'ITL_WH_Name',
+      T1.ITL_WHB_ID,
+      t4.WHB_Name 'ITL_WHB_Name',
+      T1.ITL_BusinessNo,
+      T1.ITL_Barcode,
+      T1.ITL_BatchNo,
+      T1.ITL_Name,
+      T1.ITL_Specification,
+      T1.ITL_UnitCostPrice,
+      T1.ITL_UnitSalePrice,
+      T1.ITL_Qty,
+      T1.ITL_AfterTransQty,
+      T1.ITL_Source ,
+      T1.ITL_Destination ,
+      T1.ITL_IsValid,
+      T1.ITL_CreatedBy,
+      T1.ITL_CreatedTime,
+      T1.ITL_UpdatedBy,
+      T1.ITL_UpdatedTime,
+      T1.ITL_VersionNo
+      FROM PIS_InventoryTransLog T1
+      LEFT JOIN SM_Organization T2
+      ON T1.ITL_Org_ID = T2.Org_ID
+      LEFT JOIN PIS_Warehouse T3
+      ON T1.ITL_WH_ID = T3.WH_ID
+      LEFT JOIN PIS_WarehouseBin T4
+      ON T1.ITL_WHB_ID = T4.WHB_ID
+      <dynamic prepend="WHERE">
+        <!--组织ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_Org_ID">T1.ITL_Org_ID LIKE '%'+#WHERE_ITL_Org_ID#+'%'</isNotEmpty>
+        <!--业务单号-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_BusinessNo">T1.ITL_BusinessNo LIKE '%'+#WHERE_ITL_BusinessNo#+'%'</isNotEmpty>
+        <!--配件名称-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_Name">T1.ITL_Name LIKE '%'+#WHERE_ITL_Name#+'%'</isNotEmpty>
+        <!--异动类型-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_TransType">T1.ITL_TransType LIKE '%'+#WHERE_ITL_TransType#+'%'</isNotEmpty>
+        <!--仓库ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_WH_ID">T1.ITL_WH_ID LIKE '%'+#WHERE_ITL_WH_ID#+'%'</isNotEmpty>
+        <!--配件条码-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_BatchNo">T1.ITL_Barcode+T1.ITL_BatchNo LIKE '%'+#WHERE_ITL_BatchNo#+'%'</isNotEmpty>
+        <!--规则型号-->
+        <isNotEmpty prepend="AND" property="WHERE_ITL_Specification">T1.ITL_Specification LIKE '%'+#WHERE_ITL_Specification#+'%'</isNotEmpty>
+        <!--创建时间-->
+        <isNotNull prepend="" property="_CreatedTimeStart">
+          <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+          <isNull  prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+        </isNotNull>
+        <isNull prepend="" property="_CreatedTimeStart">
+          <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ITL_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+        </isNull>
+      </dynamic>
+      ORDER BY T1.ITL_UpdatedTime DESC
+    </select>
+
+    <!--查询[库存]【列表】信息-->
+    <select id="InventoryQuery_SQL_03" parameterClass="InventoryQueryQCModel" resultClass="InventoryQueryUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(Temp.INV_Barcode)
+      FROM
+      (
+      SELECT T1.INV_Barcode
+      FROM
+      (
+      SELECT T11.INV_Org_ID,
+      T11.INV_WH_ID,
+      T11.INV_Barcode,
+      T11.INV_Name,
+      ISNULL(T11.INV_ThirdNo, T15.APA_ThirdNo) 'INV_ThirdNo',
+      ISNULL(T11.INV_OEMNo, T15.APA_OEMNo) 'INV_OEMNo',
+      ISNULL(T11.INV_Specification,
+      T15.APA_Specification
+      ) 'INV_Specification',
+      T11.INV_Qty,
+      T11.INV_PurchaseUnitPrice,
+      T12.Org_ShortName,
+      T13.WH_Name,
+      T15.APA_Brand,
+      T15.APA_UOM,
+      T15.APA_Level,
+      T15.APA_ExchangeCode
+      FROM PIS_Inventory T11
+      INNER JOIN SM_Organization T12
+      ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T13
+      ON T13.WH_ID = T11.INV_WH_ID
+      AND T13.WH_IsValid = 1
+      LEFT JOIN PIS_Supplier T14
+      ON T14.SUPP_ID = T11.INV_SUPP_ID
+      AND T14.SUPP_IsValid = 1
+      LEFT JOIN BS_AutoPartsArchive T15
+      ON T15.APA_Barcode = T11.INV_Barcode
+      AND T15.APA_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T16
+      ON T16.WHB_ID = T11.INV_WHB_ID
+      AND T16.WHB_IsValid = 1
+      WHERE T11.INV_IsValid = 1
+      AND T11.INV_Qty > 0
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">
+        (
+        ISNULL(T11.INV_ThirdNo, T15.APA_ThirdNo) LIKE '%'+#WHERE_AutoPartsCode#+'%' OR
+        ISNULL(T11.INV_OEMNo, T15.APA_OEMNo) LIKE '%' + #WHERE_AutoPartsCode# + '%' OR
+        T15.APA_ExchangeCode LIKE '%' + #WHERE_AutoPartsCode# + '%'
+        )
+      </isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T15.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_Specification LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      <!--配件条码-->
+      <isNotEmpty prepend="AND" property="WHERE_BarcodeAndBatchNo">T11.INV_Barcode+T11.INV_BatchNo LIKE '%'+#WHERE_BarcodeAndBatchNo#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T15.APA_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_SUPP_Name">T14.SUPP_Name LIKE '%'+#WHERE_INV_SUPP_Name#+'%'</isNotEmpty>
+      <!--仓库-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WH_ID">(ISNULL(T11.INV_WH_ID,'')!='' AND #WHERE_INV_WH_ID#+';' LIKE '%'+T11.INV_WH_ID+';%')</isNotEmpty>
+      <!--仓位-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WHB_ID">(ISNULL(T11.INV_WHB_ID,'')!='' AND #WHERE_INV_WHB_ID#+';' LIKE '%'+T11.INV_WHB_ID+';%')</isNotEmpty>
+      <!--组织-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T11.INV_Org_ID = #WHERE_INV_Org_ID#</isNotEmpty>
+      ) T1
+      GROUP BY T1.Org_ShortName,
+      T1.INV_Org_ID,
+      T1.INV_WH_ID,
+      T1.WH_Name,
+      T1.INV_ThirdNo,
+      T1.INV_OEMNo,
+      T1.INV_Barcode,
+      T1.INV_Name,
+      T1.INV_Specification,
+      T1.APA_Brand,
+      T1.APA_UOM,
+      T1.APA_Level,
+      T1.APA_ExchangeCode
+      ) Temp
+
+      SELECT @RecordCount 'RecordCount',
+      T1.INV_Org_ID,
+      T1.INV_WH_ID,
+      T1.INV_Barcode,
+      T1.INV_Name,
+      T1.INV_ThirdNo,
+      T1.INV_OEMNo,
+      T1.INV_Specification,
+      CONVERT(DECIMAL(18, 0), SUM(ISNULL(T1.INV_Qty, 0))) 'INV_Qty',
+      CONVERT(DECIMAL(18, 2),
+      SUM(ISNULL(T1.INV_PurchaseUnitPrice, 0) * ISNULL(T1.INV_Qty, 0))
+      ) 'PurchaseAmount',
+      T1.Org_ShortName,
+      T1.WH_Name,
+      T1.APA_Brand,
+      T1.APA_UOM,
+      T1.APA_Level,
+      T1.APA_ExchangeCode
+      FROM
+      (
+      SELECT T11.INV_Org_ID,
+      T11.INV_WH_ID,
+      T11.INV_Barcode,
+      T11.INV_Name,
+      ISNULL(T11.INV_ThirdNo, T15.APA_ThirdNo) 'INV_ThirdNo',
+      ISNULL(T11.INV_OEMNo, T15.APA_OEMNo) 'INV_OEMNo',
+      ISNULL(T11.INV_Specification, T15.APA_Specification) 'INV_Specification',
+      T11.INV_Qty,
+      T11.INV_PurchaseUnitPrice,
+      T12.Org_ShortName,
+      T13.WH_Name,
+      T15.APA_Brand,
+      T15.APA_UOM,
+      T15.APA_Level,
+      T15.APA_ExchangeCode
+      FROM PIS_Inventory T11
+      INNER JOIN SM_Organization T12
+      ON T12.Org_ID = T11.INV_Org_ID
+      AND T12.Org_IsValid = 1
+      LEFT JOIN PIS_Warehouse T13
+      ON T13.WH_ID = T11.INV_WH_ID
+      AND T13.WH_IsValid = 1
+      LEFT JOIN PIS_Supplier T14
+      ON T14.SUPP_ID = T11.INV_SUPP_ID
+      AND T14.SUPP_IsValid = 1
+      LEFT JOIN BS_AutoPartsArchive T15
+      ON T15.APA_Barcode = T11.INV_Barcode
+      AND T15.APA_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T16
+      ON T16.WHB_ID = T11.INV_WHB_ID
+      AND T16.WHB_IsValid = 1
+      WHERE T11.INV_IsValid = 1
+      AND T11.INV_Qty > 0
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">
+        (
+        ISNULL(T11.INV_ThirdNo, T15.APA_ThirdNo) LIKE '%'+#WHERE_AutoPartsCode#+'%' OR
+        ISNULL(T11.INV_OEMNo, T15.APA_OEMNo) LIKE '%' + #WHERE_AutoPartsCode# + '%' OR
+        T15.APA_ExchangeCode LIKE '%' + #WHERE_AutoPartsCode# + '%'
+        )
+      </isNotEmpty>
+      <!--其他描述-->
+      <isNotEmpty prepend="AND" property="WHERE_OtherDesc">
+        (
+        T15.APA_VehicleBrand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleInspire LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleCapacity LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleYearModel LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_VehicleGearboxTypeName LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_Brand LIKE '%'+#WHERE_OtherDesc#+'%' OR
+        T15.APA_Specification LIKE '%'+#WHERE_OtherDesc#+'%'
+        )
+      </isNotEmpty>
+      <!--配件条码+批次号-->
+      <isNotEmpty prepend="AND" property="WHERE_BarcodeAndBatchNo">T11.INV_Barcode+T11.INV_BatchNo LIKE '%'+#WHERE_BarcodeAndBatchNo#+'%'</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Name">T15.APA_Name LIKE '%'+#WHERE_INV_Name#+'%'</isNotEmpty>
+      <!--供应商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_SUPP_Name">T14.SUPP_Name LIKE '%'+#WHERE_INV_SUPP_Name#+'%'</isNotEmpty>
+      <!--仓库-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WH_ID">(ISNULL(T11.INV_WH_ID,'')!='' AND #WHERE_INV_WH_ID#+';' LIKE '%'+T11.INV_WH_ID+';%')</isNotEmpty>
+      <!--仓位-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_WHB_ID">(ISNULL(T11.INV_WHB_ID,'')!='' AND #WHERE_INV_WHB_ID#+';' LIKE '%'+T11.INV_WHB_ID+';%')</isNotEmpty>
+      <!--组织-->
+      <isNotEmpty prepend="AND" property="WHERE_INV_Org_ID">T11.INV_Org_ID = #WHERE_INV_Org_ID#</isNotEmpty>
+      ) T1
+      GROUP BY T1.Org_ShortName,
+      T1.INV_Org_ID,
+      T1.INV_WH_ID,
+      T1.WH_Name,
+      T1.INV_ThirdNo,
+      T1.INV_OEMNo,
+      T1.INV_Barcode,
+      T1.INV_Name,
+      T1.INV_Specification,
+      T1.APA_Brand,
+      T1.APA_UOM,
+      T1.APA_Level,
+      T1.APA_ExchangeCode
+
+      <!--翻页用-->
+      ORDER BY T1.Org_ShortName ,
+      T1.WH_Name ,
+      T1.INV_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[库存]【列表】信息-->
+    <select id="InventoryQuery_SQL_04" parameterClass="MDLPIS_InventoryPicture" resultClass="InventoryQueryUIModel">
+      SELECT  T1.INVP_ID ,
+      T1.INVP_SourceTypeCode ,
+      T1.INVP_SourceTypeName ,
+      T1.INVP_AutoPartsID ,
+      T1.INVP_Barcode ,
+      T1.INVP_PictureName ,
+      T1.INVP_IsValid ,
+      T1.INVP_CreatedBy ,
+      T1.INVP_CreatedTime ,
+      T1.INVP_UpdatedBy ,
+      T1.INVP_UpdatedTime ,
+      T1.INVP_VersionNo
+      FROM    PIS_InventoryPicture T1
+      WHERE   T1.INVP_IsValid = 1
+      AND '' LIKE '%' + T1.INVP_Barcode + ';%'
+    </select>
+
+  </statements>
+
+</sqlMap>

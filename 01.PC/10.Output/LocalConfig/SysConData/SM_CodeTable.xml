@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<ArrayOfMDLSM_CodeTable xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <MDLSM_CodeTable>
+    <CT_ID>1d349f0c-87f9-42d0-9ac9-6869821931fc</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>3级</CT_Name>
+    <CT_Value>3级</CT_Value>
+    <CT_Desc>3级</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2018-03-29T15:29:15.583</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2018-03-29T15:29:15.583</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>5f3f2d7d-beaf-4b10-bf28-aee79d06a85d</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>会员价111</CT_Name>
+    <CT_Value>会员价111</CT_Value>
+    <CT_Desc>会员价111</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2018-03-29T13:45:11.143</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2018-03-29T13:45:11.143</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>a49c6db3-f760-4e3d-991d-520ce79a6717</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>222</CT_Name>
+    <CT_Value>222</CT_Value>
+    <CT_Desc>222</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2018-03-21T11:24:22.38</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2018-03-21T11:24:22.38</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>4188bde6-4076-41ea-b09a-232e218ea97b</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>5</CT_Name>
+    <CT_Value>5</CT_Value>
+    <CT_Desc>5</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2018-03-21T11:22:47.737</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2018-03-21T11:22:47.737</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>a83d3480-73c9-4eb3-a608-7aa755d1153e</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>三九</CT_Name>
+    <CT_Value>三九</CT_Value>
+    <CT_Desc>三九</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2017-11-14T20:02:10.803</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-11-14T20:02:10.803</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>575a70ef-50c8-4fb6-b523-b6aba1875e28</CT_ID>
+    <CT_Type>VehicleCapacity</CT_Type>
+    <CT_Name>0.7T</CT_Name>
+    <CT_Value>0.7T</CT_Value>
+    <CT_Desc>0.7T</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-10-27T14:49:25.027</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-10-27T14:49:25.027</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>5ddfe573-7edd-437c-899f-56131055d06a</CT_ID>
+    <CT_Type>VehicleCapacity</CT_Type>
+    <CT_Name>0.5S</CT_Name>
+    <CT_Value>0.5S</CT_Value>
+    <CT_Desc>0.5S</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-10-27T14:48:36.843</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-10-27T14:48:36.843</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>c0b3eafe-cc29-4220-9ba0-4196e5f98ba6</CT_ID>
+    <CT_Type>VehicleCapacity</CT_Type>
+    <CT_Name>0.5T</CT_Name>
+    <CT_Value>0.5T</CT_Value>
+    <CT_Desc>0.5T</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-10-27T14:48:11.41</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-10-27T14:48:11.41</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>376c9af9-7fde-4464-869d-60b4c7588b54</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>会员价</CT_Name>
+    <CT_Value>会员价</CT_Value>
+    <CT_Desc>会员价</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2017-10-13T09:44:44.037</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-10-13T09:44:44.037</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>924188a5-7226-4bf7-839e-f258a13d84ff</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>代理价</CT_Name>
+    <CT_Value>代理价</CT_Value>
+    <CT_Desc>代理价</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-30T09:43:51.493</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-30T09:43:51.493</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>7f97d6cb-5139-4259-8eb4-6d1e9e56608c</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>股东价</CT_Name>
+    <CT_Value>股东价</CT_Value>
+    <CT_Desc>股东价</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-30T09:43:40.71</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-30T09:43:40.71</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>fe5e2060-36b4-446b-b4ce-75edb2081490</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>联盟价</CT_Name>
+    <CT_Value>联盟价</CT_Value>
+    <CT_Desc>联盟价</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-30T09:43:29.657</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-30T09:43:29.657</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>cd24772e-83d2-47a3-b2b8-c55ce3a0d465</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>批发价</CT_Name>
+    <CT_Value>批发价</CT_Value>
+    <CT_Desc>批发价</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-30T09:43:16.907</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-30T09:43:16.907</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>56967377-4d0d-4d42-93d2-3d54007c8794</CT_ID>
+    <CT_Type>AutoPartsPriceType</CT_Type>
+    <CT_Name>零售价</CT_Name>
+    <CT_Value>零售价</CT_Value>
+    <CT_Desc>零售价</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-30T09:43:07.28</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>魏婷婷</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-30T09:43:07.28</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>6b5ea685-f0d6-428e-9be3-c2d28fa105d6</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>超豪华</CT_Name>
+    <CT_Value>超豪华</CT_Value>
+    <CT_Desc>超豪华</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>章天成</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-22T09:02:39.933</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>章天成</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-22T09:02:39.933</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>48ef3995-2ea9-4a37-88ea-2ef175ee1c87</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>巨无霸</CT_Name>
+    <CT_Value>巨无霸</CT_Value>
+    <CT_Desc>巨无霸</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>章天成</CT_CreatedBy>
+    <CT_CreatedTime>2017-09-05T17:17:57.27</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>章天成</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-09-05T17:17:57.27</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>1a968491-2436-44a6-b8bb-664578bd4504</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>缘分</CT_Name>
+    <CT_Value>缘分</CT_Value>
+    <CT_Desc>缘分</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>黄振巍</CT_CreatedBy>
+    <CT_CreatedTime>2017-08-08T15:40:54.537</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-08-08T17:33:51.303</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>2</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>8c36cf44-f4d3-42a5-a376-0970b5d80097</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>品牌</CT_Name>
+    <CT_Value>品牌</CT_Value>
+    <CT_Desc>品牌</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>黄振巍</CT_CreatedBy>
+    <CT_CreatedTime>2017-08-01T10:14:02.213</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-08-01T10:14:02.213</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>2C4106DC-C2C7-4566-9A7A-131835125334</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>特级</CT_Name>
+    <CT_Value>特级</CT_Value>
+    <CT_Desc>特级</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>魏婷婷</CT_CreatedBy>
+    <CT_CreatedTime>2017-06-05T15:35:26.047</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-07-31T14:21:23.1</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>5</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>65cf7ea0-ffa2-4863-b9ad-3e8c575109f5</CT_ID>
+    <CT_Type>AutoPartsLevel</CT_Type>
+    <CT_Name>正厂</CT_Name>
+    <CT_Value>正厂</CT_Value>
+    <CT_Desc>正厂</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2017-05-08T10:43:58.743</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-07-31T14:21:15.283</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>6</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>58aff732-9e82-41cc-9acd-c79a9dde9e9a</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>豪华</CT_Name>
+    <CT_Value>豪华</CT_Value>
+    <CT_Desc>豪华</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>黄振巍</CT_CreatedBy>
+    <CT_CreatedTime>2017-07-31T13:47:41.77</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-07-31T13:47:41.77</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>55b197e7-3034-4a8e-8e36-879371eea619</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>高级</CT_Name>
+    <CT_Value>高级</CT_Value>
+    <CT_Desc>高级</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>黄振巍</CT_CreatedBy>
+    <CT_CreatedTime>2017-07-31T13:45:55.74</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-07-31T13:45:55.74</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>dd92a233-7eb8-42eb-8e14-d94d5b73f1a5</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>中高级</CT_Name>
+    <CT_Value>中高级</CT_Value>
+    <CT_Desc>中高级</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>黄振巍</CT_CreatedBy>
+    <CT_CreatedTime>2017-07-31T13:45:40.76</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>黄振巍</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-07-31T13:45:40.76</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>e31744d3-9585-44fe-ac02-f69fbab291bf</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>超高级</CT_Name>
+    <CT_Value>超高级</CT_Value>
+    <CT_Desc>超高级</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>章天成</CT_CreatedBy>
+    <CT_CreatedTime>2017-07-18T18:07:11.573</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>章天成</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-07-18T18:07:11.573</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+  <MDLSM_CodeTable>
+    <CT_ID>AA66CF7C-7A2A-4DCB-8E5F-B1DFE2DE4DC7</CT_ID>
+    <CT_Type>VehicleModel</CT_Type>
+    <CT_Name>小型汽车</CT_Name>
+    <CT_Value>小型汽车</CT_Value>
+    <CT_Desc>小型汽车</CT_Desc>
+    <CT_IsValid>true</CT_IsValid>
+    <CT_CreatedBy>SuperAdmin</CT_CreatedBy>
+    <CT_CreatedTime>2017-04-27T19:15:58.657</CT_CreatedTime>
+    <_CreatedTimeStart xsi:nil="true" />
+    <_CreatedTimeEnd xsi:nil="true" />
+    <CT_UpdatedBy>SuperAdmin</CT_UpdatedBy>
+    <CT_UpdatedTime>2017-04-27T19:15:58.657</CT_UpdatedTime>
+    <_UpdatedTimeStart xsi:nil="true" />
+    <_UpdatedTimeEnd xsi:nil="true" />
+    <CT_VersionNo>1</CT_VersionNo>
+    <RecordCount>25</RecordCount>
+    <PageIndex xsi:nil="true" />
+    <PageSize xsi:nil="true" />
+    <WHERE_CT_IsValid xsi:nil="true" />
+    <WHERE_CT_CreatedTime xsi:nil="true" />
+    <WHERE_CT_UpdatedTime xsi:nil="true" />
+    <WHERE_CT_VersionNo xsi:nil="true" />
+  </MDLSM_CodeTable>
+</ArrayOfMDLSM_CodeTable>

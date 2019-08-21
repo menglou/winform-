@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--经营情况统计QCModel-->
+    <typeAlias alias="ManagementSituationReportQCModel" type="SkyCar.Coeus.UIModel.RPT.QCModel.ManagementSituationReportQCModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--经营情况统计汇总UIModel-->
+    <typeAlias alias="ManagementSituationTotalReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.ManagementSituationTotalReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+    <!--经营情况统计明细UIModel-->
+    <typeAlias alias="ManagementSituationDetailReportUIModel" type="SkyCar.Coeus.UIModel.RPT.UIModel.ManagementSituationDetailReportUIModel,SkyCar.Coeus.UIModel.RPT" />
+
+  </alias>
+  <statements>
+
+    <!--经营情况统计——汇总-->
+    <procedure id="RPT_ManagementSituationReport_SQL01" parameterMap="RPT_ManagementSituationReport_SQL01_ParameteMap" resultClass="ManagementSituationTotalReportUIModel">
+      P_RPT_Get_ManagementSituation_Total
+    </procedure>
+    
+    <!--经营情况统计——根据时间统计销售-->
+    <procedure id="RPT_ManagementSituationReport_SQL02" parameterMap="RPT_ManagementSituationReport_SQL02_ParameteMap" resultClass="ManagementSituationDetailReportUIModel">
+      P_RPT_Get_ManagementSituation_StatisticsSalesByTime
+    </procedure>
+    
+    <!--经营情况统计——根据产品统计销售-->
+    <procedure id="RPT_ManagementSituationReport_SQL03" parameterMap="RPT_ManagementSituationReport_SQL02_ParameteMap" resultClass="ManagementSituationDetailReportUIModel">
+      P_RPT_Get_ManagementSituation_StatisticsSalesByProduct
+    </procedure>
+
+    <!--经营情况统计——根据客户统计销售-->
+    <procedure id="RPT_ManagementSituationReport_SQL04" parameterMap="RPT_ManagementSituationReport_SQL02_ParameteMap" resultClass="ManagementSituationDetailReportUIModel">
+      P_RPT_Get_ManagementSituation_StatisticsSalesByCustomer
+    </procedure>
+
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    <parameterMap id="RPT_ManagementSituationReport_SQL01_ParameteMap" class="ManagementSituationReportQCModel">
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="OrgIdList"/>
+    </parameterMap>
+
+    <parameterMap id="RPT_ManagementSituationReport_SQL02_ParameteMap" class="ManagementSituationReportQCModel">
+      <parameter property="StartTime" />
+      <parameter property="EndTime"/>
+      <parameter property="OrgIdList"/>
+      <parameter property="StatisticsMode"/>
+      <parameter property="IsContainReturn"/>
+    </parameterMap>
+
+  </parameterMaps>
+
+</sqlMap>

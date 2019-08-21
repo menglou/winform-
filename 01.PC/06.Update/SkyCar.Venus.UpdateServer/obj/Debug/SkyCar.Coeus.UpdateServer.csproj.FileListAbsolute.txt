@@ -1,0 +1,8 @@
+D:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.UpdateServer.dll
+D:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.UpdateServer.pdb
+D:\云车\04.编码\03.C#源码\01.PC\06.Update\SkyCar.Venus.UpdateServer\obj\Debug\SkyCar.Coeus.UpdateServer.dll
+D:\云车\04.编码\03.C#源码\01.PC\06.Update\SkyCar.Venus.UpdateServer\obj\Debug\SkyCar.Coeus.UpdateServer.pdb
+E:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.UpdateServer.dll
+E:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.UpdateServer.pdb
+E:\云车\04.编码\03.C#源码\01.PC\06.Update\SkyCar.Venus.UpdateServer\obj\Debug\SkyCar.Coeus.UpdateServer.dll
+E:\云车\04.编码\03.C#源码\01.PC\06.Update\SkyCar.Venus.UpdateServer\obj\Debug\SkyCar.Coeus.UpdateServer.pdb

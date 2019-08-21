@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--仓库管理QCModel-->
+    <typeAlias alias="WarehouseManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.WarehouseManagerQCModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--仓库管理UIModel-->
+    <typeAlias alias="WarehouseManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.WarehouseManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+  <statements>
+
+    <!--查询仓库有是否被使用过-->
+    <select id="WarehouseManager_SQL01" parameterClass="MDLPIS_Warehouse" resultClass="MDLPIS_Warehouse">
+      SELECT DISTINCT
+      T2.WH_Name
+      FROM    PIS_Inventory T1
+      INNER JOIN PIS_Warehouse T2 ON T2.WH_ID = T1.INV_WH_ID
+      AND T2.WH_IsValid = 1
+      WHERE   T1.INV_WH_ID IS NOT NULL
+      AND T1.INV_WH_ID != ''
+      AND #WHERE_WH_ID# LIKE '%;' + T1.INV_WH_ID + ';%'
+      AND T1.INV_IsValid = 1
+      UNION
+      SELECT DISTINCT
+      T2.WH_Name
+      FROM    PIS_StockInDetail T1
+      INNER JOIN PIS_Warehouse T2 ON T2.WH_ID = T1.SID_WH_ID
+      AND T2.WH_IsValid = 1
+      WHERE   T1.SID_WH_ID IS NOT NULL
+      AND T1.SID_WH_ID != ''
+      AND #WHERE_WH_ID# LIKE '%;' + T1.SID_WH_ID + ';%'
+      AND T1.SID_IsValid = 1
+    </select>
+
+    <!--查询仓库列表-->
+    <select id="WarehouseManager_SQL02" parameterClass="WarehouseManagerQCModel" resultClass="WarehouseManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.WH_ID)
+      FROM PIS_Warehouse T1
+      LEFT JOIN SM_Organization T2 ON T2.Org_ID = T1.WH_Org_ID
+      AND T2.Org_IsValid = 1
+      WHERE   1 = 1
+      <!--仓库编号-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_No">T1.WH_No LIKE '%'+#WHERE_WH_No#+'%'</isNotEmpty>
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T1.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Org_ID">T1.WH_Org_ID LIKE '%'+#WHERE_WH_Org_ID#+'%'</isNotEmpty>
+      <!--仓库地址-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Address">T1.WH_Address LIKE '%'+#WHERE_WH_Address#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_WH_IsValid">T1.WH_IsValid=#WHERE_WH_IsValid#</isNotNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.WH_ID ,
+      T1.WH_No ,
+      T1.WH_Name ,
+      T1.WH_Org_ID ,
+      T2.Org_ShortName 'OrgName' ,
+      T1.WH_Address ,
+      T1.WH_Description ,
+      T1.WH_IsValid ,
+      T1.WH_CreatedBy ,
+      T1.WH_CreatedTime ,
+      T1.WH_UpdatedBy ,
+      T1.WH_UpdatedTime ,
+      T1.WH_VersionNo
+      FROM    PIS_Warehouse T1
+      LEFT JOIN SM_Organization T2 ON T2.Org_ID = T1.WH_Org_ID
+      AND T2.Org_IsValid = 1
+      WHERE   1 = 1
+      <!--仓库编号-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_No">T1.WH_No LIKE '%'+#WHERE_WH_No#+'%'</isNotEmpty>
+      <!--仓库名称-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Name">T1.WH_Name LIKE '%'+#WHERE_WH_Name#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Org_ID">T1.WH_Org_ID LIKE '%'+#WHERE_WH_Org_ID#+'%'</isNotEmpty>
+      <!--仓库地址-->
+      <isNotEmpty prepend="AND" property="WHERE_WH_Address">T1.WH_Address LIKE '%'+#WHERE_WH_Address#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_WH_IsValid">T1.WH_IsValid=#WHERE_WH_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.WH_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据仓库ID查询仓库列表-->
+    <select id="WarehouseManager_SQL03" parameterClass="string" resultClass="MDLPIS_WarehouseBin">
+      SELECT  T1.WHB_ID ,
+      T1.WHB_ID 'WHERE_WHB_ID'
+      FROM    PIS_WarehouseBin T1
+      WHERE   T1.WHB_IsValid = 1
+      AND #value# LIKE '%' + T1.WHB_WH_ID + ';%'
+    </select>
+   
+    <!--查询仓库名称是否已存在-->
+    <select id="WarehouseManager_SQL04" parameterClass="MDLPIS_Warehouse" resultClass="int">
+      SELECT  COUNT(T1.WH_ID)
+      FROM    PIS_Warehouse T1
+      WHERE   T1.WH_IsValid = 1
+      AND T1.WH_ID != #WHERE_WH_ID#
+      AND T1.WH_Name = #WHERE_WH_Name#
+      AND T1.WH_Org_ID=#WHERE_WH_Org_ID#
+    </select>
+
+    <!--查询仓库编码是否已存在-->
+    <select id="WarehouseManager_SQL05" parameterClass="MDLPIS_Warehouse" resultClass="int">
+      SELECT  COUNT(T1.WH_ID)
+      FROM    PIS_Warehouse T1
+      WHERE   T1.WH_IsValid = 1
+      AND T1.WH_ID != #WHERE_WH_ID#
+      AND T1.WH_No = #WHERE_WH_No#
+      AND T1.WH_Org_ID=#WHERE_WH_Org_ID#
+    </select>
+    
+  </statements>
+</sqlMap>

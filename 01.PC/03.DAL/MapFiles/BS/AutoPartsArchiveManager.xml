@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--配件档案QCModel-->
+    <typeAlias alias="AutoPartsArchiveManagerQCModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsArchiveManagerQCModel,SkyCar.Coeus.UIModel.BS" />
+    <!--配件档案UIModel-->
+    <typeAlias alias="AutoPartsArchiveManagerUIModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsArchiveManagerUIModel,SkyCar.Coeus.UIModel.BS" />
+    <!--配件价格明细UIModel-->
+    <typeAlias alias="AutoPartsPriceTypeUIModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsPriceTypeUIModel,SkyCar.Coeus.UIModel.BS" />
+  </alias>
+  <statements>
+    <!--获取配件计量单位-->
+    <select id="AutoPartsArchiveManager_SQL01" parameterClass="MDLBS_AutoPartsArchive" resultClass="MDLBS_AutoPartsArchive">
+      SELECT DISTINCT
+      T1.APA_UOM
+      FROM    BS_AutoPartsArchive T1
+      WHERE   T1.APA_IsValid = 1
+      AND T1.APA_UOM IS  NOT NULL
+      AND T1.APA_UOM != ''
+    </select>
+
+    <!--查询配件档案列表-->
+    <select id="AutoPartsArchiveManager_SQL02" parameterClass="AutoPartsArchiveManagerQCModel" resultClass="AutoPartsArchiveManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.APA_ID)
+      FROM    BS_AutoPartsArchive T1
+      LEFT JOIN PIS_Supplier T2 ON T2.SUPP_ID = T1.APA_SUPP_ID
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.APA_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.APA_WHB_ID
+      WHERE   T1.APA_IsValid = 1
+      <!--条形码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Barcode">T1.APA_Barcode LIKE '%'+#WHERE_APA_Barcode#+'%'</isNotEmpty>
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">(T1.APA_OEMNo LIKE '%'+#WHERE_AutoPartsCode#+'%' OR T1.APA_ThirdNo LIKE '%' + #WHERE_AutoPartsCode# + '%' )</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T1.APA_Name LIKE '%'+#WHERE_APA_Name#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T1.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      <!--规格型号-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Specification">T1.APA_Specification LIKE '%'+#WHERE_APA_Specification#+'%'</isNotEmpty>
+      <!--配件级别-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Level">T1.APA_Level LIKE '%'+#WHERE_APA_Level#+'%'</isNotEmpty>
+      <!--车型代码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleModelCode">T1.APA_VehicleModelCode LIKE '%'+#WHERE_APA_VehicleModelCode#+'%'</isNotEmpty>
+      <!--互换码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ExchangeCode">T1.APA_ExchangeCode LIKE '%'+#WHERE_APA_ExchangeCode#+'%'</isNotEmpty>
+      <!--默认供应商-->
+      <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">T2.SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+
+      SELECT
+      @RecordCount 'RecordCount',
+      T1.APA_ID ,
+      T1.APA_Org_ID ,
+      T1.APA_Barcode ,
+      T1.APA_OEMNo ,
+      T1.APA_ThirdNo ,
+      T1.APA_Name ,
+      T1.APA_Brand ,
+      T1.APA_Specification ,
+      T1.APA_UOM ,
+      T1.APA_Level ,
+      T1.APA_VehicleBrand ,
+      T1.APA_VehicleInspire ,
+      T1.APA_VehicleCapacity ,
+      T1.APA_VehicleYearModel ,
+      T1.APA_VehicleGearboxTypeCode ,
+      T1.APA_VehicleGearboxTypeName ,
+      T1.APA_SUPP_ID ,
+      T2.SUPP_Name ,
+      T1.APA_WH_ID ,
+      T3.WH_Name ,
+      T1.APA_WHB_ID ,
+      T4.WHB_Name ,
+      T1.APA_IsWarningSafeStock ,
+      T1.APA_SafeStockNum ,
+      T1.APA_IsWarningDeadStock ,
+      T1.APA_SlackDays ,
+      T1.APA_SalePriceRate ,
+      T1.APA_SalePrice ,
+      T1.APA_VehicleModelCode ,
+      T1.APA_ExchangeCode ,
+      T1.APA_IsValid ,
+      T1.APA_CreatedBy ,
+      T1.APA_CreatedTime ,
+      T1.APA_UpdatedBy ,
+      T1.APA_UpdatedTime ,
+      T1.APA_VersionNo ,
+      T1.APA_TransID
+      FROM    BS_AutoPartsArchive T1
+      LEFT JOIN PIS_Supplier T2 ON T2.SUPP_ID = T1.APA_SUPP_ID
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.APA_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.APA_WHB_ID
+      WHERE   T1.APA_IsValid = 1
+      <!--条形码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Barcode">T1.APA_Barcode LIKE '%'+#WHERE_APA_Barcode#+'%'</isNotEmpty>
+      <!--配件编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoPartsCode">(T1.APA_OEMNo LIKE '%'+#WHERE_AutoPartsCode#+'%' OR T1.APA_ThirdNo LIKE '%' + #WHERE_AutoPartsCode# + '%' )</isNotEmpty>
+      <!--配件名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Name">T1.APA_Name LIKE '%'+#WHERE_APA_Name#+'%'</isNotEmpty>
+      <!--配件品牌-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Brand">T1.APA_Brand LIKE '%'+#WHERE_APA_Brand#+'%'</isNotEmpty>
+      <!--规格型号-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Specification">T1.APA_Specification LIKE '%'+#WHERE_APA_Specification#+'%'</isNotEmpty>
+      <!--配件级别-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_Level">T1.APA_Level LIKE '%'+#WHERE_APA_Level#+'%'</isNotEmpty>
+      <!--车型代码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_VehicleModelCode">T1.APA_VehicleModelCode LIKE '%'+#WHERE_APA_VehicleModelCode#+'%'</isNotEmpty>
+      <!--互换码-->
+      <isNotEmpty prepend="AND" property="WHERE_APA_ExchangeCode">T1.APA_ExchangeCode LIKE '%'+#WHERE_APA_ExchangeCode#+'%'</isNotEmpty>
+      <!--默认供应商-->
+      <isNotEmpty prepend="AND" property="WHERE_SUPP_Name">T2.SUPP_Name LIKE '%'+#WHERE_SUPP_Name#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.APA_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询配件档案是否被引用过-->
+    <select id="AutoPartsArchiveManager_SQL03" parameterClass="MDLBS_AutoPartsArchive" resultClass="int">
+      <!--入库单明细-->
+      SELECT  COUNT(T1.TempID)
+      FROM    ( SELECT    T11.SID_ID 'TempID'
+      FROM      PIS_StockInDetail T11
+      WHERE     T11.SID_IsValid = 1
+      AND ISNULL(T11.SID_Barcode, '') != ''
+      AND T11.SID_Barcode = #WHERE_APA_Barcode#
+      UNION
+      <!--销售订单明细-->
+      SELECT    T12.SOD_ID 'TempID'
+      FROM      SD_SalesOrderDetail T12
+      WHERE     T12.SOD_IsValid = 1
+      AND ISNULL(T12.SOD_Barcode, '') != ''
+      AND T12.SOD_Barcode = #WHERE_APA_Barcode#
+      UNION
+      <!--销售模板明细-->
+      SELECT    T13.SasTD_ID 'TempID'
+      FROM      SD_SalesTemplateDetail T13
+      WHERE     T13.SasTD_IsValid = 1
+      AND ISNULL(T13.SasTD_Barcode, '') != ''
+      AND T13.SasTD_Barcode = #WHERE_APA_Barcode#
+      UNION
+      <!--销售预测明细-->
+      SELECT    T14.SFOD_ID 'TempID'
+      FROM      SD_SalesForecastOrderDetail T14
+      WHERE     T14.SFOD_IsValid = 1
+      AND ISNULL(T14.SFOD_Barcode, '') != ''
+      AND T14.SFOD_Barcode = #WHERE_APA_Barcode#
+      UNION
+      <!--库存-->
+      SELECT    T15.INV_ID 'TempID'
+      FROM      PIS_Inventory T15
+      WHERE     T15.INV_IsValid = 1
+      AND ISNULL(T15.INV_Barcode, '') != ''
+      AND T15.INV_Barcode = #WHERE_APA_Barcode#
+      UNION
+      <!--调拨单明细-->
+      SELECT    T16.TBD_ID 'TempID'
+      FROM      PIS_TransferBillDetail T16
+      WHERE     T16.TBD_IsValid = 1
+      AND ISNULL(T16.TBD_Barcode, '') != ''
+      AND T16.TBD_Barcode = #WHERE_APA_Barcode#
+      ) T1
+    </select>
+
+    <!--获取配件计量单位-->
+    <select id="AutoPartsArchiveManager_SQL04" parameterClass="AutoPartsArchiveManagerQCModel" resultClass="AutoPartsPriceTypeUIModel">
+      SELECT
+      0 'IsChecked' ,
+      LOWER(NEWID()) 'Tmp_ID',
+      T1.APPT_ID ,
+      T1.APPT_Org_ID ,
+      T1.APPT_Name ,
+      T1.APPT_Barcode ,
+      T1.APPT_Price ,
+      T1.APPT_IsValid ,
+      T1.APPT_CreatedBy ,
+      T1.APPT_CreatedTime ,
+      T1.APPT_UpdatedBy ,
+      T1.APPT_UpdatedTime ,
+      T1.APPT_VersionNo
+      FROM    BS_AutoPartsPriceType T1
+      WHERE   T1.APPT_IsValid = 1
+      AND T1.APPT_Barcode = #WHERE_APA_Barcode#
+    </select>
+
+    <!--根据ID查询配件价格明细-->
+    <select id="AutoPartsArchiveManager_SQL05" parameterClass="MDLBS_AutoPartsPriceType" resultClass="MDLBS_AutoPartsPriceType">
+      SELECT  T1.APPT_ID ,
+      T1.APPT_Org_ID ,
+      T1.APPT_Name ,
+      T1.APPT_Barcode ,
+      T1.APPT_Price ,
+      T1.APPT_IsValid ,
+      T1.APPT_CreatedBy ,
+      T1.APPT_CreatedTime ,
+      T1.APPT_UpdatedBy ,
+      T1.APPT_UpdatedTime ,
+      T1.APPT_VersionNo
+      FROM    BS_AutoPartsPriceType T1
+      WHERE   T1.APPT_IsValid = 1
+      AND #WHERE_APPT_ID# LIKE '%' + T1.APPT_ID + ';%'
+    </select>
+
+  </statements>
+</sqlMap>

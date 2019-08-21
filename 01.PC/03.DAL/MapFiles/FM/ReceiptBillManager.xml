@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+    <!--收款单管理UIModel-->
+    <typeAlias alias="ReceiptBillManagerUIModel" type="SkyCar.Coeus.UIModel.FM.ReceiptBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--收款单管理QCModel-->
+    <typeAlias alias="ReceiptBillManagerQCModel" type="SkyCar.Coeus.UIModel.FM.ReceiptBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[收款单管理]【列表】信息-->
+    <select id="ReceiptBillManager_SQL01" parameterClass="ReceiptBillManagerQCModel" resultClass="ReceiptBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.RB_ID)
+      FROM FM_ReceiptBill T1
+      LEFT JOIN EWM_Wallet T2
+      ON T2.Wal_CustomerID = T1.RB_PayObjectID
+      LEFT JOIN
+      (
+      SELECT DISTINCT
+      A.RBD_RB_ID,
+      STUFF(
+      (
+      SELECT ',' + RBD_SrcBillNo + ','
+      FROM FM_ReceiptBillDetail
+      WHERE RBD_RB_ID = A.RBD_RB_ID
+      FOR XML PATH('')
+      ),
+      1,
+      1,
+      ','
+      ) AS RBD_SrcBillNo
+      FROM FM_ReceiptBillDetail AS A
+      ) T3
+      ON T3.RBD_RB_ID = T1.RB_ID
+      WHERE T1.RB_IsValid = 1
+      <!--收款单号-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_No">T1.RB_No LIKE '%'+#WHERE_RB_No#+'%'</isNotEmpty>
+      <!--收款组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_Rec_Org_ID">T1.RB_Rec_Org_ID LIKE '%'+#WHERE_RB_Rec_Org_ID#+'%'</isNotEmpty>
+      <!--收款通道名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_ReceiveTypeName">T1.RB_ReceiveTypeName LIKE '%'+#WHERE_RB_ReceiveTypeName#+'%'</isNotEmpty>
+      <!--收款日期-->
+      <isNotNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.RB_Date BETWEEN #_DateStart# AND #_DateEnd#</isNotNull>
+        <isNull  prepend="AND" property="_DateEnd">T1.RB_Date <![CDATA[>=]]> #_DateStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.RB_Date <![CDATA[<=]]> #_DateEnd#</isNotNull>
+      </isNull>
+      <!--付款对象类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_PayObjectTypeName">T1.RB_PayObjectTypeName LIKE '%'+#WHERE_RB_PayObjectTypeName#+'%'</isNotEmpty>
+      <!--付款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_PayObjectName">T1.RB_PayObjectName LIKE '%'+#WHERE_RB_PayObjectName#+'%'</isNotEmpty>
+      <!--业务状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_BusinessStatusName">T1.RB_BusinessStatusName LIKE '%'+#WHERE_RB_BusinessStatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_ApprovalStatusName">T1.RB_ApprovalStatusName LIKE '%'+#WHERE_RB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--明细来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_RBD_SrcBillNo">T3.RBD_SrcBillNo LIKE '%'+#WHERE_RBD_SrcBillNo#+'%'</isNotEmpty>
+
+      SELECT @RecordCount 'RecordCount',
+      T1.RB_ID,
+      T1.RB_No,
+      T1.RB_Rec_Org_ID,
+      T1.RB_Rec_Org_Name,
+      T1.RB_Date,
+      T1.RB_PayObjectTypeCode,
+      T1.RB_PayObjectTypeName,
+      T1.RB_PayObjectID,
+      T1.RB_PayObjectName,
+      T1.RB_ReceiveTypeCode,
+      T1.RB_ReceiveTypeName,
+      T1.RB_ReceiveAccount,
+      T1.RB_CertificateNo,
+      T1.RB_CertificatePic,
+      T1.RB_ReceiveTotalAmount,
+      T1.RB_BusinessStatusCode,
+      T1.RB_BusinessStatusName,
+      T1.RB_ApprovalStatusCode,
+      T1.RB_ApprovalStatusName,
+      T1.RB_Remark,
+      T1.RB_IsValid,
+      T1.RB_CreatedBy,
+      T1.RB_CreatedTime,
+      T1.RB_UpdatedBy,
+      T1.RB_UpdatedTime,
+      T1.RB_VersionNo,
+      T2.Wal_ID,
+      T2.Wal_No,
+      T2.Wal_AvailableBalance,
+      T2.Wal_VersionNo
+      FROM FM_ReceiptBill T1
+      LEFT JOIN EWM_Wallet T2
+      ON T2.Wal_CustomerID = T1.RB_PayObjectID
+      LEFT JOIN
+      (
+      SELECT DISTINCT
+      A.RBD_RB_ID,
+      STUFF(
+      (
+      SELECT ',' + RBD_SrcBillNo + ','
+      FROM FM_ReceiptBillDetail
+      WHERE RBD_RB_ID = A.RBD_RB_ID
+      FOR XML PATH('')
+      ),
+      1,
+      1,
+      ','
+      ) AS RBD_SrcBillNo
+      FROM FM_ReceiptBillDetail AS A
+      ) T3
+      ON T3.RBD_RB_ID = T1.RB_ID
+      WHERE T1.RB_IsValid = 1
+      <!--收款单号-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_No">T1.RB_No LIKE '%'+#WHERE_RB_No#+'%'</isNotEmpty>
+      <!--收款组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_Rec_Org_ID">T1.RB_Rec_Org_ID LIKE '%'+#WHERE_RB_Rec_Org_ID#+'%'</isNotEmpty>
+      <!--收款通道名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_ReceiveTypeName">T1.RB_ReceiveTypeName LIKE '%'+#WHERE_RB_ReceiveTypeName#+'%'</isNotEmpty>
+      <!--收款日期-->
+      <isNotNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.RB_Date BETWEEN #_DateStart# AND #_DateEnd#</isNotNull>
+        <isNull  prepend="AND" property="_DateEnd">T1.RB_Date <![CDATA[>=]]> #_DateStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.RB_Date <![CDATA[<=]]> #_DateEnd#</isNotNull>
+      </isNull>
+      <!--付款对象类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_PayObjectTypeName">T1.RB_PayObjectTypeName LIKE '%'+#WHERE_RB_PayObjectTypeName#+'%'</isNotEmpty>
+      <!--付款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_PayObjectName">T1.RB_PayObjectName LIKE '%'+#WHERE_RB_PayObjectName#+'%'</isNotEmpty>
+      <!--业务状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_BusinessStatusName">T1.RB_BusinessStatusName LIKE '%'+#WHERE_RB_BusinessStatusName#+'%'</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_RB_ApprovalStatusName">T1.RB_ApprovalStatusName LIKE '%'+#WHERE_RB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--明细来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_RBD_SrcBillNo">T3.RBD_SrcBillNo LIKE '%'+#WHERE_RBD_SrcBillNo#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.RB_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--删除图片时更新收款单-->
+    <update id="ReceiptBillManager_SQL02" parameterClass="MDLFM_ReceiptBill">
+      UPDATE  FM_ReceiptBill
+      SET     RB_CertificatePic = #RB_CertificatePic# ,
+      RB_UpdatedTime = GETDATE() ,
+      RB_VersionNo = RB_VersionNo + 1
+      WHERE   RB_ID = #WHERE_RB_ID#
+    </update>
+
+  </statements>  
+</sqlMap>

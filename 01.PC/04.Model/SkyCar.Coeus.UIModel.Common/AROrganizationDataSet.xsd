@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AROrganizationDataSet" targetNamespace="http://tempuri.org/AROrganizationDataSet.xsd" xmlns:mstns="http://tempuri.org/AROrganizationDataSet.xsd" xmlns="http://tempuri.org/AROrganizationDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AROrganizationDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AROrganizationDataSet" msprop:Generator_UserDSName="AROrganizationDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AROrganization" msprop:Generator_TableClassName="AROrganizationDataTable" msprop:Generator_TableVarName="tableAROrganization" msprop:Generator_TablePropName="AROrganization" msprop:Generator_RowDeletingName="AROrganizationRowDeleting" msprop:Generator_RowChangingName="AROrganizationRowChanging" msprop:Generator_RowEvHandlerName="AROrganizationRowChangeEventHandler" msprop:Generator_RowDeletedName="AROrganizationRowDeleted" msprop:Generator_UserTableName="AROrganization" msprop:Generator_RowChangedName="AROrganizationRowChanged" msprop:Generator_RowEvArgName="AROrganizationRowChangeEvent" msprop:Generator_RowClassName="AROrganizationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Org_ID" msprop:Generator_ColumnVarNameInTable="columnOrg_ID" msprop:Generator_ColumnPropNameInRow="Org_ID" msprop:Generator_ColumnPropNameInTable="Org_IDColumn" msprop:Generator_UserColumnName="Org_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_MCT_ID" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOrg_MCT_ID" msprop:Generator_ColumnPropNameInRow="Org_MCT_ID" msprop:Generator_ColumnPropNameInTable="Org_MCT_IDColumn" msprop:Generator_UserColumnName="Org_MCT_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_Code" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_Code" msprop:Generator_ColumnPropNameInRow="Org_Code" msprop:Generator_ColumnPropNameInTable="Org_CodeColumn" msprop:Generator_UserColumnName="Org_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_PlatformCode" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOrg_PlatformCode" msprop:Generator_ColumnPropNameInRow="Org_PlatformCode" msprop:Generator_ColumnPropNameInTable="Org_PlatformCodeColumn" msprop:Generator_UserColumnName="Org_PlatformCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_FullName" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_FullName" msprop:Generator_ColumnPropNameInRow="Org_FullName" msprop:Generator_ColumnPropNameInTable="Org_FullNameColumn" msprop:Generator_UserColumnName="Org_FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_ShortName" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOrg_ShortName" msprop:Generator_ColumnPropNameInRow="Org_ShortName" msprop:Generator_ColumnPropNameInTable="Org_ShortNameColumn" msprop:Generator_UserColumnName="Org_ShortName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_Contacter" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_Contacter" msprop:Generator_ColumnPropNameInRow="Org_Contacter" msprop:Generator_ColumnPropNameInTable="Org_ContacterColumn" msprop:Generator_UserColumnName="Org_Contacter" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_TEL" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOrg_TEL" msprop:Generator_ColumnPropNameInRow="Org_TEL" msprop:Generator_ColumnPropNameInTable="Org_TELColumn" msprop:Generator_UserColumnName="Org_TEL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_PhoneNo" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_PhoneNo" msprop:Generator_ColumnPropNameInRow="Org_PhoneNo" msprop:Generator_ColumnPropNameInTable="Org_PhoneNoColumn" msprop:Generator_UserColumnName="Org_PhoneNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_Prov_Code" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOrg_Prov_Code" msprop:Generator_ColumnPropNameInRow="Org_Prov_Code" msprop:Generator_ColumnPropNameInTable="Org_Prov_CodeColumn" msprop:Generator_UserColumnName="Org_Prov_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_City_Code" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_City_Code" msprop:Generator_ColumnPropNameInRow="Org_City_Code" msprop:Generator_ColumnPropNameInTable="Org_City_CodeColumn" msprop:Generator_UserColumnName="Org_City_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_Dist_Code" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOrg_Dist_Code" msprop:Generator_ColumnPropNameInRow="Org_Dist_Code" msprop:Generator_ColumnPropNameInTable="Org_Dist_CodeColumn" msprop:Generator_UserColumnName="Org_Dist_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_Addr" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_Addr" msprop:Generator_ColumnPropNameInRow="Org_Addr" msprop:Generator_ColumnPropNameInTable="Org_AddrColumn" msprop:Generator_UserColumnName="Org_Addr" type="xs:string" minOccurs="0" />
+              <xs:element name="Org_Longitude" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_Longitude" msprop:Generator_ColumnPropNameInRow="Org_Longitude" msprop:Generator_ColumnPropNameInTable="Org_LongitudeColumn" msprop:Generator_UserColumnName="Org_Longitude" type="xs:string" minOccurs="0" />
+              <xs:element name="Org_Latitude" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_Latitude" msprop:Generator_ColumnPropNameInRow="Org_Latitude" msprop:Generator_ColumnPropNameInTable="Org_LatitudeColumn" msprop:Generator_UserColumnName="Org_Latitude" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_MarkerTitle" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_MarkerTitle" msprop:Generator_ColumnPropNameInRow="Org_MarkerTitle" msprop:Generator_ColumnPropNameInTable="Org_MarkerTitleColumn" msprop:Generator_UserColumnName="Org_MarkerTitle" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_MarkerContent" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_MarkerContent" msprop:Generator_ColumnPropNameInRow="Org_MarkerContent" msprop:Generator_ColumnPropNameInTable="Org_MarkerContentColumn" msprop:Generator_UserColumnName="Org_MarkerContent" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_MainBrands" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_MainBrands" msprop:Generator_ColumnPropNameInRow="Org_MainBrands" msprop:Generator_ColumnPropNameInTable="Org_MainBrandsColumn" msprop:Generator_UserColumnName="Org_MainBrands" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_MainProducts" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_MainProducts" msprop:Generator_ColumnPropNameInRow="Org_MainProducts" msprop:Generator_ColumnPropNameInTable="Org_MainProductsColumn" msprop:Generator_UserColumnName="Org_MainProducts" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_Remark" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_Remark" msprop:Generator_ColumnPropNameInRow="Org_Remark" msprop:Generator_ColumnPropNameInTable="Org_RemarkColumn" msprop:Generator_UserColumnName="Org_Remark" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_IsValid" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_IsValid" msprop:Generator_ColumnPropNameInRow="Org_IsValid" msprop:Generator_ColumnPropNameInTable="Org_IsValidColumn" msprop:Generator_UserColumnName="Org_IsValid" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Org_CreatedBy" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_CreatedBy" msprop:Generator_ColumnPropNameInRow="Org_CreatedBy" msprop:Generator_ColumnPropNameInTable="Org_CreatedByColumn" msprop:Generator_UserColumnName="Org_CreatedBy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_CreatedTime" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_CreatedTime" msprop:Generator_ColumnPropNameInRow="Org_CreatedTime" msprop:Generator_ColumnPropNameInTable="Org_CreatedTimeColumn" msprop:Generator_UserColumnName="Org_CreatedTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Org_UpdatedBy" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_UpdatedBy" msprop:Generator_ColumnPropNameInRow="Org_UpdatedBy" msprop:Generator_ColumnPropNameInTable="Org_UpdatedByColumn" msprop:Generator_UserColumnName="Org_UpdatedBy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Org_UpdatedTime" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_UpdatedTime" msprop:Generator_ColumnPropNameInRow="Org_UpdatedTime" msprop:Generator_ColumnPropNameInTable="Org_UpdatedTimeColumn" msprop:Generator_UserColumnName="Org_UpdatedTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Org_VersionNo" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnOrg_VersionNo" msprop:Generator_ColumnPropNameInRow="Org_VersionNo" msprop:Generator_ColumnPropNameInTable="Org_VersionNoColumn" msprop:Generator_UserColumnName="Org_VersionNo" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SkyCar.Coeus.UI.Base</name>
+    </assembly>
+    <members>
+        <member name="T:SkyCar.Coeus.UI.Base.BaseFormDialog`3">
+            <summary>
+            基础窗体（列表-详情）
+            </summary>
+            <typeparam name="UIModelType">【列表】Tab内Grid绑定用的数据源类型</typeparam>
+            <typeparam name="QCModelType">【新增/详情】Tab内控件绑定用的数据源类型</typeparam>
+            <typeparam name="TBModeType">TBModel类型（QCModel不指定SQLID的场合，Base.QueryAction()方法查询TBModel对应的数据表）</typeparam>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3._bll">
+            <summary>
+            BLLBase
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToolBarPaging">
+            <summary>
+            翻页ToolBar
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToolBarActionAndNavigate">
+            <summary>
+            动作按钮ToolBar
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.GridDS">
+            <summary>
+            【列表】Tab内Grid绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.DetailDS">
+            <summary>
+            【新增/详情】Tab内控件绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ConditionDS">
+            <summary>
+            【列表】Tab内查询条件绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ExecuteQuery">
+            <summary>
+            执行子类中的查询方法
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.PageIndex">
+            <summary>
+            当前页面索引值
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.TotalRecordCount">
+            <summary>
+            总记录条数
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.TotalPageCount">
+            <summary>
+            总页面数
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.#ctor">
+            <summary>
+            基础窗体（列表-详情）
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.toolBarActionAndNavigate_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            工具栏（动作-导航）单击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.NewAction">
+            <summary>
+             新增
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SendMsgAction">
+            <summary>
+            推送消息
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SignInAction">
+            <summary>
+            签收
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.AdjustAction">
+            <summary>
+            校正
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.StartStockTaskAction">
+            <summary>
+            启动盘点
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SynchronizeAction">
+            <summary>
+            同步
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.CancelCertificationAction">
+            <summary>
+            取消认证
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.DeliverAction">
+            <summary>
+            下发
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.CancelDeliverAction">
+            <summary>
+            取消下发
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.AnalyseAction">
+            <summary>
+            损益分析
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SaveAction">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.CopyAction">
+            <summary>
+            复制
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.DeleteAction">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.QueryAction">
+            <summary>
+            查询
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ClearAction">
+            <summary>
+            清空查询条件
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ApproveAction">
+            <summary>
+            审核
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.UnApproveAction">
+            <summary>
+            反审核
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ExportAction(Infragistics.Win.UltraWinGrid.UltraGrid,System.String)">
+            <summary>
+            Grid数据导出当前页
+            <para>此方法需要被重写后调用</para>
+            <para>一行代码调用即可：base.ExportAction(gdGrid);</para>
+            </summary>
+            <param name="paramGrid">需要导出的UltraGrid对象</param>
+            <param name="paramGridName">需要导出的Grid的名称</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ExportAllAction(Infragistics.Win.UltraWinGrid.UltraGrid,System.String)">
+            <summary>
+            Grid数据导出全部
+            <para>此方法需要被重写后调用</para>
+            <para>一行代码调用即可：base.ExportAllAction(gdGrid);</para>
+            </summary>
+            <param name="paramGrid">需要导出的UltraGrid对象</param>
+            <param name="paramGridName">需要导出的Grid的名称</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ImportAction">
+            <summary>
+            导入
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.PrintAction">
+            <summary>
+            打印
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToSalesOrderNavigate">
+            <summary>
+            转销售
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToLogisticsBillNavigate">
+            <summary>
+            转物流
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToStockInBillNavigate">
+            <summary>
+            转入库
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.OnLinePayNavigate">
+            <summary>
+            在线支付
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.PrintBarCodeNavigate">
+            <summary>
+            打印条码
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToPurchaseOrderNavigate">
+            <summary>
+            转采购
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.InitializeAction">
+            <summary>
+            初始化动作按钮
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.InitializeNavigate">
+            <summary>
+            初始化导航按钮（需被重写）
+            <para>根据各自画面业务需求初始化导航按钮</para>
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetActionEnableBySelectedTab(System.String)">
+            <summary>
+            根据选中的Tab，设置动作按钮[是否可用]（在系统权限的基础上进行控制）
+            <para> </para>
+            <para>________[详情]Tab__[列表]Tab</para>
+            <para>保存_____可用______不可用</para>
+            <para>复制_____可用______不可用</para>
+            <para>审核_____可用______不可用</para>
+            <para>反审核___可用______不可用</para>
+            <para>导出_____不可用____可用</para>
+            <para>启动盘点_可用______不可用</para>
+            <para> </para>
+            <para>其他动作按钮不管当前选中[详情]或[列表]Tab，都按系统权限进行控制</para>
+            </summary>
+            <param name="paramTabKey"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetActionVisiableAndEnable(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            设置指定动作按钮[是否可见]和[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemActionEnum.Code.XXX</param>
+            <param name="paramVisible">true:显示；false:不显示</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetActionEnable(System.String,System.Boolean)">
+            <summary>
+            设置指定动作按钮[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemActionEnum.Code.XXX</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetNavigateVisiableAndEnable(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            设置指定导航按钮[是否可见]和[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemNavigateEnum.Code.XXX</param>
+            <param name="paramVisible">true:显示；false:不显示</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetNavigateEnable(System.String,System.Boolean)">
+            <summary>
+            设置指定导航按钮[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemNavigateEnum.Code.XXX</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetBarPaging(System.Int32)">
+            <summary>
+            设置翻页控件
+            <para>窗体加载或初始化时调用</para>
+            </summary>
+            <param name="paramTotalRecordCount">总记录条数</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToolBarPaging_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.ToolBarPaging_ToolValueChanged(System.Object,Infragistics.Win.UltraWinToolbars.ToolEventArgs)">
+            <summary>
+            翻页ToolBar的值改变事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetTotalPageCountAndTotalRecordCount(System.Int32)">
+            <summary>
+            设置总页数和总记录条数
+            </summary>
+            <param name="paramTotalRecordCount">总记录条数</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.SetPageButtonStatus">
+            <summary>
+            设置翻页按钮状态
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormDialog`3.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormDialog`3.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SkyCar.Coeus.UI.Base.BaseFormCardList`3">
+            <summary>
+            基础窗体（列表-详情）
+            </summary>
+            <typeparam name="UIModelType">【列表】Tab内Grid绑定用的数据源类型</typeparam>
+            <typeparam name="QCModelType">【新增/详情】Tab内控件绑定用的数据源类型</typeparam>
+            <typeparam name="TBModeType">TBModel类型（QCModel不指定SQLID的场合，Base.QueryAction()方法查询TBModel对应的数据表）</typeparam>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3._bll">
+            <summary>
+            BLLBase
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToolBarPaging">
+            <summary>
+            翻页ToolBar
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToolBarActionAndNavigate">
+            <summary>
+            动作按钮ToolBar
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.GridDS">
+            <summary>
+            【列表】Tab内Grid绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.DetailDS">
+            <summary>
+            【新增/详情】Tab内控件绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ConditionDS">
+            <summary>
+            【列表】Tab内查询条件绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ExecuteQuery">
+            <summary>
+            执行子类中的查询方法
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.PageIndex">
+            <summary>
+            当前页面索引值
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.TotalRecordCount">
+            <summary>
+            总记录条数
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.TotalPageCount">
+            <summary>
+            总页面数
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.OrginalUIModel">
+            <summary>
+            旧UIModel
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.NewUIModel">
+            <summary>
+            新UIModel
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardList`3.DetailDSCopy">
+            <summary>
+            【详情】Tab内控件绑定用的数据源备份
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.#ctor">
+            <summary>
+            基础窗体（列表-详情）
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.toolBarActionAndNavigate_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            工具栏（动作-导航）单击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.NewAction">
+            <summary>
+             新增
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SendMsgAction">
+            <summary>
+            推送消息
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SignInAction">
+            <summary>
+            签收
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.AdjustAction">
+            <summary>
+            校正
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.StartStockTaskAction">
+            <summary>
+            启动盘点
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SynchronizeAction">
+            <summary>
+            同步
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.CancelCertificationAction">
+            <summary>
+            取消认证
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.DeliverAction">
+            <summary>
+            下发
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.CancelDeliverAction">
+            <summary>
+            取消下发
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.AnalyseAction">
+            <summary>
+            损益分析
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SaveAction">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.CopyAction">
+            <summary>
+            复制
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.DeleteAction">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.QueryAction">
+            <summary>
+            查询
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ClearAction">
+            <summary>
+            清空查询条件
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ApproveAction">
+            <summary>
+            审核
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.UnApproveAction">
+            <summary>
+            反审核
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ExportAction(Infragistics.Win.UltraWinGrid.UltraGrid,System.String)">
+            <summary>
+            Grid数据导出当前页
+            <para>此方法需要被重写后调用</para>
+            <para>一行代码调用即可：base.ExportAction(gdGrid);</para>
+            </summary>
+            <param name="paramGrid">需要导出的UltraGrid对象</param>
+            <param name="paramGridName">需要导出的Grid的名称</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ExportAllAction(Infragistics.Win.UltraWinGrid.UltraGrid,System.String)">
+            <summary>
+            Grid数据导出全部
+            <para>此方法需要被重写后调用</para>
+            <para>一行代码调用即可：base.ExportAllAction(gdGrid);</para>
+            </summary>
+            <param name="paramGrid">需要导出的UltraGrid对象</param>
+            <param name="paramGridName">需要导出的Grid的名称</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ImportAction">
+            <summary>
+            导入
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.PrintAction">
+            <summary>
+            打印
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.RechargeAction">
+            <summary>
+            充值
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.WithdrawCashAction">
+            <summary>
+            提现
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.CloseAccountAction">
+            <summary>
+            销户
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToSalesOrderNavigate">
+            <summary>
+            转销售
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToLogisticsBillNavigate">
+            <summary>
+            转物流
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToStockInBillNavigate">
+            <summary>
+            转入库
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.OnLinePayNavigate">
+            <summary>
+            在线支付
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.PrintBarCodeNavigate">
+            <summary>
+            打印条码
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToPurchaseOrderNavigate">
+            <summary>
+            转采购
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.WalletCreateAccount">
+            <summary>
+            开户
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.WalletDepositMoney">
+            <summary>
+            充值
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.InitializeAction">
+            <summary>
+            初始化动作按钮
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.InitializeNavigate">
+            <summary>
+            初始化导航按钮（需被重写）
+            <para>根据各自画面业务需求初始化导航按钮</para>
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetActionEnableBySelectedTab(System.String)">
+            <summary>
+            根据选中的Tab，设置动作按钮[是否可用]（在系统权限的基础上进行控制）
+            <para> </para>
+            <para>________[详情]Tab__[列表]Tab</para>
+            <para>保存_____可用______不可用</para>
+            <para>复制_____可用______不可用</para>
+            <para>审核_____可用______不可用</para>
+            <para>反审核___可用______不可用</para>
+            <para>导出_____不可用____可用</para>
+            <para>启动盘点_可用______不可用</para>
+            <para> </para>
+            <para>其他动作按钮不管当前选中[详情]或[列表]Tab，都按系统权限进行控制</para>
+            </summary>
+            <param name="paramTabKey"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetActionVisiableAndEnable(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            设置指定动作按钮[是否可见]和[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemActionEnum.Code.XXX</param>
+            <param name="paramVisible">true:显示；false:不显示</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetActionEnable(System.String,System.Boolean)">
+            <summary>
+            设置指定动作按钮[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemActionEnum.Code.XXX</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetNavigateVisiableAndEnable(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            设置指定导航按钮[是否可见]和[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemNavigateEnum.Code.XXX</param>
+            <param name="paramVisible">true:显示；false:不显示</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetNavigateEnable(System.String,System.Boolean)">
+            <summary>
+            设置指定导航按钮[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemNavigateEnum.Code.XXX</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetBarPaging(System.Int32)">
+            <summary>
+            设置翻页控件
+            <para>窗体加载或初始化时调用</para>
+            </summary>
+            <param name="paramTotalRecordCount">总记录条数</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToolBarPaging_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ToolBarPaging_ToolValueChanged(System.Object,Infragistics.Win.UltraWinToolbars.ToolEventArgs)">
+            <summary>
+            翻页ToolBar的值改变事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetTotalPageCountAndTotalRecordCount(System.Int32)">
+            <summary>
+            设置总页数和总记录条数
+            </summary>
+            <param name="paramTotalRecordCount">总记录条数</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.SetPageButtonStatus">
+            <summary>
+            设置翻页按钮状态
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.AcceptUIModelChanges(System.String)">
+            <summary>
+            接受调用此方法之前UIModel的变化
+            </summary>
+            <param name="paramPropertyName">UIModel中的属性名</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.AcceptUIModelChanges">
+            <summary>
+            接受调用此方法之前UIModel的变化
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ViewHasChanged(System.Collections.Generic.List{System.String})">
+            <summary>
+            检查UIModel属性值是否发生变化
+            </summary>
+            <param name="paramSkipProperyList">需要跳过的属性（不予检查）</param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.ViewHasChangedWhenClose">
+            <summary>
+            关闭画面时UIModel属性值是否发生变化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardList`3.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardList`3.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3">
+            <summary>
+            基础窗体（列表-详情）
+            </summary>
+            <typeparam name="HeadUIModelType">【列表】Tab内Grid绑定用的数据源类型</typeparam>
+            <typeparam name="QCModelType">【新增/详情】Tab内控件绑定用的数据源类型</typeparam>
+            <typeparam name="HeadTBModeType">单头对应的TBModel类型（QCModel不指定SQLID的场合，Base.QueryAction()方法查询TBModel对应的数据表）</typeparam>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3._bll">
+            <summary>
+            BLLBase
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.MenuGroupActionList">
+            <summary>
+            当前界面的菜单动作列表
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToolBarPaging">
+            <summary>
+            翻页ToolBar
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToolBarActionAndNavigate">
+            <summary>
+            动作按钮ToolBar
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.HeadGridDS">
+            <summary>
+            【列表】Tab内Grid绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.HeadDS">
+            <summary>
+            【新增/详情】Tab内控件绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ConditionDS">
+            <summary>
+            【列表】Tab内查询条件绑定用的数据源
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ExecuteQuery">
+            <summary>
+            执行子类中的查询方法
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.PageIndex">
+            <summary>
+            当前页面索引值
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.TotalRecordCount">
+            <summary>
+            总记录条数
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.TotalPageCount">
+            <summary>
+            总页面数
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.OrginalUIModel">
+            <summary>
+            旧UIModel
+            </summary>
+        </member>
+        <member name="F:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.NewUIModel">
+            <summary>
+            新UIModel
+            </summary>
+        </member>
+        <member name="P:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.HeadDSCopy">
+            <summary>
+            【详情】Tab内控件绑定用的数据源备份
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.#ctor">
+            <summary>
+            基础窗体（列表-详情）
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.toolBarActionAndNavigate_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            工具栏（动作-导航）单击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.NewAction">
+            <summary>
+             新增
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SendMsgAction">
+            <summary>
+            推送消息
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SignInAction">
+            <summary>
+            签收
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.AdjustAction">
+            <summary>
+            校正
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.StartStockTaskAction">
+            <summary>
+            启动盘点
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SynchronizeAction">
+            <summary>
+            同步
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.CancelCertificationAction">
+            <summary>
+            取消认证
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.DeliverAction">
+            <summary>
+            下发
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.CancelDeliverAction">
+            <summary>
+            取消下发
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.AnalyseAction">
+            <summary>
+            损益分析
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SaveAction">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.CopyAction">
+            <summary>
+            复制
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.DeleteAction">
+            <summary>
+            删除
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.QueryAction">
+            <summary>
+            查询
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ClearAction">
+            <summary>
+            清空查询条件
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ApproveAction">
+            <summary>
+            审核
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.UnApproveAction">
+            <summary>
+            反审核
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ExportAction(Infragistics.Win.UltraWinGrid.UltraGrid,System.String)">
+            <summary>
+            Grid数据导出当前页
+            <para>此方法需要被重写后调用</para>
+            <para>一行代码调用即可：base.ExportAction(gdGrid);</para>
+            </summary>
+            <param name="paramGrid">需要导出的UltraGrid对象</param>
+            <param name="paramGridName">需要导出的Grid的名称</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ExportAllAction(Infragistics.Win.UltraWinGrid.UltraGrid,System.String)">
+            <summary>
+            Grid数据导出全部
+            <para>此方法需要被重写后调用</para>
+            <para>一行代码调用即可：base.ExportAllAction(gdGrid);</para>
+            </summary>
+            <param name="paramGrid">需要导出的UltraGrid对象</param>
+            <param name="paramGridName">需要导出的Grid的名称</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ImportAction">
+            <summary>
+            导入
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.PrintAction">
+            <summary>
+            打印
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.VerifyAction">
+            <summary>
+            核实
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ReconciliationAction">
+            <summary>
+            对账
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToSalesOrderNavigate">
+            <summary>
+            转销售
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToLogisticsBillNavigate">
+            <summary>
+            转物流
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToStockInBillNavigate">
+            <summary>
+            转入库
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.OnLinePayNavigate">
+            <summary>
+            在线支付
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.PrintBarCodeNavigate">
+            <summary>
+            打印条码
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToReceiptBillNavigate">
+            <summary>
+            转收款
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToPayBillNavigate">
+            <summary>
+            转付款
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToPurchaseOrderNavigate">
+            <summary>
+            转采购
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToStockOutBillNavigate">
+            <summary>
+            转出库
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.AllSignNavigate">
+            <summary>
+            全部签收
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToSettlementNavigate">
+            <summary>
+            转结算
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.WalletCreateAccount">
+            <summary>
+            开户
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.WalletDepositMoney">
+            <summary>
+            充值
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.InitializeAction">
+            <summary>
+            初始化动作按钮
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.InitializeNavigate">
+            <summary>
+            初始化导航按钮（需被重写）
+            <para>根据各自画面业务需求初始化导航按钮</para>
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetActionEnableBySelectedTab(System.String)">
+            <summary>
+            根据选中的Tab，设置动作按钮[是否可用]（在系统权限的基础上进行控制）
+            <para> </para>
+            <para>________[详情]Tab__[列表]Tab</para>
+            <para>保存_____可用______不可用</para>
+            <para>复制_____可用______不可用</para>
+            <para>审核_____可用______不可用</para>
+            <para>反审核___可用______不可用</para>
+            <para>导出_____不可用____可用</para>
+            <para>启动盘点_可用______不可用</para>
+            <para> </para>
+            <para>其他动作按钮不管当前选中[详情]或[列表]Tab，都按系统权限进行控制</para>
+            </summary>
+            <param name="paramTabKey"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetActionVisiableAndEnable(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            设置指定动作按钮[是否可见]和[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemActionEnum.Code.XXX</param>
+            <param name="paramVisible">true:显示；false:不显示</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetActionEnable(System.String,System.Boolean)">
+            <summary>
+            设置指定动作按钮[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemActionEnum.Code.XXX</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetNavigateVisiableAndEnable(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            设置指定导航按钮[是否可见]和[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemNavigateEnum.Code.XXX</param>
+            <param name="paramVisible">true:显示；false:不显示</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetNavigateEnable(System.String,System.Boolean)">
+            <summary>
+            设置指定导航按钮[是否可用]
+            </summary>
+            <param name="paramSystemAction">SystemNavigateEnum.Code.XXX</param>
+            <param name="paramEnabled">true:可用；false:不可用</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetBarPaging(System.Int32)">
+            <summary>
+            设置翻页控件
+            <para>窗体加载或初始化时调用</para>
+            </summary>
+            <param name="paramTotalRecordCount">总记录条数</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToolBarPaging_ToolClick(System.Object,Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)">
+            <summary>
+            点击事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ToolBarPaging_ToolValueChanged(System.Object,Infragistics.Win.UltraWinToolbars.ToolEventArgs)">
+            <summary>
+            翻页ToolBar的值改变事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetTotalPageCountAndTotalRecordCount(System.Int32)">
+            <summary>
+            设置总页数和总记录条数
+            </summary>
+            <param name="paramTotalRecordCount">总记录条数</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.SetPageButtonStatus">
+            <summary>
+            设置翻页按钮状态
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.AcceptUIModelChanges(System.String)">
+            <summary>
+            接受调用此方法之前UIModel的变化
+            </summary>
+            <param name="paramPropertyName">UIModel中的属性名</param>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.AcceptUIModelChanges">
+            <summary>
+            接受调用此方法之前UIModel的变化
+            </summary>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ViewHasChanged(System.Collections.Generic.List{System.String})">
+            <summary>
+            检查UIModel属性值是否发生变化
+            </summary>
+            <param name="paramSkipProperyList">需要跳过的属性（不予检查）</param>
+            <returns></returns>
+        </member>
+        <member name="M:SkyCar.Coeus.UI.Base.BaseFormCardListDetail`3.ViewHasChangedWhenClose">
+            <summary>
+            关闭画面时UIModel属性值是否发生变化
+            </summary>
+            注意【详情】Tab中有Grid的场合，注意检查明细List是否变化
+            <returns></returns>
+        </member>
+    </members>
+</doc>

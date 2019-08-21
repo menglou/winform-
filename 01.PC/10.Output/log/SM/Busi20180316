@@ -1,0 +1,108 @@
+2018/03/16 15:44:45.988 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 15:44:46.020 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 15:44:46.085 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 15:44:46.127 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 15:44:53.989 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 15:44:54.047 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 15:44:54.060 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 15:44:54.100 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 15:44:54.117 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 15:44:54.163 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 15:44:54.173 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 15:44:54.214 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 15:44:54.855 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 15:44:54.895 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 15:44:57.897 [INFO] D QueryForObject[D](System.String, System.Object) ¡¾START¡¿  
+2018/03/16 15:44:57.987 [INFO] D QueryForObject[D](System.String, System.Object) ¡¾END¡¿-OK  
+2018/03/16 15:44:57.997 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 15:44:58.043 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 15:45:01.548 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 15:45:01.580 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 15:45:02.290 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 15:45:02.358 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 16:11:20.529 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 16:11:20.565 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 16:11:20.598 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 16:11:20.636 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 16:12:14.675 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 16:12:14.723 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 16:12:14.735 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 16:12:14.772 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 16:12:14.786 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 16:12:14.830 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 16:12:14.840 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 16:12:14.881 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 16:12:15.723 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 16:12:15.766 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 16:12:18.796 [INFO] D QueryForObject[D](System.String, System.Object) ¡¾START¡¿  
+2018/03/16 16:12:18.883 [INFO] D QueryForObject[D](System.String, System.Object) ¡¾END¡¿-OK  
+2018/03/16 16:12:18.893 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 16:12:18.942 [INFO] Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 16:12:22.384 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) ¡¾START¡¿  
+2018/03/16 16:12:22.413 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) ¡¾END¡¿-OK  
+2018/03/16 16:12:23.124 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 16:12:23.199 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:00.563 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:00.616 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:00.627 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:00.691 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:00.702 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:00.753 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:00.821 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:00.876 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.099 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.149 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.160 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.218 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.228 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.280 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.294 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.303 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.312 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.322 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.332 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.378 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:40.388 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:40.398 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:41.788 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:41.825 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:41.835 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:41.872 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:41.880 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:41.925 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:41.936 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:41.946 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:41.954 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:41.964 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:41.973 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:42.012 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:42.022 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:42.032 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.356 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.393 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.403 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.441 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.451 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.505 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.515 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.524 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.533 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.543 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.555 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.595 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:43.604 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:43.613 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.701 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.739 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.749 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.786 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.795 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.838 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.849 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.858 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.867 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.876 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.885 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.926 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  
+2018/03/16 18:02:44.935 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾START¡¿  
+2018/03/16 18:02:44.944 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) ¡¾END¡¿-OK  

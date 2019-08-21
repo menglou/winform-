@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+
+    <!--配件名称UIModel-->
+    <typeAlias alias="AutoPartsNameManagerUIModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsNameManagerUIModel,SkyCar.Coeus.UIModel.BS" />
+    <!--配件名称QCModel-->
+    <typeAlias alias="AutoPartsNameManagerQCModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsNameManagerQCModel,SkyCar.Coeus.UIModel.BS" />
+
+  </alias>
+  <statements>
+
+    <!--查询配件名称是否已使用-->
+    <select id="AutoPartsNameManager_SQL01" parameterClass="MDLBS_AutoPartsName" resultClass="int">
+      SELECT  COUNT(T1.APN_ID)
+      FROM    BS_AutoPartsName T1
+      WHERE   T1.APN_IsValid = 1
+      AND T1.APN_Name = #WHERE_APN_Name#
+      AND T1.APN_ID != #WHERE_APN_ID#
+    </select>
+
+    <!--查询配件名称列表-->
+    <select id="AutoPartsNameManager_SQL02" parameterClass="AutoPartsNameManagerQCModel" resultClass="AutoPartsNameManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.APN_ID)
+      FROM BS_AutoPartsName T1
+      LEFT JOIN BS_AutoPartsType T2
+      ON T2.APT_ID = T1.APN_APT_ID
+      <dynamic prepend="WHERE">
+        <!--配件名称-->
+        <isNotEmpty prepend="AND" property="WHERE_APN_Name">T1.APN_Name LIKE '%'+#WHERE_APN_Name#+'%'</isNotEmpty>
+        <!--配件类别-->
+        <isNotEmpty prepend="AND" property="WHERE_APN_APT_ID">T1.APN_APT_ID LIKE '%'+#WHERE_APN_APT_ID#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_APN_IsValid">T1.APN_IsValid=#WHERE_APN_IsValid#</isNotNull>
+      </dynamic>
+
+      SELECT @RecordCount 'RecordCount',
+      T1.APN_ID,
+      T1.APN_Name,
+      T1.APN_Alias,
+      T1.APN_NameSpellCode,
+      T1.APN_AliasSpellCode,
+      T1.APN_APT_ID,
+      T2.APT_Name,
+      T1.APN_SlackDays,
+      T1.APN_UOM,
+      T1.APN_FixUOM,
+      T1.APN_IsValid,
+      T1.APN_CreatedBy,
+      T1.APN_CreatedTime,
+      T1.APN_UpdatedBy,
+      T1.APN_UpdatedTime,
+      T1.APN_VersionNo
+      FROM BS_AutoPartsName T1
+      LEFT JOIN BS_AutoPartsType T2
+      ON T2.APT_ID = T1.APN_APT_ID
+      <dynamic prepend="WHERE">
+        <!--配件名称-->
+        <isNotEmpty prepend="AND" property="WHERE_APN_Name">T1.APN_Name LIKE '%'+#WHERE_APN_Name#+'%'</isNotEmpty>
+        <!--配件类别-->
+        <isNotEmpty prepend="AND" property="WHERE_APN_APT_ID">T1.APN_APT_ID LIKE '%'+#WHERE_APN_APT_ID#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_APN_IsValid">T1.APN_IsValid=#WHERE_APN_IsValid#</isNotNull>
+      </dynamic>
+
+      <!--翻页用-->
+      ORDER BY T1.APN_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+      
+    </select>
+
+    <!--查询配件名称是否被引用-->
+    <select id="AutoPartsNameManager_SQL03" parameterClass="string" resultClass="MDLBS_AutoPartsArchive">
+      SELECT DISTINCT T1.APA_Name
+      FROM    BS_AutoPartsArchive T1
+      WHERE   T1.APA_IsValid = 1
+      AND ISNULL(T1.APA_Name, '') != ''
+      AND #value# LIKE '%' + T1.APA_Name + ';%'
+    </select>
+
+  </statements>
+</sqlMap>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--配件类别QCModel-->
+    <typeAlias alias="AutoPartsTypeManagerQCModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsTypeManagerQCModel,SkyCar.Coeus.UIModel.BS" />
+    <!--配件类别UIModel-->
+    <typeAlias alias="AutoPartsTypeManagerUIModel" type="SkyCar.Coeus.UIModel.BS.AutoPartsTypeManagerUIModel,SkyCar.Coeus.UIModel.BS" />
+  </alias>
+  <statements>
+
+    <!--获取配件类别-->
+    <select id="AutoPartsTypeManager_SQL01" parameterClass="AutoPartsTypeManagerQCModel" resultClass="AutoPartsTypeManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.APT_ID)
+      FROM BS_AutoPartsType T1
+      LEFT JOIN BS_AutoPartsType T2 ON T2.APT_ID = T1.APT_ParentID
+      WHERE 1 = 1
+      <!--配件类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APT_Name">T1.APT_Name LIKE '%'+#WHERE_APT_Name#+'%'</isNotEmpty>
+      <!--父级类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APT_ParentName">T2.APT_Name LIKE '%'+#WHERE_APT_ParentName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_APT_IsValid">T1.APT_IsValid=#WHERE_APT_IsValid#</isNotNull>
+
+      SELECT
+      @RecordCount 'RecordCount',
+      T1.APT_ID ,
+      T1.APT_Name ,
+      T1.APT_ParentID ,
+      T2.APT_Name 'APT_ParentName' ,
+      T1.APT_Index ,
+      T1.APT_IsValid ,
+      T1.APT_CreatedBy ,
+      T1.APT_CreatedTime ,
+      T1.APT_UpdatedBy ,
+      T1.APT_UpdatedTime ,
+      T1.APT_VersionNo ,
+      T1.APT_TransID
+      FROM BS_AutoPartsType T1
+      LEFT JOIN BS_AutoPartsType T2 ON T2.APT_ID = T1.APT_ParentID
+      WHERE 1 = 1
+      <!--配件类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APT_Name">T1.APT_Name LIKE '%'+#WHERE_APT_Name#+'%'</isNotEmpty>
+      <!--父级类别名称-->
+      <isNotEmpty prepend="AND" property="WHERE_APT_ParentName">T2.APT_Name LIKE '%'+#WHERE_APT_ParentName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_APT_IsValid">T1.APT_IsValid=#WHERE_APT_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.APT_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询配件类别是否已存在-->
+    <select id="AutoPartsTypeManager_SQL02" parameterClass="MDLBS_AutoPartsType" resultClass="int">
+      SELECT  COUNT(T1.APT_ID)
+      FROM    BS_AutoPartsType T1
+      WHERE   T1.APT_IsValid = 1
+      AND T1.APT_ID != #WHERE_APT_ID#
+      AND T1.APT_Name = #WHERE_APT_Name#
+    </select>
+
+    <!--获取一级类别数-->
+    <select id="AutoPartsTypeManager_SQL03" parameterClass="int" resultClass="int">
+      SELECT  COUNT(T1.APT_ID)
+      FROM    BS_AutoPartsType T1
+      WHERE   T1.APT_IsValid = 1
+      AND ISNULL(T1.APT_ParentID, '') = ''
+    </select>
+
+    <!--查询配件类别是否被引用-->
+    <select id="AutoPartsTypeManager_SQL04" parameterClass="string" resultClass="MDLBS_AutoPartsType">
+      SELECT DISTINCT T2.APT_Name
+      FROM    BS_AutoPartsName T1
+      INNER JOIN BS_AutoPartsType T2 ON T2.APT_ID = T1.APN_APT_ID
+      AND T2.APT_IsValid = 1
+      WHERE   T1.APN_IsValid = 1
+      AND ISNULL(T1.APN_APT_ID, '') != ''
+      AND #value# LIKE '%' + T1.APN_APT_ID + ';%'
+    </select>
+
+  </statements>
+</sqlMap>

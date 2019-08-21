@@ -1,0 +1,5 @@
+2018/04/09 20:51:09.301 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsTypeManager, Text: 配件类别 请勾选至少一条配件类别名称信息进行删除！ 
+2018/04/09 20:51:14.260 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:51:14.297 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:51:27.873 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:51:27.909 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  

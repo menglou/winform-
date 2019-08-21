@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{962CE42F-618F-439D-A6FB-B0AE0C762C3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.TBModel</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.TBModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MDLAPM_AutoPartsArchive.cs" />
+    <Compile Include="MDLAPM_AutoPartsName.cs" />
+    <Compile Include="MDLAPM_AutoPartsType.cs" />
+    <Compile Include="MDLAPM_Inventory.cs" />
+    <Compile Include="MDLAPM_PurchaseOrder.cs" />
+    <Compile Include="MDLAPM_PurchaseOrderDetail.cs" />
+    <Compile Include="MDLAPM_Supplier.cs" />
+    <Compile Include="MDLBS_AutoPartsArchive.cs" />
+    <Compile Include="MDLBS_AutoPartsLevel.cs" />
+    <Compile Include="MDLBS_AutoPartsName.cs" />
+    <Compile Include="MDLBS_AutoPartsPriceType.cs" />
+    <Compile Include="MDLBS_AutoPartsType.cs" />
+    <Compile Include="MDLBS_VehicleBrandInspireSumma.cs" />
+    <Compile Include="MDLBS_VehicleBrandPartsInfo.cs" />
+    <Compile Include="MDLBS_VehicleInfo.cs" />
+    <Compile Include="MDLBS_VehicleOemPartsInfo.cs" />
+    <Compile Include="MDLBS_VehicleThirdPartsInfo.cs" />
+    <Compile Include="MDLCSM_BatchJob.cs" />
+    <Compile Include="MDLCSM_BatchJobLog.cs" />
+    <Compile Include="MDLCSM_BusinessRemindLog.cs" />
+    <Compile Include="MDLCSM_PushMesageLog.cs" />
+    <Compile Include="MDLEWM_Wallet.cs" />
+    <Compile Include="MDLEWM_WalletTrans.cs" />
+    <Compile Include="MDLFM_AccountPayableBill.cs" />
+    <Compile Include="MDLFM_AccountPayableBillDetail.cs" />
+    <Compile Include="MDLFM_AccountPayableBillLog.cs" />
+    <Compile Include="MDLFM_AccountReceivableBill.cs" />
+    <Compile Include="MDLFM_AccountReceivableBillDetail.cs" />
+    <Compile Include="MDLFM_AccountReceivableBillLog.cs" />
+    <Compile Include="MDLFM_PayBill.cs" />
+    <Compile Include="MDLFM_PayBillDetail.cs" />
+    <Compile Include="MDLFM_ReceiptBill.cs" />
+    <Compile Include="MDLFM_ReceiptBillDetail.cs" />
+    <Compile Include="MDLPIS_AutoFactoryCustomer.cs" />
+    <Compile Include="MDLPIS_GeneralCustomer.cs" />
+    <Compile Include="MDLPIS_Inventory.cs" />
+    <Compile Include="MDLPIS_InventoryPicture.cs" />
+    <Compile Include="MDLPIS_InventoryTransLog.cs" />
+    <Compile Include="MDLPIS_PurchaseForecastOrder.cs" />
+    <Compile Include="MDLPIS_PurchaseForecastOrderDetail.cs" />
+    <Compile Include="MDLPIS_PurchaseOrder.cs" />
+    <Compile Include="MDLPIS_PurchaseOrderDetail.cs" />
+    <Compile Include="MDLPIS_ShareInventory.cs" />
+    <Compile Include="MDLPIS_StockInBill.cs" />
+    <Compile Include="MDLPIS_StockInDetail.cs" />
+    <Compile Include="MDLPIS_StockOutBill.cs" />
+    <Compile Include="MDLPIS_StockOutBillDetail.cs" />
+    <Compile Include="MDLPIS_StocktakingTask.cs" />
+    <Compile Include="MDLPIS_StocktakingTaskDetail.cs" />
+    <Compile Include="MDLPIS_Supplier.cs" />
+    <Compile Include="MDLPIS_TransferBill.cs" />
+    <Compile Include="MDLPIS_TransferBillDetail.cs" />
+    <Compile Include="MDLPIS_Warehouse.cs" />
+    <Compile Include="MDLPIS_WarehouseBin.cs" />
+    <Compile Include="MDLSCON_CodeTable.cs" />
+    <Compile Include="MDLSCON_VehicleBrandInspireSumma.cs" />
+    <Compile Include="MDLSD_DistributePath.cs" />
+    <Compile Include="MDLSD_LogisticsBill.cs" />
+    <Compile Include="MDLSD_LogisticsBillDetail.cs" />
+    <Compile Include="MDLSD_LogisticsBillTrans.cs" />
+    <Compile Include="MDLSD_SalesForecastOrder.cs" />
+    <Compile Include="MDLSD_SalesForecastOrderDetail.cs" />
+    <Compile Include="MDLSD_SalesOrder.cs" />
+    <Compile Include="MDLSD_SalesOrderDetail.cs" />
+    <Compile Include="MDLSD_SalesTemplate.cs" />
+    <Compile Include="MDLSD_SalesTemplateDetail.cs" />
+    <Compile Include="MDLSM_Action.cs" />
+    <Compile Include="MDLSM_AROrgSupMerchantAuthority.cs" />
+    <Compile Include="MDLSM_AROrgSupOrgAuthority.cs" />
+    <Compile Include="MDLSM_ChineseProvince.cs" />
+    <Compile Include="MDLSM_ChineseRegion.cs" />
+    <Compile Include="MDLSM_CityDistrict.cs" />
+    <Compile Include="MDLSM_ClientUseLicense.cs" />
+    <Compile Include="MDLSM_CodeTable.cs" />
+    <Compile Include="MDLSM_CodingSegment.cs" />
+    <Compile Include="MDLSM_EncodingRule.cs" />
+    <Compile Include="MDLSM_Enum.cs" />
+    <Compile Include="MDLSM_Menu.cs" />
+    <Compile Include="MDLSM_MenuDetail.cs" />
+    <Compile Include="MDLSM_MenuDetailAction.cs" />
+    <Compile Include="MDLSM_MenuGroup.cs" />
+    <Compile Include="MDLSM_MerchantServer.cs" />
+    <Compile Include="MDLSM_Message.cs" />
+    <Compile Include="MDLSM_Organization.cs" />
+    <Compile Include="MDLSM_Parameter.cs" />
+    <Compile Include="MDLSM_ProvinceCity.cs" />
+    <Compile Include="MDLSM_PushMesage.cs" />
+    <Compile Include="MDLSM_SystemNo.cs" />
+    <Compile Include="MDLSM_User.cs" />
+    <Compile Include="MDLSM_UserActionAuthority.cs" />
+    <Compile Include="MDLSM_UserBusinessRole.cs" />
+    <Compile Include="MDLSM_UserJobAuthority.cs" />
+    <Compile Include="MDLSM_UserLoginLog.cs" />
+    <Compile Include="MDLSM_UserMenuAuthority.cs" />
+    <Compile Include="MDLSM_UserOrg.cs" />
+    <Compile Include="MDLWC_Menu.cs" />
+    <Compile Include="MDLWC_Message.cs" />
+    <Compile Include="MDLWC_User.cs" />
+    <Compile Include="MDLWC_UserDetail.cs" />
+    <Compile Include="MDLWC_UserDetailTrans.cs" />
+    <Compile Include="MDLWC_UserSubscribeTrans.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

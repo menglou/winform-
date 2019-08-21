@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC4004AA-187D-4B63-A4BD-AA9CDB3DAC55}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.UIModel.RPT</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.UIModel.RPT</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QCModel\OrgAndOrgAmountTransReportQCModel.cs" />
+    <Compile Include="QCModel\OrgAndSupplierAmountTransReportQCModel.cs" />
+    <Compile Include="QCModel\OrgAndCustomerAmountTransReportQCModel.cs" />
+    <Compile Include="QCModel\InventoryReportQCModel.cs" />
+    <Compile Include="QCModel\ManagementSituationReportQCModel.cs" />
+    <Compile Include="QCModel\SalesPerformanceReportQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsStockInReportQCModel.cs" />
+    <Compile Include="QCModel\AutoPartsStockOutReportQCModel.cs" />
+    <Compile Include="UIModel\ManagementSituationDetailReportUIModel.cs" />
+    <Compile Include="UIModel\OrgAndOrgAmountTransDetailReportUIModel.cs" />
+    <Compile Include="UIModel\OrgAndSupplierAmountTransDetailReportUIModel.cs" />
+    <Compile Include="UIModel\OrgAndCustomerAmountTransDetailReportUIModel.cs" />
+    <Compile Include="UIModel\OrgAndOrgAmountTransTotalReportUIModel.cs" />
+    <Compile Include="UIModel\OrgAndSupplierAmountTransTotalReportUIModel.cs" />
+    <Compile Include="UIModel\OrgAndCustomerAmountTransTotalReportUIModel.cs" />
+    <Compile Include="UIModel\InventoryDetailReportUIModel.cs" />
+    <Compile Include="UIModel\SalesPerformanceDetailReportUIModel.cs" />
+    <Compile Include="UIModel\InventoryTotalReportUIModel.cs" />
+    <Compile Include="UIModel\ManagementSituationTotalReportUIModel.cs" />
+    <Compile Include="UIModel\SalesPerformanceTotalReportUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsStockInTotalReportUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsStockOutTotalReportUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsStockOutDetailReportUIModel.cs" />
+    <Compile Include="UIModel\AutoPartsStockInDetailReportUIModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="APModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SkyCar.Coeus.UIModel.Common\SkyCar.Coeus.UIModel.Common.csproj">
+      <Project>{e0ee606a-680e-4050-ae66-446e7cf50dc3}</Project>
+      <Name>SkyCar.Coeus.UIModel.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,159 @@
+2018/03/15 08:36:17.384 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 08:36:17.441 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 08:36:17.527 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 08:36:28.177 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:36:28.218 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:36:28.230 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:36:28.273 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:36:28.289 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:36:28.327 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:36:28.337 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:36:28.374 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:36:30.535 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:36:30.574 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:36:45.527 [INFO] D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/15 08:36:45.604 [INFO] D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/15 08:36:45.614 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 08:36:45.656 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 08:36:50.185 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 08:36:50.211 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 08:36:50.895 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:36:50.960 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:54:18.307 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 08:54:18.339 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 08:54:18.383 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 08:54:18.421 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:16:39.631 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:16:39.656 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:16:39.706 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:16:39.738 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:16:56.656 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:16:56.709 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:16:56.720 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:16:56.771 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:16:56.791 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:16:56.829 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:16:56.839 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:16:56.877 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:17:22.795 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:17:22.838 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:22:15.784 [INFO] D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/15 09:22:15.870 [INFO] D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/15 09:22:36.763 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:22:36.811 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:23:32.901 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:23:32.934 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:23:33.599 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:23:33.659 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:25:15.773 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:25:15.825 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:25:15.836 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:25:15.892 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:25:15.902 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:25:15.961 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:25:16.015 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:25:16.065 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:27:58.801 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:27:58.843 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:27:58.889 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:27:58.920 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:28:11.850 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:28:11.900 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:28:11.910 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:28:11.963 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:28:11.977 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:28:12.017 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:28:12.026 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:28:12.064 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:32:09.382 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:32:09.453 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 09:32:09.491 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 09:33:06.652 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:33:06.710 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 09:33:59.792 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 09:34:00.034 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:24:37.120 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 14:24:37.148 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 14:24:37.207 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 14:24:37.242 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 14:24:45.492 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:24:45.543 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:24:55.872 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:24:55.908 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:24:55.927 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:24:55.964 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:24:55.974 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:24:56.015 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:25:48.635 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:25:48.677 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:26:13.851 [INFO] D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/15 14:26:13.962 [INFO] D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/15 14:26:13.971 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 14:26:14.013 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 14:26:17.785 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 14:26:17.807 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 14:26:18.457 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:26:18.522 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:55:23.233 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:55:23.279 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:55:23.288 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:55:23.336 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:55:23.346 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:55:23.411 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:55:23.434 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:55:23.479 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:58:34.452 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:58:34.502 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:58:34.511 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:58:34.519 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:58:35.993 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:58:36.037 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:58:36.047 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:58:36.094 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:58:36.102 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:58:36.153 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:58:36.174 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:58:36.219 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:01:43.625 [INFO] SuperAdmin SynchronizeSupMerchantAuthorityInfo 【START】  
+2018/03/15 15:01:44.218 [INFO] SuperAdmin SynchronizeSupMerchantAuthorityInfo 【END】-OK  
+2018/03/15 15:01:44.232 [INFO] SuperAdmin SkyCar.Coeus.UI.SM.FrmMerchantAuthorityQuery, Text: 汽配汽修商户授权查询 同步汽修商户授权信息成功 
+2018/03/15 17:53:59.564 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 17:53:59.594 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 17:53:59.663 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 17:53:59.705 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 17:57:34.565 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:57:34.614 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:57:34.627 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:57:34.663 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:57:34.678 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:57:34.718 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:57:34.727 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:57:34.773 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:57:36.836 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:57:36.893 [INFO] Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:57:41.435 [INFO] D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/15 17:57:41.516 [INFO] D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/15 17:57:41.525 [INFO] Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 17:57:41.568 [INFO] Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 17:57:44.966 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 17:57:44.992 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 17:57:45.687 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:57:45.748 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:58:10.776 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:58:10.820 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:58:10.829 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:58:10.862 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:58:10.875 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:58:10.914 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:58:10.924 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:58:10.965 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:58:12.456 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:58:12.492 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 17:58:17.495 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/15 17:58:17.530 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/15 17:58:17.540 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 17:58:17.570 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 17:58:18.161 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【START】  
+2018/03/15 17:58:18.180 [INFO] SuperAdmin Void QueryForObject[S,D](System.Object, D) 【END】-OK  
+2018/03/15 17:58:18.215 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 17:58:18.273 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  

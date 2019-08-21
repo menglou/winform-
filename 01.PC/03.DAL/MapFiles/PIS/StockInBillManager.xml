@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--入库单管理QCModel-->
+    <typeAlias alias="StockInBillManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.StockInBillManagerQCModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--入库单管理UIModel-->
+    <typeAlias alias="StockInBillManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.StockInBillManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--入库单管理明细UIModel-->
+    <typeAlias alias="StockInBillDetailManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.StockInBillDetailManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    
+  </alias>
+  <statements>
+    
+    <!--查询入库单列表-->
+    <select  id="StockInBillManager_SQL01" parameterClass="StockInBillManagerQCModel" resultClass="StockInBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SIB_ID)
+      FROM    PIS_StockInBill T1
+      INNER JOIN ( SELECT T21.SID_SIB_ID ,
+      T21.SID_SUPP_ID ,
+      SUM(ISNULL(T21.SID_Amount, 0)) 'TotalAmount'
+      FROM   PIS_StockInDetail T21
+      WHERE  T21.SID_IsValid = 1
+      GROUP BY T21.SID_SIB_ID ,
+      T21.SID_SUPP_ID
+      ) T2 ON T2.SID_SIB_ID = T1.SIB_ID
+      INNER JOIN SM_Organization T3 ON T3.Org_ID = T1.SIB_Org_ID
+      AND T3.Org_IsValid = 1
+      LEFT JOIN FM_AccountPayableBill T4 ON T4.APB_SourceBillNo = T1.SIB_No
+      AND T4.APB_IsValid = 1
+      INNER JOIN PIS_Supplier T5 ON T5.SUPP_ID = T2.SID_SUPP_ID
+      WHERE   1 = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_Org_ID">T1.SIB_Org_ID =#WHERE_SIB_Org_ID#</isNotEmpty>
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_No">T1.SIB_No LIKE '%'+#WHERE_SIB_No#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SourceTypeName">T1.SIB_SourceTypeName =#WHERE_SIB_SourceTypeName#</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SourceNo">T1.SIB_SourceNo LIKE '%'+#WHERE_SIB_SourceNo#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_StatusName">T1.SIB_StatusName =#WHERE_SIB_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_ApprovalStatusName">T1.SIB_ApprovalStatusName =#WHERE_SIB_ApprovalStatusName#</isNotEmpty>
+      <!--供应商ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SUPP_ID">T2.SID_SUPP_ID =#WHERE_SIB_SUPP_ID#</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SIB_IsValid">T1.SIB_IsValid=#WHERE_SIB_IsValid#</isNotNull>
+      <!--创建日期-->
+      <isNotNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.SIB_CreatedTime BETWEEN #_DateStart# AND #_DateEnd#</isNotNull>
+        <isNull  prepend="AND" property="_DateEnd">T1.SIB_CreatedTime <![CDATA[>=]]> #_DateStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.SIB_CreatedTime <![CDATA[<=]]> #_DateEnd#</isNotNull>
+      </isNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.SIB_ID ,
+      T1.SIB_Org_ID ,
+      T1.SIB_No ,
+      T1.SIB_SourceTypeCode ,
+      T1.SIB_SourceTypeName ,
+      T1.SIB_SourceNo ,
+      T1.SIB_StatusCode ,
+      T1.SIB_StatusName ,
+      T1.SIB_ApprovalStatusCode ,
+      T1.SIB_ApprovalStatusName ,
+      T1.SIB_Remark ,
+      T1.SIB_IsValid ,
+      T1.SIB_CreatedBy ,
+      T1.SIB_CreatedTime ,
+      T1.SIB_UpdatedBy ,
+      T1.SIB_UpdatedTime ,
+      T1.SIB_VersionNo ,
+      T2.SID_SIB_ID ,
+      T2.SID_SUPP_ID 'SUPP_ID',
+      T2.TotalAmount ,
+      T3.Org_ShortName ,
+      T4.APB_AccountPayableAmount ,
+      T4.APB_PaidAmount ,
+      T4.APB_UnpaidAmount ,
+      T5.SUPP_Name
+      FROM    PIS_StockInBill T1
+      INNER JOIN ( SELECT T21.SID_SIB_ID ,
+      T21.SID_SUPP_ID ,
+      SUM(ISNULL(T21.SID_Amount, 0)) 'TotalAmount'
+      FROM   PIS_StockInDetail T21
+      WHERE  T21.SID_IsValid = 1
+      GROUP BY T21.SID_SIB_ID ,
+      T21.SID_SUPP_ID
+      ) T2 ON T2.SID_SIB_ID = T1.SIB_ID
+      INNER JOIN SM_Organization T3 ON T3.Org_ID = T1.SIB_Org_ID
+      AND T3.Org_IsValid = 1
+      LEFT JOIN FM_AccountPayableBill T4 ON T4.APB_SourceBillNo = T1.SIB_No
+      AND T4.APB_IsValid = 1
+      INNER JOIN PIS_Supplier T5 ON T5.SUPP_ID = T2.SID_SUPP_ID
+      WHERE   1 = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_Org_ID">T1.SIB_Org_ID =#WHERE_SIB_Org_ID#</isNotEmpty>
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_No">T1.SIB_No LIKE '%'+#WHERE_SIB_No#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SourceTypeName">T1.SIB_SourceTypeName =#WHERE_SIB_SourceTypeName#</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SourceNo">T1.SIB_SourceNo LIKE '%'+#WHERE_SIB_SourceNo#+'%'</isNotEmpty>
+      <!--单据状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_StatusName">T1.SIB_StatusName =#WHERE_SIB_StatusName#</isNotEmpty>
+      <!--审核状态名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_ApprovalStatusName">T1.SIB_ApprovalStatusName =#WHERE_SIB_ApprovalStatusName#</isNotEmpty>
+      <!--供应商ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SIB_SUPP_ID">T2.SID_SUPP_ID =#WHERE_SIB_SUPP_ID#</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SIB_IsValid">T1.SIB_IsValid=#WHERE_SIB_IsValid#</isNotNull>
+      <!--创建日期-->
+      <isNotNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.SIB_CreatedTime BETWEEN #_DateStart# AND #_DateEnd#</isNotNull>
+        <isNull  prepend="AND" property="_DateEnd">T1.SIB_CreatedTime <![CDATA[>=]]> #_DateStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.SIB_CreatedTime <![CDATA[<=]]> #_DateEnd#</isNotNull>
+      </isNull>
+      
+      <!--翻页用-->
+      ORDER BY T1.SIB_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询入库单明细列表-->
+    <select  id="StockInBillManager_SQL02" parameterClass="MDLPIS_StockInDetail" resultClass="StockInBillDetailManagerUIModel">
+      SELECT  1 'PrintCount' ,
+      T1.SID_ID ,
+      T1.SID_ID 'DetailID' ,
+      T1.SID_SIB_ID ,
+      T1.SID_SIB_No ,
+      T1.SID_SourceDetailID ,
+      T1.SID_Barcode ,
+      T1.SID_BatchNo ,
+      T1.SID_ThirdNo ,
+      T1.SID_OEMNo ,
+      T1.SID_Name ,
+      T1.SID_Specification ,
+      T1.SID_SUPP_ID ,
+      T2.SUPP_Name ,
+      T1.SID_WH_ID ,
+      T3.WH_Name ,
+      T1.SID_WHB_ID ,
+      T4.WHB_Name ,
+      T1.SID_Qty ,
+      T1.SID_UOM ,
+      T1.SID_UnitCostPrice ,
+      T1.SID_Amount ,
+      T1.SID_IsSettled ,
+      T1.SID_IsValid ,
+      T1.SID_CreatedBy ,
+      T1.SID_CreatedTime ,
+      T1.SID_UpdatedBy ,
+      T1.SID_UpdatedTime ,
+      T1.SID_VersionNo ,
+      T5.APA_Brand ,
+      T5.APA_VehicleBrand ,
+      T5.APA_VehicleInspire ,
+      T5.APA_VehicleCapacity ,
+      T5.APA_VehicleYearModel ,
+      T5.APA_VehicleGearboxTypeName ,
+      T5.APA_VehicleGearboxTypeCode ,
+      T5.APA_Level ,
+      T7.INV_ID
+      FROM    PIS_StockInDetail T1
+      LEFT JOIN PIS_Supplier T2 ON T2.SUPP_ID = T1.SID_SUPP_ID
+      INNER JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.SID_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.SID_WHB_ID
+      INNER JOIN BS_AutoPartsArchive T5 ON T5.APA_Barcode = T1.SID_Barcode
+      INNER JOIN PIS_StockInBill T6 ON T6.SIB_ID = T1.SID_SIB_ID
+      AND T6.SIB_No = T1.SID_SIB_No
+      LEFT JOIN PIS_Inventory T7 ON T7.INV_Org_ID = T6.SIB_Org_ID
+      AND T7.INV_Barcode = T1.SID_Barcode
+      AND T7.INV_BatchNo = T1.SID_BatchNo
+      AND T7.INV_WH_ID = T1.SID_WH_ID
+      AND T7.INV_IsValid = 1
+      WHERE   T1.SID_IsValid = 1
+      <!--入库单ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SID_SIB_ID">T1.SID_SIB_ID=#WHERE_SID_SIB_ID#</isNotEmpty>
+      ORDER BY T1.SID_UpdatedTime DESC
+    </select>
+
+  </statements>
+</sqlMap>

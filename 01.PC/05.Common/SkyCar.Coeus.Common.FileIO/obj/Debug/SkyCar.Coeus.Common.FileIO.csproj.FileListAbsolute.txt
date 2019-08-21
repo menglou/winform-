@@ -1,0 +1,9 @@
+D:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.Common.FileIO.dll
+D:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.Common.FileIO.pdb
+D:\云车\04.编码\03.C#源码\01.PC\05.Common\SkyCar.Coeus.Common.FileIO\obj\Debug\SkyCar.Coeus.Common.FileIO.csprojResolveAssemblyReference.cache
+D:\云车\04.编码\03.C#源码\01.PC\05.Common\SkyCar.Coeus.Common.FileIO\obj\Debug\SkyCar.Coeus.Common.FileIO.dll
+D:\云车\04.编码\03.C#源码\01.PC\05.Common\SkyCar.Coeus.Common.FileIO\obj\Debug\SkyCar.Coeus.Common.FileIO.pdb
+E:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.Common.FileIO.dll
+E:\云车\04.编码\03.C#源码\01.PC\10.Output\SkyCar.Coeus.Common.FileIO.pdb
+E:\云车\04.编码\03.C#源码\01.PC\05.Common\SkyCar.Coeus.Common.FileIO\obj\Debug\SkyCar.Coeus.Common.FileIO.dll
+E:\云车\04.编码\03.C#源码\01.PC\05.Common\SkyCar.Coeus.Common.FileIO\obj\Debug\SkyCar.Coeus.Common.FileIO.pdb

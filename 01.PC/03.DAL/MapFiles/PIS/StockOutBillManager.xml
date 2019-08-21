@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--出库管理UIModel-->
+    <typeAlias alias="StockOutBillManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.StockOutBillManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--出库管理DetailUIModel-->
+    <typeAlias alias="StockOutBillManagerDetailUIModel" type="SkyCar.Coeus.UIModel.PIS.StockOutBillManagerDetailUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--出库管理QCModel-->
+    <typeAlias alias="StockOutBillManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.StockOutBillManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[出库管理]【列表】信息-->
+    <select id="StockOutBillManager_SQL_01" parameterClass="StockOutBillManagerQCModel" resultClass="StockOutBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.SOB_ID)
+      FROM    PIS_StockOutBill T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.SOB_Org_ID
+      AND T1.SOB_IsValid = 1
+      INNER JOIN ( SELECT T31.SOBD_SOB_ID ,
+      T31.SOBD_SOB_No ,
+      CONVERT(DECIMAL(18, 2), SUM(ISNULL(T31.SOBD_UnitCostPrice,
+      0)
+      * ISNULL(T31.SOBD_Qty,
+      0))) 'StockOutTotalAmount'
+      FROM   PIS_StockOutBillDetail T31
+      WHERE  T31.SOBD_IsValid = 1
+      GROUP BY T31.SOBD_SOB_ID ,
+      T31.SOBD_SOB_No
+      ) T3 ON T3.SOBD_SOB_ID = T1.SOB_ID
+      AND T3.SOBD_SOB_No = T1.SOB_No
+      LEFT JOIN SD_SalesOrder T4 ON T4.SO_No = T1.SOB_SourceNo
+      AND T4.SO_ApprovalStatusName = '已审核'
+      AND T4.SO_IsValid = 1
+      AND T1.SOB_SourceTypeName = '销售出库'
+      WHERE   1 = 1
+      AND T1.SOB_SourceTypeName != '退货出库'
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_Org_ID">T1.SOB_Org_ID LIKE '%'+#WHERE_SOB_Org_ID#+'%'</isNotEmpty>
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_No">T1.SOB_No LIKE '%'+#WHERE_SOB_No#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceTypeName">T1.SOB_SourceTypeName LIKE '%'+#WHERE_SOB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceNo">T1.SOB_SourceNo LIKE '%'+#WHERE_SOB_SourceNo#+'%'</isNotEmpty>
+      <!--单据状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_StatusName">T1.SOB_StatusName LIKE '%'+#WHERE_SOB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_ApprovalStatusName">T1.SOB_ApprovalStatusName LIKE '%'+#WHERE_SOB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SOB_IsValid">T1.SOB_IsValid=#WHERE_SOB_IsValid#</isNotNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      0 'IsChecked' ,
+      T1.SOB_No ,
+      T1.SOB_SourceTypeName ,
+      T1.SOB_SourceNo ,
+      T1.SOB_SUPP_Name ,
+      T1.SOB_StatusName ,
+      T1.SOB_ApprovalStatusName ,
+      T1.SOB_Remark ,
+      T1.SOB_IsValid ,
+      T1.SOB_CreatedBy ,
+      T1.SOB_CreatedTime ,
+      T1.SOB_UpdatedBy ,
+      T1.SOB_UpdatedTime ,
+      T1.SOB_ID ,
+      T1.SOB_Org_ID ,
+      T1.SOB_SUPP_ID ,
+      T1.SOB_SourceTypeCode ,
+      T1.SOB_StatusCode ,
+      T1.SOB_ApprovalStatusCode ,
+      T1.SOB_VersionNo ,
+      T2.Org_ShortName ,
+      T3.StockOutTotalAmount ,
+      T4.SO_CustomerID ,
+      T4.SO_CustomerName
+      FROM    PIS_StockOutBill T1
+      INNER JOIN SM_Organization T2 ON T2.Org_ID = T1.SOB_Org_ID
+      AND T1.SOB_IsValid = 1
+      INNER JOIN ( SELECT T31.SOBD_SOB_ID ,
+      T31.SOBD_SOB_No ,
+      CONVERT(DECIMAL(18, 2), SUM(ISNULL(T31.SOBD_UnitCostPrice,
+      0)
+      * ISNULL(T31.SOBD_Qty,
+      0))) 'StockOutTotalAmount'
+      FROM   PIS_StockOutBillDetail T31
+      WHERE  T31.SOBD_IsValid = 1
+      GROUP BY T31.SOBD_SOB_ID ,
+      T31.SOBD_SOB_No
+      ) T3 ON T3.SOBD_SOB_ID = T1.SOB_ID
+      AND T3.SOBD_SOB_No = T1.SOB_No
+      LEFT JOIN SD_SalesOrder T4 ON T4.SO_No = T1.SOB_SourceNo
+      AND T4.SO_ApprovalStatusName = '已审核'
+      AND T4.SO_IsValid = 1
+      AND T1.SOB_SourceTypeName = '销售出库'
+      WHERE   1 = 1
+      AND T1.SOB_SourceTypeName != '退货出库'
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_Org_ID">T1.SOB_Org_ID LIKE '%'+#WHERE_SOB_Org_ID#+'%'</isNotEmpty>
+      <!--单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_No">T1.SOB_No LIKE '%'+#WHERE_SOB_No#+'%'</isNotEmpty>
+      <!--来源类型名称-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceTypeName">T1.SOB_SourceTypeName LIKE '%'+#WHERE_SOB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_SourceNo">T1.SOB_SourceNo LIKE '%'+#WHERE_SOB_SourceNo#+'%'</isNotEmpty>
+      <!--单据状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_StatusName">T1.SOB_StatusName LIKE '%'+#WHERE_SOB_StatusName#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_SOB_ApprovalStatusName">T1.SOB_ApprovalStatusName LIKE '%'+#WHERE_SOB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_SOB_IsValid">T1.SOB_IsValid=#WHERE_SOB_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.SOB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[出库管理]【明细】信息-->
+    <select id="StockOutBillManager_SQL_02" parameterClass="StockOutBillManagerQCModel" resultClass="StockOutBillManagerDetailUIModel">
+
+      SELECT  0 'IsChecked' ,
+      T1.SOBD_Name ,
+      T1.SOBD_OEMNo ,
+      T1.SOBD_ThirdNo ,
+      T1.SOBD_Specification ,
+      T1.SOBD_UOM ,
+      T1.SOBD_UnitCostPrice ,
+      T1.SOBD_UnitSalePrice ,
+      T1.SOBD_Qty ,
+      T1.SOBD_Amount ,
+      T1.SOBD_Barcode ,
+      T1.SOBD_BatchNo ,
+      T1.SOBD_IsValid ,
+      T1.SOBD_CreatedBy ,
+      T1.SOBD_CreatedTime ,
+      T1.SOBD_UpdatedBy ,
+      T1.SOBD_UpdatedTime ,
+      T1.SOBD_ID ,
+      T1.SOBD_SOB_ID ,
+      T1.SOBD_SOB_No ,
+      T1.SOBD_SourceDetailID ,
+      T1.SOBD_WH_ID ,
+      T1.SOBD_WHB_ID ,
+      T1.SOBD_VersionNo ,
+      T3.WH_Name ,
+      T4.WHB_Name ,
+      T5.APA_Brand ,
+      T5.APA_VehicleBrand ,
+      T5.APA_VehicleInspire ,
+      T5.APA_VehicleCapacity ,
+      T5.APA_VehicleYearModel ,
+      T5.APA_VehicleGearboxTypeName ,
+      T5.APA_VehicleGearboxTypeCode ,
+      T5.APA_Level ,
+      T6.INV_Qty ,
+      T6.INV_SUPP_ID ,
+      T7.SUPP_Name
+      FROM    PIS_StockOutBillDetail T1
+      INNER JOIN PIS_StockOutBill T2 ON T2.SOB_ID = T1.SOBD_SOB_ID
+      AND T2.SOB_IsValid = 1
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.SOBD_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.SOBD_WHB_ID
+      LEFT JOIN BS_AutoPartsArchive T5 ON T5.APA_Barcode = T1.SOBD_Barcode
+      INNER JOIN PIS_Inventory T6 ON T6.INV_Org_ID = T2.SOB_Org_ID
+      AND T6.INV_Barcode = T1.SOBD_Barcode
+      AND T6.INV_BatchNo = T1.SOBD_BatchNo
+      LEFT JOIN PIS_Supplier T7 ON T7.SUPP_ID = T6.INV_SUPP_ID
+      AND T7.SUPP_IsValid = 1
+      WHERE   T1.SOBD_IsValid = 1
+      <!--出库单ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOBD_SOB_ID">T1.SOBD_SOB_ID =#WHERE_SOBD_SOB_ID#</isNotEmpty>
+      <!--出库单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOBD_SOB_No">T1.SOBD_SOB_No =#WHERE_SOBD_SOB_No#</isNotEmpty>
+      ORDER BY T1.SOBD_UpdatedTime DESC
+    </select>
+
+    <!--根据入库单单号获取出库单明细列表-->
+    <select id="StockOutBillManager_SQL_03" parameterClass="MDLPIS_StockOutBill" resultClass="StockOutBillManagerDetailUIModel">
+      SELECT  0 'IsChecked' ,
+      LOWER(NEWID()) 'Tmp_SOBD_ID' ,
+      T2.SID_SourceDetailID 'SOBD_SourceDetailID' ,
+      T3.INV_ID ,
+      T3.INV_Org_ID ,
+      T3.INV_WH_ID 'SOBD_WH_ID' ,
+      T3.INV_WHB_ID 'SOBD_WHB_ID' ,
+      T3.INV_ThirdNo 'SOBD_ThirdNo' ,
+      T3.INV_OEMNo 'SOBD_OEMNo' ,
+      T3.INV_Barcode 'SOBD_Barcode' ,
+      T3.INV_BatchNo 'SOBD_BatchNo' ,
+      T3.INV_Name 'SOBD_Name' ,
+      T3.INV_Specification 'SOBD_Specification' ,
+      T3.INV_SUPP_ID ,
+      T3.INV_Qty 'SOBD_Qty' ,
+      T3.INV_Qty ,
+      T3.INV_PurchaseUnitPrice 'SOBD_UnitCostPrice' ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T3.INV_Qty, 0)
+      * ISNULL(T3.INV_PurchaseUnitPrice, 0)) 'SOBD_Amount' ,
+      T4.APA_UOM 'SOBD_UOM' ,
+      T4.APA_Brand ,
+      T4.APA_Level ,
+      T4.APA_VehicleBrand ,
+      T4.APA_VehicleInspire ,
+      T4.APA_VehicleCapacity ,
+      T4.APA_VehicleYearModel ,
+      T4.APA_VehicleGearboxTypeCode ,
+      T4.APA_VehicleGearboxTypeName ,
+      T5.WH_Name ,
+      T6.WHB_Name ,
+      T7.SUPP_Name
+      FROM    PIS_StockInBill T1
+      INNER JOIN PIS_StockInDetail T2 ON T2.SID_SIB_ID = T1.SIB_ID
+      AND T2.SID_SIB_No = T1.SIB_No
+      AND T2.SID_IsValid = 1
+      INNER JOIN PIS_Inventory T3 ON T3.INV_Org_ID = T1.SIB_Org_ID
+      AND T3.INV_Barcode = T2.SID_Barcode
+      AND T3.INV_BatchNo = T2.SID_BatchNo
+      AND T3.INV_IsValid = 1
+      INNER JOIN BS_AutoPartsArchive T4 ON T4.APA_Barcode = T3.INV_Barcode
+      AND T4.APA_IsValid = 1
+      INNER JOIN PIS_Warehouse T5 ON T5.WH_ID = T3.INV_WH_ID
+      LEFT JOIN PIS_WarehouseBin T6 ON T6.WHB_ID = T3.INV_WHB_ID
+      AND T6.WHB_IsValid = 1
+      LEFT JOIN PIS_Supplier T7 ON T7.SUPP_ID = T3.INV_SUPP_ID
+      AND T7.SUPP_IsValid = 1
+      WHERE   T1.SIB_IsValid = 1
+      AND T1.SIB_No = #WHERE_SOB_SourceNo#
+      AND T1.SIB_ApprovalStatusName = '已审核'
+      AND T1.SIB_StatusName = '已完成'
+    </select>
+
+    <!--查询[采购退货出库管理]【明细】信息-->
+    <select id="PurchaseReturnManager_SQL_02" parameterClass="StockOutBillManagerQCModel" resultClass="StockOutBillManagerDetailUIModel">
+
+      SELECT  0 'IsChecked' ,
+      T1.SOBD_Name ,
+      T1.SOBD_OEMNo ,
+      T1.SOBD_ThirdNo ,
+      T1.SOBD_Specification ,
+      T1.SOBD_UOM ,
+      T1.SOBD_UnitCostPrice ,
+      T1.SOBD_UnitSalePrice ,
+      T1.SOBD_Qty ,
+      T1.SOBD_Amount ,
+      T1.SOBD_Barcode ,
+      T1.SOBD_BatchNo ,
+      T1.SOBD_IsValid ,
+      T1.SOBD_CreatedBy ,
+      T1.SOBD_CreatedTime ,
+      T1.SOBD_UpdatedBy ,
+      T1.SOBD_UpdatedTime ,
+      T1.SOBD_ID ,
+      T1.SOBD_SOB_ID ,
+      T1.SOBD_SOB_No ,
+      T1.SOBD_SourceDetailID ,
+      T1.SOBD_WH_ID ,
+      T1.SOBD_WHB_ID ,
+      T1.SOBD_VersionNo ,
+      T3.WH_Name ,
+      T4.WHB_Name ,
+      T5.APA_Brand ,
+      T5.APA_VehicleBrand ,
+      T5.APA_VehicleInspire ,
+      T5.APA_VehicleCapacity ,
+      T5.APA_VehicleYearModel ,
+      T5.APA_VehicleGearboxTypeName ,
+      T5.APA_VehicleGearboxTypeCode ,
+      T5.APA_Level ,
+      T6.INV_Qty ,
+      T6.INV_SUPP_ID ,
+      T7.SUPP_Name ,
+      T8.POD_ReceivedQty 'OriginalStockOutQty'
+      FROM    PIS_StockOutBillDetail T1
+      INNER JOIN PIS_StockOutBill T2 ON T2.SOB_ID = T1.SOBD_SOB_ID
+      AND T2.SOB_IsValid = 1
+      AND T2.SOB_SourceTypeName = '退货出库'
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.SOBD_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.SOBD_WHB_ID
+      LEFT JOIN BS_AutoPartsArchive T5 ON T5.APA_Barcode = T1.SOBD_Barcode
+      INNER JOIN PIS_Inventory T6 ON T6.INV_Org_ID = T2.SOB_Org_ID
+      AND T6.INV_Barcode = T1.SOBD_Barcode
+      AND T6.INV_BatchNo = T1.SOBD_BatchNo
+      LEFT JOIN PIS_Supplier T7 ON T7.SUPP_ID = T6.INV_SUPP_ID
+      AND T7.SUPP_IsValid = 1
+      LEFT JOIN ( SELECT  T82.PO_No ,
+      T81.POD_AutoPartsBarcode ,
+      T81.POD_ReceivedQty
+      FROM    PIS_PurchaseOrderDetail T81
+      INNER JOIN PIS_PurchaseOrder T82 ON T82.PO_No = T81.POD_PO_No
+      AND T82.PO_IsValid = 1
+      WHERE   T81.POD_IsValid = 1
+      AND T82.PO_StatusName = '已完成'
+      ) T8 ON T8.PO_No = T2.SOB_SourceNo
+      AND T8.POD_AutoPartsBarcode = T1.SOBD_Barcode
+      WHERE   T1.SOBD_IsValid = 1
+      <!--出库单ID-->
+      <isNotEmpty prepend="AND" property="WHERE_SOBD_SOB_ID">T1.SOBD_SOB_ID =#WHERE_SOBD_SOB_ID#</isNotEmpty>
+      <!--出库单号-->
+      <isNotEmpty prepend="AND" property="WHERE_SOBD_SOB_No">T1.SOBD_SOB_No =#WHERE_SOBD_SOB_No#</isNotEmpty>
+      ORDER BY T1.SOBD_UpdatedTime DESC
+    </select>
+
+  </statements>
+
+</sqlMap>

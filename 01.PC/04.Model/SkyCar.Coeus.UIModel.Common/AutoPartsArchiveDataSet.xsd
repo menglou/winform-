@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AutoPartsArchiveDataSet" targetNamespace="http://tempuri.org/AutoPartsArchiveDataSet.xsd" xmlns:mstns="http://tempuri.org/AutoPartsArchiveDataSet.xsd" xmlns="http://tempuri.org/AutoPartsArchiveDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AutoPartsArchiveDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AutoPartsArchiveDataSet" msprop:Generator_UserDSName="AutoPartsArchiveDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AutoPartsArchive" msprop:Generator_TableClassName="AutoPartsArchiveDataTable" msprop:Generator_TableVarName="tableAutoPartsArchive" msprop:Generator_RowChangedName="AutoPartsArchiveRowChanged" msprop:Generator_TablePropName="AutoPartsArchive" msprop:Generator_RowDeletingName="AutoPartsArchiveRowDeleting" msprop:Generator_RowChangingName="AutoPartsArchiveRowChanging" msprop:Generator_RowEvHandlerName="AutoPartsArchiveRowChangeEventHandler" msprop:Generator_RowDeletedName="AutoPartsArchiveRowDeleted" msprop:Generator_RowClassName="AutoPartsArchiveRow" msprop:Generator_UserTableName="AutoPartsArchive" msprop:Generator_RowEvArgName="AutoPartsArchiveRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="APA_Org_ID" msprop:Generator_ColumnVarNameInTable="columnAPA_Org_ID" msprop:Generator_ColumnPropNameInRow="APA_Org_ID" msprop:Generator_ColumnPropNameInTable="APA_Org_IDColumn" msprop:Generator_UserColumnName="APA_Org_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_Barcode" msprop:Generator_ColumnVarNameInTable="columnAPA_Barcode" msprop:Generator_ColumnPropNameInRow="APA_Barcode" msprop:Generator_ColumnPropNameInTable="APA_BarcodeColumn" msprop:Generator_UserColumnName="APA_Barcode" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_OEMNo" msprop:Generator_ColumnVarNameInTable="columnAPA_OEMNo" msprop:Generator_ColumnPropNameInRow="APA_OEMNo" msprop:Generator_ColumnPropNameInTable="APA_OEMNoColumn" msprop:Generator_UserColumnName="APA_OEMNo" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_ThirdNo" msprop:Generator_ColumnVarNameInTable="columnAPA_ThirdNo" msprop:Generator_ColumnPropNameInRow="APA_ThirdNo" msprop:Generator_ColumnPropNameInTable="APA_ThirdNoColumn" msprop:Generator_UserColumnName="APA_ThirdNo" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_Name" msprop:Generator_ColumnVarNameInTable="columnAPA_Name" msprop:Generator_ColumnPropNameInRow="APA_Name" msprop:Generator_ColumnPropNameInTable="APA_NameColumn" msprop:Generator_UserColumnName="APA_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_Brand" msprop:Generator_ColumnVarNameInTable="columnAPA_Brand" msprop:Generator_ColumnPropNameInRow="APA_Brand" msprop:Generator_ColumnPropNameInTable="APA_BrandColumn" msprop:Generator_UserColumnName="APA_Brand" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_Specification" msprop:Generator_ColumnVarNameInTable="columnAPA_Specification" msprop:Generator_ColumnPropNameInRow="APA_Specification" msprop:Generator_ColumnPropNameInTable="APA_SpecificationColumn" msprop:Generator_UserColumnName="APA_Specification" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_UOM" msprop:Generator_ColumnVarNameInTable="columnAPA_UOM" msprop:Generator_ColumnPropNameInRow="APA_UOM" msprop:Generator_ColumnPropNameInTable="APA_UOMColumn" msprop:Generator_UserColumnName="APA_UOM" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_Level" msprop:Generator_ColumnVarNameInTable="columnAPA_Level" msprop:Generator_ColumnPropNameInRow="APA_Level" msprop:Generator_ColumnPropNameInTable="APA_LevelColumn" msprop:Generator_UserColumnName="APA_Level" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_VehicleBrand" msprop:Generator_ColumnVarNameInTable="columnAPA_VehicleBrand" msprop:Generator_ColumnPropNameInRow="APA_VehicleBrand" msprop:Generator_ColumnPropNameInTable="APA_VehicleBrandColumn" msprop:Generator_UserColumnName="APA_VehicleBrand" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_VehicleInspire" msprop:Generator_ColumnVarNameInTable="columnAPA_VehicleInspire" msprop:Generator_ColumnPropNameInRow="APA_VehicleInspire" msprop:Generator_ColumnPropNameInTable="APA_VehicleInspireColumn" msprop:Generator_UserColumnName="APA_VehicleInspire" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_VehicleCapacity" msprop:Generator_ColumnVarNameInTable="columnAPA_VehicleCapacity" msprop:Generator_ColumnPropNameInRow="APA_VehicleCapacity" msprop:Generator_ColumnPropNameInTable="APA_VehicleCapacityColumn" msprop:Generator_UserColumnName="APA_VehicleCapacity" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_VehicleYearModel" msprop:Generator_ColumnVarNameInTable="columnAPA_VehicleYearModel" msprop:Generator_ColumnPropNameInRow="APA_VehicleYearModel" msprop:Generator_ColumnPropNameInTable="APA_VehicleYearModelColumn" msprop:Generator_UserColumnName="APA_VehicleYearModel" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_VehicleGearboxTypeName" msprop:Generator_ColumnVarNameInTable="columnAPA_VehicleGearboxTypeName" msprop:Generator_ColumnPropNameInRow="APA_VehicleGearboxTypeName" msprop:Generator_ColumnPropNameInTable="APA_VehicleGearboxTypeNameColumn" msprop:Generator_UserColumnName="APA_VehicleGearboxTypeName" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_VehicleGearboxTypeCode" msprop:Generator_ColumnVarNameInTable="columnAPA_VehicleGearboxTypeCode" msprop:Generator_ColumnPropNameInRow="APA_VehicleGearboxTypeCode" msprop:Generator_ColumnPropNameInTable="APA_VehicleGearboxTypeCodeColumn" msprop:Generator_UserColumnName="APA_VehicleGearboxTypeCode" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_CreatedBy" msprop:Generator_ColumnVarNameInTable="columnAPA_CreatedBy" msprop:Generator_ColumnPropNameInRow="APA_CreatedBy" msprop:Generator_ColumnPropNameInTable="APA_CreatedByColumn" msprop:Generator_UserColumnName="APA_CreatedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="APA_UpdatedBy" msprop:Generator_ColumnVarNameInTable="columnAPA_UpdatedBy" msprop:Generator_ColumnPropNameInRow="APA_UpdatedBy" msprop:Generator_ColumnPropNameInTable="APA_UpdatedByColumn" msprop:Generator_UserColumnName="APA_UpdatedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="APN_NameSpellCode" msprop:Generator_ColumnVarNameInTable="columnAPN_NameSpellCode" msprop:Generator_ColumnPropNameInRow="APN_NameSpellCode" msprop:Generator_ColumnPropNameInTable="APN_NameSpellCodeColumn" msprop:Generator_UserColumnName="APN_NameSpellCode" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+
+  </alias>
+  <statements>
+    <!--验证车辆品牌+车系+车型描述唯一性-->
+    <select id="VehicleBrandInspireSummaManager_SQL01" parameterClass="MDLBS_VehicleBrandInspireSumma" resultClass="int">
+      SELECT  COUNT(T1.VBIS_ID)
+      FROM    BS_VehicleBrandInspireSumma T1
+      WHERE   T1.VBIS_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_ID">T1.VBIS_ID != #WHERE_VBIS_ID# </isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Brand">T1.VBIS_Brand = #WHERE_VBIS_Brand# </isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_Inspire">T1.VBIS_Inspire = #WHERE_VBIS_Inspire# </isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_VBIS_ModelDesc">T1.VBIS_ModelDesc = #WHERE_VBIS_ModelDesc# </isNotEmpty>
+    </select>
+
+    <!--查询品牌车系是否被引用过-->
+    <select id="VehicleBrandInspireSummaManager_SQL02" parameterClass="MDLBS_VehicleBrandInspireSumma" resultClass="MDLBS_AutoPartsArchive">
+      SELECT DISTINCT
+      T1.APA_VehicleBrand ,
+      T1.APA_VehicleInspire
+      FROM    BS_AutoPartsArchive T1
+      WHERE   T1.APA_IsValid = 1
+      AND ( ISNULL(T1.APA_VehicleBrand, '') != ''
+      AND #WHERE_VBIS_Brand# LIKE '%' + T1.APA_VehicleBrand + ';%'
+      AND ISNULL(T1.APA_VehicleInspire, '') != ''
+      AND #WHERE_VBIS_Inspire# LIKE '%' + T1.APA_VehicleInspire + ';%'
+      )
+    </select>
+    
+  </statements>
+</sqlMap>

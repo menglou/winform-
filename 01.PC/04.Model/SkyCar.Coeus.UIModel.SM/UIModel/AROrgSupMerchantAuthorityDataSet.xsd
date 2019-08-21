@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AROrgSupMerchantAuthorityDataSet" targetNamespace="http://tempuri.org/AROrgSupMerchantAuthorityDataSet.xsd" xmlns:mstns="http://tempuri.org/AROrgSupMerchantAuthorityDataSet.xsd" xmlns="http://tempuri.org/AROrgSupMerchantAuthorityDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AROrgSupMerchantAuthorityDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AROrgSupMerchantAuthorityDataSet" msprop:Generator_UserDSName="AROrgSupMerchantAuthorityDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AROrgSupMerchantAuthority" msprop:Generator_TableClassName="AROrgSupMerchantAuthorityDataTable" msprop:Generator_TableVarName="tableAROrgSupMerchantAuthority" msprop:Generator_TablePropName="AROrgSupMerchantAuthority" msprop:Generator_RowDeletingName="AROrgSupMerchantAuthorityRowDeleting" msprop:Generator_RowChangingName="AROrgSupMerchantAuthorityRowChanging" msprop:Generator_RowEvHandlerName="AROrgSupMerchantAuthorityRowChangeEventHandler" msprop:Generator_RowDeletedName="AROrgSupMerchantAuthorityRowDeleted" msprop:Generator_UserTableName="AROrgSupMerchantAuthority" msprop:Generator_RowChangedName="AROrgSupMerchantAuthorityRowChanged" msprop:Generator_RowEvArgName="AROrgSupMerchantAuthorityRowChangeEvent" msprop:Generator_RowClassName="AROrgSupMerchantAuthorityRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ASAH_ID" msprop:Generator_ColumnVarNameInTable="columnASAH_ID" msprop:Generator_ColumnPropNameInRow="ASAH_ID" msprop:Generator_ColumnPropNameInTable="ASAH_IDColumn" msprop:Generator_UserColumnName="ASAH_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_ARMerchant_Code" msprop:Generator_ColumnVarNameInTable="columnASAH_ARMerchant_Code" msprop:Generator_ColumnPropNameInRow="ASAH_ARMerchant_Code" msprop:Generator_ColumnPropNameInTable="ASAH_ARMerchant_CodeColumn" msprop:Generator_UserColumnName="ASAH_ARMerchant_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_ARMerchant_Name" msprop:Generator_ColumnVarNameInTable="columnASAH_ARMerchant_Name" msprop:Generator_ColumnPropNameInRow="ASAH_ARMerchant_Name" msprop:Generator_ColumnPropNameInTable="ASAH_ARMerchant_NameColumn" msprop:Generator_UserColumnName="ASAH_ARMerchant_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_AROrg_Code" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnASAH_AROrg_Code" msprop:Generator_ColumnPropNameInRow="ASAH_AROrg_Code" msprop:Generator_ColumnPropNameInTable="ASAH_AROrg_CodeColumn" msprop:Generator_UserColumnName="ASAH_AROrg_Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_AROrg_Name" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnASAH_AROrg_Name" msprop:Generator_ColumnPropNameInRow="ASAH_AROrg_Name" msprop:Generator_ColumnPropNameInTable="ASAH_AROrg_NameColumn" msprop:Generator_UserColumnName="ASAH_AROrg_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_AROrg_Contacter" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnASAH_AROrg_Contacter" msprop:Generator_ColumnPropNameInRow="ASAH_AROrg_Contacter" msprop:Generator_ColumnPropNameInTable="ASAH_AROrg_ContacterColumn" msprop:Generator_UserColumnName="ASAH_AROrg_Contacter" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_AROrg_Phone" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnASAH_AROrg_Phone" msprop:Generator_ColumnPropNameInRow="ASAH_AROrg_Phone" msprop:Generator_ColumnPropNameInTable="ASAH_AROrg_PhoneColumn" msprop:Generator_UserColumnName="ASAH_AROrg_Phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_Remark" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnASAH_Remark" msprop:Generator_ColumnPropNameInRow="ASAH_Remark" msprop:Generator_ColumnPropNameInTable="ASAH_RemarkColumn" msprop:Generator_UserColumnName="ASAH_Remark" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_IsValid" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnASAH_IsValid" msprop:Generator_ColumnPropNameInRow="ASAH_IsValid" msprop:Generator_ColumnPropNameInTable="ASAH_IsValidColumn" msprop:Generator_UserColumnName="ASAH_IsValid" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ASAH_CreatedBy" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnASAH_CreatedBy" msprop:Generator_ColumnPropNameInRow="ASAH_CreatedBy" msprop:Generator_ColumnPropNameInTable="ASAH_CreatedByColumn" msprop:Generator_UserColumnName="ASAH_CreatedBy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_CreatedTime" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnASAH_CreatedTime" msprop:Generator_ColumnPropNameInRow="ASAH_CreatedTime" msprop:Generator_ColumnPropNameInTable="ASAH_CreatedTimeColumn" msprop:Generator_UserColumnName="ASAH_CreatedTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ASAH_UpdatedBy" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnASAH_UpdatedBy" msprop:Generator_ColumnPropNameInRow="ASAH_UpdatedBy" msprop:Generator_ColumnPropNameInTable="ASAH_UpdatedByColumn" msprop:Generator_UserColumnName="ASAH_UpdatedBy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASAH_UpdatedTime" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnASAH_UpdatedTime" msprop:Generator_ColumnPropNameInRow="ASAH_UpdatedTime" msprop:Generator_ColumnPropNameInTable="ASAH_UpdatedTimeColumn" msprop:Generator_UserColumnName="ASAH_UpdatedTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ASAH_VersionNo" msprop:Generator_ColumnVarNameInTable="columnASAH_VersionNo" msprop:Generator_ColumnPropNameInRow="ASAH_VersionNo" msprop:Generator_ColumnPropNameInTable="ASAH_VersionNoColumn" msprop:Generator_UserColumnName="ASAH_VersionNo" type="xs:long" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

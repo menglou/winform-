@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--盘点管理UIModel-->
+    <typeAlias alias="StocktakingTaskManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.StocktakingTaskManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--盘点管理DetailUIModel-->
+    <typeAlias alias="StocktakingTaskManagerDetailUIModel" type="SkyCar.Coeus.UIModel.PIS.StocktakingTaskManagerDetailUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--盘点管理QCModel-->
+    <typeAlias alias="StocktakingTaskManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.StocktakingTaskManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[盘点管理]【列表】信息-->
+    <select id="StocktakingTaskManager_SQL_01" parameterClass="StocktakingTaskManagerQCModel" resultClass="StocktakingTaskManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.ST_ID)
+      FROM    PIS_StocktakingTask T1
+      INNER JOIN SM_Organization T2 ON T1.ST_Org_ID = T2.Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.ST_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.ST_WHB_ID
+      <dynamic prepend="WHERE">
+        <!--盘点单号-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_No">T1.ST_No LIKE '%'+#WHERE_ST_No#+'%'</isNotEmpty>
+        <!--组织ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_Org_ID">T1.ST_Org_ID LIKE '%'+#WHERE_ST_Org_ID#+'%'</isNotEmpty>
+        <!--仓库ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_WH_ID">T1.ST_WH_ID LIKE '%'+#WHERE_ST_WH_ID#+'%'</isNotEmpty>
+        <!--仓位ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_WHB_ID">T1.ST_WHB_ID LIKE '%'+#WHERE_ST_WHB_ID#+'%'</isNotEmpty>
+        <!--开始时间-->
+        <isNotNull prepend="" property="_StartTimeStart">
+          <isNotNull prepend="AND" property="_StartTimeEnd">T1.ST_StartTime BETWEEN #_StartTimeStart# AND #_StartTimeEnd#</isNotNull>
+          <isNull  prepend="AND" property="_StartTimeEnd">T1.ST_StartTime <![CDATA[>=]]> #_StartTimeStart#</isNull>
+        </isNotNull>
+        <isNull prepend="" property="_StartTimeStart">
+          <isNotNull prepend="AND" property="_StartTimeEnd">T1.ST_StartTime <![CDATA[<=]]> #_StartTimeEnd#</isNotNull>
+        </isNull>
+        <!--结束时间-->
+        <isNotNull prepend="" property="_EndTimeStart">
+          <isNotNull prepend="AND" property="_EndTimeEnd">T1.ST_EndTime BETWEEN #_EndTimeStart# AND #_EndTimeEnd#</isNotNull>
+          <isNull  prepend="AND" property="_EndTimeEnd">T1.ST_EndTime <![CDATA[>=]]> #_EndTimeStart#</isNull>
+        </isNotNull>
+        <isNull prepend="" property="_EndTimeStart">
+          <isNotNull prepend="AND" property="_EndTimeEnd">T1.ST_EndTime <![CDATA[<=]]> #_EndTimeEnd#</isNotNull>
+        </isNull>
+        <!--盘点结果名称-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_CheckResultName">T1.ST_CheckResultName LIKE '%'+#WHERE_ST_CheckResultName#+'%'</isNotEmpty>
+        <!--盘点单状态名称-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_StatusName">T1.ST_StatusName LIKE '%'+#WHERE_ST_StatusName#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_ST_IsValid">T1.ST_IsValid=#WHERE_ST_IsValid#</isNotNull>
+      </dynamic>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      0 'IsChecked' ,
+      T1.ST_No ,
+      T1.ST_WH_ID ,
+      T1.ST_WHB_ID ,
+      T1.ST_CheckAmount ,
+      T1.ST_StartTime ,
+      T1.ST_EndTime ,
+      T1.ST_IsShowCost ,
+      T1.ST_DueQty ,
+      T1.ST_ActualQty ,
+      T1.ST_QtyLossRatio ,
+      T1.ST_DueAmount ,
+      T1.ST_ActualAmount ,
+      T1.ST_AmountLossRatio ,
+      T1.ST_CheckResultName ,
+      T1.ST_StatusName ,
+      T1.ST_ApprovalStatusName ,
+      T1.ST_IsValid ,
+      T1.ST_CreatedBy ,
+      T1.ST_CreatedTime ,
+      T1.ST_UpdatedBy ,
+      T1.ST_UpdatedTime ,
+      T1.ST_ID ,
+      T1.ST_Org_ID ,
+      T1.ST_CheckResultCode ,
+      T1.ST_StatusCode ,
+      T1.ST_ApprovalStatusCode ,
+      T1.ST_VersionNo ,
+      T2.Org_ShortName ,
+      T3.WH_Name ,
+      T4.WHB_Name
+      FROM    PIS_StocktakingTask T1
+      INNER JOIN SM_Organization T2 ON T1.ST_Org_ID = T2.Org_ID
+      AND T2.Org_IsValid = 1
+      INNER JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.ST_WH_ID
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.ST_WHB_ID
+      <dynamic prepend="WHERE">
+        <!--盘点单号-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_No">T1.ST_No LIKE '%'+#WHERE_ST_No#+'%'</isNotEmpty>
+        <!--组织ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_Org_ID">T1.ST_Org_ID LIKE '%'+#WHERE_ST_Org_ID#+'%'</isNotEmpty>
+        <!--仓库ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_WH_ID">T1.ST_WH_ID LIKE '%'+#WHERE_ST_WH_ID#+'%'</isNotEmpty>
+        <!--仓位ID-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_WHB_ID">T1.ST_WHB_ID LIKE '%'+#WHERE_ST_WHB_ID#+'%'</isNotEmpty>
+        <!--开始时间-->
+        <isNotNull prepend="" property="_StartTimeStart">
+          <isNotNull prepend="AND" property="_StartTimeEnd">T1.ST_StartTime BETWEEN #_StartTimeStart# AND #_StartTimeEnd#</isNotNull>
+          <isNull  prepend="AND" property="_StartTimeEnd">T1.ST_StartTime <![CDATA[>=]]> #_StartTimeStart#</isNull>
+        </isNotNull>
+        <isNull prepend="" property="_StartTimeStart">
+          <isNotNull prepend="AND" property="_StartTimeEnd">T1.ST_StartTime <![CDATA[<=]]> #_StartTimeEnd#</isNotNull>
+        </isNull>
+        <!--结束时间-->
+        <isNotNull prepend="" property="_EndTimeStart">
+          <isNotNull prepend="AND" property="_EndTimeEnd">T1.ST_EndTime BETWEEN #_EndTimeStart# AND #_EndTimeEnd#</isNotNull>
+          <isNull  prepend="AND" property="_EndTimeEnd">T1.ST_EndTime <![CDATA[>=]]> #_EndTimeStart#</isNull>
+        </isNotNull>
+        <isNull prepend="" property="_EndTimeStart">
+          <isNotNull prepend="AND" property="_EndTimeEnd">T1.ST_EndTime <![CDATA[<=]]> #_EndTimeEnd#</isNotNull>
+        </isNull>
+        <!--盘点结果名称-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_CheckResultName">T1.ST_CheckResultName LIKE '%'+#WHERE_ST_CheckResultName#+'%'</isNotEmpty>
+        <!--盘点单状态名称-->
+        <isNotEmpty prepend="AND" property="WHERE_ST_StatusName">T1.ST_StatusName LIKE '%'+#WHERE_ST_StatusName#+'%'</isNotEmpty>
+        <!--有效-->
+        <isNotNull prepend="AND" property="WHERE_ST_IsValid">T1.ST_IsValid=#WHERE_ST_IsValid#</isNotNull>
+      </dynamic>
+
+      <!--翻页用-->
+      ORDER BY T1.ST_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询[盘点管理]【明细】信息-->
+    <select id="StocktakingTaskManager_SQL_02" parameterClass="StocktakingTaskManagerQCModel" resultClass="StocktakingTaskManagerDetailUIModel">
+
+      SELECT  0 'IsChecked' ,
+      LOWER(NEWID()) 'RowID',
+      T1.STD_ID ,
+      T1.STD_TB_ID ,
+      T1.STD_TB_No ,
+      T1.STD_WH_ID ,
+      T1.STD_WHB_ID ,
+      T1.STD_DueQty ,
+      T1.STD_ActualQty ,
+      T1.STD_AdjustQty ,
+      T1.STD_ApprDiffQty ,
+      T1.STD_ApprDiffQtyRate ,
+      T1.STD_SnapshotQty ,
+      T1.STD_DueAmount ,
+      T1.STD_ActualAmount ,
+      T1.STD_AmountLossRatio ,
+      T1.STD_Barcode ,
+      T1.STD_BatchNo ,
+      T1.STD_ThirdNo ,
+      T1.STD_OEMNo ,
+      T1.STD_Name ,
+      T1.STD_Specification ,
+      T1.STD_UOM ,
+      T1.STD_IsValid ,
+      T1.STD_CreatedBy ,
+      T1.STD_CreatedTime ,
+      T1.STD_UpdatedBy ,
+      T1.STD_UpdatedTime ,
+      T1.STD_VersionNo ,
+      T3.APA_Brand ,
+      T3.APA_Level ,
+      T3.APA_VehicleBrand ,
+      T3.APA_VehicleInspire ,
+      T3.APA_VehicleCapacity ,
+      T3.APA_VehicleYearModel ,
+      T3.APA_VehicleGearboxTypeCode ,
+      T3.APA_VehicleGearboxTypeName ,
+      T4.INV_ID ,
+      T4.INV_Barcode ,
+      T4.INV_BatchNo ,
+      T4.INV_Qty ,
+      T4.INV_PurchaseUnitPrice ,
+      T4.INV_VersionNo ,
+      T5.WH_Name ,
+      T6.WHB_Name
+      FROM    PIS_StocktakingTaskDetail T1
+      INNER JOIN PIS_StocktakingTask T2 ON T1.STD_TB_ID = T2.ST_ID
+      AND T1.STD_TB_No = T2.ST_No
+      INNER JOIN BS_AutoPartsArchive T3 ON T1.STD_Barcode = T3.APA_Barcode
+      AND T3.APA_IsValid = 1
+      INNER JOIN PIS_Inventory T4 ON T4.INV_Org_ID = T2.ST_Org_ID
+      AND T1.STD_Barcode = T4.INV_Barcode
+      AND T1.STD_BatchNo = T4.INV_BatchNo
+      AND T1.STD_WH_ID = T4.INV_WH_ID
+      LEFT JOIN PIS_Warehouse T5 ON T1.STD_WH_ID = T5.WH_ID
+      AND T5.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T6 ON T1.STD_WHB_ID = T6.WHB_ID
+      AND T6.WHB_IsValid = 1
+      LEFT JOIN BS_AutoPartsName T7 ON T1.STD_Name = T7.APN_Name
+      AND T7.APN_IsValid = 1
+      WHERE   T1.STD_IsValid = 1
+      <!--盘点任务ID-->
+      <isNotEmpty prepend="AND" property="WHERE_STD_TB_ID">T1.STD_TB_ID LIKE '%'+#WHERE_STD_TB_ID#+'%'</isNotEmpty>
+      <!--盘点单号-->
+      <isNotEmpty prepend="AND" property="WHERE_STD_TB_No">T1.STD_TB_No LIKE '%'+#WHERE_STD_TB_No#+'%'</isNotEmpty>
+      ORDER BY T1.STD_UpdatedTime DESC
+    </select>
+
+    <!--根据组织、仓库、仓位查询库存-->
+    <select id="StocktakingTaskManager_SQL_03" parameterClass="StocktakingTaskManagerQCModel" resultClass="StocktakingTaskManagerDetailUIModel">
+
+      SELECT 0 'IsChecked' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID',
+      T1.INV_ID ,
+      T1.INV_Org_ID ,
+      T1.INV_WH_ID 'STD_WH_ID' ,
+      T1.INV_WHB_ID 'STD_WHB_ID' ,
+      T1.INV_ThirdNo 'STD_ThirdNo' ,
+      T1.INV_OEMNo 'STD_OEMNo' ,
+      T1.INV_Barcode 'STD_Barcode' ,
+      T1.INV_BatchNo 'STD_BatchNo' ,
+      T1.INV_Name 'STD_Name' ,
+      T1.INV_Specification 'STD_Specification' ,
+      T1.INV_SUPP_ID ,
+      T1.INV_Qty ,
+      T1.INV_Qty 'STD_DueQty' ,
+      T1.INV_PurchaseUnitPrice ,
+      CONVERT(DECIMAL(18, 2), ISNULL(T1.INV_Qty, 0)
+      * ISNULL(T1.INV_PurchaseUnitPrice, 0)) 'STD_DueAmount' ,
+      T1.INV_VersionNo ,
+      T2.APA_Brand ,
+      T2.APA_UOM 'STD_UOM' ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxTypeCode ,
+      T2.APA_VehicleGearboxTypeName ,
+      T3.WH_Name ,
+      T4.WHB_Name ,
+      1 'STD_IsValid' ,
+      #STD_CreatedBy# 'STD_CreatedBy' ,
+      GETDATE() 'STD_CreatedTime' ,
+      #STD_UpdatedBy# 'STD_UpdatedBy' ,
+      GETDATE() 'STD_UpdatedTime'
+      FROM    PIS_Inventory T1
+      LEFT JOIN BS_AutoPartsArchive T2 ON T2.APA_Barcode = T1.INV_Barcode
+      AND T2.APA_IsValid = 1
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.INV_WHB_ID
+      AND T4.WHB_IsValid = 1
+      LEFT JOIN BS_AutoPartsName T5 ON T5.APN_Name = T1.INV_Name
+      AND T5.APN_IsValid = 1
+      WHERE   T1.INV_Qty > 0
+      AND T1.INV_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_ST_Org_ID">T1.INV_Org_ID = #WHERE_ST_Org_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_ST_WH_ID">T1.INV_WH_ID = #WHERE_ST_WH_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_ST_WHB_ID">T1.INV_WHB_ID = #WHERE_ST_WHB_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_STD_Name">T1.INV_Name LIKE  '%'+#WHERE_STD_Name# +'%'</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_STD_Barcode">T1.INV_Barcode LIKE '%'+#WHERE_STD_Barcode# +'%'</isNotEmpty>
+      ORDER BY T4.WHB_Name ,
+      T1.INV_Name
+    </select>
+
+    <!--查询零库存-->
+    <select id="StocktakingTaskManager_SQL_04" parameterClass="StocktakingTaskManagerQCModel" resultClass="StocktakingTaskManagerDetailUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.INV_ID)
+      FROM    PIS_Inventory T1
+      LEFT JOIN BS_AutoPartsArchive T2 ON T2.APA_Barcode = T1.INV_Barcode
+      AND T2.APA_IsValid = 1
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.INV_WHB_ID
+      AND T4.WHB_IsValid = 1
+      WHERE   T1.INV_Qty = 0
+      AND T1.INV_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_ST_Org_ID">T1.INV_Org_ID = #WHERE_ST_Org_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_ST_WH_ID">T1.INV_WH_ID = #WHERE_ST_WH_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_ST_WHB_ID">T1.INV_WHB_ID = #WHERE_ST_WHB_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_STD_Name">T1.INV_Name LIKE  '%'+#WHERE_STD_Name# +'%'</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_STD_Barcode">T1.INV_Barcode LIKE '%'+#WHERE_STD_Barcode# +'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      CONVERT(VARCHAR(50), NEWID()) 'RowID' ,
+      0 'IsChecked' ,
+      T1.INV_ID ,
+      T1.INV_Org_ID ,
+      T1.INV_WH_ID 'STD_WH_ID' ,
+      T1.INV_WHB_ID 'STD_WHB_ID' ,
+      T1.INV_ThirdNo 'STD_ThirdNo' ,
+      T1.INV_OEMNo 'STD_OEMNo' ,
+      T1.INV_Barcode 'STD_Barcode' ,
+      T1.INV_BatchNo 'STD_BatchNo' ,
+      T1.INV_Name 'STD_Name' ,
+      T1.INV_Specification 'STD_Specification' ,
+      T1.INV_PurchaseUnitPrice ,
+      T1.INV_Qty ,
+      T1.INV_Qty 'STD_DueQty' ,
+      CONVERT(DECIMAL(18, 2), 0) 'STD_DueAmount' ,
+      T1.INV_VersionNo ,
+      T2.APA_Brand ,
+      T2.APA_UOM 'STD_UOM' ,
+      T2.APA_Level ,
+      T2.APA_VehicleBrand ,
+      T2.APA_VehicleInspire ,
+      T2.APA_VehicleCapacity ,
+      T2.APA_VehicleYearModel ,
+      T2.APA_VehicleGearboxTypeCode ,
+      T2.APA_VehicleGearboxTypeName ,
+      T3.WH_Name ,
+      T4.WHB_Name ,
+      1 'STD_IsValid' ,
+      #STD_CreatedBy# 'STD_CreatedBy' ,
+      GETDATE() 'STD_CreatedTime' ,
+      #STD_UpdatedBy# 'STD_UpdatedBy' ,
+      GETDATE() 'STD_UpdatedTime'
+      FROM    PIS_Inventory T1
+      LEFT JOIN BS_AutoPartsArchive T2 ON T2.APA_Barcode = T1.INV_Barcode
+      AND T2.APA_IsValid = 1
+      LEFT JOIN PIS_Warehouse T3 ON T3.WH_ID = T1.INV_WH_ID
+      AND T3.WH_IsValid = 1
+      LEFT JOIN PIS_WarehouseBin T4 ON T4.WHB_ID = T1.INV_WHB_ID
+      AND T4.WHB_IsValid = 1
+      WHERE   T1.INV_Qty = 0
+      AND T1.INV_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_ST_Org_ID">T1.INV_Org_ID = #WHERE_ST_Org_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_ST_WH_ID">T1.INV_WH_ID = #WHERE_ST_WH_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_ST_WHB_ID">T1.INV_WHB_ID = #WHERE_ST_WHB_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_STD_Name">T1.INV_Name LIKE  '%'+#WHERE_STD_Name# +'%'</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_STD_Barcode">T1.INV_Barcode LIKE '%'+#WHERE_STD_Barcode# +'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T4.WHB_Name ,
+      T1.INV_Name
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--根据组织、仓库、仓位查询库存-->
+    <select id="StocktakingTaskManager_SQL_05" parameterClass="MDLPIS_StocktakingTask" resultClass="int">
+      SELECT  COUNT(T1.ST_ID)
+      FROM    PIS_StocktakingTask T1
+      WHERE   T1.ST_IsValid = 1
+      AND T1.ST_WH_ID = #WHERE_ST_WH_ID#
+      <isNotEmpty prepend="AND" property="WHERE_ST_WHB_ID">T1.ST_WHB_ID = #WHERE_ST_WHB_ID#</isNotEmpty>
+      AND T1.ST_StatusName != '校正完成'
+      AND T1.ST_StatusName != '已经取消'
+    </select>
+
+  </statements>
+
+</sqlMap>

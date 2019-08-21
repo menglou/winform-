@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--作业管理UIModel-->
+    <typeAlias alias="BatchJobManageUIModel" type="SkyCar.Coeus.UIModel.SM.BatchJobManageUIModel,SkyCar.Coeus.UIModel.SM" />
+    <!--作业管理QCModel-->
+    <typeAlias alias="BatchJobManageQCModel" type="SkyCar.Coeus.UIModel.SM.BatchJobManageQCModel,SkyCar.Coeus.UIModel.SM" />
+  </alias>
+  <statements>
+
+    <!--查询作业内容是否已存在-->
+    <select id="BatchJobManage_SQL01" parameterClass="MDLCSM_BatchJob" resultClass="int">
+      SELECT  COUNT(T1.BJ_ID)
+      FROM    CSM_BatchJob T1
+      WHERE   T1.BJ_IsValid = 1
+      <isNotEmpty prepend="AND" property="WHERE_BJ_ID">T1.BJ_ID <![CDATA[<>]]> #WHERE_BJ_ID#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_BJ_BusinessType">T1.BJ_BusinessType = #WHERE_BJ_BusinessType#</isNotEmpty>
+      <isNotEmpty prepend="AND" property="WHERE_BJ_Pattern">T1.BJ_Pattern = #WHERE_BJ_Pattern#</isNotEmpty>
+    </select>
+
+  </statements>
+</sqlMap>

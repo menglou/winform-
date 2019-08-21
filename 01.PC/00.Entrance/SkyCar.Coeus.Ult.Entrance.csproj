@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC182409-4F3E-4E42-A1B2-798E65C1AFBD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.Ult.Entrance</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.Ult.Entrance</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\10.Output\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Coeus48x48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Shared.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.Misc.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.SupportDialogs.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.SupportDialogs.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinCalcManager.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v15.1.FormulaBuilder, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinCalcManager.v15.1.FormulaBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinDataSource.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinEditors.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinGrid.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListView.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinListView.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinStatusBar.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinTabbedMdi.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinTabControl.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinToolbars.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTree.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.UltraWinTree.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Infragistics4.Win.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SkyCar.Common.Utility, Version=2.17.109.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\SkyCar.Common.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitmapRegion.cs" />
+    <Compile Include="FrmProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProgressBar.Designer.cs">
+      <DependentUpon>FrmProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmActivateSoft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivateSoft.Designer.cs">
+      <DependentUpon>FrmActivateSoft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientUseLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientUseLicense.Designer.cs">
+      <DependentUpon>FrmClientUseLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModifyPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModifyPassword.Designer.cs">
+      <DependentUpon>FrmModifyPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWelcome.Designer.cs">
+      <DependentUpon>FrmWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LongTimeWork.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FrmMainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMainView.Designer.cs">
+      <DependentUpon>FrmMainView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmProgressBar.resx">
+      <DependentUpon>FrmProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivateSoft.resx">
+      <DependentUpon>FrmActivateSoft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientUseLicense.resx">
+      <DependentUpon>FrmClientUseLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModifyPassword.resx">
+      <DependentUpon>FrmModifyPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWelcome.resx">
+      <DependentUpon>FrmWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="FrmMainView.resx">
+      <DependentUpon>FrmMainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.BS.Base\SkyCar.Coeus.UI.Base.csproj">
+      <Project>{ee585057-fba8-4023-99d7-11c5f6390d7a}</Project>
+      <Name>SkyCar.Coeus.UI.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.BS\SkyCar.Coeus.UI.BS.csproj">
+      <Project>{9f03a749-0778-48d1-b8f2-09b1da439548}</Project>
+      <Name>SkyCar.Coeus.UI.BS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.Com\SkyCar.Coeus.UI.Common.csproj">
+      <Project>{41722007-4492-4ff5-b21d-586e3c54bec2}</Project>
+      <Name>SkyCar.Coeus.UI.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.FM\SkyCar.Coeus.UI.FM.csproj">
+      <Project>{f2d7a07d-d089-43cd-aaf7-31abd9f6def9}</Project>
+      <Name>SkyCar.Coeus.UI.FM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.PIS\SkyCar.Coeus.UI.PIS.csproj">
+      <Project>{c3046b97-4d68-4df1-a2ea-ba3b39a0f97c}</Project>
+      <Name>SkyCar.Coeus.UI.PIS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.RPT\SkyCar.Coeus.UI.RPT.csproj">
+      <Project>{b3e4107c-d0d2-48f8-a8bf-a2e8b7396742}</Project>
+      <Name>SkyCar.Coeus.UI.RPT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.SD\SkyCar.Coeus.UI.SD.csproj">
+      <Project>{933128a4-d800-4004-a317-bcb20b8ef69e}</Project>
+      <Name>SkyCar.Coeus.UI.SD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.SM\SkyCar.Coeus.UI.SM.csproj">
+      <Project>{0efcbf6b-92c2-418c-a31a-eecac02e1b87}</Project>
+      <Name>SkyCar.Coeus.UI.SM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\01.UI\SkyCar.Coeus.UI.WC\SkyCar.Coeus.UI.WC.csproj">
+      <Project>{69d132d9-3dff-4484-8f91-d3e5d4a6a791}</Project>
+      <Name>SkyCar.Coeus.UI.WC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\02.BLL\SkyCar.Coeus.BLL.Common\SkyCar.Coeus.BLL.Common.csproj">
+      <Project>{1b5d4295-a8dd-4ce9-8a09-156dbb02c1b6}</Project>
+      <Name>SkyCar.Coeus.BLL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\02.BLL\SkyCar.Coeus.BLL.SM\SkyCar.Coeus.BLL.SM.csproj">
+      <Project>{6a6163df-4f51-4ed8-9a96-c8f41b93a7a6}</Project>
+      <Name>SkyCar.Coeus.BLL.SM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\03.DAL\SkyCar.Coeus.DAL.csproj">
+      <Project>{11efcea2-ce88-4605-904f-be66a5f0e99e}</Project>
+      <Name>SkyCar.Coeus.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\04.Model\SkyCar.Coeus.ComModel\SkyCar.Coeus.ComModel.csproj">
+      <Project>{9b4a8412-11fb-4224-af04-1f4157c443b3}</Project>
+      <Name>SkyCar.Coeus.ComModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\04.Model\SkyCar.Coeus.Model.TBModel\SkyCar.Coeus.TBModel.csproj">
+      <Project>{962ce42f-618f-439d-a6fb-b0ae0c762c3c}</Project>
+      <Name>SkyCar.Coeus.TBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\04.Model\SkyCar.Coeus.UIModel.Common\SkyCar.Coeus.UIModel.Common.csproj">
+      <Project>{e0ee606a-680e-4050-ae66-446e7cf50dc3}</Project>
+      <Name>SkyCar.Coeus.UIModel.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\04.Model\SkyCar.Coeus.UIModel.SM\SkyCar.Coeus.UIModel.SM.csproj">
+      <Project>{f5ab0f9d-0819-483b-8a46-5e50d892b65c}</Project>
+      <Name>SkyCar.Coeus.UIModel.SM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Coeus.Common.Const\SkyCar.Coeus.Common.Const.csproj">
+      <Project>{b73b6292-4bb9-44ba-adb3-38ae836c3ba4}</Project>
+      <Name>SkyCar.Coeus.Common.Const</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Coeus.Common.Enums\SkyCar.Coeus.Common.Enums.csproj">
+      <Project>{d5165fce-81ca-4178-b620-55c33c32cffa}</Project>
+      <Name>SkyCar.Coeus.Common.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Coeus.Common.ExtendClass\SkyCar.Coeus.Common.ExtendClass.csproj">
+      <Project>{bb67629c-4fe0-415b-9b9e-24872e8c2121}</Project>
+      <Name>SkyCar.Coeus.Common.ExtendClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Coeus.Common.Log\SkyCar.Coeus.Common.Log.csproj">
+      <Project>{28b83d74-dc74-452b-8c29-d856bd4e663f}</Project>
+      <Name>SkyCar.Coeus.Common.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Coeus.Common.Message\SkyCar.Coeus.Common.Message.csproj">
+      <Project>{953A6848-58D6-4480-B333-DC2514711074}</Project>
+      <Name>SkyCar.Coeus.Common.Message</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Framework.WindowUI\SkyCar.Framework.WindowUI.csproj">
+      <Project>{e8746b10-eaaf-44b7-95cc-29e4c42ec8d5}</Project>
+      <Name>SkyCar.Framework.WindowUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\当前组织.png" />
+    <None Include="Resources\user.png" />
+    <EmbeddedResource Include="Resources\CoeusTitle.png" />
+    <None Include="Resources\CoeusLogo32.ico" />
+    <None Include="Resources\CoeusLogo48.ico" />
+    <Content Include="Resources\Coeus32x32.ico" />
+    <Content Include="Resources\Coeus48x48.ico" />
+    <Content Include="Resources\Min.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

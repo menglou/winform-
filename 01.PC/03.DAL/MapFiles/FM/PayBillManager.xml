@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+    <!--付款单管理UIModel-->
+    <typeAlias alias="PayBillManagerUIModel" type="SkyCar.Coeus.UIModel.FM.PayBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--付款单管理QCModel-->
+    <typeAlias alias="PayBillManagerQCModel" type="SkyCar.Coeus.UIModel.FM.PayBillManagerQCModel,SkyCar.Coeus.UIModel.FM" />
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--删除图片时更新付款单-->
+    <update id="PayBillManager_SQL01" parameterClass="MDLFM_PayBill">
+      UPDATE  FM_PayBill
+      SET     PB_CertificatePic = #PB_CertificatePic# ,
+      PB_UpdatedTime = GETDATE() ,
+      PB_VersionNo = PB_VersionNo + 1
+      WHERE   PB_ID = #WHERE_PB_ID#
+    </update>
+
+    <!--查询[付款单管理]【列表】信息-->
+    <select id="PayBillManager_SQL02" parameterClass="PayBillManagerQCModel" resultClass="PayBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT @RecordCount = COUNT(T1.PB_ID)
+      FROM FM_PayBill T1
+      LEFT JOIN EWM_Wallet T2
+      ON T2.Wal_CustomerID = T1.PB_RecObjectID
+      LEFT JOIN
+      (
+      SELECT DISTINCT
+      A.PBD_PB_ID,
+      STUFF(
+      (
+      SELECT ',' + PBD_SrcBillNo + ','
+      FROM FM_PayBillDetail
+      WHERE PBD_PB_ID = A.PBD_PB_ID
+      FOR XML PATH('')
+      ),
+      1,
+      1,
+      ','
+      ) AS PBD_SrcBillNo
+      FROM FM_PayBillDetail AS A
+      ) T3
+      ON T3.PBD_PB_ID = T1.PB_ID
+      WHERE T1.PB_IsValid = 1
+      <!--付款单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_No">T1.PB_No LIKE '%'+#WHERE_PB_No#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_ApprovalStatusName">T1.PB_ApprovalStatusName LIKE '%'+#WHERE_PB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_BusinessStatusName">T1.PB_BusinessStatusName LIKE '%'+#WHERE_PB_BusinessStatusName#+'%'</isNotEmpty>
+      <!--收款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectTypeName">T1.PB_RecObjectTypeName LIKE '%'+#WHERE_PB_RecObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectName">T1.PB_RecObjectName LIKE '%'+#WHERE_PB_RecObjectName#+'%'</isNotEmpty>
+      <!--付款方式-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_PayTypeName">T1.PB_PayTypeName LIKE '%'+#WHERE_PB_PayTypeName#+'%'</isNotEmpty>
+      <!--付款组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_Pay_Org_ID">T1.PB_Pay_Org_ID LIKE '%'+#WHERE_PB_Pay_Org_ID#+'%'</isNotEmpty>
+      <!--付款日期-->
+      <isNotNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.PB_Date BETWEEN #_DateStart# AND #_DateEnd#</isNotNull>
+        <isNull  prepend="AND" property="_DateEnd">T1.PB_Date <![CDATA[>=]]> #_DateStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.PB_Date <![CDATA[<=]]> #_DateEnd#</isNotNull>
+      </isNull>
+      <!--明细来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PBD_SrcBillNo"> T3.PBD_SrcBillNo LIKE '%'+ #WHERE_PBD_SrcBillNo#+'%'</isNotEmpty>
+
+      SELECT @RecordCount 'RecordCount',
+      T1.PB_ID,
+      T1.PB_No,
+      T1.PB_Pay_Org_ID,
+      T1.PB_Pay_Org_Name,
+      T1.PB_Date,
+      T1.PB_RecObjectTypeCode,
+      T1.PB_RecObjectTypeName,
+      T1.PB_RecObjectID,
+      T1.PB_RecObjectName,
+      T1.PB_RealPayableTotalAmount,
+      T1.PB_PayAccount,
+      T1.PB_RecAccount,
+      T1.PB_PayTypeCode,
+      T1.PB_PayTypeName,
+      T1.PB_CertificateNo,
+      T1.PB_CertificatePic,
+      T1.PB_BusinessStatusCode,
+      T1.PB_BusinessStatusName,
+      T1.PB_ApprovalStatusCode,
+      T1.PB_ApprovalStatusName,
+      T1.PB_Remark,
+      T1.PB_IsValid,
+      T1.PB_CreatedBy,
+      T1.PB_CreatedTime,
+      T1.PB_UpdatedBy,
+      T1.PB_UpdatedTime,
+      T1.PB_VersionNo,
+      T2.Wal_ID,
+      T2.Wal_No,
+      T2.Wal_AvailableBalance,
+      T2.Wal_VersionNo
+      FROM FM_PayBill T1
+      LEFT JOIN EWM_Wallet T2
+      ON T2.Wal_CustomerID = T1.PB_RecObjectID
+      LEFT JOIN
+      (
+      SELECT DISTINCT
+      A.PBD_PB_ID,
+      STUFF(
+      (
+      SELECT ',' + PBD_SrcBillNo + ','
+      FROM FM_PayBillDetail
+      WHERE PBD_PB_ID = A.PBD_PB_ID
+      FOR XML PATH('')
+      ),
+      1,
+      1,
+      ','
+      ) AS PBD_SrcBillNo
+      FROM FM_PayBillDetail AS A
+      ) T3
+      ON T3.PBD_PB_ID = T1.PB_ID
+      WHERE T1.PB_IsValid = 1
+      <!--付款单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_No">T1.PB_No LIKE '%'+#WHERE_PB_No#+'%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_ApprovalStatusName">T1.PB_ApprovalStatusName LIKE '%'+#WHERE_PB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_BusinessStatusName">T1.PB_BusinessStatusName LIKE '%'+#WHERE_PB_BusinessStatusName#+'%'</isNotEmpty>
+      <!--收款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectTypeName">T1.PB_RecObjectTypeName LIKE '%'+#WHERE_PB_RecObjectTypeName#+'%'</isNotEmpty>
+      <!--收款对象-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_RecObjectName">T1.PB_RecObjectName LIKE '%'+#WHERE_PB_RecObjectName#+'%'</isNotEmpty>
+      <!--付款方式-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_PayTypeName">T1.PB_PayTypeName LIKE '%'+#WHERE_PB_PayTypeName#+'%'</isNotEmpty>
+      <!--付款组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_PB_Pay_Org_ID">T1.PB_Pay_Org_ID LIKE '%'+#WHERE_PB_Pay_Org_ID#+'%'</isNotEmpty>
+      <!--付款日期-->
+      <isNotNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.PB_Date BETWEEN #_DateStart# AND #_DateEnd#</isNotNull>
+        <isNull  prepend="AND" property="_DateEnd">T1.PB_Date <![CDATA[>=]]> #_DateStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_DateStart">
+        <isNotNull prepend="AND" property="_DateEnd">T1.PB_Date <![CDATA[<=]]> #_DateEnd#</isNotNull>
+      </isNull>
+      <!--明细来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_PBD_SrcBillNo"> T3.PBD_SrcBillNo LIKE '%'+ #WHERE_PBD_SrcBillNo#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.PB_CreatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+  </statements>
+
+</sqlMap>

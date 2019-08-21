@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+
+  </alias>
+  <statements>
+    <!--获取仓位名称-->
+    <select id="WarehouseBinManager_SQL01" parameterClass="MDLPIS_WarehouseBin" resultClass="MDLPIS_WarehouseBin">
+      SELECT T2.WHB_Name
+      FROM PIS_Inventory T1
+      INNER JOIN PIS_WarehouseBin T2
+      ON T2.WHB_ID = T1.INV_WHB_ID
+      AND T2.WHB_IsValid = 1
+      WHERE T1.INV_WHB_ID IS NOT NULL
+      AND T1.INV_WHB_ID != ''
+      AND #WHERE_WHB_ID# LIKE '%;' + T1.INV_WHB_ID + ';%'
+      AND T1.INV_IsValid = 1
+      UNION
+      SELECT T2.WHB_Name
+      FROM PIS_StockInDetail T1
+      INNER JOIN PIS_WarehouseBin T2
+      ON T2.WHB_ID = T1.SID_WHB_ID
+      AND T2.WHB_IsValid = 1
+      WHERE T1.SID_WHB_ID IS NOT NULL
+      AND T1.SID_WHB_ID != ''
+      AND #WHERE_WHB_ID# LIKE '%;' + T1.SID_WHB_ID + ';%'
+      AND T1.SID_IsValid = 1
+    </select>
+
+  </statements>
+</sqlMap>

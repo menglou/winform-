@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    
+  </alias>
+  <statements>
+
+    <!--获取钱包账号-->
+    <procedure id="WalletCreateAccount_SQL01" parameterMap="SQL01_ParameteMap" resultClass="string">
+      P_RIA_GetWalletNo
+    </procedure>
+
+  </statements>
+
+  <!--parameterMaps配置-->
+  <parameterMaps>
+    
+    <parameterMap id="SQL01_ParameteMap" class="string">
+      <parameter property="mctCode" />
+    </parameterMap>
+
+  </parameterMaps>
+
+</sqlMap>

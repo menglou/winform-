@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41722007-4492-4FF5-B21D-586E3C54BEC2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.UI.Common</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.UI.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChnCharInfo">
+      <HintPath>..\..\Reference\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Shared.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.Misc.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.SupportDialogs.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.SupportDialogs.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinCalcManager.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v15.1.FormulaBuilder, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinCalcManager.v15.1.FormulaBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinDataSource.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinEditors.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinGrid.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListView.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinListView.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinStatusBar.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinTabbedMdi.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinTabControl.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinToolbars.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTree.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.UltraWinTree.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v15.1, Version=15.1.20151.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Infragistics4.Win.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=10.0.4504.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NPinyin">
+      <HintPath>..\..\Reference\NPinyin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TX.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAccountPayableBillQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccountPayableBillQuery.Designer.cs">
+      <DependentUpon>FrmAccountPayableBillQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBusinessPayConfirmWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBusinessPayConfirmWindow.Designer.cs">
+      <DependentUpon>FrmBusinessPayConfirmWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBusinessCollectionConfirmWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBusinessCollectionConfirmWindow.Designer.cs">
+      <DependentUpon>FrmBusinessCollectionConfirmWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAutoFactoryOrgQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutoFactoryOrgQuery.Designer.cs">
+      <DependentUpon>FrmAutoFactoryOrgQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventoryTransLogQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventoryTransLogQuery.Designer.cs">
+      <DependentUpon>FrmInventoryTransLogQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPayBillQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPayBillQuery.Designer.cs">
+      <DependentUpon>FrmPayBillQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPickPartsQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPickPartsQuery.Designer.cs">
+      <DependentUpon>FrmPickPartsQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInventoryToShareQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInventoryToShareQuery.Designer.cs">
+      <DependentUpon>FrmInventoryToShareQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferQuery.Designer.cs">
+      <DependentUpon>FrmTransferQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStockOutBillQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStockOutBillQuery.Designer.cs">
+      <DependentUpon>FrmStockOutBillQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStockInBillQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStockInBillQuery.Designer.cs">
+      <DependentUpon>FrmStockInBillQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesForecastOrderQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesForecastOrderQuery.Designer.cs">
+      <DependentUpon>FrmSalesForecastOrderQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogisticsBillQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogisticsBillQuery.Designer.cs">
+      <DependentUpon>FrmLogisticsBillQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesTemplateQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesTemplateQuery.Designer.cs">
+      <DependentUpon>FrmSalesTemplateQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesOrderQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesOrderQuery.Designer.cs">
+      <DependentUpon>FrmSalesOrderQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPurchaseOrderQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPurchaseOrderQuery.Designer.cs">
+      <DependentUpon>FrmPurchaseOrderQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAutoPartsTypeQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutoPartsTypeQuery.Designer.cs">
+      <DependentUpon>FrmAutoPartsTypeQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaintainAutoPartsDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaintainAutoPartsDetail.designer.cs">
+      <DependentUpon>FrmMaintainAutoPartsDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOrgQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrgQuery.Designer.cs">
+      <DependentUpon>FrmOrgQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserQuery.Designer.cs">
+      <DependentUpon>FrmUserQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCustomerQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCustomerQuery.Designer.cs">
+      <DependentUpon>FrmCustomerQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAutoPartsArchiveQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutoPartsArchiveQuery.Designer.cs">
+      <DependentUpon>FrmAutoPartsArchiveQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAutoPartsNameQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutoPartsNameQuery.Designer.cs">
+      <DependentUpon>FrmAutoPartsNameQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAutoPartsBrandQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAutoPartsBrandQuery.Designer.cs">
+      <DependentUpon>FrmAutoPartsBrandQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWarehouseBinQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWarehouseBinQuery.Designer.cs">
+      <DependentUpon>FrmWarehouseBinQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSupplierQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSupplierQuery.Designer.cs">
+      <DependentUpon>FrmSupplierQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWarehouseQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWarehouseQuery.Designer.cs">
+      <DependentUpon>FrmWarehouseQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleInspireQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleInspireQuery.Designer.cs">
+      <DependentUpon>FrmVehicleInspireQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVehicleBrandQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVehicleBrandQuery.Designer.cs">
+      <DependentUpon>FrmVehicleBrandQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmptyManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmptyManager.Designer.cs">
+      <DependentUpon>FrmEmptyManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\02.BLL\SkyCar.Coeus.BLL.Common\SkyCar.Coeus.BLL.Common.csproj">
+      <Project>{1b5d4295-a8dd-4ce9-8a09-156dbb02c1b6}</Project>
+      <Name>SkyCar.Coeus.BLL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\03.DAL\SkyCar.Coeus.DAL.csproj">
+      <Project>{11efcea2-ce88-4605-904f-be66a5f0e99e}</Project>
+      <Name>SkyCar.Coeus.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04.Model\SkyCar.Coeus.ComModel\SkyCar.Coeus.ComModel.csproj">
+      <Project>{9B4A8412-11FB-4224-AF04-1F4157C443B3}</Project>
+      <Name>SkyCar.Coeus.ComModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04.Model\SkyCar.Coeus.Model.TBModel\SkyCar.Coeus.TBModel.csproj">
+      <Project>{962ce42f-618f-439d-a6fb-b0ae0c762c3c}</Project>
+      <Name>SkyCar.Coeus.TBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04.Model\SkyCar.Coeus.UIModel.Common\SkyCar.Coeus.UIModel.Common.csproj">
+      <Project>{e0ee606a-680e-4050-ae66-446e7cf50dc3}</Project>
+      <Name>SkyCar.Coeus.UIModel.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.Const\SkyCar.Coeus.Common.Const.csproj">
+      <Project>{b73b6292-4bb9-44ba-adb3-38ae836c3ba4}</Project>
+      <Name>SkyCar.Coeus.Common.Const</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.CustomControl\SkyCar.Coeus.Common.CustomControl.csproj">
+      <Project>{c7838a9e-0a09-4e51-a42c-3b5ff767be1e}</Project>
+      <Name>SkyCar.Coeus.Common.CustomControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.Enums\SkyCar.Coeus.Common.Enums.csproj">
+      <Project>{d5165fce-81ca-4178-b620-55c33c32cffa}</Project>
+      <Name>SkyCar.Coeus.Common.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.ExtendClass\SkyCar.Coeus.Common.ExtendClass.csproj">
+      <Project>{bb67629c-4fe0-415b-9b9e-24872e8c2121}</Project>
+      <Name>SkyCar.Coeus.Common.ExtendClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.Log\SkyCar.Coeus.Common.Log.csproj">
+      <Project>{28b83d74-dc74-452b-8c29-d856bd4e663f}</Project>
+      <Name>SkyCar.Coeus.Common.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Coeus.Common.Message\SkyCar.Coeus.Common.Message.csproj">
+      <Project>{953a6848-58d6-4480-b333-dc2514711074}</Project>
+      <Name>SkyCar.Coeus.Common.Message</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Framework.WindowUI\SkyCar.Framework.WindowUI.csproj">
+      <Project>{e8746b10-eaaf-44b7-95cc-29e4c42ec8d5}</Project>
+      <Name>SkyCar.Framework.WindowUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\05.Common\SkyCar.Framework.WindowUI\SkyCar.Framework.WindowUI.csproj">
+      <Project>{e8746b10-eaaf-44b7-95cc-29e4c42ec8d5}</Project>
+      <Name>SkyCar.Framework.WindowUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkyCar.Coeus.UI.BS.Base\SkyCar.Coeus.UI.Base.csproj">
+      <Project>{ee585057-fba8-4023-99d7-11c5f6390d7a}</Project>
+      <Name>SkyCar.Coeus.UI.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmAccountPayableBillQuery.resx">
+      <DependentUpon>FrmAccountPayableBillQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBusinessPayConfirmWindow.resx">
+      <DependentUpon>FrmBusinessPayConfirmWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBusinessCollectionConfirmWindow.resx">
+      <DependentUpon>FrmBusinessCollectionConfirmWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutoFactoryOrgQuery.resx">
+      <DependentUpon>FrmAutoFactoryOrgQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventoryTransLogQuery.resx">
+      <DependentUpon>FrmInventoryTransLogQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPayBillQuery.resx">
+      <DependentUpon>FrmPayBillQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPickPartsQuery.resx">
+      <DependentUpon>FrmPickPartsQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInventoryToShareQuery.resx">
+      <DependentUpon>FrmInventoryToShareQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferQuery.resx">
+      <DependentUpon>FrmTransferQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStockOutBillQuery.resx">
+      <DependentUpon>FrmStockOutBillQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStockInBillQuery.resx">
+      <DependentUpon>FrmStockInBillQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalesForecastOrderQuery.resx">
+      <DependentUpon>FrmSalesForecastOrderQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogisticsBillQuery.resx">
+      <DependentUpon>FrmLogisticsBillQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalesTemplateQuery.resx">
+      <DependentUpon>FrmSalesTemplateQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalesOrderQuery.resx">
+      <DependentUpon>FrmSalesOrderQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPurchaseOrderQuery.resx">
+      <DependentUpon>FrmPurchaseOrderQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutoPartsTypeQuery.resx">
+      <DependentUpon>FrmAutoPartsTypeQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaintainAutoPartsDetail.resx">
+      <DependentUpon>FrmMaintainAutoPartsDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrgQuery.resx">
+      <DependentUpon>FrmOrgQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserQuery.resx">
+      <DependentUpon>FrmUserQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCustomerQuery.resx">
+      <DependentUpon>FrmCustomerQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutoPartsArchiveQuery.resx">
+      <DependentUpon>FrmAutoPartsArchiveQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutoPartsNameQuery.resx">
+      <DependentUpon>FrmAutoPartsNameQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAutoPartsBrandQuery.resx">
+      <DependentUpon>FrmAutoPartsBrandQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWarehouseBinQuery.resx">
+      <DependentUpon>FrmWarehouseBinQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSupplierQuery.resx">
+      <DependentUpon>FrmSupplierQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWarehouseQuery.resx">
+      <DependentUpon>FrmWarehouseQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleInspireQuery.resx">
+      <DependentUpon>FrmVehicleInspireQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVehicleBrandQuery.resx">
+      <DependentUpon>FrmVehicleBrandQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmptyManager.resx">
+      <DependentUpon>FrmEmptyManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图片缩略图-black.png" />
+    <None Include="Resources\FirstPage.png" />
+    <None Include="Resources\ForwardPage.png" />
+    <None Include="Resources\LastPage.png" />
+    <None Include="Resources\NextPage.png" />
+    <Content Include="Resources\Query.ico" />
+    <None Include="Resources\SearchWhite.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\Search32.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

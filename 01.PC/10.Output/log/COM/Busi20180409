@@ -1,0 +1,326 @@
+2018/04/09 20:48:03.935 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:05.012 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:05.037 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:05.068 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:05.680 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:05.775 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:05.814 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:05.840 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:05.875 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:06.039 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:06.142 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:06.155 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:59.441 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:59.492 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:59.508 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:59.517 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:59.531 [INFO] SuperAdmin Void InitializeCode() 【START】  
+2018/04/09 20:48:59.616 [INFO] SuperAdmin Void InitializeCode() 【END】-OK  
+2018/04/09 20:48:59.671 [INFO] SuperAdmin Void InitializeSystemMessage() 【START】  
+2018/04/09 20:48:59.685 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:59.722 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:59.733 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:59.742 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:59.751 [INFO] SuperAdmin Void InitializeSystemMessage() 【END】-OK  
+2018/04/09 20:48:59.763 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:59.811 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:48:59.824 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:48:59.833 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.368 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.401 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.412 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.420 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.437 [INFO] SuperAdmin InitSystemUser 【END】-OK  
+2018/04/09 20:49:04.458 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.499 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.511 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.520 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.530 [INFO] SuperAdmin InitAutoPartsName 【END】-OK  
+2018/04/09 20:49:04.542 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.579 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.588 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.597 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.606 [INFO] SuperAdmin InitAutoPartsType 【END】-OK  
+2018/04/09 20:49:04.615 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.657 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.666 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.675 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.687 [INFO] SuperAdmin InitAutoPartsSupplier 【END】-OK  
+2018/04/09 20:49:04.696 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.961 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:04.970 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.979 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:04.989 [INFO] SuperAdmin InitWarehouse 【END】-OK  
+2018/04/09 20:49:04.998 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.033 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.042 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.051 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.062 [INFO] SuperAdmin InitWarehouseBin 【END】-OK  
+2018/04/09 20:49:05.073 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.111 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.121 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.130 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.141 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.151 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.160 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.173 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.186 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.196 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.212 [INFO] SuperAdmin InitVehicleBrand 【END】-OK  
+2018/04/09 20:49:05.221 [INFO] SuperAdmin InitVehicleInspire 【END】-OK  
+2018/04/09 20:49:05.230 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:05.273 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:05.432 [INFO] SuperAdmin InitCustomer 【END】-OK  
+2018/04/09 20:49:40.304 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:49:40.314 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:49:40.327 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:49:40.341 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:49:40.350 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:49:40.361 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 20:49:40.369 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 20:49:44.822 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:49:44.873 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:49:44.887 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:49:44.895 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:49:44.906 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:49:44.914 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:49:44.923 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 20:49:44.932 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:51:01.583 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:51:01.598 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:51:01.606 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:51:01.614 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:51:01.625 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:51:01.634 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 20:51:01.642 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 20:51:04.218 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:51:04.252 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:51:04.265 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:51:04.274 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:51:04.283 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:51:04.291 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:51:04.300 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 20:51:04.308 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:51:06.969 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:51:06.981 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:51:06.991 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:51:07.000 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:51:07.009 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:51:07.017 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 20:51:07.025 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 20:51:10.948 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:51:10.982 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:51:10.993 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:51:11.001 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:51:11.018 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:51:11.029 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:51:11.039 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 20:51:11.048 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:51:14.089 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:51:14.099 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:51:14.110 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:51:14.121 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:51:14.136 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:51:14.150 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 20:51:14.163 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 20:51:30.679 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:51:30.751 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:51:30.760 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:51:30.769 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:51:30.777 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:51:30.785 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:51:30.795 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 20:51:30.805 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 20:57:37.789 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 20:57:37.823 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 20:57:37.834 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 20:57:37.842 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 20:57:37.851 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 20:57:37.859 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 20:57:37.867 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 20:57:37.875 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:46:42.509 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:46:42.807 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:46:42.829 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:46:42.844 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:46:42.892 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:46:42.998 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:46:43.028 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:46:43.044 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:46:43.161 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:46:43.252 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:46:43.277 [INFO] Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:46:43.295 [INFO] Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:05.066 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:05.116 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:05.159 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:05.173 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:05.193 [INFO] SuperAdmin Void InitializeCode() 【START】  
+2018/04/09 21:47:05.287 [INFO] SuperAdmin Void InitializeCode() 【END】-OK  
+2018/04/09 21:47:05.326 [INFO] SuperAdmin Void InitializeSystemMessage() 【START】  
+2018/04/09 21:47:05.337 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:05.373 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:05.389 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:05.402 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:05.412 [INFO] SuperAdmin Void InitializeSystemMessage() 【END】-OK  
+2018/04/09 21:47:05.427 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:05.480 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:05.495 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:05.507 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:09.862 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.235 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.250 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.260 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.273 [INFO] SuperAdmin InitSystemUser 【END】-OK  
+2018/04/09 21:47:10.287 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.418 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.431 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.441 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.454 [INFO] SuperAdmin InitAutoPartsName 【END】-OK  
+2018/04/09 21:47:10.466 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.504 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.516 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.528 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.543 [INFO] SuperAdmin InitAutoPartsType 【END】-OK  
+2018/04/09 21:47:10.557 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.602 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.615 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.626 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.639 [INFO] SuperAdmin InitAutoPartsSupplier 【END】-OK  
+2018/04/09 21:47:10.652 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.691 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.702 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.714 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.726 [INFO] SuperAdmin InitWarehouse 【END】-OK  
+2018/04/09 21:47:10.742 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.781 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.790 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.804 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.818 [INFO] SuperAdmin InitWarehouseBin 【END】-OK  
+2018/04/09 21:47:10.832 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.879 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.892 [INFO] SuperAdmin Void CopyModelList[D](System.Collections.Generic.IList`1[System.Object], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.904 [INFO] SuperAdmin Void QueryForList[D](System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.918 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.934 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.949 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.965 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:10.974 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:10.987 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:11.005 [INFO] SuperAdmin InitVehicleBrand 【END】-OK  
+2018/04/09 21:47:11.015 [INFO] SuperAdmin InitVehicleInspire 【END】-OK  
+2018/04/09 21:47:11.027 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:47:11.075 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:47:11.230 [INFO] SuperAdmin InitCustomer 【END】-OK  
+2018/04/09 21:47:43.705 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:47:43.722 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:47:43.737 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:47:43.758 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:47:43.771 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:47:43.788 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:47:43.801 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:47:44.800 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 未能从程序集“SkyCar.Coeus.UI.SD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null”中加载类型“SkyCar.Coeus.UI.SD.FrmSalesOrderManagerLmTest”。 
+2018/04/09 21:47:50.885 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 未能从程序集“SkyCar.Coeus.UI.SD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null”中加载类型“SkyCar.Coeus.UI.SD.FrmSalesOrderManagerLmTest”。 
+2018/04/09 21:48:05.672 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:05.730 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:05.751 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:48:05.761 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:48:05.776 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:48:05.784 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:48:05.793 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 21:48:05.802 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:48:11.377 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:48:11.391 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:48:11.399 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:48:11.408 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:48:11.426 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:48:11.436 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:11.446 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:11.455 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:11.493 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:11.861 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:11.873 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:11.885 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:11.897 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:11.907 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:11.915 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:21.224 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:21.300 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:21.309 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:48:21.319 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:48:21.328 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:48:21.339 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:48:21.353 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 21:48:21.363 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:48:47.201 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:48:47.215 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:48:47.226 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:48:47.239 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:48:47.258 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:48:47.270 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:47.280 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:47.288 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:47.325 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:47.616 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:47.630 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:47.641 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:47.653 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:47.669 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:48:47.678 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:48:52.504 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:48:52.582 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:48:52.593 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:48:52.605 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:48:52.617 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:48:52.630 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:48:52.643 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 21:48:52.654 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:49:33.830 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:49:33.863 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:49:33.874 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:49:33.885 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:49:33.896 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:49:33.907 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:49:33.916 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 21:49:33.926 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:50:47.164 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:50:47.202 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:50:47.211 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:50:47.221 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:50:47.231 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:50:47.241 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:50:47.249 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 21:50:47.258 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:51:02.284 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:51:02.297 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:51:02.310 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:51:02.325 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:51:02.340 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:51:02.354 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:56:11.493 [INFO] SuperAdmin System.Object QueryForObject(System.String, System.Object) 【START】  
+2018/04/09 21:56:11.561 [INFO] SuperAdmin System.Object QueryForObject(System.String, System.Object) 【END】-OK  
+2018/04/09 21:56:11.597 [INFO] SuperAdmin Boolean Save[T](T, System.String) 【START】  
+2018/04/09 21:56:11.612 [INFO] SuperAdmin Boolean IsInsert(System.Object) 【START】  
+2018/04/09 21:56:11.624 [INFO] SuperAdmin Boolean IsInsert(System.Object) 【END】-OK 主键值为空（需新增） 
+2018/04/09 21:56:11.639 [INFO] SuperAdmin Boolean Insert[T](T) 【START】  
+2018/04/09 21:56:11.687 [INFO] SuperAdmin Boolean Insert[T](T) 【END】-OK  
+2018/04/09 21:56:11.699 [INFO] SuperAdmin Boolean Save[T](T, System.String) 【END】-OK  
+2018/04/09 21:56:13.315 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/04/09 21:56:13.359 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/04/09 21:56:13.371 [INFO] SuperAdmin SetBarPaging 【START】  
+2018/04/09 21:56:13.383 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【START】  
+2018/04/09 21:56:13.396 [INFO] SuperAdmin SetTotalPageCountAndTotalRecordCount 【END】-OK  
+2018/04/09 21:56:13.409 [INFO] SuperAdmin SetPageButtonStatus 【START】  
+2018/04/09 21:56:13.418 [INFO] SuperAdmin SetPageButtonStatus 【END】-OK  
+2018/04/09 21:56:13.427 [INFO] SuperAdmin SetBarPaging 【END】-OK  
+2018/04/09 21:56:13.454 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:56:13.464 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:56:13.478 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:56:13.491 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:56:13.506 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【START】  
+2018/04/09 21:56:13.519 [INFO] SuperAdmin ToolBarPaging_ToolValueChanged 【END】-OK  
+2018/04/09 21:56:29.837 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 未能从程序集“SkyCar.Coeus.UI.SD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null”中加载类型“SkyCar.Coeus.UI.SD.FrmSalesOrderManagerLmTest”。 
+2018/04/09 21:56:33.275 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 信息尚未保存，确定进行当前操作？ 
+2018/04/09 21:56:34.659 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 信息尚未保存，确定进行当前操作？ 
+2018/04/09 21:56:35.974 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 信息尚未保存，确定进行当前操作？ 
+2018/04/09 21:56:37.056 [INFO] SuperAdmin SkyCar.Coeus.Ult.Entrance.FrmMainView, Text: 云汽配系统 确定退出系统？ 

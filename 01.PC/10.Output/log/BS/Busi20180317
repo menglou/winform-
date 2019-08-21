@@ -1,0 +1,45 @@
+2018/03/17 09:30:00.762 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/17 09:30:00.816 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/17 14:45:54.652 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/17 14:45:54.718 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/17 15:12:30.548 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 信息尚未保存，确定进行当前操作？ 
+2018/03/17 15:12:34.509 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 信息尚未保存，确定进行当前操作？ 
+2018/03/17 15:12:39.474 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 信息尚未保存，确定进行当前操作？ 
+2018/03/17 15:12:41.291 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 信息尚未保存，确定进行当前操作？ 
+2018/03/17 15:12:48.010 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 信息尚未保存，确定进行当前操作？ 
+2018/03/17 15:13:18.127 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 计量单位不能为空！ 
+2018/03/17 15:13:29.763 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/17 15:13:29.825 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/17 15:13:29.835 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 配件名称已存在，不能重复添加！ 
+2018/03/17 15:13:33.620 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/17 15:13:33.666 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/17 15:13:33.679 [INFO] SuperAdmin Boolean Insert[T](T) 【START】  
+2018/03/17 15:13:33.750 [INFO] SuperAdmin Boolean Insert[T](T) 【END】-OK  
+2018/03/17 15:13:33.766 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 保存成功！ 
+2018/03/17 15:14:20.254 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/17 15:14:20.299 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/17 15:14:20.312 [INFO] SuperAdmin Boolean Update(System.Object) 【START】  
+2018/03/17 15:14:20.324 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) 【START】  
+2018/03/17 15:14:20.334 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) WHERE主键值非空 
+2018/03/17 15:14:20.344 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) WHERE版本号值非空 
+2018/03/17 15:14:20.353 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) 【END】-OK WHERE主键和版本号的值都已赋值 
+2018/03/17 15:14:20.413 [INFO] SuperAdmin Boolean Update(System.Object) 【END】-OK  
+2018/03/17 15:14:20.422 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 保存成功！ 
+2018/03/17 16:22:11.302 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【START】  
+2018/03/17 16:22:11.347 [INFO] SuperAdmin D QueryForObject[D](System.String, System.Object) 【END】-OK  
+2018/03/17 16:51:27.101 [INFO] SuperAdmin Boolean Insert[T](T) 【START】  
+2018/03/17 16:55:53.996 [INFO] SuperAdmin Boolean Insert[T](T) 【END】-OK  
+2018/03/17 16:56:38.014 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 保存成功！ 
+2018/03/17 17:36:57.652 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/17 17:36:57.707 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/17 17:36:57.717 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 已选1条数据，确定删除？ 
+2018/03/17 17:37:21.158 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 请勾选至少一条配件名称信息进行删除！ 
+2018/03/17 17:37:59.766 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 请勾选至少一条配件名称信息进行删除！ 
+2018/03/17 17:42:38.434 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/17 17:45:27.797 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/17 17:50:05.816 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 已选1条数据，确定删除？ 
+2018/03/17 17:50:21.875 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/17 17:50:21.886 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/17 17:51:30.071 [INFO] SuperAdmin Boolean DeleteByList[S,D](System.Collections.Generic.IList`1[S]) 【START】  
+2018/03/17 17:51:30.118 [INFO] SuperAdmin Boolean DeleteByList[S,D](System.Collections.Generic.IList`1[S]) 【END】-OK  
+2018/03/17 17:51:31.947 [INFO] SuperAdmin SkyCar.Coeus.UI.BS.FrmAutoPartsNameManager, Text: 配件名称 删除成功！ 

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11EFCEA2-CE88-4605-904F-BE66A5F0E99E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkyCar.Coeus.DAL</RootNamespace>
+    <AssemblyName>SkyCar.Coeus.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\10.Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\10.Output\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\10.Output\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common.Logging.Log4Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\IBatisNet.Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataAccess, Version=1.9.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\IBatisNet.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Reference\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="SkyCar.Common.Utility">
+      <HintPath>..\Reference\SkyCar.Common.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBAccess\CreateSQL.cs" />
+    <Compile Include="DBAccess\CRUD.cs" />
+    <Compile Include="DBAccess\DALConst.cs" />
+    <Compile Include="DBAccess\DBManager.cs" />
+    <Compile Include="DBAccess\MDOperate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLID\01.BS.cs" />
+    <Compile Include="SQLID\04.PIS.cs" />
+    <Compile Include="SQLID\02.SM.cs" />
+    <Compile Include="SQLID\03.FM.cs" />
+    <Compile Include="SQLID\00.Com.cs" />
+    <Compile Include="SQLID\05.WC.cs" />
+    <Compile Include="SQLID\09.IS.cs" />
+    <Compile Include="SQLID\08.RIA.cs" />
+    <Compile Include="SQLID\07.RPT.cs" />
+    <Compile Include="SQLID\06.SD.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="providers.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\SM\MenuManager.xml" />
+    <EmbeddedResource Include="MapFiles\COMM\Login.xml" />
+    <EmbeddedResource Include="MapFiles\SM\OrganizationManager.xml" />
+    <EmbeddedResource Include="MapFiles\SM\UserManager.xml" />
+    <EmbeddedResource Include="MapFiles\BS\VehicleBrandInspireSummaManager.xml" />
+    <EmbeddedResource Include="MapFiles\SM\UserMenuManager.xml" />
+    <EmbeddedResource Include="MapFiles\BS\AutoPartsArchiveManager.xml" />
+    <EmbeddedResource Include="MapFiles\BS\CodeTableManager.xml" />
+    <EmbeddedResource Include="MapFiles\SD\SalesTemplate.xml" />
+    <EmbeddedResource Include="MapFiles\SD\SalesOrder.xml" />
+    <EmbeddedResource Include="MapFiles\SD\ProactiveSales.xml" />
+    <EmbeddedResource Include="MapFiles\BS\AutoPartsTypeManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\StockInBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\WarehouseManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\WarehouseBinManager.xml" />
+    <EmbeddedResource Include="MapFiles\SD\SalesForecastOrder.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\AutoFactoryCustomerManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\GeneralCustomerManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\SupplierManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\StockOutBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\SD\LogisticsBill.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\TransferBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\InventoryQuery.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\StocktakingTaskManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\PurchaseForecastOrderQuery.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\PurchaseOrderManager.xml" />
+    <EmbeddedResource Include="MapFiles\FM\AccountReceivableBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\FM\AccountPayableBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\BS\AutoPartsNameManager.xml" />
+    <EmbeddedResource Include="MapFiles\SM\BatchJobManage.xml" />
+    <EmbeddedResource Include="MapFiles\IS\AutoPartsShareInventoryManager.xml" />
+    <EmbeddedResource Include="MapFiles\FM\ReceiptBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\PurchaseOrderToPayConfirmWindow.xml" />
+    <EmbeddedResource Include="MapFiles\RIA\WalletCreateAccount.xml" />
+    <EmbeddedResource Include="MapFiles\RIA\WalletQueryAndOperate.xml" />
+    <EmbeddedResource Include="MapFiles\RIA\WalletTransLogQuery.xml" />
+    <EmbeddedResource Include="MapFiles\FM\PayBillManager.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\AutoPartsStockInReport.xml" />
+    <EmbeddedResource Include="MapFiles\SD\SalesReturnOrderManager.xml" />
+    <EmbeddedResource Include="MapFiles\PIS\PurchaseReturnManager.xml" />
+    <EmbeddedResource Include="MapFiles\BS\VehicleModelMatchAutoPartsManager.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\SalesPerformanceReport.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\InventoryReport.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\OrgAndCustomerAmountTransReport.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\OrgAndSupplierAmountTransReport.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\ManagementSituationReport.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\AutoPartsStockOutReport.xml" />
+    <EmbeddedResource Include="MapFiles\IS\AutoFactoryInventoryQuery.xml" />
+    <EmbeddedResource Include="MapFiles\IS\AFOrgVehicleBrandInspireQuery.xml" />
+    <EmbeddedResource Include="MapFiles\RPT\OrgAndOrgAmountTransReport.xml" />
+    <Content Include="sqlmap.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Coeus.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MapFiles\COMM\COMMSQL.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MapFiles\COMM\COMMSQL_TB.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MapFiles\WC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\04.Model\SkyCar.Coeus.ComModel\SkyCar.Coeus.ComModel.csproj">
+      <Project>{9b4a8412-11fb-4224-af04-1f4157c443b3}</Project>
+      <Name>SkyCar.Coeus.ComModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\05.Common\SkyCar.Coeus.Common.Const\SkyCar.Coeus.Common.Const.csproj">
+      <Project>{b73b6292-4bb9-44ba-adb3-38ae836c3ba4}</Project>
+      <Name>SkyCar.Coeus.Common.Const</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--用户菜单管理（组织）UIModel-->
+    <typeAlias alias="UserMenuManagerUIModel" type="SkyCar.Coeus.UIModel.SM.UserMenuManagerUIModel,SkyCar.Coeus.UIModel.SM" />
+    <!--用户菜单管理（组织）QCModel-->
+    <typeAlias alias="UserMenuManagerQCModel" type="SkyCar.Coeus.UIModel.SM.UserMenuManagerQCModel,SkyCar.Coeus.UIModel.SM" />
+    <!--用户菜单明细授权UIModel-->
+    <typeAlias alias="UserMenuAuthorityUIModel" type="SkyCar.Coeus.UIModel.SM.UIModel.UserMenuAuthorityUIModel,SkyCar.Coeus.UIModel.SM" />
+    <!--用户菜单动作授权UIModel-->
+    <typeAlias alias="UserActionAuthorityUIModel" type="SkyCar.Coeus.UIModel.SM.UIModel.UserActionAuthorityUIModel,SkyCar.Coeus.UIModel.SM" />
+    <!--用户作业授权UIModel-->
+    <typeAlias alias="UserJobAuthorityUIModel" type="SkyCar.Coeus.UIModel.SM.UIModel.UserJobAuthorityUIModel,SkyCar.Coeus.UIModel.SM" />
+  </alias>
+  <statements>
+
+    <!--查询用户拥有权限的菜单明细-->
+    <select id="UserMenuManager_SQL01" parameterClass="MDLSM_UserMenuAuthority" resultClass="UserMenuAuthorityUIModel">
+      IF #WHERE_UMA_User_ID# = 'SuperAdmin'
+      BEGIN
+      SELECT  NULL 'UMA_ID' ,
+      NULL 'UMA_Org_ID' ,
+      NULL 'UMA_User_ID' ,
+      T1.MenuD_ID 'UMA_MenuD_ID' ,
+      T1.MenuD_Name ,
+      T2.Menu_ID ,
+      T2.Menu_Name
+      FROM    SM_MenuDetail T1
+      INNER JOIN SM_Menu T2 ON T2.Menu_ID = T1.MenuD_Menu_ID
+      AND T2.Menu_IsValid = 1
+      WHERE   T1.MenuD_IsValid = 1
+      ORDER BY T1.MenuD_Menu_ID ,
+      T1.MenuD_ID
+      END
+      ELSE
+      BEGIN
+      SELECT  T1.UMA_ID ,
+      T1.UMA_Org_ID ,
+      T1.UMA_User_ID ,
+      T1.UMA_MenuD_ID ,
+      T3.MenuD_Name ,
+      T4.Menu_ID ,
+      T4.Menu_Name
+      FROM    SM_UserMenuAuthority T1
+      INNER JOIN SM_User T2 ON T2.User_ID = T1.UMA_User_ID
+      AND T2.User_IsValid = 1
+      INNER JOIN SM_MenuDetail T3 ON T3.MenuD_ID = T1.UMA_MenuD_ID
+      AND T3.MenuD_IsValid = 1
+      INNER JOIN SM_Menu T4 ON T4.Menu_ID = T3.MenuD_Menu_ID
+      AND T4.Menu_IsValid = 1
+      WHERE   T1.UMA_IsValid = 1
+      AND T1.UMA_Org_ID = #WHERE_UMA_Org_ID#
+      AND T1.UMA_User_ID = #WHERE_UMA_User_ID#
+      END
+    </select>
+
+    <!--查询用户拥有权限的菜单动作-->
+    <select id="UserMenuManager_SQL03" parameterClass="MDLSM_UserActionAuthority" resultClass="UserActionAuthorityUIModel">
+      IF #WHERE_UAA_User_ID# = 'SuperAdmin'
+      BEGIN
+      SELECT  NULL 'UAA_ID' ,
+      NULL 'UAA_Org_ID' ,
+      NULL 'UAA_User_ID' ,
+      T1.MDA_MenuD_ID 'UAA_MenuD_ID' ,
+      T1.MDA_Action_ID 'UAA_Action_ID' ,
+      T2.Act_Name
+      FROM    SM_MenuDetailAction T1
+      INNER JOIN SM_Action T2 ON T2.Act_ID = T1.MDA_Action_ID
+      AND T2.Act_IsValid = 1
+      WHERE   T1.MDA_IsValid = 1
+      ORDER BY T1.MDA_MenuD_ID ,
+      T1.MDA_Action_ID
+      END
+      ELSE
+      BEGIN
+      SELECT  T1.UAA_ID ,
+      T1.UAA_Org_ID ,
+      T1.UAA_User_ID ,
+      T1.UAA_MenuD_ID ,
+      T1.UAA_Action_ID ,
+      T2.Act_Name
+      FROM    SM_UserActionAuthority T1
+      INNER JOIN SM_Action T2 ON T2.Act_ID = T1.UAA_Action_ID
+      AND T2.Act_IsValid = 1
+      WHERE   T1.UAA_IsValid = 1
+      AND T1.UAA_Org_ID = #WHERE_UAA_Org_ID#
+      AND T1.UAA_User_ID = #WHERE_UAA_User_ID#
+      ORDER BY T1.UAA_MenuD_ID ,
+      T1.UAA_Action_ID
+      END
+    </select>
+
+    <!--查询用户拥有权限的菜单-->
+    <select id="UserMenuManager_SQL04" parameterClass="MDLSM_UserMenuAuthority" resultClass="MDLSM_Menu">
+      IF #WHERE_UMA_User_ID# = 'SuperAdmin'
+      BEGIN
+      SELECT  T1.Menu_ID ,
+      T1.Menu_Name
+      FROM    SM_Menu T1
+      WHERE   T1.Menu_IsValid = 1
+      ORDER BY T1.Menu_ID
+      END
+      ELSE
+      BEGIN
+      SELECT  DISTINCT
+      T3.Menu_ID ,
+      T3.Menu_Name
+      FROM    SM_UserMenuAuthority T1
+      INNER JOIN SM_MenuDetail T2 ON T2.MenuD_ID = T1.UMA_MenuD_ID
+      AND T2.MenuD_IsValid = 1
+      INNER JOIN SM_Menu T3 ON T3.Menu_ID = T2.MenuD_Menu_ID
+      AND T3.Menu_IsValid = 1
+      WHERE   T1.UMA_IsValid = 1
+      AND T1.UMA_Org_ID =  #WHERE_UMA_Org_ID#
+      AND T1.UMA_User_ID = #WHERE_UMA_User_ID#
+      ORDER BY T3.Menu_ID
+      END
+    </select>
+
+    <!--查询用户拥有权限的作业-->
+    <select id="UserMenuManager_SQL05" parameterClass="MDLSM_UserJobAuthority" resultClass="UserJobAuthorityUIModel">
+      IF #WHERE_UJA_User_ID# = 'SuperAdmin'
+      BEGIN
+      SELECT  T1.BJ_ID ,
+      T1.BJ_Name ,
+      NULL 'UJA_ID' ,
+      NULL 'UJA_User_ID'
+      FROM    CSM_BatchJob T1
+      WHERE   T1.BJ_IsValid = 1
+      ORDER BY T1.BJ_CreatedTime
+      END
+      ELSE
+      BEGIN
+      SELECT  T1.BJ_ID ,
+      T1.BJ_Name ,
+      T2.UJA_ID ,
+      T2.UJA_User_ID
+      FROM    CSM_BatchJob T1
+      INNER JOIN SM_UserJobAuthority T2 ON T2.UJA_BJ_ID = T1.BJ_ID
+      AND T2.UJA_User_ID = #WHERE_UJA_User_ID#
+      AND T2.UJA_IsValid = 1
+      WHERE   T1.BJ_IsValid = 1
+      ORDER BY T1.BJ_CreatedTime
+      END
+    </select>
+
+  </statements>
+</sqlMap>

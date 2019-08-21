@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <typeAlias alias="MenuGroupActionQCModel" type="SkyCar.Coeus.UIModel.Common.MenuGroupActionQCModel,SkyCar.Coeus.UIModel.Common" />
+    <typeAlias alias="MenuGroupActionUIModel" type="SkyCar.Coeus.UIModel.Common.MenuGroupActionUIModel,SkyCar.Coeus.UIModel.Common" />
+  </alias>
+  <statements>
+    <!--查询用户菜单和动作权限-->
+    <select  id="Menu_SQL01" parameterClass="MenuGroupActionQCModel" resultClass="MenuGroupActionUIModel">
+      SELECT  T4.Menu_ID ,
+      T4.Menu_Name ,
+      T4.Menu_Code ,
+      T4.Menu_Index ,
+      T4.Menu_IsVisible ,
+      T4.Menu_IsValid ,
+      T5.MenuG_ID ,
+      T5.MenuG_Name ,
+      T5.MenuG_Code ,
+      T5.MenuG_Index ,
+      T5.MenuG_IsVisible ,
+      T5.MenuG_IsValid ,
+      T2.MenuD_ID ,
+      T2.MenuD_Name ,
+      T2.MenuD_Code ,
+      T2.MenuD_Picture ,
+      T2.MenuD_ImgListKey ,
+      T2.MenuD_Index ,
+      T2.MenuD_ClassFullName ,
+      T2.MenuD_IsVisible ,
+      T2.MenuD_GridPageSize ,
+      T2.MenuD_IsValid ,
+      T3.Act_ID ,
+      T3.Act_Index ,
+      T3.Act_Name ,
+      T3.Act_Key ,
+      T1.MDA_ID
+      FROM    SM_MenuDetailAction T1
+      INNER JOIN SM_MenuDetail T2 ON T2.MenuD_ID = T1.MDA_MenuD_ID
+      AND T2.MenuD_IsValid = 1
+      AND T2.MenuD_IsVisible = 1
+      INNER	JOIN SM_Action T3 ON T3.Act_ID = T1.MDA_Action_ID
+      AND T1.MDA_IsValid = 1
+      INNER JOIN SM_Menu T4 ON T4.Menu_ID = T2.MenuD_Menu_ID
+      AND T4.Menu_IsValid = 1
+      INNER JOIN SM_MenuGroup T5 ON T5.MenuG_ID = T2.MenuD_MenuG_ID
+      AND T5.MenuG_IsValid = 1
+      <isNotEmpty prepend="" property="WHERE_User_ID">
+      INNER JOIN SM_UserMenuAuthority T6 ON T6.UMA_MenuD_ID = T2.MenuD_ID
+      AND T6.UMA_Org_ID = #WHERE_Org_ID#
+      AND T6.UMA_User_ID = #WHERE_User_ID#
+      AND T1.MDA_IsValid = 1
+      INNER JOIN SM_UserActionAuthority T7 ON T7.UAA_MenuD_ID = T2.MenuD_ID
+      AND T7.UAA_Action_ID = T3.Act_ID
+      AND T7.UAA_Org_ID = #WHERE_Org_ID#
+      AND T7.UAA_User_ID = #WHERE_User_ID#
+      AND T7.UAA_IsValid = 1
+      </isNotEmpty>
+      WHERE   T1.MDA_IsValid = 1
+      ORDER BY T4.Menu_Index ,
+      T5.MenuG_Index ,
+      T2.MenuD_Index ,
+      T3.Act_Index
+    </select>
+  </statements>
+</sqlMap>

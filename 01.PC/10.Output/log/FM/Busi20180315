@@ -1,0 +1,104 @@
+2018/03/15 08:38:25.633 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:38:25.642 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:38:25.817 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:38:25.825 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:39:16.732 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountReceivableBillManager, Text: 应收管理 请选择执行中的应收单对账！ 
+2018/03/15 08:39:19.726 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountReceivableBillManager, Text: 应收管理 请选择执行中的应收单对账！ 
+2018/03/15 08:41:16.222 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:41:16.283 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 08:41:16.307 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 08:41:16.424 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:26:31.648 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:26:31.658 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:26:31.966 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:26:31.974 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:27:30.347 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:27:30.381 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:27:30.403 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 14:27:30.435 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 14:27:55.318 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountReceivableBillManager, Text: 应收管理 请勾选至少一条执行中或已对账的应收单信息进行转收款！ 
+2018/03/15 15:46:21.481 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:21.490 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:46:21.618 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:21.626 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:46:47.553 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:47.561 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:46:49.237 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:49.246 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:46:49.373 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:49.382 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:46:49.828 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:49.836 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:46:49.969 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:46:49.977 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:50:25.870 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:50:25.878 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:50:25.999 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:50:26.007 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:50:26.448 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:50:26.456 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:50:26.578 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:50:26.586 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:52:35.849 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:52:35.885 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:52:35.908 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:52:35.940 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:53:56.058 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:53:56.111 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:53:56.134 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:53:56.176 [INFO] SuperAdmin Void QueryForList[D](System.String, System.Object, System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:54:28.784 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:54:28.794 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:54:28.918 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:54:28.926 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 15:54:29.270 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 15:54:29.279 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:52:07.282 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:52:07.291 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:52:24.423 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountPayableBillManager, Text: 应付管理 请勾选至少一条执行中或已对账的应付单信息进行转结算！ 
+2018/03/15 16:52:28.477 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:52:28.487 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:53:26.766 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountPayableBillManager, Text: 应付管理 确认无误并对账? 
+2018/03/15 16:53:28.413 [INFO] SuperAdmin ReconciliationDetailDS 【START】  
+2018/03/15 16:53:28.436 [INFO] SuperAdmin Boolean Save[T](T, System.String) 【START】  
+2018/03/15 16:53:28.450 [INFO] SuperAdmin Boolean IsInsert(System.Object) 【START】  
+2018/03/15 16:53:28.461 [INFO] SuperAdmin Boolean IsInsert(System.Object) 【END】-OK 主键值非空（需更新） 
+2018/03/15 16:53:28.517 [INFO] SuperAdmin Boolean Save[T](T, System.String) 【END】-OK  
+2018/03/15 16:53:28.538 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountPayableBillManager, Text: 应付管理 对账成功！ 
+2018/03/15 16:53:52.077 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountPayableBillManager, Text: 应付管理 将放弃之前的修改，是否继续？ 
+2018/03/15 16:54:15.139 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountPayableBillManager, Text: 应付管理 请勾选至少一条执行中或已对账的应付单信息进行转结算！ 
+2018/03/15 16:54:19.069 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:54:19.079 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:54:29.159 [INFO] SuperAdmin SavePayableCashierConfirmData 【START】  
+2018/03/15 16:54:29.436 [INFO] SuperAdmin Boolean Insert[T](T) 【START】  
+2018/03/15 16:54:29.491 [INFO] SuperAdmin Boolean Insert[T](T) 【END】-OK  
+2018/03/15 16:54:29.503 [INFO] SuperAdmin Boolean InsertByList[S,D](System.Collections.Generic.IList`1[S]) 【START】  
+2018/03/15 16:54:29.556 [INFO] SuperAdmin Boolean InsertByList[S,D](System.Collections.Generic.IList`1[S]) 【END】-OK  
+2018/03/15 16:54:29.566 [INFO] SuperAdmin Boolean Update(System.Object) 【START】  
+2018/03/15 16:54:29.577 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) 【START】  
+2018/03/15 16:54:29.589 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) WHERE主键值非空 
+2018/03/15 16:54:29.599 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) WHERE版本号值非空 
+2018/03/15 16:54:29.608 [INFO] SuperAdmin Boolean IsWhereIdORVersionEmpty(System.Object) 【END】-OK WHERE主键和版本号的值都已赋值 
+2018/03/15 16:54:29.656 [INFO] SuperAdmin Boolean Update(System.Object) 【END】-OK  
+2018/03/15 16:54:29.671 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmPayablePayConfirmWindow, Text: 确认付款 保存成功！ 
+2018/03/15 16:54:59.693 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:54:59.704 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:54:59.830 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:54:59.839 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:55:00.297 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:55:00.309 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:55:00.433 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:55:00.444 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:55:28.785 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:55:28.795 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:55:28.915 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:55:28.924 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:55:29.267 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:55:29.276 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:59:02.230 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmAccountPayableBillManager, Text: 应付管理 请选择已审核的相同来源类型，相同客户的销售订单转结算！ 
+2018/03/15 16:59:06.667 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【START】  
+2018/03/15 16:59:06.677 [INFO] SuperAdmin Void CopyModelList[S,D](System.Collections.Generic.IList`1[S], System.Collections.Generic.IList`1[D]) 【END】-OK  
+2018/03/15 16:59:52.309 [INFO] SuperAdmin SavePayableCashierConfirmData 【START】  
+2018/03/15 16:59:52.498 [INFO] SuperAdmin Boolean Insert[T](T) 【START】  
+2018/03/15 16:59:52.552 [INFO] SuperAdmin Boolean Insert[T](T) 【END】-OK  
+2018/03/15 16:59:52.569 [INFO] SuperAdmin SkyCar.Coeus.UI.FM.FrmPayablePayConfirmWindow, Text: 确认付款 保存成功！ 

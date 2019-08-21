@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--模块配置-->
+  <alias>
+
+    <!--应收管理UIModel-->
+    <typeAlias alias="AccountReceivableBillManagerUIModel" type="SkyCar.Coeus.UIModel.FM.AccountReceivableBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--应收管理DetailUIModel-->
+    <typeAlias alias="AccountReceivableBillManagerDetailUIModel" type="SkyCar.Coeus.UIModel.FM.AccountReceivableBillManagerDetailUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--应收管理QCModel-->
+    <typeAlias alias="AccountReceivableBillManagerQCModel" type="SkyCar.Coeus.UIModel.FM.AccountReceivableBillManagerUIModel,SkyCar.Coeus.UIModel.FM" />
+
+    <!--收付款UIModel-->
+    <typeAlias alias="ReceiptAndPayUIModel" type="SkyCar.Coeus.UIModel.FM.APModel.ReceiptAndPayUIModel,SkyCar.Coeus.UIModel.FM" />
+    <!--收付款QCModel-->
+    <typeAlias alias="ReceiptAndPayQCModel" type="SkyCar.Coeus.UIModel.FM.APModel.ReceiptAndPayQCModel,SkyCar.Coeus.UIModel.FM" />
+
+  </alias>
+
+  <!--statements配置-->
+  <statements>
+
+    <!--查询[应收单管理]【列表】信息-->
+    <select id="AccountReceivableBillManager_SQL_01" parameterClass="AccountReceivableBillManagerQCModel" resultClass="AccountReceivableBillManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.ARB_ID)
+      FROM    FM_AccountReceivableBill T1
+      LEFT JOIN EWM_Wallet T2 ON T2.Wal_CustomerID = T1.ARB_PayObjectID
+      AND T2.Wal_IsValid = 1
+      WHERE   1 = 1
+      <!--应收单号-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_No">T1.ARB_No LIKE '%'+#WHERE_ARB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_Org_ID">T1.ARB_Org_ID =#WHERE_ARB_Org_ID#</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_SourceTypeName">T1.ARB_SourceTypeName LIKE '%'+#WHERE_ARB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_SrcBillNo">T1.ARB_SrcBillNo LIKE '%'+#WHERE_ARB_SrcBillNo#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_BusinessStatusName">#WHERE_ARB_BusinessStatusName# LIKE '%;'+T1.ARB_BusinessStatusName+';%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_ApprovalStatusName">T1.ARB_ApprovalStatusName LIKE '%'+#WHERE_ARB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--付款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_PayObjectTypeName">T1.ARB_PayObjectTypeName LIKE '%'+#WHERE_ARB_PayObjectTypeName#+'%'</isNotEmpty>
+      <!--付款对象名称-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_PayObjectName">T1.ARB_PayObjectName LIKE '%'+#WHERE_ARB_PayObjectName#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--修改时间-->
+      <isNotNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime BETWEEN #_UpdatedTimeStart# AND #_UpdatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime <![CDATA[>=]]> #_UpdatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime <![CDATA[<=]]> #_UpdatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_ARB_IsValid">T1.ARB_IsValid=#WHERE_ARB_IsValid#</isNotNull>
+      <!--汽修商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryCode">T5.AFC_Code LIKE '%'+#WHERE_AutoFactoryCode#+'%'</isNotEmpty>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      1 'OrderIndex' ,
+      0 'IsChecked' ,
+      T1.ARB_ID ,
+      T1.ARB_No ,
+      T1.ARB_BillDirectCode ,
+      T1.ARB_BillDirectName ,
+      T1.ARB_SourceTypeCode ,
+      T1.ARB_SourceTypeName ,
+      T1.ARB_SrcBillNo ,
+      T1.ARB_Org_ID ,
+      T1.ARB_Org_Name ,
+      T1.ARB_PayObjectTypeCode ,
+      T1.ARB_PayObjectTypeName ,
+      T1.ARB_PayObjectID ,
+      T1.ARB_PayObjectName ,
+      T1.ARB_AccountReceivableAmount ,
+      T1.ARB_ReceivedAmount ,
+      T1.ARB_UnReceiveAmount ,
+      T1.ARB_BusinessStatusCode ,
+      T1.ARB_BusinessStatusName ,
+      T1.ARB_ApprovalStatusCode ,
+      T1.ARB_ApprovalStatusName ,
+      T1.ARB_ReconciliationTime ,
+      T1.ARB_Remark ,
+      T1.ARB_IsValid ,
+      T1.ARB_CreatedBy ,
+      T1.ARB_CreatedTime ,
+      T1.ARB_UpdatedBy ,
+      T1.ARB_UpdatedTime ,
+      T1.ARB_VersionNo ,
+      T2.Wal_No ,
+      T2.Wal_AvailableBalance
+      FROM    FM_AccountReceivableBill T1
+      LEFT JOIN EWM_Wallet T2 ON T2.Wal_CustomerID = T1.ARB_PayObjectID
+      AND T2.Wal_IsValid = 1
+      WHERE   1 = 1
+      <!--应收单号-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_No">T1.ARB_No LIKE '%'+#WHERE_ARB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_Org_ID">T1.ARB_Org_ID =#WHERE_ARB_Org_ID#</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_SourceTypeName">T1.ARB_SourceTypeName LIKE '%'+#WHERE_ARB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_SrcBillNo">T1.ARB_SrcBillNo LIKE '%'+#WHERE_ARB_SrcBillNo#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_BusinessStatusName">#WHERE_ARB_BusinessStatusName# LIKE '%;'+T1.ARB_BusinessStatusName+';%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_ApprovalStatusName">T1.ARB_ApprovalStatusName LIKE '%'+#WHERE_ARB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--付款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_PayObjectTypeName">T1.ARB_PayObjectTypeName LIKE '%'+#WHERE_ARB_PayObjectTypeName#+'%'</isNotEmpty>
+      <!--付款对象名称-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_PayObjectName">T1.ARB_PayObjectName LIKE '%'+#WHERE_ARB_PayObjectName#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--修改时间-->
+      <isNotNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime BETWEEN #_UpdatedTimeStart# AND #_UpdatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime <![CDATA[>=]]> #_UpdatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime <![CDATA[<=]]> #_UpdatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_ARB_IsValid">T1.ARB_IsValid=#WHERE_ARB_IsValid#</isNotNull>
+      <!--汽修商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryCode">T5.AFC_Code LIKE '%'+#WHERE_AutoFactoryCode#+'%'</isNotEmpty>
+      UNION
+      SELECT  @RecordCount 'RecordCount' ,
+      2 'OrderIndex' ,
+      NULL 'IsChecked' ,
+      NULL 'ARB_ID' ,
+      NULL 'ARB_No' ,
+      NULL 'ARB_BillDirectCode' ,
+      NULL 'ARB_BillDirectName' ,
+      NULL 'ARB_SourceTypeCode' ,
+      NULL 'ARB_SourceTypeName' ,
+      NULL 'ARB_SrcBillNo' ,
+      NULL 'ARB_Org_ID' ,
+      NULL 'ARB_Org_Name' ,
+      NULL 'ARB_PayObjectTypeCode' ,
+      NULL 'ARB_PayObjectTypeName' ,
+      NULL 'ARB_PayObjectID' ,
+      '	    合计：' 'ARB_PayObjectName' ,
+      SUM(ISNULL(Temp.ARB_AccountReceivableAmount, 0)) 'ARB_AccountReceivableAmount' ,
+      SUM(ISNULL(Temp.ARB_ReceivedAmount, 0)) 'ARB_ReceivedAmount' ,
+      SUM(ISNULL(Temp.ARB_UnReceiveAmount, 0)) 'ARB_UnReceiveAmount' ,
+      NULL 'ARB_BusinessStatusCode' ,
+      NULL 'ARB_BusinessStatusName' ,
+      NULL 'ARB_ApprovalStatusCode' ,
+      NULL 'ARB_ApprovalStatusName' ,
+      NULL 'ARB_ReconciliationTime' ,
+      NULL 'ARB_Remark' ,
+      NULL 'ARB_IsValid' ,
+      NULL 'ARB_CreatedBy' ,
+      NULL 'ARB_CreatedTime' ,
+      NULL 'ARB_UpdatedBy' ,
+      NULL 'ARB_UpdatedTime' ,
+      NULL 'ARB_VersionNo' ,
+      NULL 'Wal_No' ,
+      NULL 'Wal_AvailableBalance'
+      FROM    ( SELECT    T1.ARB_AccountReceivableAmount ,
+      T1.ARB_ReceivedAmount ,
+      T1.ARB_UnReceiveAmount
+      FROM      FM_AccountReceivableBill T1
+      LEFT JOIN EWM_Wallet T2 ON T2.Wal_CustomerID = T1.ARB_PayObjectID
+      AND T2.Wal_IsValid = 1
+      WHERE   1 = 1
+      <!--应收单号-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_No">T1.ARB_No LIKE '%'+#WHERE_ARB_No#+'%'</isNotEmpty>
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_Org_ID">T1.ARB_Org_ID =#WHERE_ARB_Org_ID#</isNotEmpty>
+      <!--来源类型-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_SourceTypeName">T1.ARB_SourceTypeName LIKE '%'+#WHERE_ARB_SourceTypeName#+'%'</isNotEmpty>
+      <!--来源单号-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_SrcBillNo">T1.ARB_SrcBillNo LIKE '%'+#WHERE_ARB_SrcBillNo#+'%'</isNotEmpty>
+      <!--业务状态-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_BusinessStatusName">#WHERE_ARB_BusinessStatusName# LIKE '%;'+T1.ARB_BusinessStatusName+';%'</isNotEmpty>
+      <!--审核状态-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_ApprovalStatusName">T1.ARB_ApprovalStatusName LIKE '%'+#WHERE_ARB_ApprovalStatusName#+'%'</isNotEmpty>
+      <!--付款对象类型-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_PayObjectTypeName">T1.ARB_PayObjectTypeName LIKE '%'+#WHERE_ARB_PayObjectTypeName#+'%'</isNotEmpty>
+      <!--付款对象名称-->
+      <isNotEmpty prepend="AND" property="WHERE_ARB_PayObjectName">T1.ARB_PayObjectName LIKE '%'+#WHERE_ARB_PayObjectName#+'%'</isNotEmpty>
+      <!--创建时间-->
+      <isNotNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime BETWEEN #_CreatedTimeStart# AND #_CreatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime <![CDATA[>=]]> #_CreatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_CreatedTimeStart">
+        <isNotNull prepend="AND" property="_CreatedTimeEnd">T1.ARB_CreatedTime <![CDATA[<=]]> #_CreatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--修改时间-->
+      <isNotNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime BETWEEN #_UpdatedTimeStart# AND #_UpdatedTimeEnd#</isNotNull>
+        <isNull  prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime <![CDATA[>=]]> #_UpdatedTimeStart#</isNull>
+      </isNotNull>
+      <isNull prepend="" property="_UpdatedTimeStart">
+        <isNotNull prepend="AND" property="_UpdatedTimeEnd">T1.ARB_UpdatedTime <![CDATA[<=]]> #_UpdatedTimeEnd#</isNotNull>
+      </isNull>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_ARB_IsValid">T1.ARB_IsValid=#WHERE_ARB_IsValid#</isNotNull>
+      <!--汽修商户编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AutoFactoryCode">T5.AFC_Code LIKE '%'+#WHERE_AutoFactoryCode#+'%'</isNotEmpty>
+      ) Temp
+
+      <!--翻页用-->
+      ORDER BY T1.ARB_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询收付款列表-->
+    <select id="AccountReceivableBillManager_SQL_02" parameterClass="ReceiptAndPayQCModel" resultClass="ReceiptAndPayUIModel">
+      SELECT  '收款单' 'BillType' ,
+      T11.RBD_ID 'BillID' ,
+      T11.RBD_RB_No 'BillNo' ,
+      T11.RBD_SourceTypeCode 'BillSourceTypeCode' ,
+      T11.RBD_SourceTypeName 'BillSourceTypeName' ,
+      T11.RBD_SrcBillNo 'BillSourceNo' ,
+      T11.RBD_ReceiveAmount 'TradeTotalAmount' ,
+      T11.RBD_CreatedBy 'BillCreatedBy' ,
+      T11.RBD_CreatedTime 'BillCreatedTime' ,
+      T12.RB_Rec_Org_ID 'BillOrgID' ,
+      T12.RB_Rec_Org_Name 'BillOrgName' ,
+      T12.RB_ReceiveTypeCode 'TradeTypeCode' ,
+      T12.RB_ReceiveTypeName 'TradeTypeName'
+      FROM    FM_ReceiptBillDetail T11
+      INNER JOIN FM_ReceiptBill T12 ON T12.RB_ID = T11.RBD_RB_ID
+      AND T12.RB_IsValid = 1
+      AND T12.RB_PayObjectID = #Where_TradeObjectID#
+      WHERE   T11.RBD_IsValid = 1
+      AND T11.RBD_SrcBillNo = #Where_BillSourceNo#
+      UNION
+      SELECT  '付款单' 'BillType' ,
+      T11.PBD_ID 'BillID' ,
+      T11.PBD_PB_No 'BillNo' ,
+      T11.PBD_SourceTypeCode 'BillSourceTypeCode' ,
+      T11.PBD_SourceTypeName 'BillSourceTypeName' ,
+      T11.PBD_SrcBillNo 'BillSourceNo' ,
+      T11.PBD_PayAmount 'TradeTotalAmount' ,
+      T11.PBD_CreatedBy 'BillCreatedBy' ,
+      T11.PBD_CreatedTime 'BillCreatedTime' ,
+      T12.PB_Pay_Org_ID 'BillOrgID' ,
+      T12.PB_Pay_Org_Name 'BillOrgName' ,
+      T12.PB_PayTypeCode 'TradeTypeCode' ,
+      T12.PB_PayTypeName 'TradeTypeName'
+      FROM    FM_PayBillDetail T11
+      INNER JOIN FM_PayBill T12 ON T12.PB_ID = T11.PBD_PB_ID
+      AND T12.PB_IsValid = 1
+      AND T12.PB_RecObjectID = #Where_TradeObjectID#
+      WHERE   T11.PBD_IsValid = 1
+      AND T11.PBD_SrcBillNo = #Where_BillSourceNo#
+    </select>
+
+  </statements>
+
+</sqlMap>

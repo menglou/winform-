@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ComboBoxDataSet" targetNamespace="http://tempuri.org/ComboBoxDataSet.xsd" xmlns:mstns="http://tempuri.org/ComboBoxDataSet.xsd" xmlns="http://tempuri.org/ComboBoxDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ComboBoxDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ComboBoxDataSet" msprop:Generator_UserDSName="ComboBoxDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ComboBoxInfo" msprop:Generator_TableClassName="ComboBoxInfoDataTable" msprop:Generator_TableVarName="tableComboBoxInfo" msprop:Generator_TablePropName="ComboBoxInfo" msprop:Generator_RowDeletingName="ComboBoxInfoRowDeleting" msprop:Generator_RowChangingName="ComboBoxInfoRowChanging" msprop:Generator_RowEvHandlerName="ComboBoxInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="ComboBoxInfoRowDeleted" msprop:Generator_UserTableName="ComboBoxInfo" msprop:Generator_RowChangedName="ComboBoxInfoRowChanged" msprop:Generator_RowEvArgName="ComboBoxInfoRowChangeEvent" msprop:Generator_RowClassName="ComboBoxInfoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IsChecked" msprop:Generator_ColumnVarNameInTable="columnIsChecked" msprop:Generator_ColumnPropNameInRow="IsChecked" msprop:Generator_ColumnPropNameInTable="IsCheckedColumn" msprop:Generator_UserColumnName="IsChecked" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="ItemDesc" msprop:Generator_ColumnVarNameInTable="columnItemDesc" msprop:Generator_ColumnPropNameInRow="ItemDesc" msprop:Generator_ColumnPropNameInTable="ItemDescColumn" msprop:Generator_UserColumnName="ItemDesc" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="ExtraItemDesc" msprop:Generator_ColumnVarNameInTable="columnExtraItemDesc" msprop:Generator_ColumnPropNameInRow="ExtraItemDesc" msprop:Generator_ColumnPropNameInTable="ExtraItemDescColumn" msprop:Generator_UserColumnName="ExtraItemDesc" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="ItemDescAllSpellCode" msprop:Generator_ColumnVarNameInTable="columnItemDescAllSpellCode" msprop:Generator_ColumnPropNameInRow="ItemDescAllSpellCode" msprop:Generator_ColumnPropNameInTable="ItemDescAllSpellCodeColumn" msprop:Generator_UserColumnName="ItemDescAllSpellCode" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="ItemDescAllFirstSpellCode" msprop:Generator_ColumnVarNameInTable="columnItemDescAllFirstSpellCode" msprop:Generator_ColumnPropNameInRow="ItemDescAllFirstSpellCode" msprop:Generator_ColumnPropNameInTable="ItemDescAllFirstSpellCodeColumn" msprop:Generator_UserColumnName="ItemDescAllFirstSpellCode" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="ItemDescLen" msprop:Generator_ColumnVarNameInTable="columnItemDescLen" msprop:Generator_ColumnPropNameInRow="ItemDescLen" msprop:Generator_ColumnPropNameInTable="ItemDescLenColumn" msprop:Generator_UserColumnName="ItemDescLen" type="xs:long" default="0" minOccurs="0" />
+              <xs:element name="ItemValue" msprop:Generator_ColumnVarNameInTable="columnItemValue" msprop:Generator_ColumnPropNameInRow="ItemValue" msprop:Generator_ColumnPropNameInTable="ItemValueColumn" msprop:Generator_UserColumnName="ItemValue" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="IsMatched" msprop:Generator_ColumnVarNameInTable="columnIsMatched" msprop:Generator_ColumnPropNameInRow="IsMatched" msprop:Generator_ColumnPropNameInTable="IsMatchedColumn" msprop:Generator_UserColumnName="IsMatched" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="MatchIndex" msprop:Generator_ColumnVarNameInTable="columnMatchIndex" msprop:Generator_ColumnPropNameInRow="MatchIndex" msprop:Generator_ColumnPropNameInTable="MatchIndexColumn" msprop:Generator_UserColumnName="MatchIndex" type="xs:long" default="1" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+    <!--汽修商管理QCModel-->
+    <typeAlias alias="AutoFactoryCustomerManagerQCModel" type="SkyCar.Coeus.UIModel.PIS.AutoFactoryCustomerManagerQCModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--汽修商管理UIModel-->
+    <typeAlias alias="AutoFactoryCustomerManagerUIModel" type="SkyCar.Coeus.UIModel.PIS.AutoFactoryCustomerManagerUIModel,SkyCar.Coeus.UIModel.PIS" />
+    <!--汽修商客户配件价格类别UIModel-->
+    <typeAlias alias="ARCustomerAutoPartsPriceTypeUIModel" type="SkyCar.Coeus.UIModel.PIS.ARCustomerAutoPartsPriceTypeUIModel,SkyCar.Coeus.UIModel.PIS" />
+  </alias>
+  <statements>
+
+    <!--验证汽修商唯一性-->
+    <select  id="AutoFactoryCustomerManager_SQL01" parameterClass="MDLPIS_AutoFactoryCustomer" resultClass="int">
+      SELECT  COUNT(T1.AFC_ID)
+      FROM    PIS_AutoFactoryCustomer T1
+      WHERE   T1.AFC_IsValid = 1
+      <!--汽修商客户ID-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_ID">T1.AFC_ID!=#WHERE_AFC_ID#</isNotEmpty>
+      <!--汽修商编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Code">T1.AFC_Code=#WHERE_AFC_Code#</isNotEmpty>
+      <!--汽修商组织编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Code">T1.AFC_AROrg_Code=#WHERE_AFC_AROrg_Code#</isNotEmpty>
+    </select>
+
+    <!--查询汽修商是否被引用-->
+    <select  id="AutoFactoryCustomerManager_SQL02" parameterClass="MDLPIS_AutoFactoryCustomer" resultClass="int">
+      SELECT    COUNT(T1.CustomerID)
+      FROM      ( SELECT    T11.SasT_CustomerID 'CustomerID'
+      FROM      SD_SalesTemplate T11
+      WHERE     T11.SasT_IsValid = 1
+      AND T11.SasT_CustomerID IS NOT NULL
+      AND T11.SasT_CustomerID != ''
+      AND T11.SasT_CustomerID = #WHERE_AFC_ID#
+      UNION
+      SELECT    T11.SFO_CustomerID 'CustomerID'
+      FROM      SD_SalesForecastOrder T11
+      WHERE     T11.SFO_IsValid = 1
+      AND T11.SFO_CustomerID IS NOT NULL
+      AND T11.SFO_CustomerID != ''
+      AND T11.SFO_CustomerID = #WHERE_AFC_ID#
+      UNION
+      SELECT    T11.SO_CustomerID 'CustomerID'
+      FROM      SD_SalesOrder T11
+      WHERE     T11.SO_IsValid = 1
+      AND T11.SO_CustomerID IS NOT NULL
+      AND T11.SO_CustomerID != ''
+      AND T11.SO_CustomerID = #WHERE_AFC_ID#
+      ) T1
+    </select>
+
+    <!--查询汽修商列表-->
+    <select  id="AutoFactoryCustomerManager_SQL03" parameterClass="AutoFactoryCustomerManagerQCModel" resultClass="AutoFactoryCustomerManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.AFC_ID)
+      FROM    PIS_AutoFactoryCustomer T1
+      LEFT JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      AND T2.ASOAH_ARMerchant_Code = T1.AFC_Code
+      AND T2.ASOAH_AROrg_Code = T1.AFC_AROrg_Code
+      AND T2.ASOAH_IsValid = 1
+      WHERE   T1.AFC_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Org_ID">
+        ( CASE WHEN T1.AFC_IsPlatform = 0 THEN T1.AFC_Org_ID
+        ELSE T2.ASOAH_SupOrg_ID
+        END ) LIKE '%'+#WHERE_AFC_Org_ID#+'%'
+      </isNotEmpty>
+      <!--是否终止销售-->
+      <isNotNull prepend="AND" property="WHERE_AFC_IsEndSales">T1.AFC_IsEndSales=#WHERE_AFC_IsEndSales#</isNotNull>
+      <!--是否平台商户-->
+      <isNotNull prepend="AND" property="WHERE_AFC_IsPlatform">T1.AFC_IsPlatform=#WHERE_AFC_IsPlatform#</isNotNull>
+      <!--汽修商编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Code">T1.AFC_Code LIKE '%'+#WHERE_AFC_Code#+'%'</isNotEmpty>
+      <!--汽修商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Name">T1.AFC_Name LIKE '%'+#WHERE_AFC_Name#+'%'</isNotEmpty>
+      <!--汽修商联系方式-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_PhoneNo">T1.AFC_PhoneNo LIKE '%'+#WHERE_AFC_PhoneNo#+'%'</isNotEmpty>
+      <!--汽修组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Name">T1.AFC_AROrg_Name LIKE '%'+#WHERE_AFC_AROrg_Name#+'%'</isNotEmpty>
+      <!--汽修组织联系人-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Contacter">T1.AFC_AROrg_Contacter LIKE '%'+#WHERE_AFC_AROrg_Contacter#+'%'</isNotEmpty>
+      <!--汽修组织联系方式-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Phone">T1.AFC_AROrg_Phone LIKE '%'+#WHERE_AFC_AROrg_Phone#+'%'</isNotEmpty>
+
+      SELECT DISTINCT @RecordCount 'RecordCount' ,
+      T1.AFC_ID ,
+      T1.AFC_Org_ID ,
+      T1.AFC_IsPlatform ,
+      T1.AFC_Code ,
+      T1.AFC_Name ,
+      T1.AFC_Contacter ,
+      T1.AFC_PhoneNo ,
+      T1.AFC_Address ,
+      T1.AFC_AROrg_Code ,
+      T1.AFC_AROrg_Name ,
+      T1.AFC_AROrg_Contacter ,
+      T1.AFC_AROrg_Phone ,
+      T1.AFC_AROrg_Address ,
+      T1.AFC_CreditAmount ,
+      T1.AFC_PaymentTypeCode ,
+      T1.AFC_PaymentTypeName ,
+      T1.AFC_BillingTypeCode ,
+      T1.AFC_BillingTypeName ,
+      T1.AFC_DeliveryTypeCode ,
+      T1.AFC_DeliveryTypeName ,
+      T1.AFC_DeliveryByID ,
+      T1.AFC_DeliveryByName ,
+      T1.AFC_DeliveryByPhoneNo ,
+      T1.AFC_IsEndSales ,
+      T1.AFC_AutoPartsPriceType ,
+      T1.AFC_Remark ,
+      T1.AFC_IsValid ,
+      T1.AFC_CreatedBy ,
+      T1.AFC_CreatedTime ,
+      T1.AFC_UpdatedBy ,
+      T1.AFC_UpdatedTime ,
+      T1.AFC_VersionNo
+      FROM    PIS_AutoFactoryCustomer T1
+      LEFT JOIN SM_AROrgSupOrgAuthority T2 ON T2.ASOAH_AFC_ID = T1.AFC_ID
+      AND T2.ASOAH_ARMerchant_Code = T1.AFC_Code
+      AND T2.ASOAH_AROrg_Code = T1.AFC_AROrg_Code
+      AND T2.ASOAH_IsValid = 1
+      WHERE   T1.AFC_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Org_ID">
+        ( CASE WHEN T1.AFC_IsPlatform = 0 THEN T1.AFC_Org_ID
+        ELSE T2.ASOAH_SupOrg_ID
+        END ) LIKE '%'+#WHERE_AFC_Org_ID#+'%'
+      </isNotEmpty>
+      <!--是否终止销售-->
+      <isNotNull prepend="AND" property="WHERE_AFC_IsEndSales">T1.AFC_IsEndSales=#WHERE_AFC_IsEndSales#</isNotNull>
+      <!--是否平台商户-->
+      <isNotNull prepend="AND" property="WHERE_AFC_IsPlatform">T1.AFC_IsPlatform=#WHERE_AFC_IsPlatform#</isNotNull>
+      <!--汽修商编码-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Code">T1.AFC_Code LIKE '%'+#WHERE_AFC_Code#+'%'</isNotEmpty>
+      <!--汽修商名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_Name">T1.AFC_Name LIKE '%'+#WHERE_AFC_Name#+'%'</isNotEmpty>
+      <!--汽修商联系方式-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_PhoneNo">T1.AFC_PhoneNo LIKE '%'+#WHERE_AFC_PhoneNo#+'%'</isNotEmpty>
+      <!--汽修组织名称-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Name">T1.AFC_AROrg_Name LIKE '%'+#WHERE_AFC_AROrg_Name#+'%'</isNotEmpty>
+      <!--汽修组织联系人-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Contacter">T1.AFC_AROrg_Contacter LIKE '%'+#WHERE_AFC_AROrg_Contacter#+'%'</isNotEmpty>
+      <!--汽修组织联系方式-->
+      <isNotEmpty prepend="AND" property="WHERE_AFC_AROrg_Phone">T1.AFC_AROrg_Phone LIKE '%'+#WHERE_AFC_AROrg_Phone#+'%'</isNotEmpty>
+
+      <!--翻页用-->
+      ORDER BY T1.AFC_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+
+    </select>
+
+    <!--根据ID查询汽修商客户(同步平台用)-->
+    <select  id="AutoFactoryCustomerManager_SQL04" parameterClass="MDLPIS_AutoFactoryCustomer" resultClass="ARCustomerAutoPartsPriceTypeUIModel">
+      SELECT  T1.AFC_Code 'SAAPPT_ARMerchantCode',
+      T1.AFC_AROrg_Code 'SAAPPT_AROrgCode',
+      T1.AFC_AutoPartsPriceType 'SAAPPT_AutoPartsPriceType' ,
+      'Save' 'SAAPPT_OperateType'
+      FROM    PIS_AutoFactoryCustomer T1
+      WHERE   T1.AFC_IsValid = 1
+      AND T1.AFC_IsPlatform = 1
+      AND #WHERE_AFC_ID# LIKE '%' + T1.AFC_ID + '%'
+    </select>
+
+  </statements>
+</sqlMap>

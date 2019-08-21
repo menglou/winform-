@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Model" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--statements配置-->
+  <alias>
+
+    <!--用户管理UIModel-->
+    <typeAlias alias="UserManagerUIModel" type="SkyCar.Coeus.UIModel.SM.UserManagerUIModel,SkyCar.Coeus.UIModel.SM" />
+    <!--用户管理QCModel-->
+    <typeAlias alias="UserManagerQCModel" type="SkyCar.Coeus.UIModel.SM.UserManagerQCModel,SkyCar.Coeus.UIModel.SM" />
+  </alias>
+  <statements>
+
+    <!--判断是否存在相同工号的员工-->
+    <select id="UserManager_SQL01" parameterClass="MDLSM_User" resultClass="int">
+      SELECT
+      COUNT(User_ID)
+      FROM SM_User
+      <dynamic prepend="WHERE">
+        <!--ID-->
+        <isNotEmpty prepend="AND" property="WHERE_User_ID">User_ID != #WHERE_User_ID#</isNotEmpty>
+        <!--工号-->
+        <isNotEmpty prepend="AND" property="WHERE_User_EMPNO">User_EMPNO = #WHERE_User_EMPNO#</isNotEmpty>
+      </dynamic>
+    </select>
+
+    <!--删除用户菜单表-->
+    <delete id="UserManager_SQL02" parameterClass="string" resultClass="int">
+      BEGIN TRY
+
+      IF EXISTS ( SELECT  UMA_User_ID
+      FROM    SM_UserMenuAuthority
+      WHERE   UMA_User_ID = #value# )
+      BEGIN
+      DELETE  FROM SM_UserMenuAuthority
+      WHERE   UMA_User_ID = #value#
+      END
+      SELECT  1
+
+      END TRY
+
+      BEGIN CATCH
+
+      SELECT  0
+
+      END CATCH
+    </delete>
+
+    <!--删除用户组织表-->
+    <delete id="UserManager_SQL03" parameterClass="string" resultClass="int">
+      BEGIN TRY
+
+      IF EXISTS ( SELECT  UO_User_ID
+      FROM    SM_UserOrg
+      WHERE   UO_User_ID = #value# )
+      BEGIN
+      DELETE  FROM SM_UserOrg
+      WHERE   UO_User_ID = #value#
+      END
+      SELECT  1
+
+      END TRY
+
+      BEGIN CATCH
+
+      SELECT  0
+
+      END CATCH
+    </delete>
+
+    <!--查询用户列表-->
+    <select id="UserManager_SQL04" parameterClass="UserManagerQCModel" resultClass="UserManagerUIModel">
+      DECLARE @RecordCount INT
+      SELECT  @RecordCount = COUNT(T1.User_ID)
+      FROM    SM_User T1
+      INNER JOIN SM_UserOrg T2 ON T2.UO_User_ID = T1.User_ID
+      AND T2.UO_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_UO_Org_ID">T2.UO_Org_ID LIKE '%'+#WHERE_UO_Org_ID#+'%'</isNotEmpty>
+      WHERE   1 = 1
+      <!--姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_User_Name">T1.User_Name LIKE '%'+#WHERE_User_Name#+'%'</isNotEmpty>
+      <!--工号-->
+      <isNotEmpty prepend="AND" property="WHERE_User_EMPNO">T1.User_EMPNO LIKE '%'+#WHERE_User_EMPNO#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_User_IsValid">T1.User_IsValid=#WHERE_User_IsValid#</isNotNull>
+
+      SELECT  @RecordCount 'RecordCount' ,
+      T1.User_ID ,
+      T1.User_Name ,
+      T1.User_Password ,
+      T1.User_EMPNO ,
+      T1.User_IDNo ,
+      T1.User_Sex ,
+      T1.User_Address ,
+      T1.User_PhoneNo ,
+      T1.User_IsAllowWechatCertificate ,
+      T1.User_IsWechatCertified ,
+      T1.User_PrintTitlePrefix ,
+      T1.User_IsValid ,
+      T1.User_CreatedBy ,
+      T1.User_CreatedTime ,
+      T1.User_UpdatedBy ,
+      T1.User_UpdatedTime ,
+      T1.User_VersionNo ,
+      T2.UO_Org_ID
+      FROM    SM_User T1
+      INNER JOIN SM_UserOrg T2 ON T2.UO_User_ID = T1.User_ID
+      AND T2.UO_IsValid = 1
+      <!--组织ID-->
+      <isNotEmpty prepend="AND" property="WHERE_UO_Org_ID">T2.UO_Org_ID LIKE '%'+#WHERE_UO_Org_ID#+'%'</isNotEmpty>
+      WHERE   1 = 1
+      <!--姓名-->
+      <isNotEmpty prepend="AND" property="WHERE_User_Name">T1.User_Name LIKE '%'+#WHERE_User_Name#+'%'</isNotEmpty>
+      <!--工号-->
+      <isNotEmpty prepend="AND" property="WHERE_User_EMPNO">T1.User_EMPNO LIKE '%'+#WHERE_User_EMPNO#+'%'</isNotEmpty>
+      <!--有效-->
+      <isNotNull prepend="AND" property="WHERE_User_IsValid">T1.User_IsValid=#WHERE_User_IsValid#</isNotNull>
+
+      <!--翻页用-->
+      ORDER BY T1.User_UpdatedTime DESC
+      <isNotNull prepend="" property="PageSize">
+        <isNotNull prepend="" property="PageIndex">
+          OFFSET ( #PageIndex# - 1 ) * #PageSize# ROWS
+          FETCH NEXT #PageSize# ROWS ONLY
+        </isNotNull>
+      </isNotNull>
+    </select>
+
+    <!--查询用户是否被引用过-->
+    <select id="UserManager_SQL05" parameterClass="MDLSM_User" resultClass="MDLSM_User">
+      SELECT DISTINCT
+      T1.User_ID ,
+      T1.User_Name
+      FROM    SM_User T1
+      INNER JOIN SD_LogisticsBill T2 ON T2.LB_DeliveryByID = T1.User_ID
+      AND T2.LB_IsValid = 1
+      WHERE   T1.User_IsValid = 1
+      AND ISNULL(T1.User_ID, '') != ''
+      AND #WHERE_User_ID# LIKE '%' + T1.User_ID + ';%'
+      UNION
+      SELECT DISTINCT
+      T1.User_ID ,
+      T1.User_Name
+      FROM    SM_User T1
+      INNER JOIN PIS_AutoFactoryCustomer T2 ON T2.AFC_DeliveryByID = T1.User_ID
+      AND T2.AFC_IsValid = 1
+      WHERE   T1.User_IsValid = 1
+      AND ISNULL(T1.User_ID, '') != ''
+      AND #WHERE_User_ID# LIKE '%' + T1.User_ID + ';%'
+      UNION
+      SELECT DISTINCT
+      T1.User_ID ,
+      T1.User_Name
+      FROM    SM_User T1
+      INNER JOIN PIS_GeneralCustomer T2 ON T2.GC_DeliveryByID = T1.User_ID
+      AND T2.GC_IsValid = 1
+      WHERE   T1.User_IsValid = 1
+      AND ISNULL(T1.User_ID, '') != ''
+      AND #WHERE_User_ID# LIKE '%' + T1.User_ID + ';%'
+    </select>
+
+    <!--查询用户组织信息-->
+    <select id="UserManager_SQL06" parameterClass="string" resultClass="MDLSM_UserOrg">
+      SELECT  T1.UO_ID ,
+      T1.UO_User_ID ,
+      T1.UO_Org_ID ,
+      T1.UO_IsValid ,
+      T1.UO_CreatedBy ,
+      T1.UO_CreatedTime ,
+      T1.UO_UpdatedBy ,
+      T1.UO_UpdatedTime ,
+      T1.UO_VersionNo
+      FROM    SM_UserOrg T1
+      WHERE   T1.UO_IsValid = 1
+      AND #value# LIKE '%;' + T1.UO_User_ID + ';%'
+    </select>
+
+    <!--查询用户菜单授权信息-->
+    <select id="UserManager_SQL07" parameterClass="string" resultClass="MDLSM_UserMenuAuthority">
+      SELECT  T1.UMA_ID ,
+      T1.UMA_User_ID ,
+      T1.UMA_Org_ID ,
+      T1.UMA_MenuD_ID ,
+      T1.UMA_IsValid ,
+      T1.UMA_CreatedBy ,
+      T1.UMA_CreatedTime ,
+      T1.UMA_UpdatedBy ,
+      T1.UMA_UpdatedTime ,
+      T1.UMA_VersionNo
+      FROM    SM_UserMenuAuthority T1
+      WHERE   T1.UMA_IsValid = 1
+      AND #value# LIKE '%;' + T1.UMA_User_ID + ';%'
+    </select>
+
+    <!--查询用户动作授权信息-->
+    <select id="UserManager_SQL08" parameterClass="string" resultClass="MDLSM_UserActionAuthority">
+      SELECT  T1.UAA_ID ,
+      T1.UAA_User_ID ,
+      T1.UAA_Org_ID ,
+      T1.UAA_MenuD_ID ,
+      T1.UAA_Action_ID ,
+      T1.UAA_IsValid ,
+      T1.UAA_CreatedBy ,
+      T1.UAA_CreatedTime ,
+      T1.UAA_UpdatedBy ,
+      T1.UAA_UpdatedTime ,
+      T1.UAA_VersionNo
+      FROM    SM_UserActionAuthority T1
+      WHERE   T1.UAA_IsValid = 1
+      AND #value# LIKE '%;' + T1.UAA_User_ID + ';%'
+    </select>
+
+  </statements>
+</sqlMap>
